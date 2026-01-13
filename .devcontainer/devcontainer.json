@@ -6,6 +6,7 @@
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
   "remoteUser": "node",
+  "onCreateCommand": "/bin/bash ./.devcontainer/onCreateCommand.sh",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "upgradePackages": true
