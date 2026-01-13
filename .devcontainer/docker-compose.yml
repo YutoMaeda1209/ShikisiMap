@@ -1,0 +1,22 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: "../"
+        target: "/workspace"
+        consistency: cached
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+      - type: bind
+        source: /mnt/wslg
+        target: /mnt/wslg
+    environment:
+      - DISPLAY=$DISPLAY
+      - WAYLAND_DISPLAY=$WAYLAND_DISPLAY
+      - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+      - PULSE_SERVER=$PULSE_SERVER
+    command: sleep infinity
