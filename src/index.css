@@ -5,4 +5,5 @@ body {
 
 #root {
     height: 100vh;
+    user-select: none;
 }
