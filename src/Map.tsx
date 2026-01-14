@@ -6,14 +6,17 @@ import geoJsonRowData from "./data.json";
 import "./Map.css";
 
 type GeoProperties = {
-    popupContent: string;
+    name: string;
+    category: string;
+    address: string;
+    youtube: string;
 }
 
 const geoData = geoJsonRowData as GeoJsonObject;
 
 function Map() {
     const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
-        layer.bindPopup(feature.properties.popupContent);
+        layer.bindPopup(feature.properties.name);
     };
 
     return (
