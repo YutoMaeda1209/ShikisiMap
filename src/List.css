@@ -10,6 +10,7 @@
     padding: var(--list-gap);
     height: calc(100% - var(--list-gap) * 4);
     width: calc(25% - var(--list-gap) * 4);
+    border-radius: 25px;
 }
 
 #pointList ul {
