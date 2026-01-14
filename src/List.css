@@ -14,5 +14,13 @@
 }
 
 #pointList ul {
+    margin: 0;
+    height: calc(100% - var(--list-gap) * 2);
     width: calc(100% - var(--list-gap) * 2);
+    padding-left: 0;
+    overflow: scroll;
+}
+
+#pointList li {
+    list-style: none;
 }

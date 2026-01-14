@@ -4,13 +4,7 @@ import "leaflet/dist/leaflet.css";
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import geoJsonRowData from "./data.json";
 import "./Map.css";
-
-type GeoProperties = {
-    name: string;
-    category: string;
-    address: string;
-    youtube: string;
-}
+import type { GeoProperties } from './types';
 
 const geoData = geoJsonRowData as GeoJsonObject;
 
