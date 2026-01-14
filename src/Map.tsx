@@ -5,18 +5,15 @@ import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
 import geoJsonRowData from "./data.json";
 import "./Map.css";
 
-interface ShikisiProperties {
-    popupContent?: string;
-    [key: string]: unknown;
+type GeoProperties = {
+    popupContent: string;
 }
 
 const geoData = geoJsonRowData as GeoJsonObject;
 
 function Map() {
-    const onEachFeature = (feature: Feature<Geometry, ShikisiProperties>, layer: Layer) => {
-        if (feature.properties && typeof feature.properties.popupContent === 'string') {
-            layer.bindPopup(feature.properties.popupContent);
-        }
+    const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
+        layer.bindPopup(feature.properties.popupContent);
     };
 
     return (
