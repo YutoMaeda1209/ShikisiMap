@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "name": "欧州酒場サケトメシ",
-        "amenity": "Restaurant",
+        "category": "Restaurant",
         "popupContent": "欧州酒場サケトメシ - 0"
       },
       "geometry": {
@@ -17,7 +17,7 @@
       "type": "Feature",
       "properties": {
         "name": "A&W 牧港店",
-        "amenity": "Restaurant",
+        "category": "Restaurant",
         "popupContent": "A&W 牧港店 - 1"
       },
       "geometry": {
@@ -29,7 +29,7 @@
       "type": "Feature",
       "properties": {
         "name": "つけ麺ジンベエ",
-        "amenity": "Restaurant",
+        "category": "Restaurant",
         "popupContent": "つけ麺ジンベエ - 2"
       },
       "geometry": {
@@ -41,7 +41,7 @@
       "type": "Feature",
       "properties": {
         "name": "宮城島 海中道路",
-        "amenity": "TouristSpot",
+        "category": "TouristSpot",
         "popupContent": "宮城島 海中道路 - 3"
       },
       "geometry": {
@@ -53,7 +53,7 @@
       "type": "Feature",
       "properties": {
         "name": "山羊料理 美咲",
-        "amenity": "Restaurant",
+        "category": "Restaurant",
         "popupContent": "山羊料理 美咲 - 4"
       },
       "geometry": {
