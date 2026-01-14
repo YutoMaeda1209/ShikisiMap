@@ -6,7 +6,8 @@
       "properties": {
         "name": "欧州酒場サケトメシ",
         "category": "Restaurant",
-        "popupContent": "欧州酒場サケトメシ - 0"
+        "address": "〒105-0004 東京都港区新橋４丁目１８−４ 新橋太陽ビル 2F",
+        "youtube": "https://www.youtube.com/watch?v=jg67iAXVMuM"
       },
       "geometry": {
         "type": "Point",
@@ -18,7 +19,8 @@
       "properties": {
         "name": "A&W 牧港店",
         "category": "Restaurant",
-        "popupContent": "A&W 牧港店 - 1"
+        "address": "〒901-2131 沖縄県浦添市牧港４丁目９−１",
+        "youtube": "https://www.youtube.com/watch?v=mSzp7ldiOWY&t=89s"
       },
       "geometry": {
         "type": "Point",
@@ -30,7 +32,8 @@
       "properties": {
         "name": "つけ麺ジンベエ",
         "category": "Restaurant",
-        "popupContent": "つけ麺ジンベエ - 2"
+        "address": "〒904-2143 沖縄県沖縄市知花５丁目１３−１８ シャトレマイハウス",
+        "youtube": "https://www.youtube.com/watch?v=mSzp7ldiOWY&t=168s"
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +45,8 @@
       "properties": {
         "name": "宮城島 海中道路",
         "category": "TouristSpot",
-        "popupContent": "宮城島 海中道路 - 3"
+        "address": "〒904-2427 沖縄県うるま市与那城屋平海中道路",
+        "youtube": "https://www.youtube.com/watch?v=mSzp7ldiOWY&t=235s"
       },
       "geometry": {
         "type": "Point",
@@ -54,7 +58,8 @@
       "properties": {
         "name": "山羊料理 美咲",
         "category": "Restaurant",
-        "popupContent": "山羊料理 美咲 - 4"
+        "address": "〒902-0067 沖縄県那覇市安里３８８ 宇良アパート",
+        "youtube": "https://www.youtube.com/watch?v=mSzp7ldiOWY&t=315s"
       },
       "geometry": {
         "type": "Point",
