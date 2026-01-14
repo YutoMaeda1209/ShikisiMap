@@ -1,0 +1,17 @@
+#pointList {
+    --list-gap: 20px;
+
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: white;
+    margin: var(--list-gap);
+    padding: var(--list-gap);
+    height: calc(100% - var(--list-gap) * 4);
+    width: calc(25% - var(--list-gap) * 4);
+}
+
+#pointList ul {
+    width: calc(100% - var(--list-gap) * 2);
+}
