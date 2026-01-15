@@ -1,33 +1,55 @@
-#pointList {
+#listComponent {
     --list-gap: 20px;
+    --background-color: #ffffff;
 
     position: absolute;
     z-index: 1000;
     top: 0;
     left: 0;
-    background-color: white;
+    background-color: var(--background-color);
     margin: var(--list-gap);
     padding: var(--list-gap);
     height: calc(100% - var(--list-gap) * 2);
-    width: calc(25% - var(--list-gap) * 2);
+    width: calc(30% - var(--list-gap) * 2);
     border-radius: 25px;
-    overflow: scroll;
-    scrollbar-width: none;
     box-shadow: 0 0 10px gray;
     box-sizing: border-box;
 }
 
-#pointList::-webkit-scrollbar {
+#listComponent::-webkit-scrollbar {
     display: none;
 }
 
-#pointList ul {
-    margin: 0;
+#listContent {
+    position: relative;
     height: 100%;
     width: 100%;
-    padding-left: 0;
 }
 
-#pointList li {
+#title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+}
+
+#title img {
+    display: block;
+    width: 100%;
+}
+
+#items {
+    overflow: auto;
+    scrollbar-width: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#items li {
     list-style: none;
 }
