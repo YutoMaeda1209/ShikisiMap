@@ -1,13 +1,21 @@
 import type { Feature, GeoJsonObject, Geometry } from 'geojson';
-import type { LatLng, Layer } from 'leaflet';
+import L, { type LatLng, type Layer } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from 'react';
 import { GeoJSON, MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
+import currentLocationIcon from "./assets/img/current_location.webp";
 import geoJsonRowData from "./data.json";
 import "./Map.css";
 import type { GeoProperties } from './types';
 
 const geoData = geoJsonRowData as GeoJsonObject;
+
+const currentLocationMarkerIcon = new L.Icon({
+  iconUrl: currentLocationIcon,
+  iconSize: [32, 32],
+  iconAnchor: [16, 16],
+  popupAnchor: [0, -16],
+});
 
 function LocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
@@ -26,7 +34,7 @@ function LocationMarker() {
   }, [map]);
 
   return position === null ? null : (
-    <Marker position={position} />
+    <Marker position={position} icon={currentLocationMarkerIcon} />
   );
 }
 
