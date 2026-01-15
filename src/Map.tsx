@@ -23,10 +23,7 @@ function LocationMarker() {
     locationfound(event) {
       setPosition(event.latlng)
       map.flyTo(event.latlng, map.getZoom())
-    },
-    locationerror(err) {
-      alert(err.message);
-    },
+    }
   });
 
   useEffect(() => {
