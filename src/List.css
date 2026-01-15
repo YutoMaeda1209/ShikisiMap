@@ -11,14 +11,19 @@
     height: calc(100% - var(--list-gap) * 4);
     width: calc(25% - var(--list-gap) * 4);
     border-radius: 25px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+#pointList::-webkit-scrollbar {
+    display: none;
 }
 
 #pointList ul {
     margin: 0;
-    height: calc(100% - var(--list-gap) * 2);
-    width: calc(100% - var(--list-gap) * 2);
+    height: 100%;
+    width: 100%;
     padding-left: 0;
-    overflow: scroll;
 }
 
 #pointList li {
