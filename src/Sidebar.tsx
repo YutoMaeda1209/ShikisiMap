@@ -43,7 +43,8 @@ function Sidebar() {
     <div id="sidebarComponent">
       <div id="listContent">
         <div id="title" ref={titleRef}>
-          <img src={logo} alt="Logo" />
+          <img id="logo" src={logo} alt="Logo" />
+          <h3 id="subtitle">敷嶋てとら ファンメイド<br />聖地巡礼マップ</h3>
         </div>
         <ul id="items" ref={itemsRef}>
           {features.length !== 0 ? listItems : <li>データが見つかりません</li>}

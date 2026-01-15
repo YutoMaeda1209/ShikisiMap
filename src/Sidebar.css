@@ -35,9 +35,13 @@
     background-color: var(--background-color);
 }
 
-#title img {
+#logo {
     display: block;
     width: 100%;
+}
+
+#subtitle {
+    margin: 0;
 }
 
 #items {
