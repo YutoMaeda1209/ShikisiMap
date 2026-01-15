@@ -44,7 +44,7 @@
     margin: 0;
 }
 
-#items {
+#spotList {
     overflow: auto;
     scrollbar-width: none;
     margin: 0;
@@ -54,6 +54,11 @@
     box-sizing: border-box;
 }
 
-#items li {
+.spotItem {
     list-style: none;
+}
+
+.previewVideo {
+    border: none;
+    aspect-ratio: 16 / 9;
 }

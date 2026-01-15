@@ -7,18 +7,22 @@ import type { GeoProperties } from "./types";
 
 function Sidebar() {
   const titleRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<HTMLUListElement>(null);
+  const spotListRef = useRef<HTMLUListElement>(null);
 
   // Prepare list items from GeoJSON data
   const features = (geoJsonRowData as FeatureCollection<Geometry, GeoProperties>).features;
   const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => {
     const properties = f.properties;
     return (
-      <li key={i}>
+      <li className="spotItem" key={i}>
         <h3>{properties.name}</h3>
-        <p>{properties.category}</p>
-        <p>{properties.address}</p>
-        <a href={properties.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>
+        <iframe className="previewVideo" width="100%" src={"https://www.youtube-nocookie.com/embed/" + properties.youtubeId + "?start=" + parseInt(properties.timestamp)}
+          title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
+        </iframe>
+        <a href={"https://www.google.com/maps/search/" + properties.address + properties.name} target="_blank" rel="noopener noreferrer">
+          {properties.address}
+        </a>
       </li>
     );
   });
@@ -26,9 +30,9 @@ function Sidebar() {
   // Sync padding-top of items to height of title
   useEffect(() => {
     function onTitleResize() {
-      if (titleRef.current && itemsRef.current) {
+      if (titleRef.current && spotListRef.current) {
         const h = titleRef.current.offsetHeight;
-        itemsRef.current.style.paddingTop = `${h}px`;
+        spotListRef.current.style.paddingTop = `${h}px`;
       }
     }
     onTitleResize();
@@ -46,7 +50,7 @@ function Sidebar() {
           <img id="logo" src={logo} alt="Logo" />
           <h3 id="subtitle">敷嶋てとら ファンメイド<br />聖地巡礼マップ</h3>
         </div>
-        <ul id="items" ref={itemsRef}>
+        <ul id="spotList" ref={spotListRef}>
           {features.length !== 0 ? listItems : <li>データが見つかりません</li>}
         </ul>
       </div>
