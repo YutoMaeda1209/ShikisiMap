@@ -1,14 +1,15 @@
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import { useEffect, useRef } from "react";
-import "./List.css";
+import "./Sidebar.css";
 import logo from "./assets/img/logo.webp";
 import geoJsonRowData from "./data.json";
 import type { GeoProperties } from "./types";
 
-function List() {
-  const titleRef = useRef<HTMLDivElement | null>(null);
-  const itemsRef = useRef<HTMLUListElement | null>(null);
+function Sidebar() {
+  const titleRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<HTMLUListElement>(null);
 
+  // Prepare list items from GeoJSON data
   const features = (geoJsonRowData as FeatureCollection<Geometry, GeoProperties>).features;
   const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => {
     const properties = f.properties;
@@ -22,6 +23,7 @@ function List() {
     );
   });
 
+  // Sync padding-top of items to height of title
   useEffect(() => {
     function onTitleResize() {
       if (titleRef.current && itemsRef.current) {
@@ -38,7 +40,7 @@ function List() {
   }, []);
 
   return (
-    <div id="listComponent">
+    <div id="sidebarComponent">
       <div id="listContent">
         <div id="title" ref={titleRef}>
           <img src={logo} alt="Logo" />
@@ -51,4 +53,4 @@ function List() {
   );
 }
 
-export default List;
+export default Sidebar;

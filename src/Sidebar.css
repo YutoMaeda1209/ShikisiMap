@@ -1,4 +1,4 @@
-#listComponent {
+#sidebarComponent {
     --list-gap: 20px;
     --background-color: #ffffff;
 
@@ -16,7 +16,7 @@
     box-sizing: border-box;
 }
 
-#listComponent::-webkit-scrollbar {
+#sidebarComponent::-webkit-scrollbar {
     display: none;
 }
 
