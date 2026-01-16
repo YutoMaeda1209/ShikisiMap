@@ -8,7 +8,7 @@
         "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋４丁目１８−４ 新橋太陽ビル 2F",
         "youtubeId": "jg67iAXVMuM",
-        "timestamp": "0",
+        "timestamp": 0,
         "isClosed": false
       },
       "geometry": {
@@ -23,7 +23,7 @@
         "category": "Restaurant",
         "address": "〒901-2131 沖縄県浦添市牧港４丁目９−１",
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": "89",
+        "timestamp": 89,
         "isClosed": false
       },
       "geometry": {
@@ -38,7 +38,7 @@
         "category": "Restaurant",
         "address": "〒904-2143 沖縄県沖縄市知花５丁目１３−１８ シャトレマイハウス",
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": "168",
+        "timestamp": 168,
         "isClosed": false
       },
       "geometry": {
@@ -53,7 +53,7 @@
         "category": "TouristSpot",
         "address": "〒904-2427 沖縄県うるま市与那城屋平海中道路",
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": "235",
+        "timestamp": 235,
         "isClosed": false
       },
       "geometry": {
@@ -68,7 +68,7 @@
         "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３８８ 宇良アパート",
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": "315",
+        "timestamp": 315,
         "isClosed": false
       },
       "geometry": {

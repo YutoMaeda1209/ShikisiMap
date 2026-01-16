@@ -3,5 +3,5 @@ export type GeoProperties = {
     category: string;
     address: string;
     youtubeId: string;
-    timestamp: string;
+    timestamp: number;
 };
