@@ -2,7 +2,7 @@ import type { Feature, FeatureCollection, GeoJsonObject, Geometry } from 'geojso
 import L, { type LatLng, type Layer } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from 'react';
-import { GeoJSON, MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
+import { GeoJSON, MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import currentLocationIcon from "./assets/img/current_location.webp";
 import geoJsonRowData from "./data.json";
 import "./Map.css";
@@ -44,7 +44,15 @@ function CurrentLocationMarker() {
   );
 }
 
-function Map() {
+function MapController({ onMapCreated }: { onMapCreated: (map: L.Map) => void }) {
+  const map = useMap();
+  useEffect(() => {
+    onMapCreated(map);
+  }, [map, onMapCreated]);
+  return null;
+}
+
+function Map({ onMapCreated }: { onMapCreated?: (map: L.Map) => void }) {
   const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
     const idx = nameToIndex[feature.properties.name];
     (layer as L.Evented).on('click', () => {
@@ -60,6 +68,7 @@ function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <GeoJSON data={geoData} onEachFeature={onEachFeature} />
+      {onMapCreated ? <MapController onMapCreated={onMapCreated} /> : null}
       <CurrentLocationMarker />
     </MapContainer>
   );

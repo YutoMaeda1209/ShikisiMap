@@ -1,5 +1,6 @@
-import type { Feature, Geometry } from "geojson";
+import type { Feature, Geometry, Point } from "geojson";
 import "./ListItem.css";
+import { useMapControls } from './MapContext';
 import type { GeoProperties } from "./types";
 
 interface ListItemProps {
@@ -9,17 +10,22 @@ interface ListItemProps {
 
 function ListItem({ feature, index }: ListItemProps) {
   const properties = feature.properties;
+  const controls = useMapControls();
+  const panZoomLevel = 13;
+
+  function onClickSpotItem() {
+    const point: Point = feature.geometry as Point;
+    const [lng, lat] = point.coordinates;
+    controls.panTo([lat, lng], panZoomLevel);
+  }
+
   return (
-    <li id={`spot-${index}`} className="spotItem" key={index}>
+    <li id={`spot-${index}`} className="spotItem" key={index} onClick={onClickSpotItem}>
       <h3>{properties.name}</h3>
       <iframe
         className="previewVideo"
         width="100%"
-        src={
-          "https://www.youtube-nocookie.com/embed/" +
-          properties.youtubeId +
-          "?start=" + parseInt(properties.timestamp)
-        }
+        src={`https://www.youtube-nocookie.com/embed/${properties.youtubeId}?start=${properties.timestamp}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
