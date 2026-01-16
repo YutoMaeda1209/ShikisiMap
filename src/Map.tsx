@@ -1,4 +1,4 @@
-import type { Feature, GeoJsonObject, Geometry } from 'geojson';
+import type { Feature, FeatureCollection, GeoJsonObject, Geometry } from 'geojson';
 import L, { type LatLng, type Layer } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from 'react';
@@ -9,6 +9,13 @@ import "./Map.css";
 import type { GeoProperties } from './types';
 
 const geoData = geoJsonRowData as GeoJsonObject;
+
+// Build a lookup from feature name -> index to match sidebar items (spot-<index>)
+const features = (geoData as FeatureCollection<Geometry, GeoProperties>).features as Feature<Geometry, GeoProperties>[];
+const nameToIndex: Record<string, number> = {};
+features.forEach((f, i) => {
+  nameToIndex[f.properties.name] = i;
+});
 
 // Define custom icon for current location marker
 const currentLocationMarkerIcon = new L.Icon({
@@ -39,7 +46,11 @@ function LocationMarker() {
 
 function Map() {
   const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
-    layer.bindPopup(feature.properties.name);
+    const idx = nameToIndex[feature.properties.name];
+    (layer as L.Evented).on('click', () => {
+      const el = document.getElementById(`spot-${idx}`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   };
 
   return (

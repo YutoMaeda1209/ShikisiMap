@@ -14,13 +14,13 @@ function Sidebar() {
   const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => {
     const properties = f.properties;
     return (
-      <li className="spotItem" key={i}>
+      <li id={`spot-${i}`} className="spotItem" key={i}>
         <h3>{properties.name}</h3>
         <iframe className="previewVideo" width="100%" src={"https://www.youtube-nocookie.com/embed/" + properties.youtubeId + "?start=" + parseInt(properties.timestamp)}
           title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
         </iframe>
-        <a href={"https://www.google.com/maps/search/" + properties.address + properties.name} target="_blank" rel="noopener noreferrer">
+        <a href={`https://www.google.com/maps/search/${properties.address} ${properties.name}`} target="_blank" rel="noopener noreferrer">
           {properties.address}
         </a>
       </li>
@@ -33,6 +33,7 @@ function Sidebar() {
       if (titleRef.current && spotListRef.current) {
         const h = titleRef.current.offsetHeight;
         spotListRef.current.style.paddingTop = `${h}px`;
+        spotListRef.current.style.scrollPaddingTop = `${h}px`;
       }
     }
     onTitleResize();
