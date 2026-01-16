@@ -26,7 +26,7 @@ const currentLocationMarkerIcon = new L.Icon({
 });
 
 // Component to handle user's current location
-function LocationMarker() {
+function CurrentLocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
   const map = useMapEvents({
     locationfound(event) {
@@ -60,7 +60,7 @@ function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <GeoJSON data={geoData} onEachFeature={onEachFeature} />
-      <LocationMarker />
+      <CurrentLocationMarker />
     </MapContainer>
   );
 }
