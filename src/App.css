@@ -3,3 +3,19 @@
     width: 100%;
     position: relative;
 }
+
+@font-face {
+    font-family: "bootstrap-icons";
+    src: url(/node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2);
+}
+
+a {
+    color: inherit;
+}
+
+a::after {
+    margin: 0 0 0 5px;
+    font-family: "bootstrap-icons";
+    content: "\f1c5";
+    font-weight: 900;
+}

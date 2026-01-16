@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/YutoMaeda1209/ShikisiMap#readme",
   "dependencies": {
+    "bootstrap-icons": "1.13.1",
     "leaflet": "1.9.4",
     "react": "19.2.0",
     "react-dom": "19.2.0",
