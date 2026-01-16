@@ -30,13 +30,13 @@ function LocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
   const map = useMapEvents({
     locationfound(event) {
-      setPosition(event.latlng)
-      map.flyTo(event.latlng, map.getZoom())
+      setPosition(event.latlng);
+      map.panTo(event.latlng);
     }
   });
 
   useEffect(() => {
-    map.locate()
+    map.locate();
   }, [map]);
 
   return position === null ? null : (
