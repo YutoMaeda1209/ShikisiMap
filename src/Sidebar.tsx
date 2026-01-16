@@ -20,7 +20,7 @@ function Sidebar() {
           title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
         </iframe>
-        <a href={`https://www.google.com/maps/search/${properties.address} ${properties.name}`} target="_blank" rel="noopener noreferrer">
+        <a href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`} target="_blank" rel="noopener noreferrer">
           {properties.address}
         </a>
       </li>
