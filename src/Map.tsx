@@ -10,6 +10,7 @@ import type { GeoProperties } from './types';
 
 const geoData = geoJsonRowData as GeoJsonObject;
 
+// Define custom icon for current location marker
 const currentLocationMarkerIcon = new L.Icon({
   iconUrl: currentLocationIcon,
   iconSize: [32, 32],
@@ -17,6 +18,7 @@ const currentLocationMarkerIcon = new L.Icon({
   popupAnchor: [0, -16],
 });
 
+// Component to handle user's current location
 function LocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
   const map = useMapEvents({
