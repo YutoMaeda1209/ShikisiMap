@@ -1,5 +1,6 @@
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import { useEffect, useRef } from "react";
+import ListItem from "./ListItem";
 import "./Sidebar.css";
 import logo from "./assets/img/logo.webp";
 import geoJsonRowData from "./data.json";
@@ -11,21 +12,9 @@ function Sidebar() {
 
   // Prepare list items from GeoJSON data
   const features = (geoJsonRowData as FeatureCollection<Geometry, GeoProperties>).features;
-  const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => {
-    const properties = f.properties;
-    return (
-      <li id={`spot-${i}`} className="spotItem" key={i}>
-        <h3>{properties.name}</h3>
-        <iframe className="previewVideo" width="100%" src={"https://www.youtube-nocookie.com/embed/" + properties.youtubeId + "?start=" + parseInt(properties.timestamp)}
-          title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
-        </iframe>
-        <a href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`} target="_blank" rel="noopener noreferrer">
-          {properties.address}
-        </a>
-      </li>
-    );
-  });
+  const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => (
+    <ListItem feature={f} index={i} key={i} />
+  ));
 
   // Sync padding-top of items to height of title
   useEffect(() => {

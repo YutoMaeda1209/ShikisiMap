@@ -1,0 +1,16 @@
+.spotItem {
+    list-style: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.spotItem:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.previewVideo {
+    border: none;
+    aspect-ratio: 16 / 9;
+}
