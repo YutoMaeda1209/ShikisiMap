@@ -10,7 +10,7 @@
     margin: var(--list-gap);
     padding: var(--list-gap);
     height: calc(100% - var(--list-gap) * 2);
-    width: calc(30% - var(--list-gap) * 2);
+    width: 400px;
     border-radius: 25px;
     box-shadow: 0 0 10px gray;
     box-sizing: border-box;
