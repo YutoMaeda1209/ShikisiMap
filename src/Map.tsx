@@ -10,12 +10,22 @@ import type { GeoProperties } from './types';
 
 const geoData = geoJsonRowData as GeoJsonObject;
 
+// If this is a FeatureCollection, filter out features where properties.isClosed === true
+let features = [] as Feature<Geometry, GeoProperties>[];
+const featureCollection = geoData as FeatureCollection<Geometry, GeoProperties>;
+features = (featureCollection.features || []).filter((f) => !f.properties?.isClosed) as Feature<Geometry, GeoProperties>[];
+
 // Build a lookup from feature name -> index to match sidebar items (spot-<index>)
-const features = (geoData as FeatureCollection<Geometry, GeoProperties>).features as Feature<Geometry, GeoProperties>[];
 const nameToIndex: Record<string, number> = {};
 features.forEach((f, i) => {
   nameToIndex[f.properties.name] = i;
 });
+
+// Create a filtered FeatureCollection to feed into the map component
+const filteredGeoData: FeatureCollection<Geometry, GeoProperties> = {
+  ...featureCollection,
+  features,
+};
 
 // Define custom icon for current location marker
 const currentLocationMarkerIcon = new L.Icon({
@@ -67,7 +77,7 @@ function Map({ onMapCreated }: { onMapCreated?: (map: L.Map) => void }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={geoData} onEachFeature={onEachFeature} />
+      <GeoJSON data={filteredGeoData} onEachFeature={onEachFeature} />
       {onMapCreated ? <MapController onMapCreated={onMapCreated} /> : null}
       <CurrentLocationMarker />
     </MapContainer>

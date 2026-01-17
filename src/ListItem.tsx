@@ -12,18 +12,23 @@ function ListItem({ feature, index }: ListItemProps) {
   const properties = feature.properties;
   const controls = useMapControls();
   const panZoomLevel = 13;
+  const isClosed = Boolean(properties?.isClosed);
 
   function onClickSpotItem() {
+    if (isClosed) return;
     const point: Point = feature.geometry as Point;
     const [lng, lat] = point.coordinates;
     controls.panTo([lat, lng], panZoomLevel);
   }
 
   return (
-    <li id={`spot-${index}`} className="spotItem" key={index} onClick={onClickSpotItem}>
-      <h3>{properties.name}</h3>
+    <li id={`spot-${index}`} className={`spotItem ${isClosed ? 'closed' : ''}`} key={index} onClick={onClickSpotItem}>
+      <span className="spotTitle">
+        <span>{properties.name}</span>
+        {isClosed && <span className="closedBadge">閉業</span>}
+      </span>
       <iframe
-        className="previewVideo"
+        className={`previewVideo ${isClosed ? 'closedIframe' : ''}`}
         width="100%"
         src={`https://www.youtube-nocookie.com/embed/${properties.youtubeId}?start=${properties.timestamp}`}
         title="YouTube video player"

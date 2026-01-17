@@ -14,3 +14,25 @@
     border: none;
     aspect-ratio: 16 / 9;
 }
+
+.spotItem.closed {
+    background-color: #cccccc;
+}
+
+.closedBadge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #c0392b;
+    color: white;
+    border-radius: 4px;
+    font-size: small;
+}
+
+.spotTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: x-large;
+    font-weight: bold;
+    margin: 10px 0;
+}
