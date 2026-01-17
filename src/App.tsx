@@ -7,27 +7,27 @@ import { MapContext } from './MapContext';
 import Sidebar from './Sidebar';
 
 function App() {
-    const [map, setMap] = useState<LeafletMap | null>(null);
+  const [map, setMap] = useState<LeafletMap | null>(null);
 
-    const controls: MapControls = {
-        panTo: (latlng: LatLngExpression, zoom?: number) => {
-            if (!map) return;
-            map.setView(latlng, zoom);
-        },
-        flyTo: (latlng: LatLngExpression, zoom?: number) => {
-            if (!map) return;
-            map.flyTo(latlng, zoom);
-        }
-    };
+  const controls: MapControls = {
+    panTo: (latlng: LatLngExpression, zoom?: number) => {
+      if (!map) return;
+      map.setView(latlng, zoom);
+    },
+    flyTo: (latlng: LatLngExpression, zoom?: number) => {
+      if (!map) return;
+      map.flyTo(latlng, zoom);
+    }
+  };
 
-    return (
-        <div id="app">
-            <MapContext.Provider value={controls}>
-                <Sidebar />
-                <Map onMapCreated={setMap} />
-            </MapContext.Provider>
-        </div>
-    );
+  return (
+    <div id="app">
+      <MapContext.Provider value={controls}>
+        <Sidebar />
+        <Map onMapCreated={setMap} />
+      </MapContext.Provider>
+    </div>
+  );
 }
 
 export default App;
