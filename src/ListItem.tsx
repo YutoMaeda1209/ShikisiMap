@@ -11,7 +11,7 @@ interface ListItemProps {
 function ListItem({ feature, index }: ListItemProps) {
   const properties = feature.properties;
   const controls = useMapControls();
-  const panZoomLevel = 13;
+  const panZoomLevel = 16;
   const isClosed = Boolean(properties?.isClosed);
 
   function onClickSpotItem() {
@@ -22,7 +22,7 @@ function ListItem({ feature, index }: ListItemProps) {
   }
 
   return (
-    <li id={`spot-${index}`} className={`spotItem ${isClosed ? 'closed' : ''}`} key={index} onClick={onClickSpotItem}>
+    <li id={`spot-${isClosed ? '-1' : index}`} className={`spotItem ${isClosed ? 'closed' : ''}`} key={index} onClick={onClickSpotItem}>
       <span className="spotTitle">
         <span>{properties.name}</span>
         {isClosed && <span className="closedBadge">閉業</span>}
