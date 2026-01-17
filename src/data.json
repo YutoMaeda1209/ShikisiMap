@@ -7,9 +7,9 @@
         "name": "欧州酒場サケトメシト",
         "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋４丁目１８−４ 新橋太陽ビル 2F",
+        "isClosed": false,
         "youtubeId": "jg67iAXVMuM",
-        "timestamp": 0,
-        "isClosed": false
+        "timestamp": 0
       },
       "geometry": {
         "type": "Point",
@@ -22,9 +22,9 @@
         "name": "A&W 牧港店",
         "category": "Restaurant",
         "address": "〒901-2131 沖縄県浦添市牧港４丁目９−１",
+        "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": 89,
-        "isClosed": false
+        "timestamp": 89
       },
       "geometry": {
         "type": "Point",
@@ -37,9 +37,9 @@
         "name": "つけ麺ジンベエ",
         "category": "Restaurant",
         "address": "〒904-2143 沖縄県沖縄市知花５丁目１３−１８ シャトレマイハウス",
+        "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": 168,
-        "isClosed": false
+        "timestamp": 168
       },
       "geometry": {
         "type": "Point",
@@ -52,9 +52,9 @@
         "name": "宮城島 海中道路",
         "category": "TouristSpot",
         "address": "〒904-2427 沖縄県うるま市与那城屋平海中道路",
+        "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": 235,
-        "isClosed": false
+        "timestamp": 235
       },
       "geometry": {
         "type": "Point",
@@ -67,13 +67,298 @@
         "name": "山羊料理 美咲",
         "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３８８ 宇良アパート",
+        "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
-        "timestamp": 315,
-        "isClosed": false
+        "timestamp": 315
       },
       "geometry": {
         "type": "Point",
         "coordinates": [127.695969, 26.216424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "うちなー茶屋 ぶくぶく",
+        "category": "Restaurant",
+        "address": "〒902-0065 沖縄県那覇市壺屋１丁目２２−３５",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 48
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.692332, 26.212682]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "第一牧志公設市場",
+        "category": "Restaurant",
+        "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.68769, 26.21488]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ゆうなんぎい",
+        "category": "Restaurant",
+        "address": "〒900-0015 沖縄県那覇市久茂地３丁目３−３",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 137
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.681914, 26.21455]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "瀬長島 ウミカジテラス",
+        "category": "TouristSpot",
+        "address": "〒901-0233 沖縄県豊見城市瀬長１７４−６",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 184
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.64051, 26.176686]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "琉球温泉 瀬長島ホテル",
+        "category": "Hotel",
+        "address": "〒901-0233 沖縄県豊見城市瀬長１７４−５",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 229
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.641058, 26.176521]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "国際通りのれん街",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志２丁目２−３０ リウボウ商事本社ビル 1F,B1F",
+        "isClosed": true,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 285
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.697797, 26.216623]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "田舎 公設市場南店",
+        "category": "Restaurant",
+        "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−２０",
+        "isClosed": false,
+        "youtubeId": "wAEKO_Yecgs",
+        "timestamp": 332
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.688604, 26.213719]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "スパ ラクーア",
+        "category": "Facility",
+        "address": "〒112-0003 東京都文京区春日１丁目１−１ ラクーアビル 6F",
+        "isClosed": false,
+        "youtubeId": "JGmal13VYm8",
+        "timestamp": 156
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.753056, 35.706542]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "天然温泉 平和島",
+        "category": "Facility",
+        "address": "〒143-0006 東京都大田区平和島１丁目１−１ ビッグファン平和島２F",
+        "isClosed": false,
+        "youtubeId": "JGmal13VYm8",
+        "timestamp": 278
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.740798, 35.584341]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "湯乃泉 草加健康センター",
+        "category": "Facility",
+        "address": "〒340-0046 埼玉県草加市北谷２丁目２３−２３",
+        "isClosed": false,
+        "youtubeId": "JGmal13VYm8",
+        "timestamp": 394
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.780811, 35.841217]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "スパメッツァおおたか 竜泉寺の湯",
+        "category": "Facility",
+        "address": "〒270-0128 千葉県流山市おおたかの森西１丁目15番1",
+        "isClosed": false,
+        "youtubeId": "JGmal13VYm8",
+        "timestamp": 527
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.922819, 35.873131]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "秋葉原井戸端洋酒店",
+        "category": "Restaurant",
+        "address": "〒101-0032 東京都千代田区岩本町３丁目７−１１ 神田KSビル 1F",
+        "isClosed": false,
+        "youtubeId": "kU26WkEEw8w",
+        "timestamp": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.777863, 35.695999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "えび専門酒場 えびす屋",
+        "category": "Restaurant",
+        "address": "〒902-0067 沖縄県那覇市安里３８０−４",
+        "isClosed": false,
+        "youtubeId": "t1MhPPiHEHM",
+        "timestamp": 222
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.697356, 26.216999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "FAB MART",
+        "category": "Restaurant",
+        "address": "〒902-0067 沖縄県那覇市安里３８２−１",
+        "isClosed": false,
+        "youtubeId": "t1MhPPiHEHM",
+        "timestamp": 267
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.69706, 26.217668]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DMM かりゆし水族館",
+        "category": "TouristSpot",
+        "address": "〒901-0225 沖縄県豊見城市豊崎３−３５",
+        "isClosed": false,
+        "youtubeId": "t1MhPPiHEHM",
+        "timestamp": 432
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.650977, 26.157735]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "琉球料理首里天楼",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志１丁目３−６０",
+        "isClosed": false,
+        "youtubeId": "NdMKh4FFkoE",
+        "timestamp": 46
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.686949, 26.216091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "沖縄酒場ハイサイ 公設市場店",
+        "category": "Restaurant",
+        "address": "〒900-0014 沖縄県那覇市松尾２丁目８−４１",
+        "isClosed": false,
+        "youtubeId": "NdMKh4FFkoE",
+        "timestamp": 114
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.687284, 26.215037]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ステーキハウス88 国際通り店",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志３丁目１−６ 勉強堂ビル2階",
+        "isClosed": false,
+        "youtubeId": "NdMKh4FFkoE",
+        "timestamp": 189
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.688549, 26.216258]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "おきなわワールド",
+        "category": "TouristSpot",
+        "address": "〒901-0616 沖縄県南城市玉城前川１３３６",
+        "isClosed": false,
+        "youtubeId": "NdMKh4FFkoE",
+        "timestamp": 373
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.750874, 26.138822]
       }
     }
   ]
