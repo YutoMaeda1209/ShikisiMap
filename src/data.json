@@ -420,6 +420,51 @@
         "type": "Point",
         "coordinates": [139.667912, 35.663463]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "五條天神・花園稲荷社",
+        "category": "TouristSpot",
+        "address": "〒110-0007 東京都台東区上野公園４−１７",
+        "isClosed": false,
+        "youtubeId": "0ompTBflwu0",
+        "timestamp": 118
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.772222, 35.713728]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "旧博物館動物園駅 地上口",
+        "category": "TouristSpot",
+        "address": "〒110-0007 東京都台東区上野公園１３−２３",
+        "isClosed": false,
+        "youtubeId": "0ompTBflwu0",
+        "timestamp": 208
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.773444, 35.714541]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "不純喫茶ドープ 上野御徒町店",
+        "category": "Restaurant",
+        "address": "〒110-0005 東京都台東区上野１丁目８−３",
+        "isClosed": false,
+        "youtubeId": "0ompTBflwu0",
+        "timestamp": 346
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.774079, 35.711789]
+      }
     }
   ]
 }
