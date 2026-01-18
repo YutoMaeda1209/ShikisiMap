@@ -1,8 +1,5 @@
 .spotItem {
-    list-style: none;
     border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px;
 }
 
 .spotItem:hover {
@@ -10,9 +7,13 @@
     background-color: #f0f0f0;
 }
 
-.previewVideo {
-    border: none;
-    aspect-ratio: 16 / 9;
+.spotTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: x-large;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 .spotItem.closed {
@@ -28,11 +29,7 @@
     font-size: small;
 }
 
-.spotTitle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: x-large;
-    font-weight: bold;
-    margin: 10px 0;
+.previewVideo {
+    border: none;
+    aspect-ratio: 16 / 9;
 }

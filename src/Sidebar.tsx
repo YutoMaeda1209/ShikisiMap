@@ -1,49 +1,42 @@
-import type { Feature, FeatureCollection, Geometry } from "geojson";
-import { useEffect, useRef } from "react";
-import ListItem from "./ListItem";
-import "./Sidebar.css";
+import { useLayoutEffect, useRef, useState } from "react";
 import logo from "./assets/img/logo.webp";
-import geoJsonRowData from "./data.json";
-import type { GeoProperties } from "./types";
+import "./Sidebar.css";
+import SpotList from "./SpotList";
 
 function Sidebar() {
-  const titleRef = useRef<HTMLDivElement>(null);
-  const spotListRef = useRef<HTMLUListElement>(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const [listHeight, setListHeight] = useState<number>(0);
 
-  // Prepare list items from GeoJSON data
-  const features = (geoJsonRowData as FeatureCollection<Geometry, GeoProperties>).features;
-  const listItems = features.map((f: Feature<Geometry, GeoProperties>, i: number) => (
-    <ListItem feature={f} index={i} key={i} />
-  ));
-
-  // Sync padding-top of items to height of title
-  useEffect(() => {
-    function onTitleResize() {
-      if (titleRef.current && spotListRef.current) {
-        const h = titleRef.current.offsetHeight;
-        spotListRef.current.style.paddingTop = `${h}px`;
-        spotListRef.current.style.scrollPaddingTop = `${h}px`;
-      }
+  useLayoutEffect(() => {
+    function updateHeight() {
+      if (!sidebarRef.current || !titleRef.current) return;
+      const sidebarH = sidebarRef.current.clientHeight;
+      const titleH = titleRef.current.clientHeight;
+      const offset = 50;
+      const newHeight = Math.max(0, Math.floor(sidebarH - titleH - offset));
+      setListHeight(newHeight);
     }
-    onTitleResize();
-    const ro = new ResizeObserver(onTitleResize);
-    if (titleRef.current) ro.observe(titleRef.current);
+    updateHeight();
+
+    const roSidebar = new ResizeObserver(updateHeight);
+    const roTitle = new ResizeObserver(updateHeight);
+    if (sidebarRef.current) roSidebar.observe(sidebarRef.current);
+    if (titleRef.current) roTitle.observe(titleRef.current);
+
     return () => {
-      ro.disconnect();
+      roSidebar.disconnect();
+      roTitle.disconnect();
     };
   }, []);
 
   return (
-    <div id="sidebarComponent">
-      <div id="listContent">
-        <div id="title" ref={titleRef}>
-          <img id="logo" src={logo} alt="Logo" />
-          <span id="subtitle">敷嶋てとら ファンメイド<br />聖地巡礼マップ</span>
-        </div>
-        <ul id="spotList" ref={spotListRef}>
-          {features.length !== 0 ? listItems : <li>データが見つかりません</li>}
-        </ul>
+    <div id="sidebarComponent" ref={sidebarRef}>
+      <div id="title" ref={titleRef}>
+        <img id="logo" src={logo} alt="Logo" />
+        <span id="subtitle">敷嶋てとら ファンメイド<br />聖地巡礼マップ</span>
       </div>
+      <SpotList height={listHeight} />
     </div>
   );
 }

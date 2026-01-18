@@ -23,7 +23,9 @@ function App() {
   return (
     <div id="app">
       <MapContext.Provider value={controls}>
-        <Sidebar />
+        <div id="sidebarContainer">
+          <Sidebar />
+        </div>
         <Map onMapCreated={setMap} />
       </MapContext.Provider>
     </div>

@@ -19,3 +19,12 @@ a::after {
     content: "\f1c5";
     font-weight: 900;
 }
+
+#sidebarContainer {
+    position: absolute;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+}

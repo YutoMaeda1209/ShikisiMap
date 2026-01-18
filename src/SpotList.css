@@ -1,0 +1,7 @@
+#spotList {
+    scrollbar-width: none;
+}
+
+#spotList::-webkit-scrollbar {
+    display: none;
+}

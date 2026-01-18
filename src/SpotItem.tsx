@@ -1,18 +1,20 @@
 import type { Feature, Geometry, Point } from "geojson";
-import "./ListItem.css";
+import type { RowComponentProps } from "react-window";
 import { useMapControls } from './MapContext';
+import "./SpotItem.css";
 import type { GeoProperties } from "./types";
 
 interface ListItemProps {
-  feature: Feature<Geometry, GeoProperties>;
-  index: number;
+  features: Feature<Geometry, GeoProperties>[];
 }
 
-function ListItem({ feature, index }: ListItemProps) {
+function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) {
+  const feature = features[index];
   const properties = feature.properties;
   const controls = useMapControls();
   const panZoomLevel = 16;
-  const isClosed = Boolean(properties?.isClosed);
+  const isClosed = properties.isClosed;
+  const spotId = isClosed ? -1 : index;
 
   function onClickSpotItem() {
     if (isClosed) return;
@@ -22,19 +24,19 @@ function ListItem({ feature, index }: ListItemProps) {
   }
 
   return (
-    <li id={`spot-${isClosed ? '-1' : index}`} className={`spotItem ${isClosed ? 'closed' : ''}`} key={index} onClick={onClickSpotItem}>
+    <div id={`spot-${spotId}`} className={`spotItem ${spotId === -1 ? 'closed' : ''}`} onClick={onClickSpotItem} style={style}>
       <span className="spotTitle">
         <span>{properties.name}</span>
-        {isClosed && <span className="closedBadge">閉業</span>}
+        {isClosed ? <span className="closedBadge">閉業</span> : null}
       </span>
       <iframe
-        className={`previewVideo ${isClosed ? 'closedIframe' : ''}`}
+        className="previewVideo"
         width="100%"
         src={`https://www.youtube-nocookie.com/embed/${properties.youtubeId}?start=${properties.timestamp}`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
+        allowFullScreen={true}
       ></iframe>
       <a
         href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
@@ -43,8 +45,8 @@ function ListItem({ feature, index }: ListItemProps) {
       >
         {properties.address}
       </a>
-    </li>
+    </div>
   );
 }
 
-export default ListItem;
+export default SpotItem;

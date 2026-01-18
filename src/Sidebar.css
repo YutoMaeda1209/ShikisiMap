@@ -2,10 +2,6 @@
     --list-gap: 20px;
     --background-color: #ffffff;
 
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
     background-color: var(--background-color);
     margin: var(--list-gap);
     padding: var(--list-gap);
@@ -16,41 +12,14 @@
     box-sizing: border-box;
 }
 
-#sidebarComponent::-webkit-scrollbar {
-    display: none;
-}
-
-#listContent {
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 #title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    background-color: var(--background-color);
+    margin: 0 0 10px;
 }
 
 #logo {
-    display: block;
     width: 100%;
 }
 
 #subtitle {
-    margin: 0;
     font-size: large;
-}
-
-#spotList {
-    overflow: auto;
-    scrollbar-width: none;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
 }
