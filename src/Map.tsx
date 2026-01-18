@@ -55,12 +55,13 @@ function MapController({ onMapCreated }: { onMapCreated: (map: L.Map) => void })
   return null;
 }
 
+const rowHeight = 320;
 function Map({ onMapCreated }: { onMapCreated?: (map: L.Map) => void }) {
   const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
     const idx = nameToIndex[feature.properties.name];
     (layer as L.Evented).on('click', () => {
-      const el = document.getElementById(`spot-${idx}`);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const listEl = document.getElementById('spotList') as HTMLElement;
+      listEl.scrollTo({ top: idx * rowHeight, behavior: 'smooth' });
     });
   };
 
