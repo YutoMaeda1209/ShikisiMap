@@ -810,6 +810,141 @@
         "type": "Point",
         "coordinates": [139.05582, 37.916461]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DRUNK TACOS",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志１丁目１−９",
+        "isClosed": false,
+        "youtubeId": "CHclHYU45DU",
+        "timestamp": 125
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.684315, 26.215888]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "H&Bジェラ沖縄",
+        "category": "Restaurant",
+        "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１ 2階 第一牧志公設市場２階",
+        "isClosed": false,
+        "youtubeId": "CHclHYU45DU",
+        "timestamp": 193
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.687672, 26.214736]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "THE ORION BEER DINING",
+        "category": "Restaurant",
+        "address": "〒902-0067 沖縄県那覇市安里１丁目２−２１ 1階",
+        "isClosed": false,
+        "youtubeId": "CHclHYU45DU",
+        "timestamp": 293
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.69365, 26.218099]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ひいき屋",
+        "category": "Restaurant",
+        "address": "〒902-0067 沖縄県那覇市安里３７９",
+        "isClosed": false,
+        "youtubeId": "CHclHYU45DU",
+        "timestamp": 564
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.69744, 26.217222]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DAILY DOSE coffee shop",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志３丁目６−１５ b102 DINER 2階",
+        "isClosed": true,
+        "youtubeId": "sRZd80wSjP8",
+        "timestamp": 9
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.691348, 26.215956]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "お食事処 きらく食堂",
+        "category": "Restaurant",
+        "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１ 第一牧志公設市場 ２階",
+        "isClosed": false,
+        "youtubeId": "sRZd80wSjP8",
+        "timestamp": 149
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.688311, 26.214896]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "沖縄美ら海水族館",
+        "category": "TouristSpot",
+        "address": "〒905-0206 沖縄県国頭郡本部町石川４２４",
+        "isClosed": false,
+        "youtubeId": "sRZd80wSjP8",
+        "timestamp": 298
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.880101, 26.692092]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ジェフ サンライズ那覇店",
+        "category": "Restaurant",
+        "address": "〒902-0065 沖縄県那覇市壺屋１丁目１−５",
+        "isClosed": false,
+        "youtubeId": "sRZd80wSjP8",
+        "timestamp": 368
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.689352, 26.212823]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "うちなー家",
+        "category": "Restaurant",
+        "address": "〒900-0013 沖縄県那覇市牧志３丁目２−６３ 嘉手納ビル２階",
+        "isClosed": false,
+        "youtubeId": "sRZd80wSjP8",
+        "timestamp": 448
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [127.688973, 26.216267]
+      }
     }
   ]
 }
