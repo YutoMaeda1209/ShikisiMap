@@ -34,7 +34,7 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
         width="100%"
         src={`https://www.youtube-nocookie.com/embed/${properties.youtubeId}?start=${properties.timestamp}`}
         title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure;"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen={true}
       ></iframe>
