@@ -585,6 +585,51 @@
         "type": "Point",
         "coordinates": [139.721487, 35.778305]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "DOO's DELI",
+        "category": "Restaurant",
+        "address": "〒238-0004 神奈川県横須賀市小川町２３−１ フドウ横須賀三笠ハイツ",
+        "isClosed": false,
+        "youtubeId": "gaf3Nda-BTM",
+        "timestamp": 110
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.672036, 35.283541]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "猿島",
+        "category": "TouristSpot",
+        "address": "〒238-0019 神奈川県横須賀市猿島",
+        "isClosed": false,
+        "youtubeId": "gaf3Nda-BTM",
+        "timestamp": 190
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.694009, 35.28596]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yokosuka Gelato Factory",
+        "category": "Restaurant",
+        "address": "〒238-0005 神奈川県横須賀市新港町６",
+        "isClosed": false,
+        "youtubeId": "gaf3Nda-BTM",
+        "timestamp": 531
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.676305, 35.282982]
+      }
     }
   ]
 }
