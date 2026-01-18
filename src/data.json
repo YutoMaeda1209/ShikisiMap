@@ -465,6 +465,81 @@
         "type": "Point",
         "coordinates": [139.774079, 35.711789]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "塩生姜らー麺専門店 MANNISH 蔵前店",
+        "category": "Restaurant",
+        "address": "〒111-0053 東京都台東区浅草橋３丁目２５−６",
+        "isClosed": false,
+        "youtubeId": "3q8CzSBqWA4",
+        "timestamp": 54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.788426, 35.701477]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "東京リバーサイド蒸溜所",
+        "category": "Restaurant",
+        "address": "〒111-0051 東京都台東区蔵前３丁目９−１",
+        "isClosed": false,
+        "youtubeId": "3q8CzSBqWA4",
+        "timestamp": 261
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.790784, 35.704623]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "タイガービルヂング",
+        "category": "TouristSpot",
+        "address": "〒111-0051 東京都台東区蔵前４丁目３０−７",
+        "isClosed": false,
+        "youtubeId": "3q8CzSBqWA4",
+        "timestamp": 360
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.79028, 35.705218]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "KURAMAE CANNELE",
+        "category": "Restaurant",
+        "address": "〒111-0051 東京都台東区蔵前４丁目２０−１２",
+        "isClosed": false,
+        "youtubeId": "3q8CzSBqWA4",
+        "timestamp": 401
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.790393, 35.702108]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "木花之醸造所",
+        "category": "Restaurant",
+        "address": "〒111-0043 東京都台東区駒形２丁目５−５ 小宮ビル B１",
+        "isClosed": false,
+        "youtubeId": "3q8CzSBqWA4",
+        "timestamp": 548
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.795155, 35.706653]
+      }
     }
   ]
 }
