@@ -630,6 +630,21 @@
         "type": "Point",
         "coordinates": [139.676305, 35.282982]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ドムドムハンバーガー 東大島店",
+        "category": "Restaurant",
+        "address": "〒136-0072 東京都江東区大島７丁目３８−３０",
+        "isClosed": false,
+        "youtubeId": "jV9Z79u7QrQ",
+        "timestamp": 164
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.84259, 35.690833]
+      }
     }
   ]
 }
