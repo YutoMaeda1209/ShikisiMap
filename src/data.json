@@ -705,6 +705,111 @@
         "type": "Point",
         "coordinates": [139.76505, 35.670235]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "沼垂テラス商店街",
+        "category": "TouristSpot",
+        "address": "〒950-0075 新潟県新潟市中央区沼垂東３丁目５",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 114
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.071481, 37.921179]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "編むと紡ぐ",
+        "category": "Restaurant",
+        "address": "〒950-0075 新潟県新潟市中央区沼垂東３丁目５−１６",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 163
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.070827, 37.920796]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "青海ショッピングセンター",
+        "category": "Restaurant",
+        "address": "〒951-8067 新潟県新潟市中央区本町通６番町１１１４",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 278
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.046138, 37.920114]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ぽんしゅ館 新潟驛店",
+        "category": "Restaurant",
+        "address": "〒950-0086 新潟県新潟市中央区花園１丁目９６−４７ CoCoLo新潟 メッツ館",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 444
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.06072, 37.911398]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "新潟駅南口 駅前市場",
+        "category": "Restaurant",
+        "address": "〒950-0916 新潟県新潟市中央区米山２丁目１−２０",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 525
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.060755, 37.901679]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "越後番屋酒場",
+        "category": "Restaurant",
+        "address": "〒950-0901 新潟県新潟市中央区弁天１丁目２−４ ホテルグローバルビュー新潟1F",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 585
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.059774, 37.91334]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "万代そば",
+        "category": "Restaurant",
+        "address": "〒950-0088 新潟県新潟市中央区万代１丁目６−１ 万代シテイバスセンタービル 1階",
+        "isClosed": false,
+        "youtubeId": "3OgRC-yN7u8",
+        "timestamp": 680
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.05582, 37.916461]
+      }
     }
   ]
 }
