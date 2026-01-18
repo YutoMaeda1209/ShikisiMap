@@ -1,4 +1,6 @@
 import type { Feature, Geometry, Point } from "geojson";
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
 import { useMapControls } from './MapContext';
 import "./SpotItem.css";
@@ -29,15 +31,12 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
         <span>{properties.name}</span>
         {isClosed ? <span className="closedBadge">閉業</span> : null}
       </span>
-      <iframe
-        className="previewVideo"
-        width="100%"
-        src={`https://www.youtube-nocookie.com/embed/${properties.youtubeId}?start=${properties.timestamp}`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure;"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen={true}
-      ></iframe>
+      <LiteYouTubeEmbed
+        id={properties.youtubeId}
+        title={properties.name}
+        lazyLoad={true}
+        params={`?start=${properties.timestamp}`}
+      />
       <a
         href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
         target="_blank"
