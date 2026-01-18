@@ -540,6 +540,51 @@
         "type": "Point",
         "coordinates": [139.795155, 35.706653]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "都営桐ヶ丘団地",
+        "category": "TouristSpot",
+        "address": "〒115-0054 東京都北区桐ケ丘１丁目４",
+        "isClosed": false,
+        "youtubeId": "qTXQcT4Zz5A",
+        "timestamp": 58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.707512, 35.77763]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "桐ケ丘中央商店街",
+        "category": "TouristSpot",
+        "address": "〒115-0054 東京都北区桐ケ丘１丁目９−２",
+        "isClosed": false,
+        "youtubeId": "qTXQcT4Zz5A",
+        "timestamp": 184
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.708322, 35.7765]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "自家製麺 伊藤 赤羽店",
+        "category": "Restaurant",
+        "address": "〒115-0045 東京都北区赤羽１丁目２−４",
+        "isClosed": false,
+        "youtubeId": "qTXQcT4Zz5A",
+        "timestamp": 303
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.721487, 35.778305]
+      }
     }
   ]
 }
