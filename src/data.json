@@ -645,6 +645,66 @@
         "type": "Point",
         "coordinates": [139.84259, 35.690833]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "奥野ビル",
+        "category": "TouristSpot",
+        "address": "〒104-0061 東京都中央区銀座１丁目９−８",
+        "isClosed": false,
+        "youtubeId": "Xrl_OBcLQmw",
+        "timestamp": 89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.768782, 35.67374]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SO Ponte 銀座ブーケ",
+        "category": "Restaurant",
+        "address": "〒104-0061 東京都中央区銀座１丁目９−８ 401",
+        "isClosed": false,
+        "youtubeId": "Xrl_OBcLQmw",
+        "timestamp": 315
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.768787, 35.673736]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "中銀カプセルタワービル",
+        "category": "TouristSpot",
+        "address": "〒104-0061 東京都中央区銀座８丁目１６−１０",
+        "isClosed": true,
+        "youtubeId": "Xrl_OBcLQmw",
+        "timestamp": 467
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.763434, 35.665681]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "トリコロール本店",
+        "category": "Restaurant",
+        "address": "〒104-0061 東京都中央区銀座５丁目９−１７",
+        "isClosed": false,
+        "youtubeId": "Xrl_OBcLQmw",
+        "timestamp": 549
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.76505, 35.670235]
+      }
     }
   ]
 }
