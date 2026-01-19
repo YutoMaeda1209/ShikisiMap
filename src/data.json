@@ -95,7 +95,7 @@
       "type": "Feature",
       "properties": {
         "name": "第一牧志公設市場",
-        "category": "Restaurant",
+        "category": "Facility",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -500,7 +500,7 @@
       "type": "Feature",
       "properties": {
         "name": "タイガービルヂング",
-        "category": "TouristSpot",
+        "category": "Facility",
         "address": "〒111-0051 東京都台東区蔵前４丁目３０−７",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -545,7 +545,7 @@
       "type": "Feature",
       "properties": {
         "name": "都営桐ヶ丘団地",
-        "category": "TouristSpot",
+        "category": "Facility",
         "address": "〒115-0054 東京都北区桐ケ丘１丁目４",
         "isClosed": false,
         "youtubeId": "qTXQcT4Zz5A",
@@ -560,7 +560,7 @@
       "type": "Feature",
       "properties": {
         "name": "桐ケ丘中央商店街",
-        "category": "TouristSpot",
+        "category": "Facility",
         "address": "〒115-0054 東京都北区桐ケ丘１丁目９−２",
         "isClosed": false,
         "youtubeId": "qTXQcT4Zz5A",
@@ -650,7 +650,7 @@
       "type": "Feature",
       "properties": {
         "name": "奥野ビル",
-        "category": "TouristSpot",
+        "category": "Facility",
         "address": "〒104-0061 東京都中央区銀座１丁目９−８",
         "isClosed": false,
         "youtubeId": "Xrl_OBcLQmw",
@@ -665,7 +665,7 @@
       "type": "Feature",
       "properties": {
         "name": "SO Ponte 銀座ブーケ",
-        "category": "Restaurant",
+        "category": "Shop",
         "address": "〒104-0061 東京都中央区銀座１丁目９−８ 401",
         "isClosed": false,
         "youtubeId": "Xrl_OBcLQmw",
@@ -710,7 +710,7 @@
       "type": "Feature",
       "properties": {
         "name": "沼垂テラス商店街",
-        "category": "TouristSpot",
+        "category": "Facility",
         "address": "〒950-0075 新潟県新潟市中央区沼垂東３丁目５",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
