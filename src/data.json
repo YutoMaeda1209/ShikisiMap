@@ -945,6 +945,81 @@
         "type": "Point",
         "coordinates": [127.688973, 26.216267]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "浅草地下商店街",
+        "category": "Facility",
+        "address": "〒111-0032 東京都台東区浅草１丁目１−１２ 地下1階",
+        "isClosed": false,
+        "youtubeId": "QJ5rbehJC_8",
+        "timestamp": 74
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.795337, 35.71165]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "浅草やきそば 福ちゃん",
+        "category": "Restaurant",
+        "address": "〒111-0032 東京都台東区浅草１丁目１−１２",
+        "isClosed": false,
+        "youtubeId": "QJ5rbehJC_8",
+        "timestamp": 129
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.797476, 35.711666]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Frites Bruges",
+        "category": "Restaurant",
+        "address": "〒111-0032 東京都台東区浅草１丁目１４−１",
+        "isClosed": false,
+        "youtubeId": "QJ5rbehJC_8",
+        "timestamp": 265
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.793598, 35.711868]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "凌雲閣 跡地",
+        "category": "TouristSpot",
+        "address": "〒111-0032 東京都台東区浅草２丁目１４−７",
+        "isClosed": false,
+        "youtubeId": "QJ5rbehJC_8",
+        "timestamp": 403
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.793246, 35.715786]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "神谷バー",
+        "category": "Restaurant",
+        "address": "〒111-0032 東京都台東区浅草１丁目１−１ 神谷ビル",
+        "isClosed": false,
+        "youtubeId": "QJ5rbehJC_8",
+        "timestamp": 556
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.796908, 35.711537]
+      }
     }
   ]
 }
