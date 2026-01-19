@@ -1710,6 +1710,96 @@
         "type": "Point",
         "coordinates": [139.696103, 35.659424]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ニュー新橋ビル",
+        "category": "Facility",
+        "address": "〒105-0004 東京都港区新橋２丁目１６−１",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.757524, 35.666208]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "肉の万世 新橋店",
+        "category": "Restaurant",
+        "address": "〒105-0004 東京都港区新橋２丁目１６−１ ニュー新橋ビル 3階",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 216
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.757524, 35.666208]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "旧新橋停車場 鉄道歴史展示室",
+        "category": "TouristSpot",
+        "address": "〒105-0021 東京都港区東新橋１丁目５-３",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 306
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.761446, 35.665931]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "新橋駅前ビル1号館",
+        "category": "Facility",
+        "address": "〒105-0004 東京都港区新橋２丁目２０−１５",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 451
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.759618, 35.666317]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "パーラーキムラヤ",
+        "category": "Restaurant",
+        "address": "〒105-0004 東京都港区新橋２丁目２０−１５ 新橋駅前ビル1号館 B1F",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 512
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.759405, 35.666032]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Viva okei ワインショップ＆イタリアン",
+        "category": "Restaurant",
+        "address": "〒105-0004 東京都港区新橋２丁目２０−１５ 新橋駅前ビル1号館 1F",
+        "isClosed": false,
+        "youtubeId": "OOimxDZ8D0Y",
+        "timestamp": 581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.758722, 35.66609]
+      }
     }
   ]
 }
