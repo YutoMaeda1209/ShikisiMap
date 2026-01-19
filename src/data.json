@@ -1095,6 +1095,261 @@
         "type": "Point",
         "coordinates": [139.763281, 35.669132]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "チョンキンマンション（重慶大厦）",
+        "category": "Facility",
+        "address": "Chungking Mansion, 36-44 Nathan Rd, Tsim Sha Tsui, 香港",
+        "isClosed": false,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 256
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.172391, 22.296303]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Woody House",
+        "category": "Hotel",
+        "address": "19 Hing Wan Street, 19 Hing Wan St, Wan Chai, 香港",
+        "isClosed": false,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 415
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.174374, 22.273604]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lang's Cafe（瀾之茶居）",
+        "category": "Restaurant",
+        "address": "地下A鋪及, B鋪, Vanville, 8號 Tai Yuen St, Wan Chai, 香港",
+        "isClosed": true,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 484
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.173271, 22.276237]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tankyu Distillery（丹丘蒸留所）",
+        "category": "Restaurant",
+        "address": "Unit 301, 45 Pak Tin Par St, Tsuen Wan, 香港",
+        "isClosed": false,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 633
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.11017, 22.375071]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafe Match Box（喜喜冰室）",
+        "category": "Restaurant",
+        "address": "57 Paterson St, Causeway Bay, 香港",
+        "isClosed": true,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 790
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.184734, 22.282041]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Duen Kee Chinese Restaurant（端記茶樓）",
+        "category": "Restaurant",
+        "address": "香港 Tsuen Wan, Rte Twisk, 川龍村57-58號",
+        "isClosed": false,
+        "youtubeId": "ZSTvNGARZAc",
+        "timestamp": 966
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.108189, 22.394582]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yick Cheong Building（益昌大廈）",
+        "category": "Facility",
+        "address": "Yick Cheong Building, King's Rd, Quarry Bay, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 72
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.212303, 22.284203]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Choi Hung Estate（彩虹邨）",
+        "category": "TouristSpot",
+        "address": "Ching Yeung Ave, Ngau Chi Wan, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 173
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.20624, 22.336126]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kowloon Walled City Park（九龍寨城公園）",
+        "category": "TouristSpot",
+        "address": "Kowloon City, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 322
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.185551, 22.32321]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tai Wo Tang Cafe（大和堂）",
+        "category": "Restaurant",
+        "address": "24號 Nga Tsin Long Rd, Kowloon City, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 450
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.189423, 22.328588]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tei Mou Koon Dessert（地茂館甜品）",
+        "category": "Restaurant",
+        "address": "47 Fuk Lo Tsun Rd, Kowloon City, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 453
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.187431, 22.32882]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tsim Chai Kee Noodle（沾仔記）",
+        "category": "Restaurant",
+        "address": "153 Queen's Road Central, Central, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 693
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.153747, 22.284685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mak's Noodle（麥奀雲吞麵世家）",
+        "category": "Restaurant",
+        "address": "77 Wellington St, Central, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 777
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.154525, 22.283216]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chung Kee Congee（忠記粥品）",
+        "category": "Restaurant",
+        "address": "283 Hennessy Rd, Wan Chai, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 993
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.177263, 22.278286]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bakehouse (Wan Chai)",
+        "category": "Restaurant",
+        "address": "14 Tai Wong St E, Wan Chai, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 1075
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.171486, 22.275951]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tai Kwun（大館）",
+        "category": "TouristSpot",
+        "address": "Hollywood Rd, Central, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 1141
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.150556, 22.283982]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Tai Cheong Bakery（泰昌餅家）",
+        "category": "Restaurant",
+        "address": "35號 Lyndhurst Terrace, Central, 香港",
+        "isClosed": false,
+        "youtubeId": "ZCqo6WZ1ytI",
+        "timestamp": 1185
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.153615, 22.282594]
+      }
     }
   ]
 }
