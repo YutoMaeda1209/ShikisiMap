@@ -1020,6 +1020,21 @@
         "type": "Point",
         "coordinates": [139.796908, 35.711537]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "アメ横センタービル",
+        "category": "Facility",
+        "address": "〒110-0005 東京都台東区上野４丁目７−８",
+        "isClosed": false,
+        "youtubeId": "xJEd9VnJCTs",
+        "timestamp": 103
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.774538, 35.709078]
+      }
     }
   ]
 }
