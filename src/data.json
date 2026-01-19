@@ -1590,21 +1590,6 @@
         "type": "Point",
         "coordinates": [132.30004, 35.045277]
       }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "name": "なぎの木テラス",
-        "category": "TouristSpot",
-        "address": "〒699-2841 島根県江津市後地町3348-113",
-        "isClosed": false,
-        "youtubeId": "pZnqWKQkgNY",
-        "timestamp": 858
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [132.30004, 35.045277]
-      }
     }
   ]
 }
