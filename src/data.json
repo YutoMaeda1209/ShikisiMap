@@ -1065,6 +1065,36 @@
         "type": "Point",
         "coordinates": [139.679347, 35.506819]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ドムドムハンバーガーPLUS 銀座店",
+        "category": "Restaurant",
+        "address": "〒104-0061 東京都中央区銀座３丁目５−１６",
+        "isClosed": true,
+        "youtubeId": "sz4lo9DIVis",
+        "timestamp": 122
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.766034, 35.672728]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ビヤホールライオン 銀座七丁目店",
+        "category": "Restaurant",
+        "address": "〒104-0061 東京都中央区銀座７丁目９−２０ 銀座ライオン七丁目ビル",
+        "isClosed": false,
+        "youtubeId": "sz4lo9DIVis",
+        "timestamp": 329
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.763281, 35.669132]
+      }
     }
   ]
 }
