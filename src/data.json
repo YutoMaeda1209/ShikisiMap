@@ -1485,6 +1485,36 @@
         "type": "Point",
         "coordinates": [139.77101, 35.7224]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "コメダ珈琲店 今池店",
+        "category": "Restaurant",
+        "address": "〒464-0850 愛知県名古屋市千種区今池１丁目２９−１４ 杉浦ビル",
+        "isClosed": false,
+        "youtubeId": "ugP0f_JvYKo",
+        "timestamp": 137
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [136.935496, 35.167379]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "トスカショッピングセンター",
+        "category": "Restaurant",
+        "address": "〒457-0862 愛知県名古屋市南区内田橋２丁目２６−２２ 豊田本町市街地住宅",
+        "isClosed": false,
+        "youtubeId": "ugP0f_JvYKo",
+        "timestamp": 375
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [136.909835, 35.113724]
+      }
     }
   ]
 }
