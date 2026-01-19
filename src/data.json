@@ -1620,6 +1620,66 @@
         "type": "Point",
         "coordinates": [139.811009, 35.710233]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "イタリア料理カプリチョーザ渋谷本店",
+        "category": "Restaurant",
+        "address": "〒150-0011 東京都渋谷区東１丁目３−１ ショッピングプラザカミニート 1F",
+        "isClosed": false,
+        "youtubeId": "iaEGirGI3Rc",
+        "timestamp": 93
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.708186, 35.657504]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "渋谷氷川神社",
+        "category": "TouristSpot",
+        "address": "〒150-0011 東京都渋谷区東２丁目５−６ 氷川神社",
+        "isClosed": false,
+        "youtubeId": "iaEGirGI3Rc",
+        "timestamp": 399
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.710209, 35.654584]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "國學院大學博物館",
+        "category": "TouristSpot",
+        "address": "〒150-8440 東京都渋谷区東４丁目１０−２８",
+        "isClosed": false,
+        "youtubeId": "iaEGirGI3Rc",
+        "timestamp": 414
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.71188, 35.655115]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BrewDog Roppongi",
+        "category": "Restaurant",
+        "address": "〒106-0032 東京都港区六本木５丁目３−２ 齋藤ビル 1F",
+        "isClosed": true,
+        "youtubeId": "iaEGirGI3Rc",
+        "timestamp": 503
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.733431, 35.662139]
+      }
     }
   ]
 }
