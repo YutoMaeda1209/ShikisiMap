@@ -1680,6 +1680,36 @@
         "type": "Point",
         "coordinates": [139.733431, 35.662139]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SHIBUYA TSUTAYA SHARE LOUNGE",
+        "category": "Facility",
+        "address": "〒150-0042 東京都渋谷区宇田川町２１−６ SHIBUYA TSUTAYA 4階",
+        "isClosed": false,
+        "youtubeId": "hL7lM2NuJ7I",
+        "timestamp": 55
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.701257, 35.659229]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mikkeller Tokyo",
+        "category": "Restaurant",
+        "address": "〒150-0043 東京都渋谷区道玄坂２丁目１９−１１",
+        "isClosed": false,
+        "youtubeId": "hL7lM2NuJ7I",
+        "timestamp": 493
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.696103, 35.659424]
+      }
     }
   ]
 }
