@@ -1590,6 +1590,36 @@
         "type": "Point",
         "coordinates": [132.30004, 35.045277]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "すみだ水族館",
+        "category": "TouristSpot",
+        "address": "〒131-0045 東京都墨田区押上１丁目１−２ 東京スカイツリータウン・ソラマチ ５階～６階",
+        "isClosed": false,
+        "youtubeId": "Jzac55_uW7s",
+        "timestamp": 15
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.811009, 35.710233]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ペンギンカフェ",
+        "category": "Restaurant",
+        "address": "〒131-0045 東京都墨田区押上１丁目１−２ 東京スカイツリータウン・ソラマチ ５階～６階",
+        "isClosed": false,
+        "youtubeId": "Jzac55_uW7s",
+        "timestamp": 259
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.811009, 35.710233]
+      }
     }
   ]
 }
