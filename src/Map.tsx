@@ -31,15 +31,21 @@ const currentLocationMarkerIcon = new L.Icon({
 // Component to handle user's current location
 function CurrentLocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
+  const [isInitMapPan, setIsInitMapPan] = useState<boolean>(false);
   const map = useMapEvents({
     locationfound(event) {
       setPosition(event.latlng);
+      if (isInitMapPan) return;
+      setIsInitMapPan(true);
       map.panTo(event.latlng);
     }
   });
 
   useEffect(() => {
-    map.locate();
+    map.locate({ watch: true });
+    return () => {
+      map.stopLocate();
+    };
   }, [map]);
 
   return position === null ? null : (
