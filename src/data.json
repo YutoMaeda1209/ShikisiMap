@@ -1380,6 +1380,111 @@
         "type": "Point",
         "coordinates": [139.703238, 35.66447]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "CHAYA松緒",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中３丁目１２−１",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.765753, 35.727771]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "肉のサトー",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 173
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.765308, 35.72779]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "越後屋酒店",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 192
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.765308, 35.72779]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "空薫",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 281
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.766097, 35.727631]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "カヤバ珈琲",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中６丁目１−２９",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 447
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.770699, 35.721132]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "谷中霊園",
+        "category": "Restaurant",
+        "address": "〒110-0001 東京都台東区谷中７丁目５−２４",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 557
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.770164, 35.723998]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "谷中ビアホール",
+        "category": "Restaurant",
+        "address": "〒110-0002 東京都台東区上野桜木２丁目１５−６",
+        "isClosed": false,
+        "youtubeId": "Yd23K3M17Ww",
+        "timestamp": 636
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.77101, 35.7224]
+      }
     }
   ]
 }
