@@ -1035,6 +1035,36 @@
         "type": "Point",
         "coordinates": [139.774538, 35.709078]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "国道駅",
+        "category": "Facility",
+        "address": "〒230-0052 神奈川県横浜市鶴見区生麦５丁目１２",
+        "isClosed": false,
+        "youtubeId": "sLaZPCDrXho",
+        "timestamp": 72
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.675691, 35.500783]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "珈琲専門店 山百合",
+        "category": "Restaurant",
+        "address": "〒230-0051 神奈川県横浜市鶴見区鶴見中央４丁目２１−１２",
+        "isClosed": false,
+        "youtubeId": "sLaZPCDrXho",
+        "timestamp": 539
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.679347, 35.506819]
+      }
     }
   ]
 }
