@@ -1,7 +1,21 @@
 #spotList {
     scrollbar-width: none;
+    height: calc(100% - 50px);
 }
 
 #spotList::-webkit-scrollbar {
     display: none;
+}
+
+#spotListSearch {
+    padding: 8px 0;
+}
+
+#spotListSearch input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
