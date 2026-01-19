@@ -1350,6 +1350,36 @@
         "type": "Point",
         "coordinates": [114.153615, 22.282594]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "フレッシュネスバーガー 富ヶ谷店",
+        "category": "Restaurant",
+        "address": "〒151-0063 東京都渋谷区富ケ谷２丁目２３−２３",
+        "isClosed": false,
+        "youtubeId": "T6cdbCTG4RU",
+        "timestamp": 65
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.682797, 35.663179]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "伊良コーラ 渋谷神宮前",
+        "category": "Restaurant",
+        "address": "〒150-0001 東京都渋谷区神宮前５丁目２９−１２ 武居ビル",
+        "isClosed": false,
+        "youtubeId": "T6cdbCTG4RU",
+        "timestamp": 429
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.703238, 35.66447]
+      }
     }
   ]
 }
