@@ -2040,6 +2040,36 @@
         "type": "Point",
         "coordinates": [139.840609, 35.764001]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "東成田駅",
+        "category": "Facility",
+        "address": "〒286-0104 千葉県成田市古込",
+        "isClosed": false,
+        "youtubeId": "XxruCww43e8",
+        "timestamp": 63
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [140.393359, 35.772572]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "松戸富田麺旦",
+        "category": "Restaurant",
+        "address": "〒286-0111 千葉県成田市三里塚御料牧場1-1 中央ビル 成田空港第1ターミナル4階 NARITA Dining Terrace",
+        "isClosed": false,
+        "youtubeId": "XxruCww43e8",
+        "timestamp": 560
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [140.389808, 35.770647]
+      }
     }
   ]
 }
