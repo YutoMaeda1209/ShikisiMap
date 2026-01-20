@@ -2115,6 +2115,21 @@
         "type": "Point",
         "coordinates": [139.698761, 35.657608]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "世界の朝ごはん TASTE THE WORLD 新宿店",
+        "category": "Restaurant",
+        "address": "〒160-0022 東京都新宿区新宿４丁目３−１５ レイフラット 新宿 103",
+        "isClosed": false,
+        "youtubeId": "-97HYr-Avwg",
+        "timestamp": 174
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.703594, 35.688747]
+      }
     }
   ]
 }
