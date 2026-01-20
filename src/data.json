@@ -1800,6 +1800,156 @@
         "type": "Point",
         "coordinates": [139.758722, 35.66609]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fu Wah Cafe（富華氷室）",
+        "category": "Restaurant",
+        "address": "shop, Portland Street, 41 Pitt St, Yau Ma Tei, 香港",
+        "isClosed": false,
+        "youtubeId": "nMw43TCLhjc",
+        "timestamp": 342
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.169797, 22.313298]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ho Lan Jeng（何蘭正）",
+        "category": "Restaurant",
+        "address": "香港 Central, Wyndham St, 29號LKF292/F",
+        "isClosed": false,
+        "youtubeId": "nMw43TCLhjc",
+        "timestamp": 484
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.155351, 22.280375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ping Pong 129（乒乓城）",
+        "category": "Restaurant",
+        "address": "129 Second Street L/G Nam Cheong House, Sai Ying Pun, 香港",
+        "isClosed": false,
+        "youtubeId": "nMw43TCLhjc",
+        "timestamp": 648
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.139702, 22.286323]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sham Tsai Kee（深仔記）",
+        "category": "Restaurant",
+        "address": "香港 Kwun Tong, Tsun Yip Ln, 6號G/F Block A",
+        "isClosed": false,
+        "youtubeId": "nMw43TCLhjc",
+        "timestamp": 807
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.220758, 22.312964]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Yau Ma Tei Wholesale Fruit Market（油麻地果欄）",
+        "category": "Facility",
+        "address": "202 Reclamation St, Yau Ma Tei, 香港",
+        "isClosed": false,
+        "youtubeId": "nMw43TCLhjc",
+        "timestamp": 906
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.16922, 22.311941]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ban Heung Lau（品香楼中西風味餐庁）",
+        "category": "Restaurant",
+        "address": "2樓平台204-205室, 南山邨南豐樓, 九龍仔, Kowloon Tong, 香港",
+        "isClosed": false,
+        "youtubeId": "3aaczCUWXaU",
+        "timestamp": 85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.170673, 22.333095]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nam Shan Estate（南山邨）",
+        "category": "Restaurant",
+        "address": "Nam Shan Chuen Rd, Kowloon Tong, 香港",
+        "isClosed": false,
+        "youtubeId": "3aaczCUWXaU",
+        "timestamp": 199
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.170378, 22.334564]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SuperSuper（一粥麵） Marina Square",
+        "category": "Restaurant",
+        "address": "South Horizons, 香港",
+        "isClosed": false,
+        "youtubeId": "3aaczCUWXaU",
+        "timestamp": 699
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.147651, 22.243373]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "TAP: The Ale Project",
+        "category": "Restaurant",
+        "address": "G/F, 19 Hak Po St, Mong Kok, 香港",
+        "isClosed": false,
+        "youtubeId": "3aaczCUWXaU",
+        "timestamp": 869
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.172579, 22.317511]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kai Kee Restaurant（佳記餐廳）",
+        "category": "Restaurant",
+        "address": "香港 Mong Kok, Portland St, 177-181號, Mansun House, 地舖",
+        "isClosed": false,
+        "youtubeId": "3aaczCUWXaU",
+        "timestamp": 1103
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [114.169727, 22.317195]
+      }
     }
   ]
 }
