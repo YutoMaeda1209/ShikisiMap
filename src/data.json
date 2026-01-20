@@ -1980,6 +1980,66 @@
         "type": "Point",
         "coordinates": [139.761015, 35.69611]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "亀有香取神社",
+        "category": "TouristSpot",
+        "address": "〒125-0061 東京都葛飾区亀有３丁目４２−２４",
+        "isClosed": false,
+        "youtubeId": "qXP9Ixv5Wlc",
+        "timestamp": 173
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.851299, 35.765372]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "カフェ こぼれび",
+        "category": "Restaurant",
+        "address": "〒125-0061 東京都葛飾区亀有３丁目３２−１",
+        "isClosed": false,
+        "youtubeId": "qXP9Ixv5Wlc",
+        "timestamp": 269
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.848818, 35.76473]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "SKWAT KAMEARI ART CENTRE",
+        "category": "TouristSpot",
+        "address": "〒125-0002 東京都葛飾区西亀有３丁目２６−４",
+        "isClosed": false,
+        "youtubeId": "qXP9Ixv5Wlc",
+        "timestamp": 407
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.84022, 35.76358]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ホワイト餃子 亀有店",
+        "category": "Restaurant",
+        "address": "〒124-0002 東京都葛飾区西亀有４丁目１１−１５",
+        "isClosed": false,
+        "youtubeId": "qXP9Ixv5Wlc",
+        "timestamp": 573
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.840609, 35.764001]
+      }
     }
   ]
 }
