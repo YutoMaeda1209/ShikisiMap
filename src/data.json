@@ -1950,6 +1950,36 @@
         "type": "Point",
         "coordinates": [114.169727, 22.317195]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "欧風カレー ボンディ 神保町本店",
+        "category": "Restaurant",
+        "address": "〒101-0051 東京都千代田区神田神保町２丁目３−３ 神田古書センタービル ２階",
+        "isClosed": false,
+        "youtubeId": "WsjL7CU4zX8",
+        "timestamp": 104
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.756975, 35.695675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "古瀬戸珈琲店",
+        "category": "Restaurant",
+        "address": "〒101-0052 東京都千代田区神田小川町３丁目１０",
+        "isClosed": false,
+        "youtubeId": "WsjL7CU4zX8",
+        "timestamp": 522
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.761015, 35.69611]
+      }
     }
   ]
 }
