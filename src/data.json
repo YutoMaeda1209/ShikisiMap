@@ -2175,6 +2175,21 @@
         "type": "Point",
         "coordinates": [139.799197, 35.749804]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "伊東合資",
+        "category": "TouristSpot",
+        "address": "〒475-0023 愛知県半田市亀崎町９丁目１１１",
+        "isClosed": false,
+        "youtubeId": "dmIeiS1dRnQ",
+        "timestamp": 117
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [136.962779, 34.91162]
+      }
     }
   ]
 }
