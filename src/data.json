@@ -2160,6 +2160,21 @@
         "type": "Point",
         "coordinates": [139.748125, 35.667422]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "びっくりドンキー 北千住店",
+        "category": "Restaurant",
+        "address": "〒120-0035 東京都足立区千住中居町１７−２０ マルアイビル",
+        "isClosed": false,
+        "youtubeId": "t6xbuoRhe-Q",
+        "timestamp": 58
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.799197, 35.749804]
+      }
     }
   ]
 }
