@@ -2085,6 +2085,36 @@
         "type": "Point",
         "coordinates": [139.729485, 35.659791]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "渋谷区ふれあい植物センター",
+        "category": "Restaurant",
+        "address": "〒150-0011 東京都渋谷区東２丁目２５−３７",
+        "isClosed": false,
+        "youtubeId": "2P5XxJvGPeI",
+        "timestamp": 108
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.707769, 35.653338]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "第２大番ビル",
+        "category": "Facility",
+        "address": "〒150-0043 東京都渋谷区道玄坂１丁目１１−１",
+        "isClosed": false,
+        "youtubeId": "2P5XxJvGPeI",
+        "timestamp": 474
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.698761, 35.657608]
+      }
     }
   ]
 }
