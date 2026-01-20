@@ -6,6 +6,8 @@ import type { MapControls } from './MapContext';
 import { MapContext } from './MapContext';
 import Sidebar from './Sidebar';
 
+export const rowHeight = 300;
+
 function App() {
   const [map, setMap] = useState<LeafletMap | null>(null);
 

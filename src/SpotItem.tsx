@@ -38,6 +38,7 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
         params={`?start=${properties.timestamp}`}
       />
       <a
+        className="address"
         href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
         target="_blank"
         rel="noopener noreferrer"

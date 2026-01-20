@@ -16,10 +16,15 @@
     margin: 10px 0;
 }
 
-.spotTitle>span {
+.spotTitle>span, .address {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.address {
+    display: block;
+    width: 100%;
 }
 
 .spotItem.closed {

@@ -3,6 +3,7 @@ import L, { type LatLng, type Layer } from 'leaflet';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from 'react';
 import { GeoJSON, MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
+import { rowHeight } from './App';
 import currentLocationIcon from "./assets/img/current_location.webp";
 import geoJsonRowData from "./data.json";
 import "./Map.css";
@@ -61,15 +62,14 @@ function MapController({ onMapCreated }: { onMapCreated: (map: L.Map) => void })
   return null;
 }
 
-const rowHeight = 320;
 function Map({ onMapCreated }: { onMapCreated?: (map: L.Map) => void }) {
-  const onEachFeature = (feature: Feature<Geometry, GeoProperties>, layer: Layer) => {
+  function onEachFeature(feature: Feature<Geometry, GeoProperties>, layer: Layer) {
     const idx = nameToIndex[feature.properties.name];
     (layer as L.Evented).on('click', () => {
       const listEl = document.getElementById('spotList') as HTMLElement;
       listEl.scrollTo({ top: idx * rowHeight, behavior: 'smooth' });
     });
-  };
+  }
 
   return (
     <MapContainer center={[35.676423, 139.650027]} zoom={14} zoomControl={false}>
