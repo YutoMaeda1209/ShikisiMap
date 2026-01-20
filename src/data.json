@@ -2190,6 +2190,36 @@
         "type": "Point",
         "coordinates": [136.962779, 34.91162]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "GINZA NISHIKAWA COFFEE ROASTERY 食パンカフェレストラン 蔵前店",
+        "category": "Restaurant",
+        "address": "〒111-0051 東京都台東区蔵前４丁目１−１ 蔵前ビル",
+        "isClosed": false,
+        "youtubeId": "-CrU_Ue2dZI",
+        "timestamp": 99
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.788833, 35.701791]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ペリカンカフェ",
+        "category": "Restaurant",
+        "address": "〒111-0042 東京都台東区寿３丁目９−１１ 1階",
+        "isClosed": false,
+        "youtubeId": "-CrU_Ue2dZI",
+        "timestamp": 404
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.791248, 35.70698]
+      }
     }
   ]
 }
