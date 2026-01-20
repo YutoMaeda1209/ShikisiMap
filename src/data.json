@@ -2070,6 +2070,21 @@
         "type": "Point",
         "coordinates": [140.389808, 35.770647]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MOM&POP'S GELATO",
+        "category": "Restaurant",
+        "address": "〒106-6190 東京都港区六本木６丁目１０−１ 六本木ヒルズ森タワー ヒルサイド地下2階",
+        "isClosed": false,
+        "youtubeId": "Du0_EEjfwEU",
+        "timestamp": 505
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.729485, 35.659791]
+      }
     }
   ]
 }
