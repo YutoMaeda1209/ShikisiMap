@@ -2130,6 +2130,36 @@
         "type": "Point",
         "coordinates": [139.703594, 35.688747]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "酒食堂 虎ノ門蒸留所",
+        "category": "Restaurant",
+        "address": "〒105-6403 東京都港区虎ノ門１丁目１７−１ 虎ノ門ヒルズ ビジネスタワー 3F 虎ノ門横丁",
+        "isClosed": false,
+        "youtubeId": "vGy1sxs-jB0",
+        "timestamp": 166
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.750098, 35.667798]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Uchu Brewing Toranomon",
+        "category": "Restaurant",
+        "address": "〒105-0001 東京都港区虎ノ門１丁目２２−１ ヒルズ グラスロック 2F",
+        "isClosed": false,
+        "youtubeId": "vGy1sxs-jB0",
+        "timestamp": 508
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.748125, 35.667422]
+      }
     }
   ]
 }
