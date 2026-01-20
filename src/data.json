@@ -2220,6 +2220,51 @@
         "type": "Point",
         "coordinates": [139.791248, 35.70698]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "高円寺ストリート",
+        "category": "Facility",
+        "address": "〒166-0003 東京都杉並区高円寺南３丁目６８",
+        "isClosed": false,
+        "youtubeId": "hum1jzkWfyE",
+        "timestamp": 126
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.648471, 35.704486]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "アール座 読書館",
+        "category": "Restaurant",
+        "address": "〒166-0003 東京都杉並区高円寺南３丁目５７−６",
+        "isClosed": false,
+        "youtubeId": "hum1jzkWfyE",
+        "timestamp": 356
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.648368, 35.704009]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "アンドビール",
+        "category": "Restaurant",
+        "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 １０５",
+        "isClosed": false,
+        "youtubeId": "hum1jzkWfyE",
+        "timestamp": 645
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [139.64379, 35.705351]
+      }
     }
   ]
 }
