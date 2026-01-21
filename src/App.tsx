@@ -1,6 +1,7 @@
 import type { LatLngExpression, Map as LeafletMap } from 'leaflet';
 import { useState } from 'react';
 import './App.css';
+import GitHubRibbon from './GitHubRibbon';
 import Map from './Map';
 import type { MapControls } from './MapContext';
 import { MapContext } from './MapContext';
@@ -30,6 +31,7 @@ function App() {
         </div>
         <Map onMapCreated={setMap} />
       </MapContext.Provider>
+      <GitHubRibbon />
     </div>
   );
 }
