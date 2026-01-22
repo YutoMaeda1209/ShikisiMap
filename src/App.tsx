@@ -3,6 +3,7 @@ import GitHubRibbon from './GitHubRibbon';
 import LocationSelectionProvider from './LocationSelectionProvider';
 import Map from './Map';
 import Sidebar from './Sidebar';
+import UrlManager from './UrlManager';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </div>
         <Map />
         <GitHubRibbon />
+        <UrlManager />
       </LocationSelectionProvider>
     </div>
   );
