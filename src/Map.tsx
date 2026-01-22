@@ -16,7 +16,6 @@ function Map() {
   // Pan map to selected location when selectedId changes
   useEffect(() => {
     if (selectedId === null || !mapRef.current) return;
-    console.log("Panning to selectedId:", selectedId);
     const coords = spotsData.features[selectedId].geometry.coordinates;
     mapRef.current.panTo(new L.LatLng(coords[1], coords[0]));
   }, [selectedId, mapRef]);
