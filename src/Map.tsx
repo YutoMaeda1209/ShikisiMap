@@ -1,84 +1,40 @@
-import type { Feature, FeatureCollection, Geometry } from 'geojson';
-import L, { type LatLng, type Layer } from 'leaflet';
+import type { Feature, Geometry } from 'geojson';
+import L, { type Layer } from 'leaflet';
 import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from 'react';
-import { GeoJSON, MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
-import { rowHeight } from './App';
-import currentLocationIcon from "./assets/img/current_location.webp";
-import geoJsonRowData from "./data.json";
+import { useEffect, useRef } from 'react';
+import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
+import CurrentLocationMarker from './CurrentLocationMarker';
+import { useLocationSelection } from './locationSelectionContext';
 import "./Map.css";
-import type { GeoProperties } from './types';
+import { openSpotsData, spotsData, type GeoProperties } from './mapData';
 
-// Build a lookup from feature name -> index to match sidebar items (spot-<index>)
-let geoData = geoJsonRowData as FeatureCollection<Geometry, GeoProperties>;
-const features = geoData.features;
-const nameToIndex: Record<string, number> = {};
-features.forEach((f, i) => {
-  nameToIndex[f.properties.name] = i;
-});
-geoData = {
-  type: "FeatureCollection",
-  features: features.filter(f => !f.properties.isClosed)
-};
+// Main Map component
+function Map() {
+  const {selectedId, select} = useLocationSelection();
+  const mapRef = useRef<L.Map>(null);
 
-// Define custom icon for current location marker
-const currentLocationMarkerIcon = new L.Icon({
-  iconUrl: currentLocationIcon,
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-  popupAnchor: [0, -16],
-});
-
-// Component to handle user's current location
-function CurrentLocationMarker() {
-  const [position, setPosition] = useState<LatLng | null>(null);
-  const [isInitMapPan, setIsInitMapPan] = useState<boolean>(false);
-  const map = useMapEvents({
-    locationfound(event) {
-      setPosition(event.latlng);
-      if (isInitMapPan) return;
-      setIsInitMapPan(true);
-      map.panTo(event.latlng);
-    }
-  });
-
+  // Pan map to selected location when selectedId changes
   useEffect(() => {
-    map.locate({ watch: true });
-    return () => {
-      map.stopLocate();
-    };
-  }, [map]);
+    if (selectedId === null || !mapRef.current) return;
+    console.log("Panning to selectedId:", selectedId);
+    const coords = spotsData.features[selectedId].geometry.coordinates;
+    mapRef.current.panTo(new L.LatLng(coords[1], coords[0]));
+  }, [selectedId, mapRef]);
 
-  return position === null ? null : (
-    <Marker position={position} icon={currentLocationMarkerIcon} />
-  );
-}
-
-function MapController({ onMapCreated }: { onMapCreated: (map: L.Map) => void }) {
-  const map = useMap();
-  useEffect(() => {
-    onMapCreated(map);
-  }, [map, onMapCreated]);
-  return null;
-}
-
-function Map({ onMapCreated }: { onMapCreated?: (map: L.Map) => void }) {
+  // Function to handle feature clicks
   function onEachFeature(feature: Feature<Geometry, GeoProperties>, layer: Layer) {
-    const idx = nameToIndex[feature.properties.name];
     (layer as L.Evented).on('click', () => {
-      const listEl = document.getElementById('spotList') as HTMLElement;
-      listEl.scrollTo({ top: idx * rowHeight, behavior: 'smooth' });
+      select(feature.id as number);
     });
   }
 
   return (
-    <MapContainer center={[35.676423, 139.650027]} zoom={14} zoomControl={false}>
+    <MapContainer center={[35.676423, 139.650027]} zoom={14} zoomControl={false} ref={mapRef}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <GeoJSON data={geoData} onEachFeature={onEachFeature} />
-      {onMapCreated ? <MapController onMapCreated={onMapCreated} /> : null}
+      <GeoJSON data={openSpotsData} onEachFeature={onEachFeature} />
       <CurrentLocationMarker />
     </MapContainer>
   );

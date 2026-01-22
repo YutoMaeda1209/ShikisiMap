@@ -1,22 +1,32 @@
-import type { FeatureCollection, Geometry } from "geojson";
-import { useMemo, useState } from "react";
-import { List } from "react-window";
-import { rowHeight } from "./App";
-import geoJsonRowData from "./data.json";
+import { useEffect, useMemo, useState } from "react";
+import { List, useListRef } from "react-window";
+import { useLocationSelection } from "./locationSelectionContext";
+import { spotsData } from "./mapData";
 import SpotItem from "./SpotItem";
 import "./SpotList.css";
-import type { GeoProperties } from "./types";
 
+// Main SpotList component
 function SpotList(props: {height: number}) {
-  // Prepare list items from GeoJSON data
-  const features = (geoJsonRowData as FeatureCollection<Geometry, GeoProperties>).features;
-
+  const rowHeight = 300;
   const [query, setQuery] = useState("");
+  const listRef = useListRef(null);
+  const {selectedId} = useLocationSelection();
 
+  // Scroll to selected item when it changes
+  useEffect(()=> {
+    if (selectedId === null || !listRef.current) return;
+    listRef.current.scrollToRow({
+      align: "center",
+      behavior: "smooth",
+      index: selectedId
+    });
+  }, [listRef, selectedId]);
+
+  // Filter features based on search query
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return features;
-    return features.filter((f) => {
+    if (!q) return spotsData.features;
+    return spotsData.features.filter((f) => {
       const p = f.properties;
       return (
         (p.name && p.name.toLowerCase().includes(q)) ||
@@ -24,7 +34,7 @@ function SpotList(props: {height: number}) {
         (p.address && p.address.toLowerCase().includes(q))
       );
     });
-  }, [query, features]);
+  }, [query]);
 
   return (
     <div id="spotListComponent" style={{ height: props.height }}>
@@ -42,6 +52,7 @@ function SpotList(props: {height: number}) {
         rowCount={filtered.length}
         rowHeight={rowHeight}
         rowProps={{ features: filtered }}
+        listRef={listRef}
       />
     </div>
   );
