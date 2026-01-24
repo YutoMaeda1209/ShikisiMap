@@ -30,7 +30,6 @@ function SpotList(props: {height: number}) {
       const p = f.properties;
       return (
         (p.name && p.name.toLowerCase().includes(q)) ||
-        (p.category && p.category.toLowerCase().includes(q)) ||
         (p.address && p.address.toLowerCase().includes(q))
       );
     });

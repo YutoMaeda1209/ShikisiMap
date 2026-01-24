@@ -3,7 +3,6 @@ import geoJsonRowData from "./data.json";
 
 export type GeoProperties = {
     name: string;
-    category: string;
     address: string;
     isClosed: boolean;
     youtubeId: string;

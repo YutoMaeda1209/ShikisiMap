@@ -5,7 +5,6 @@
       "type": "Feature",
       "properties": {
         "name": "欧州酒場サケトメシト",
-        "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋４丁目１８−４ 新橋太陽ビル 2F",
         "isClosed": false,
         "youtubeId": "jg67iAXVMuM",
@@ -24,7 +23,6 @@
       "type": "Feature",
       "properties": {
         "name": "A&W 牧港店",
-        "category": "Restaurant",
         "address": "〒901-2131 沖縄県浦添市牧港４丁目９−１",
         "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
@@ -43,7 +41,6 @@
       "type": "Feature",
       "properties": {
         "name": "つけ麺ジンベエ",
-        "category": "Restaurant",
         "address": "〒904-2143 沖縄県沖縄市知花５丁目１３−１８ シャトレマイハウス",
         "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
@@ -62,7 +59,6 @@
       "type": "Feature",
       "properties": {
         "name": "宮城島 海中道路",
-        "category": "TouristSpot",
         "address": "〒904-2427 沖縄県うるま市与那城屋平海中道路",
         "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
@@ -81,7 +77,6 @@
       "type": "Feature",
       "properties": {
         "name": "山羊料理 美咲",
-        "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３８８-６ 宇良アパート",
         "isClosed": false,
         "youtubeId": "mSzp7ldiOWY",
@@ -100,7 +95,6 @@
       "type": "Feature",
       "properties": {
         "name": "うちなー茶屋 ぶくぶく",
-        "category": "Restaurant",
         "address": "〒902-0065 沖縄県那覇市壺屋１丁目２２−３５",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -119,7 +113,6 @@
       "type": "Feature",
       "properties": {
         "name": "第一牧志公設市場",
-        "category": "Facility",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -138,7 +131,6 @@
       "type": "Feature",
       "properties": {
         "name": "ゆうなんぎい",
-        "category": "Restaurant",
         "address": "〒900-0015 沖縄県那覇市久茂地３丁目３−３",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -157,7 +149,6 @@
       "type": "Feature",
       "properties": {
         "name": "瀬長島 ウミカジテラス",
-        "category": "TouristSpot",
         "address": "〒901-0233 沖縄県豊見城市瀬長１７４−６",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -176,7 +167,6 @@
       "type": "Feature",
       "properties": {
         "name": "琉球温泉 瀬長島ホテル",
-        "category": "Hotel",
         "address": "〒901-0233 沖縄県豊見城市瀬長１７４−５",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -195,7 +185,6 @@
       "type": "Feature",
       "properties": {
         "name": "国際通りのれん街",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志２丁目２−３０ リウボウ商事本社ビル 1F,B1F",
         "isClosed": true,
         "youtubeId": "wAEKO_Yecgs",
@@ -214,7 +203,6 @@
       "type": "Feature",
       "properties": {
         "name": "田舎 公設市場南店",
-        "category": "Restaurant",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−２０",
         "isClosed": false,
         "youtubeId": "wAEKO_Yecgs",
@@ -233,7 +221,6 @@
       "type": "Feature",
       "properties": {
         "name": "スパ ラクーア",
-        "category": "Facility",
         "address": "〒112-0003 東京都文京区春日１丁目１−１ ラクーアビル 6F",
         "isClosed": false,
         "youtubeId": "JGmal13VYm8",
@@ -252,7 +239,6 @@
       "type": "Feature",
       "properties": {
         "name": "天然温泉 平和島",
-        "category": "Facility",
         "address": "〒143-0006 東京都大田区平和島１丁目１−１ ビッグファン平和島２F",
         "isClosed": false,
         "youtubeId": "JGmal13VYm8",
@@ -271,7 +257,6 @@
       "type": "Feature",
       "properties": {
         "name": "湯乃泉 草加健康センター",
-        "category": "Facility",
         "address": "〒340-0046 埼玉県草加市北谷２丁目２３−２３",
         "isClosed": false,
         "youtubeId": "JGmal13VYm8",
@@ -290,7 +275,6 @@
       "type": "Feature",
       "properties": {
         "name": "スパメッツァおおたか 竜泉寺の湯",
-        "category": "Facility",
         "address": "〒270-0128 千葉県流山市おおたかの森西１丁目15番1",
         "isClosed": false,
         "youtubeId": "JGmal13VYm8",
@@ -309,7 +293,6 @@
       "type": "Feature",
       "properties": {
         "name": "秋葉原井戸端洋酒店",
-        "category": "Restaurant",
         "address": "〒101-0032 東京都千代田区岩本町３丁目７−１１ 神田KSビル 1F",
         "isClosed": false,
         "youtubeId": "kU26WkEEw8w",
@@ -328,7 +311,6 @@
       "type": "Feature",
       "properties": {
         "name": "えび専門酒場 えびす屋",
-        "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３８０−４",
         "isClosed": false,
         "youtubeId": "t1MhPPiHEHM",
@@ -347,7 +329,6 @@
       "type": "Feature",
       "properties": {
         "name": "FAB MART",
-        "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３８２−１",
         "isClosed": false,
         "youtubeId": "t1MhPPiHEHM",
@@ -366,7 +347,6 @@
       "type": "Feature",
       "properties": {
         "name": "DMM かりゆし水族館",
-        "category": "TouristSpot",
         "address": "〒901-0225 沖縄県豊見城市豊崎３−３５",
         "isClosed": false,
         "youtubeId": "t1MhPPiHEHM",
@@ -385,7 +365,6 @@
       "type": "Feature",
       "properties": {
         "name": "琉球料理首里天楼",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志１丁目３−６０",
         "isClosed": false,
         "youtubeId": "NdMKh4FFkoE",
@@ -404,7 +383,6 @@
       "type": "Feature",
       "properties": {
         "name": "沖縄酒場ハイサイ 公設市場店",
-        "category": "Restaurant",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目８−４１",
         "isClosed": false,
         "youtubeId": "NdMKh4FFkoE",
@@ -423,7 +401,6 @@
       "type": "Feature",
       "properties": {
         "name": "ステーキハウス88 国際通り店",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志３丁目１−６ 勉強堂ビル2階",
         "isClosed": false,
         "youtubeId": "NdMKh4FFkoE",
@@ -442,7 +419,6 @@
       "type": "Feature",
       "properties": {
         "name": "おきなわワールド",
-        "category": "TouristSpot",
         "address": "〒901-0616 沖縄県南城市玉城前川１３３６",
         "isClosed": false,
         "youtubeId": "NdMKh4FFkoE",
@@ -461,7 +437,6 @@
       "type": "Feature",
       "properties": {
         "name": "THE MOSQUE COFFEE",
-        "category": "Restaurant",
         "address": "〒155-0031 東京都世田谷区北沢１丁目４５−２７",
         "isClosed": false,
         "youtubeId": "UQeBnWAGfSk",
@@ -480,7 +455,6 @@
       "type": "Feature",
       "properties": {
         "name": "OGAWA COFFEE LABORATORY 下北沢",
-        "category": "Restaurant",
         "address": "〒155-0031 東京都世田谷区北沢３丁目１９−２０ reload1-1",
         "isClosed": false,
         "youtubeId": "UQeBnWAGfSk",
@@ -499,7 +473,6 @@
       "type": "Feature",
       "properties": {
         "name": "下北沢 ぼっち・ざ・ろっく！ アー写 撮影地",
-        "category": "TouristSpot",
         "address": "〒155-0031 東京都世田谷区北沢２丁目９−１３",
         "isClosed": false,
         "youtubeId": "UQeBnWAGfSk",
@@ -518,7 +491,6 @@
       "type": "Feature",
       "properties": {
         "name": "オイシイカレー（通称） 移転後",
-        "category": "Restaurant",
         "address": "〒155-0031 東京都世田谷区北沢２丁目３５−５ サウザンド下北沢 1B",
         "isClosed": false,
         "youtubeId": "UQeBnWAGfSk",
@@ -537,7 +509,6 @@
       "type": "Feature",
       "properties": {
         "name": "五條天神・花園稲荷社",
-        "category": "TouristSpot",
         "address": "〒110-0007 東京都台東区上野公園４−１７",
         "isClosed": false,
         "youtubeId": "0ompTBflwu0",
@@ -556,7 +527,6 @@
       "type": "Feature",
       "properties": {
         "name": "旧博物館動物園駅 地上口",
-        "category": "TouristSpot",
         "address": "〒110-0007 東京都台東区上野公園１３−２３",
         "isClosed": false,
         "youtubeId": "0ompTBflwu0",
@@ -575,7 +545,6 @@
       "type": "Feature",
       "properties": {
         "name": "不純喫茶ドープ 上野御徒町店",
-        "category": "Restaurant",
         "address": "〒110-0005 東京都台東区上野１丁目８−３",
         "isClosed": false,
         "youtubeId": "0ompTBflwu0",
@@ -594,7 +563,6 @@
       "type": "Feature",
       "properties": {
         "name": "塩生姜らー麺専門店 MANNISH 蔵前店",
-        "category": "Restaurant",
         "address": "〒111-0053 東京都台東区浅草橋３丁目２５−６",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -613,7 +581,6 @@
       "type": "Feature",
       "properties": {
         "name": "東京リバーサイド蒸溜所",
-        "category": "Restaurant",
         "address": "〒111-0051 東京都台東区蔵前３丁目９−１",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -632,7 +599,6 @@
       "type": "Feature",
       "properties": {
         "name": "タイガービルヂング",
-        "category": "Facility",
         "address": "〒111-0051 東京都台東区蔵前４丁目３０−７",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -651,7 +617,6 @@
       "type": "Feature",
       "properties": {
         "name": "KURAMAE CANNELE",
-        "category": "Restaurant",
         "address": "〒111-0051 東京都台東区蔵前４丁目２０−１２",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -670,7 +635,6 @@
       "type": "Feature",
       "properties": {
         "name": "木花之醸造所",
-        "category": "Restaurant",
         "address": "〒111-0043 東京都台東区駒形２丁目５−５ 小宮ビル B１",
         "isClosed": false,
         "youtubeId": "3q8CzSBqWA4",
@@ -689,7 +653,6 @@
       "type": "Feature",
       "properties": {
         "name": "都営桐ヶ丘団地",
-        "category": "Facility",
         "address": "〒115-0054 東京都北区桐ケ丘１丁目４",
         "isClosed": false,
         "youtubeId": "qTXQcT4Zz5A",
@@ -708,7 +671,6 @@
       "type": "Feature",
       "properties": {
         "name": "桐ケ丘中央商店街",
-        "category": "Facility",
         "address": "〒115-0054 東京都北区桐ケ丘１丁目９−２",
         "isClosed": false,
         "youtubeId": "qTXQcT4Zz5A",
@@ -727,7 +689,6 @@
       "type": "Feature",
       "properties": {
         "name": "自家製麺 伊藤 赤羽店",
-        "category": "Restaurant",
         "address": "〒115-0045 東京都北区赤羽１丁目２−４",
         "isClosed": false,
         "youtubeId": "qTXQcT4Zz5A",
@@ -746,7 +707,6 @@
       "type": "Feature",
       "properties": {
         "name": "DOO's DELI",
-        "category": "Restaurant",
         "address": "〒238-0004 神奈川県横須賀市小川町２３−１ フドウ横須賀三笠ハイツ",
         "isClosed": false,
         "youtubeId": "gaf3Nda-BTM",
@@ -765,7 +725,6 @@
       "type": "Feature",
       "properties": {
         "name": "猿島",
-        "category": "TouristSpot",
         "address": "〒238-0019 神奈川県横須賀市猿島",
         "isClosed": false,
         "youtubeId": "gaf3Nda-BTM",
@@ -784,7 +743,6 @@
       "type": "Feature",
       "properties": {
         "name": "Yokosuka Gelato Factory",
-        "category": "Restaurant",
         "address": "〒238-0005 神奈川県横須賀市新港町６",
         "isClosed": false,
         "youtubeId": "gaf3Nda-BTM",
@@ -803,7 +761,6 @@
       "type": "Feature",
       "properties": {
         "name": "ドムドムハンバーガー 東大島店",
-        "category": "Restaurant",
         "address": "〒136-0072 東京都江東区大島７丁目３８−３０",
         "isClosed": false,
         "youtubeId": "jV9Z79u7QrQ",
@@ -822,7 +779,6 @@
       "type": "Feature",
       "properties": {
         "name": "奥野ビル",
-        "category": "Facility",
         "address": "〒104-0061 東京都中央区銀座１丁目９−８",
         "isClosed": false,
         "youtubeId": "Xrl_OBcLQmw",
@@ -841,7 +797,6 @@
       "type": "Feature",
       "properties": {
         "name": "SO Ponte 銀座ブーケ",
-        "category": "Shop",
         "address": "〒104-0061 東京都中央区銀座１丁目９−８ 401",
         "isClosed": false,
         "youtubeId": "Xrl_OBcLQmw",
@@ -860,7 +815,6 @@
       "type": "Feature",
       "properties": {
         "name": "中銀カプセルタワービル",
-        "category": "TouristSpot",
         "address": "〒104-0061 東京都中央区銀座８丁目１６−１０",
         "isClosed": true,
         "youtubeId": "Xrl_OBcLQmw",
@@ -879,7 +833,6 @@
       "type": "Feature",
       "properties": {
         "name": "トリコロール本店",
-        "category": "Restaurant",
         "address": "〒104-0061 東京都中央区銀座５丁目９−１７",
         "isClosed": false,
         "youtubeId": "Xrl_OBcLQmw",
@@ -898,7 +851,6 @@
       "type": "Feature",
       "properties": {
         "name": "沼垂テラス商店街",
-        "category": "Facility",
         "address": "〒950-0075 新潟県新潟市中央区沼垂東３丁目５",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -917,7 +869,6 @@
       "type": "Feature",
       "properties": {
         "name": "編むと紡ぐ",
-        "category": "Restaurant",
         "address": "〒950-0075 新潟県新潟市中央区沼垂東３丁目５−１６",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -936,7 +887,6 @@
       "type": "Feature",
       "properties": {
         "name": "青海ショッピングセンター",
-        "category": "Restaurant",
         "address": "〒951-8067 新潟県新潟市中央区本町通６番町１１１４",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -955,7 +905,6 @@
       "type": "Feature",
       "properties": {
         "name": "ぽんしゅ館 新潟驛店",
-        "category": "Restaurant",
         "address": "〒950-0086 新潟県新潟市中央区花園１丁目９６−４７ CoCoLo新潟 メッツ館",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -974,7 +923,6 @@
       "type": "Feature",
       "properties": {
         "name": "新潟駅南口 駅前市場",
-        "category": "Restaurant",
         "address": "〒950-0916 新潟県新潟市中央区米山２丁目１−２０",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -993,7 +941,6 @@
       "type": "Feature",
       "properties": {
         "name": "越後番屋酒場",
-        "category": "Restaurant",
         "address": "〒950-0901 新潟県新潟市中央区弁天１丁目２−４ ホテルグローバルビュー新潟1F",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -1012,7 +959,6 @@
       "type": "Feature",
       "properties": {
         "name": "万代そば",
-        "category": "Restaurant",
         "address": "〒950-0088 新潟県新潟市中央区万代１丁目６−１ 万代シテイバスセンタービル 1階",
         "isClosed": false,
         "youtubeId": "3OgRC-yN7u8",
@@ -1031,7 +977,6 @@
       "type": "Feature",
       "properties": {
         "name": "DRUNK TACOS",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志１丁目１−９",
         "isClosed": false,
         "youtubeId": "CHclHYU45DU",
@@ -1050,7 +995,6 @@
       "type": "Feature",
       "properties": {
         "name": "H&Bジェラ沖縄",
-        "category": "Restaurant",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１ 2階 第一牧志公設市場２階",
         "isClosed": false,
         "youtubeId": "CHclHYU45DU",
@@ -1069,7 +1013,6 @@
       "type": "Feature",
       "properties": {
         "name": "THE ORION BEER DINING",
-        "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里１丁目２−２１ 1階",
         "isClosed": false,
         "youtubeId": "CHclHYU45DU",
@@ -1088,7 +1031,6 @@
       "type": "Feature",
       "properties": {
         "name": "ひいき屋",
-        "category": "Restaurant",
         "address": "〒902-0067 沖縄県那覇市安里３７９",
         "isClosed": false,
         "youtubeId": "CHclHYU45DU",
@@ -1107,7 +1049,6 @@
       "type": "Feature",
       "properties": {
         "name": "DAILY DOSE coffee shop",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志３丁目６−１５ b102 DINER 2階",
         "isClosed": true,
         "youtubeId": "sRZd80wSjP8",
@@ -1126,7 +1067,6 @@
       "type": "Feature",
       "properties": {
         "name": "お食事処 きらく食堂",
-        "category": "Restaurant",
         "address": "〒900-0014 沖縄県那覇市松尾２丁目１０−１ 第一牧志公設市場 ２階",
         "isClosed": false,
         "youtubeId": "sRZd80wSjP8",
@@ -1145,7 +1085,6 @@
       "type": "Feature",
       "properties": {
         "name": "沖縄美ら海水族館",
-        "category": "TouristSpot",
         "address": "〒905-0206 沖縄県国頭郡本部町石川４２４",
         "isClosed": false,
         "youtubeId": "sRZd80wSjP8",
@@ -1164,7 +1103,6 @@
       "type": "Feature",
       "properties": {
         "name": "ジェフ サンライズ那覇店",
-        "category": "Restaurant",
         "address": "〒902-0065 沖縄県那覇市壺屋１丁目１−５",
         "isClosed": false,
         "youtubeId": "sRZd80wSjP8",
@@ -1183,7 +1121,6 @@
       "type": "Feature",
       "properties": {
         "name": "うちなー家",
-        "category": "Restaurant",
         "address": "〒900-0013 沖縄県那覇市牧志３丁目２−６３ 嘉手納ビル２階",
         "isClosed": false,
         "youtubeId": "sRZd80wSjP8",
@@ -1202,7 +1139,6 @@
       "type": "Feature",
       "properties": {
         "name": "浅草地下商店街",
-        "category": "Facility",
         "address": "〒111-0032 東京都台東区浅草１丁目１−１２ 地下1階",
         "isClosed": false,
         "youtubeId": "QJ5rbehJC_8",
@@ -1221,7 +1157,6 @@
       "type": "Feature",
       "properties": {
         "name": "浅草やきそば 福ちゃん",
-        "category": "Restaurant",
         "address": "〒111-0032 東京都台東区浅草１丁目１−１２",
         "isClosed": false,
         "youtubeId": "QJ5rbehJC_8",
@@ -1240,7 +1175,6 @@
       "type": "Feature",
       "properties": {
         "name": "Frites Bruges",
-        "category": "Restaurant",
         "address": "〒111-0032 東京都台東区浅草１丁目１４−１",
         "isClosed": false,
         "youtubeId": "QJ5rbehJC_8",
@@ -1259,7 +1193,6 @@
       "type": "Feature",
       "properties": {
         "name": "凌雲閣 跡地",
-        "category": "TouristSpot",
         "address": "〒111-0032 東京都台東区浅草２丁目１４−７",
         "isClosed": false,
         "youtubeId": "QJ5rbehJC_8",
@@ -1278,7 +1211,6 @@
       "type": "Feature",
       "properties": {
         "name": "神谷バー",
-        "category": "Restaurant",
         "address": "〒111-0032 東京都台東区浅草１丁目１−１ 神谷ビル",
         "isClosed": false,
         "youtubeId": "QJ5rbehJC_8",
@@ -1297,7 +1229,6 @@
       "type": "Feature",
       "properties": {
         "name": "アメ横センタービル",
-        "category": "Facility",
         "address": "〒110-0005 東京都台東区上野４丁目７−８",
         "isClosed": false,
         "youtubeId": "xJEd9VnJCTs",
@@ -1316,7 +1247,6 @@
       "type": "Feature",
       "properties": {
         "name": "国道駅",
-        "category": "Facility",
         "address": "〒230-0052 神奈川県横浜市鶴見区生麦５丁目１２",
         "isClosed": false,
         "youtubeId": "sLaZPCDrXho",
@@ -1335,7 +1265,6 @@
       "type": "Feature",
       "properties": {
         "name": "珈琲専門店 山百合",
-        "category": "Restaurant",
         "address": "〒230-0051 神奈川県横浜市鶴見区鶴見中央４丁目２１−１２",
         "isClosed": false,
         "youtubeId": "sLaZPCDrXho",
@@ -1354,7 +1283,6 @@
       "type": "Feature",
       "properties": {
         "name": "ドムドムハンバーガーPLUS 銀座店",
-        "category": "Restaurant",
         "address": "〒104-0061 東京都中央区銀座３丁目５−１６",
         "isClosed": true,
         "youtubeId": "sz4lo9DIVis",
@@ -1373,7 +1301,6 @@
       "type": "Feature",
       "properties": {
         "name": "ビヤホールライオン 銀座七丁目店",
-        "category": "Restaurant",
         "address": "〒104-0061 東京都中央区銀座７丁目９−２０ 銀座ライオン七丁目ビル",
         "isClosed": false,
         "youtubeId": "sz4lo9DIVis",
@@ -1392,7 +1319,6 @@
       "type": "Feature",
       "properties": {
         "name": "チョンキンマンション（重慶大厦）",
-        "category": "Facility",
         "address": "Chungking Mansion, 36-44 Nathan Rd, Tsim Sha Tsui, 香港",
         "isClosed": false,
         "youtubeId": "ZSTvNGARZAc",
@@ -1411,7 +1337,6 @@
       "type": "Feature",
       "properties": {
         "name": "Woody House",
-        "category": "Hotel",
         "address": "19 Hing Wan Street, 19 Hing Wan St, Wan Chai, 香港",
         "isClosed": false,
         "youtubeId": "ZSTvNGARZAc",
@@ -1430,7 +1355,6 @@
       "type": "Feature",
       "properties": {
         "name": "Lang's Cafe（瀾之茶居）",
-        "category": "Restaurant",
         "address": "地下A鋪及, B鋪, Vanville, 8號 Tai Yuen St, Wan Chai, 香港",
         "isClosed": true,
         "youtubeId": "ZSTvNGARZAc",
@@ -1449,7 +1373,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tankyu Distillery（丹丘蒸留所）",
-        "category": "Restaurant",
         "address": "Unit 301, 45 Pak Tin Par St, Tsuen Wan, 香港",
         "isClosed": false,
         "youtubeId": "ZSTvNGARZAc",
@@ -1468,7 +1391,6 @@
       "type": "Feature",
       "properties": {
         "name": "Cafe Match Box（喜喜冰室）",
-        "category": "Restaurant",
         "address": "57 Paterson St, Causeway Bay, 香港",
         "isClosed": true,
         "youtubeId": "ZSTvNGARZAc",
@@ -1487,7 +1409,6 @@
       "type": "Feature",
       "properties": {
         "name": "Duen Kee Chinese Restaurant（端記茶樓）",
-        "category": "Restaurant",
         "address": "香港 Tsuen Wan, Rte Twisk, 川龍村57-58號",
         "isClosed": false,
         "youtubeId": "ZSTvNGARZAc",
@@ -1506,7 +1427,6 @@
       "type": "Feature",
       "properties": {
         "name": "Yick Cheong Building（益昌大廈）",
-        "category": "Facility",
         "address": "Yick Cheong Building, King's Rd, Quarry Bay, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1525,7 +1445,6 @@
       "type": "Feature",
       "properties": {
         "name": "Choi Hung Estate（彩虹邨）",
-        "category": "TouristSpot",
         "address": "Ching Yeung Ave, Ngau Chi Wan, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1544,7 +1463,6 @@
       "type": "Feature",
       "properties": {
         "name": "Kowloon Walled City Park（九龍寨城公園）",
-        "category": "TouristSpot",
         "address": "Kowloon City, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1563,7 +1481,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tai Wo Tang Cafe（大和堂）",
-        "category": "Restaurant",
         "address": "24號 Nga Tsin Long Rd, Kowloon City, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1582,7 +1499,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tei Mou Koon Dessert（地茂館甜品）",
-        "category": "Restaurant",
         "address": "47 Fuk Lo Tsun Rd, Kowloon City, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1601,7 +1517,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tsim Chai Kee Noodle（沾仔記）",
-        "category": "Restaurant",
         "address": "153 Queen's Road Central, Central, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1620,7 +1535,6 @@
       "type": "Feature",
       "properties": {
         "name": "Mak's Noodle（麥奀雲吞麵世家）",
-        "category": "Restaurant",
         "address": "77 Wellington St, Central, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1639,7 +1553,6 @@
       "type": "Feature",
       "properties": {
         "name": "Chung Kee Congee（忠記粥品）",
-        "category": "Restaurant",
         "address": "283 Hennessy Rd, Wan Chai, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1658,7 +1571,6 @@
       "type": "Feature",
       "properties": {
         "name": "Bakehouse (Wan Chai)",
-        "category": "Restaurant",
         "address": "14 Tai Wong St E, Wan Chai, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1677,7 +1589,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tai Kwun（大館）",
-        "category": "TouristSpot",
         "address": "Hollywood Rd, Central, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1696,7 +1607,6 @@
       "type": "Feature",
       "properties": {
         "name": "Tai Cheong Bakery（泰昌餅家）",
-        "category": "Restaurant",
         "address": "35號 Lyndhurst Terrace, Central, 香港",
         "isClosed": false,
         "youtubeId": "ZCqo6WZ1ytI",
@@ -1715,7 +1625,6 @@
       "type": "Feature",
       "properties": {
         "name": "フレッシュネスバーガー 富ヶ谷店",
-        "category": "Restaurant",
         "address": "〒151-0063 東京都渋谷区富ケ谷２丁目２３−２３",
         "isClosed": false,
         "youtubeId": "T6cdbCTG4RU",
@@ -1734,7 +1643,6 @@
       "type": "Feature",
       "properties": {
         "name": "伊良コーラ 渋谷神宮前",
-        "category": "Restaurant",
         "address": "〒150-0001 東京都渋谷区神宮前５丁目２９−１２ 武居ビル",
         "isClosed": false,
         "youtubeId": "T6cdbCTG4RU",
@@ -1753,7 +1661,6 @@
       "type": "Feature",
       "properties": {
         "name": "CHAYA松緒",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中３丁目１２−１",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1772,7 +1679,6 @@
       "type": "Feature",
       "properties": {
         "name": "肉のサトー",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1791,7 +1697,6 @@
       "type": "Feature",
       "properties": {
         "name": "越後屋酒店",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1810,7 +1715,6 @@
       "type": "Feature",
       "properties": {
         "name": "空薫",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中３丁目１３−２",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1829,7 +1733,6 @@
       "type": "Feature",
       "properties": {
         "name": "カヤバ珈琲",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中６丁目１−２９",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1848,7 +1751,6 @@
       "type": "Feature",
       "properties": {
         "name": "谷中霊園",
-        "category": "Restaurant",
         "address": "〒110-0001 東京都台東区谷中７丁目５−２４",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1867,7 +1769,6 @@
       "type": "Feature",
       "properties": {
         "name": "谷中ビアホール",
-        "category": "Restaurant",
         "address": "〒110-0002 東京都台東区上野桜木２丁目１５−６",
         "isClosed": false,
         "youtubeId": "Yd23K3M17Ww",
@@ -1886,7 +1787,6 @@
       "type": "Feature",
       "properties": {
         "name": "コメダ珈琲店 今池店",
-        "category": "Restaurant",
         "address": "〒464-0850 愛知県名古屋市千種区今池１丁目２９−１４ 杉浦ビル",
         "isClosed": false,
         "youtubeId": "ugP0f_JvYKo",
@@ -1905,7 +1805,6 @@
       "type": "Feature",
       "properties": {
         "name": "トスカショッピングセンター",
-        "category": "Facility",
         "address": "〒457-0862 愛知県名古屋市南区内田橋２丁目２６−２２ 豊田本町市街地住宅",
         "isClosed": false,
         "youtubeId": "ugP0f_JvYKo",
@@ -1924,7 +1823,6 @@
       "type": "Feature",
       "properties": {
         "name": "石見大崎鼻灯台",
-        "category": "TouristSpot",
         "address": "〒699-3161 島根県江津市波子町",
         "isClosed": false,
         "youtubeId": "pZnqWKQkgNY",
@@ -1943,7 +1841,6 @@
       "type": "Feature",
       "properties": {
         "name": "Showcase Hotel KASANE",
-        "category": "Hotel",
         "address": "〒695-0156 島根県江津市有福温泉町６９７",
         "isClosed": false,
         "youtubeId": "pZnqWKQkgNY",
@@ -1962,7 +1859,6 @@
       "type": "Feature",
       "properties": {
         "name": "湯の町神楽殿",
-        "category": "TouristSpot",
         "address": "〒695-0156 島根県江津市有福温泉町５４６",
         "isClosed": false,
         "youtubeId": "pZnqWKQkgNY",
@@ -1981,7 +1877,6 @@
       "type": "Feature",
       "properties": {
         "name": "島根県立しまね海洋館 アクアス",
-        "category": "TouristSpot",
         "address": "〒697-0004 島根県浜田市久代町１１１７−２",
         "isClosed": false,
         "youtubeId": "pZnqWKQkgNY",
@@ -2000,7 +1895,6 @@
       "type": "Feature",
       "properties": {
         "name": "なぎの木テラス",
-        "category": "Restaurant",
         "address": "〒699-2841 島根県江津市後地町3348-113",
         "isClosed": false,
         "youtubeId": "pZnqWKQkgNY",
@@ -2019,7 +1913,6 @@
       "type": "Feature",
       "properties": {
         "name": "すみだ水族館",
-        "category": "TouristSpot",
         "address": "〒131-0045 東京都墨田区押上１丁目１−２ 東京スカイツリータウン・ソラマチ ５階～６階",
         "isClosed": false,
         "youtubeId": "Jzac55_uW7s",
@@ -2038,7 +1931,6 @@
       "type": "Feature",
       "properties": {
         "name": "ペンギンカフェ",
-        "category": "Restaurant",
         "address": "〒131-0045 東京都墨田区押上１丁目１−２ 東京スカイツリータウン・ソラマチ ５階～６階",
         "isClosed": false,
         "youtubeId": "Jzac55_uW7s",
@@ -2057,7 +1949,6 @@
       "type": "Feature",
       "properties": {
         "name": "イタリア料理カプリチョーザ渋谷本店",
-        "category": "Restaurant",
         "address": "〒150-0011 東京都渋谷区東１丁目３−１ ショッピングプラザカミニート 1F",
         "isClosed": false,
         "youtubeId": "iaEGirGI3Rc",
@@ -2076,7 +1967,6 @@
       "type": "Feature",
       "properties": {
         "name": "渋谷氷川神社",
-        "category": "TouristSpot",
         "address": "〒150-0011 東京都渋谷区東２丁目５−６ 氷川神社",
         "isClosed": false,
         "youtubeId": "iaEGirGI3Rc",
@@ -2095,7 +1985,6 @@
       "type": "Feature",
       "properties": {
         "name": "國學院大學博物館",
-        "category": "TouristSpot",
         "address": "〒150-8440 東京都渋谷区東４丁目１０−２８",
         "isClosed": false,
         "youtubeId": "iaEGirGI3Rc",
@@ -2114,7 +2003,6 @@
       "type": "Feature",
       "properties": {
         "name": "BrewDog Roppongi",
-        "category": "Restaurant",
         "address": "〒106-0032 東京都港区六本木５丁目３−２ 齋藤ビル 1F",
         "isClosed": true,
         "youtubeId": "iaEGirGI3Rc",
@@ -2133,7 +2021,6 @@
       "type": "Feature",
       "properties": {
         "name": "SHIBUYA TSUTAYA SHARE LOUNGE",
-        "category": "Facility",
         "address": "〒150-0042 東京都渋谷区宇田川町２１−６ SHIBUYA TSUTAYA 4階",
         "isClosed": false,
         "youtubeId": "hL7lM2NuJ7I",
@@ -2152,7 +2039,6 @@
       "type": "Feature",
       "properties": {
         "name": "Mikkeller Tokyo",
-        "category": "Restaurant",
         "address": "〒150-0043 東京都渋谷区道玄坂２丁目１９−１１",
         "isClosed": false,
         "youtubeId": "hL7lM2NuJ7I",
@@ -2171,7 +2057,6 @@
       "type": "Feature",
       "properties": {
         "name": "ニュー新橋ビル",
-        "category": "Facility",
         "address": "〒105-0004 東京都港区新橋２丁目１６−１",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2190,7 +2075,6 @@
       "type": "Feature",
       "properties": {
         "name": "肉の万世 新橋店",
-        "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋２丁目１６−１ ニュー新橋ビル 3階",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2209,7 +2093,6 @@
       "type": "Feature",
       "properties": {
         "name": "旧新橋停車場 鉄道歴史展示室",
-        "category": "TouristSpot",
         "address": "〒105-0021 東京都港区東新橋１丁目５-３",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2228,7 +2111,6 @@
       "type": "Feature",
       "properties": {
         "name": "新橋駅前ビル1号館",
-        "category": "Facility",
         "address": "〒105-0004 東京都港区新橋２丁目２０−１５",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2247,7 +2129,6 @@
       "type": "Feature",
       "properties": {
         "name": "パーラーキムラヤ",
-        "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋２丁目２０−１５ 新橋駅前ビル1号館 B1F",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2266,7 +2147,6 @@
       "type": "Feature",
       "properties": {
         "name": "Viva okei ワインショップ＆イタリアン",
-        "category": "Restaurant",
         "address": "〒105-0004 東京都港区新橋２丁目２０−１５ 新橋駅前ビル1号館 1F",
         "isClosed": false,
         "youtubeId": "OOimxDZ8D0Y",
@@ -2285,7 +2165,6 @@
       "type": "Feature",
       "properties": {
         "name": "Fu Wah Cafe（富華氷室）",
-        "category": "Restaurant",
         "address": "shop, Portland Street, 41 Pitt St, Yau Ma Tei, 香港",
         "isClosed": false,
         "youtubeId": "nMw43TCLhjc",
@@ -2304,7 +2183,6 @@
       "type": "Feature",
       "properties": {
         "name": "Ho Lan Jeng（何蘭正）",
-        "category": "Restaurant",
         "address": "香港 Central, Wyndham St, 29號LKF292/F",
         "isClosed": false,
         "youtubeId": "nMw43TCLhjc",
@@ -2323,7 +2201,6 @@
       "type": "Feature",
       "properties": {
         "name": "Ping Pong 129（乒乓城）",
-        "category": "Restaurant",
         "address": "129 Second Street L/G Nam Cheong House, Sai Ying Pun, 香港",
         "isClosed": false,
         "youtubeId": "nMw43TCLhjc",
@@ -2342,7 +2219,6 @@
       "type": "Feature",
       "properties": {
         "name": "Sham Tsai Kee（深仔記）",
-        "category": "Restaurant",
         "address": "香港 Kwun Tong, Tsun Yip Ln, 6號G/F Block A",
         "isClosed": false,
         "youtubeId": "nMw43TCLhjc",
@@ -2361,7 +2237,6 @@
       "type": "Feature",
       "properties": {
         "name": "Yau Ma Tei Wholesale Fruit Market（油麻地果欄）",
-        "category": "Facility",
         "address": "202 Reclamation St, Yau Ma Tei, 香港",
         "isClosed": false,
         "youtubeId": "nMw43TCLhjc",
@@ -2380,7 +2255,6 @@
       "type": "Feature",
       "properties": {
         "name": "Ban Heung Lau（品香楼中西風味餐庁）",
-        "category": "Restaurant",
         "address": "2樓平台204-205室, 南山邨南豐樓, 九龍仔, Kowloon Tong, 香港",
         "isClosed": false,
         "youtubeId": "3aaczCUWXaU",
@@ -2399,7 +2273,6 @@
       "type": "Feature",
       "properties": {
         "name": "Nam Shan Estate（南山邨）",
-        "category": "Restaurant",
         "address": "Nam Shan Chuen Rd, Kowloon Tong, 香港",
         "isClosed": false,
         "youtubeId": "3aaczCUWXaU",
@@ -2418,7 +2291,6 @@
       "type": "Feature",
       "properties": {
         "name": "SuperSuper（一粥麵） Marina Square",
-        "category": "Restaurant",
         "address": "South Horizons, 香港",
         "isClosed": false,
         "youtubeId": "3aaczCUWXaU",
@@ -2437,7 +2309,6 @@
       "type": "Feature",
       "properties": {
         "name": "TAP: The Ale Project",
-        "category": "Restaurant",
         "address": "G/F, 19 Hak Po St, Mong Kok, 香港",
         "isClosed": false,
         "youtubeId": "3aaczCUWXaU",
@@ -2456,7 +2327,6 @@
       "type": "Feature",
       "properties": {
         "name": "Kai Kee Restaurant（佳記餐廳）",
-        "category": "Restaurant",
         "address": "香港 Mong Kok, Portland St, 177-181號, Mansun House, 地舖",
         "isClosed": false,
         "youtubeId": "3aaczCUWXaU",
@@ -2475,7 +2345,6 @@
       "type": "Feature",
       "properties": {
         "name": "欧風カレー ボンディ 神保町本店",
-        "category": "Restaurant",
         "address": "〒101-0051 東京都千代田区神田神保町２丁目３−３ 神田古書センタービル ２階",
         "isClosed": false,
         "youtubeId": "WsjL7CU4zX8",
@@ -2494,7 +2363,6 @@
       "type": "Feature",
       "properties": {
         "name": "古瀬戸珈琲店",
-        "category": "Restaurant",
         "address": "〒101-0052 東京都千代田区神田小川町３丁目１０",
         "isClosed": false,
         "youtubeId": "WsjL7CU4zX8",
@@ -2513,7 +2381,6 @@
       "type": "Feature",
       "properties": {
         "name": "亀有香取神社",
-        "category": "TouristSpot",
         "address": "〒125-0061 東京都葛飾区亀有３丁目４２−２４",
         "isClosed": false,
         "youtubeId": "qXP9Ixv5Wlc",
@@ -2532,7 +2399,6 @@
       "type": "Feature",
       "properties": {
         "name": "カフェ こぼれび",
-        "category": "Restaurant",
         "address": "〒125-0061 東京都葛飾区亀有３丁目３２−１",
         "isClosed": false,
         "youtubeId": "qXP9Ixv5Wlc",
@@ -2551,7 +2417,6 @@
       "type": "Feature",
       "properties": {
         "name": "SKWAT KAMEARI ART CENTRE",
-        "category": "TouristSpot",
         "address": "〒125-0002 東京都葛飾区西亀有３丁目２６−４",
         "isClosed": false,
         "youtubeId": "qXP9Ixv5Wlc",
@@ -2570,7 +2435,6 @@
       "type": "Feature",
       "properties": {
         "name": "ホワイト餃子 亀有店",
-        "category": "Restaurant",
         "address": "〒124-0002 東京都葛飾区西亀有４丁目１１−１５",
         "isClosed": false,
         "youtubeId": "qXP9Ixv5Wlc",
@@ -2589,7 +2453,6 @@
       "type": "Feature",
       "properties": {
         "name": "東成田駅",
-        "category": "Facility",
         "address": "〒286-0104 千葉県成田市古込",
         "isClosed": false,
         "youtubeId": "XxruCww43e8",
@@ -2608,7 +2471,6 @@
       "type": "Feature",
       "properties": {
         "name": "松戸富田麺旦",
-        "category": "Restaurant",
         "address": "〒286-0111 千葉県成田市三里塚御料牧場1-1 中央ビル 成田空港第1ターミナル4階 NARITA Dining Terrace",
         "isClosed": false,
         "youtubeId": "XxruCww43e8",
@@ -2627,7 +2489,6 @@
       "type": "Feature",
       "properties": {
         "name": "MOM&POP'S GELATO",
-        "category": "Restaurant",
         "address": "〒106-6190 東京都港区六本木６丁目１０−１ 六本木ヒルズ森タワー ヒルサイド地下2階",
         "isClosed": false,
         "youtubeId": "Du0_EEjfwEU",
@@ -2646,7 +2507,6 @@
       "type": "Feature",
       "properties": {
         "name": "渋谷区ふれあい植物センター",
-        "category": "Restaurant",
         "address": "〒150-0011 東京都渋谷区東２丁目２５−３７",
         "isClosed": false,
         "youtubeId": "2P5XxJvGPeI",
@@ -2665,7 +2525,6 @@
       "type": "Feature",
       "properties": {
         "name": "第２大番ビル",
-        "category": "Facility",
         "address": "〒150-0043 東京都渋谷区道玄坂１丁目１１−１",
         "isClosed": false,
         "youtubeId": "2P5XxJvGPeI",
@@ -2684,7 +2543,6 @@
       "type": "Feature",
       "properties": {
         "name": "世界の朝ごはん TASTE THE WORLD 新宿店",
-        "category": "Restaurant",
         "address": "〒160-0022 東京都新宿区新宿４丁目３−１５ レイフラット 新宿 103",
         "isClosed": false,
         "youtubeId": "-97HYr-Avwg",
@@ -2703,7 +2561,6 @@
       "type": "Feature",
       "properties": {
         "name": "酒食堂 虎ノ門蒸留所",
-        "category": "Restaurant",
         "address": "〒105-6403 東京都港区虎ノ門１丁目１７−１ 虎ノ門ヒルズ ビジネスタワー 3F 虎ノ門横丁",
         "isClosed": false,
         "youtubeId": "vGy1sxs-jB0",
@@ -2722,7 +2579,6 @@
       "type": "Feature",
       "properties": {
         "name": "Uchu Brewing Toranomon",
-        "category": "Restaurant",
         "address": "〒105-0001 東京都港区虎ノ門１丁目２２−１ ヒルズ グラスロック 2F",
         "isClosed": false,
         "youtubeId": "vGy1sxs-jB0",
@@ -2741,7 +2597,6 @@
       "type": "Feature",
       "properties": {
         "name": "びっくりドンキー 北千住店",
-        "category": "Restaurant",
         "address": "〒120-0035 東京都足立区千住中居町１７−２０ マルアイビル",
         "isClosed": false,
         "youtubeId": "t6xbuoRhe-Q",
@@ -2760,7 +2615,6 @@
       "type": "Feature",
       "properties": {
         "name": "伊東合資",
-        "category": "TouristSpot",
         "address": "〒475-0023 愛知県半田市亀崎町９丁目１１１",
         "isClosed": false,
         "youtubeId": "dmIeiS1dRnQ",
@@ -2779,7 +2633,6 @@
       "type": "Feature",
       "properties": {
         "name": "GINZA NISHIKAWA COFFEE ROASTERY 食パンカフェレストラン 蔵前店",
-        "category": "Restaurant",
         "address": "〒111-0051 東京都台東区蔵前４丁目１−１ 蔵前ビル",
         "isClosed": false,
         "youtubeId": "-CrU_Ue2dZI",
@@ -2798,7 +2651,6 @@
       "type": "Feature",
       "properties": {
         "name": "ペリカンカフェ",
-        "category": "Restaurant",
         "address": "〒111-0042 東京都台東区寿３丁目９−１１ 1階",
         "isClosed": false,
         "youtubeId": "-CrU_Ue2dZI",
@@ -2817,7 +2669,6 @@
       "type": "Feature",
       "properties": {
         "name": "高円寺ストリート",
-        "category": "Facility",
         "address": "〒166-0003 東京都杉並区高円寺南３丁目６８",
         "isClosed": false,
         "youtubeId": "hum1jzkWfyE",
@@ -2836,7 +2687,6 @@
       "type": "Feature",
       "properties": {
         "name": "アール座 読書館",
-        "category": "Restaurant",
         "address": "〒166-0003 東京都杉並区高円寺南３丁目５７−６",
         "isClosed": false,
         "youtubeId": "hum1jzkWfyE",
@@ -2855,7 +2705,6 @@
       "type": "Feature",
       "properties": {
         "name": "アンドビール",
-        "category": "Restaurant",
         "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 １０５",
         "isClosed": false,
         "youtubeId": "hum1jzkWfyE",
