@@ -10,7 +10,7 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 
 - Before starting any work, be sure to create or check an Issue.
 - Always link your branch to an Issue. (e.g., `feat/123-newFeature`)
-- In your pull request, always reference the Issue number. (e.g., `Closes #123`) For how to link pull requests and Issues, see the [official documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
+- When creating a pull request, please ensure it is linked to an issue. For instructions on linking pull requests to issues, refer to the [official documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
 
 ## About Commits
 

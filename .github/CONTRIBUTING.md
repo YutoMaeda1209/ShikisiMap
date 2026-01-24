@@ -10,7 +10,7 @@
 
 - 作業を始める前に、必ず Issue を作成または確認してください。
 - ブランチは必ず Issue と紐付けてください。（例: `feat/123-newFeature`）
-- プルリクエストでは、必ず Issue 番号を参照してください。（例: `Closes #123`）プルリクエストと Issue の紐付け方法については[公式ドキュメント](https://docs.github.com/ja/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)を参照してください。
+- プルリクエストでは、必ずIssueとリンクさせてください。プルリクエストとIssueの紐付け方法については[公式ドキュメント](https://docs.github.com/ja/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)を参照してください。
 
 ## コミットについて
 
