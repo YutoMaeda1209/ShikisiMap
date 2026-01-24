@@ -40,7 +40,7 @@ function SpotList(props: {height: number}) {
       <div id="spotListSearch">
         <input
           aria-label="検索"
-          placeholder="検索 (名前・カテゴリ・住所)"
+          placeholder="検索 (名前・住所)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
