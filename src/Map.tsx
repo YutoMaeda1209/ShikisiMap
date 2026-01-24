@@ -16,14 +16,16 @@ function Map() {
   // Pan map to selected location when selectedId changes
   useEffect(() => {
     if (selectedId === null || !mapRef.current) return;
-    const coords = spotsData.features[selectedId].geometry.coordinates;
+    const feature = spotsData.features.find(feature => feature.id === selectedId);
+    if (!feature) return;
+    const coords = feature.geometry.coordinates;
     mapRef.current.panTo(new L.LatLng(coords[1], coords[0]));
   }, [selectedId, mapRef]);
 
   // Function to handle feature clicks
   function onEachFeature(feature: Feature<Geometry, GeoProperties>, layer: Layer) {
     (layer as L.Evented).on('click', () => {
-      select(feature.id as number);
+      select(feature.id as string);
     });
   }
 

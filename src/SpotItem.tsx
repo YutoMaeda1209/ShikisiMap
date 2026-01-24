@@ -19,7 +19,7 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
   const spotItemRootRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (selectedId !== index || !spotItemRootRef.current) return;
+    if (selectedId !== feature.id || !spotItemRootRef.current) return;
     const spotItemRef = spotItemRootRef.current;
     spotItemRef.classList.add("blink-highlight");
     const t = setTimeout(() => spotItemRef.classList.remove("blink-highlight"), 1500);
@@ -27,11 +27,11 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
       spotItemRef.classList.remove("blink-highlight");
       clearTimeout(t);
     };
-  }, [selectedId, index]);
+  }, [selectedId, feature.id]);
 
   function onClickSpotItem() {
     if (isClosed) return;
-    select(feature.id as number);
+    select(feature.id as string);
   }
 
   return (

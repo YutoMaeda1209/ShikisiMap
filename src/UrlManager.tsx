@@ -8,18 +8,16 @@ function UrlManager() {
   useEffect(() => {
     if (selectedId !== null) return;
     const params = new URLSearchParams(window.location.search);
-    const spotParam = params.get('spotId');
-    if (!spotParam) return;
-    const id = Number(spotParam);
-    if (Number.isNaN(id)) return;
-    select(id);
+    const spotId = params.get('spotId');
+    if (!spotId) return;
+    select(spotId);
   }, [select, selectedId]);
 
   // Whenever the selectedId changes, update the URL parameter
   useEffect(() => {
     if (selectedId === null) return;
     const params = new URLSearchParams(window.location.search);
-    params.set('spotId', selectedId.toString());
+    params.set('spotId', selectedId);
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     window.history.replaceState({}, '', newUrl);
   }, [selectedId]);

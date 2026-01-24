@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { List, useListRef } from "react-window";
 import { useLocationSelection } from "./locationSelectionContext";
-import { spotsData } from "./mapData";
+import { idToIndex, spotsData } from "./mapData";
 import SpotItem from "./SpotItem";
 import "./SpotList.css";
 
@@ -18,7 +18,7 @@ function SpotList(props: {height: number}) {
     listRef.current.scrollToRow({
       align: "center",
       behavior: "smooth",
-      index: selectedId
+      index: idToIndex(selectedId),
     });
   }, [listRef, selectedId]);
 
