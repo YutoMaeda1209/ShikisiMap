@@ -1,9 +1,10 @@
 ---
 name: バグ報告
 about: 改善に役立つ報告を作成します
-title: ''
-labels: ''
-assignees: ''
+title: '[BUG]: '
+labels: ['bug']
+assignees:
+  - YutoMaeda1209
 ---
 
 **不具合の概要**

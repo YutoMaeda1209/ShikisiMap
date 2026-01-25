@@ -1,9 +1,10 @@
 ---
 name: 機能要望
 about: このプロジェクトのためのアイデアを提案してください
-title: ''
-labels: ''
-assignees: ''
+title: '[FEAT]: '
+labels: ['enhancement']
+assignees:
+  - YutoMaeda1209
 ---
 
 **この機能要望は問題に関連していますか？ 詳しく説明してください。**
