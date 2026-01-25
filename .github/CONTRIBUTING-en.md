@@ -1,4 +1,4 @@
-[[日本語 (JA)](.github/CONTRIBUTING.md) / English (EN)]
+[[日本語 (JA)](/.github/CONTRIBUTING.md) / English (EN)]
 
 # Contribution Guidelines
 

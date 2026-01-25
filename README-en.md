@@ -1,4 +1,4 @@
-[[日本語 (JA)](README.md) / English (EN)]
+[[日本語 (JA)](/README.md) / English (EN)]
 
 # ShikisiMap
 
@@ -37,7 +37,7 @@ Open the app at the address printed by Vite (usually `http://localhost:5173`).
 
 **Contributing**
 Contributions are welcome — bug reports, feature ideas, and pull requests.
-Please follow the repository's [contribution guidelines](.github/CONTRIBUTING.md).
+Please follow the repository's [contribution guidelines](/.github/CONTRIBUTING.md).
 
 **License**
-See the [LICENSE](LICENSE) file for project licensing information.
+See the [LICENSE](/LICENSE) file for project licensing information.
