@@ -37,6 +37,7 @@
   - `coordinates`: array[number] - `address`の座標（[経度, 緯度]の順）
 
 ## レビュー手順
+1. どのようなスポットを追加するかをIssueで提案する
 1. `src/data.json`にスポットを追加する
 1. [コントリビューションガイドライン](/.github/CONTRIBUTING.md)に従って、Pull Requestを作成する
 1. 一名以上のレビュアーが掲載妥当性、フォーマット、情報を確認する
