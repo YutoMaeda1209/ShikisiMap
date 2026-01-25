@@ -34,7 +34,7 @@ function Sidebar() {
     <div id="sidebarComponent" ref={sidebarRef}>
       <div id="title" ref={titleRef}>
         <img id="logo" src={logo} alt="Logo" />
-        <span id="subtitle">敷嶋てとら ファンメイド<br />聖地巡礼マップ</span>
+        <span id="subtitle">非公式 敷嶋てとら 聖地巡礼マップ</span>
       </div>
       <SpotList height={listHeight} />
     </div>
