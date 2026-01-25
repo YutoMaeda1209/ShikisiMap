@@ -1,8 +1,5 @@
 import type { Feature, Geometry } from 'geojson';
 import L, { type Layer } from 'leaflet';
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useRef } from 'react';
 import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
@@ -16,14 +13,8 @@ function Map() {
   const {selectedId, select} = useLocationSelection();
   const mapRef = useRef<L.Map>(null);
 
+  // Pan map to selected location when selectedId changes
   useEffect(() => {
-    // Fix Leaflet's default icon paths
-    L.Icon.Default.prototype.options.iconUrl = markerIcon;
-    L.Icon.Default.prototype.options.iconRetinaUrl = markerIcon2x;
-    L.Icon.Default.prototype.options.shadowUrl = markerShadow;
-    L.Icon.Default.imagePath = "";
-
-    // Pan map to selected location when selectedId changes
     if (selectedId === null || !mapRef.current) return;
     const feature = spotsData.features.find(feature => feature.id === selectedId);
     if (!feature) return;
