@@ -1,6 +1,8 @@
 .spotItem {
     border-radius: 10px;
     position: relative;
+    border: 1px solid transparent;
+    box-sizing: border-box;
 }
 
 .spotItem:hover {
@@ -8,20 +10,9 @@
     background-color: #f0f0f0;
 }
 
-.spotItem.blink-highlight {
-    animation: blink-bg 1.2s ease-in-out 1;
-}
-
-@keyframes blink-bg {
-    0% {
-        background-color: rgba(0, 0, 0, 0);
-    }
-    10% {
-        background-color: rgba(255, 243, 82, 1);
-    }
-    100% {
-        background-color: rgba(0, 0, 0, 0);
-    }
+.spotItem.selected {
+    background-color: rgba(255, 107, 0, 0.15);
+    border-color: rgba(255, 107, 0, 0.9);
 }
 
 .spotTitle {
