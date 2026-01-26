@@ -5,7 +5,9 @@
     --font-xl: clamp(1.3rem, 1.24rem + 0.2vw, 1.4rem);
 }
 
+html,
 body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }

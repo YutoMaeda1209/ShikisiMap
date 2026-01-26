@@ -1,25 +1,59 @@
 #sidebarComponent {
     --list-gap: 20px;
     --background-color: #ffffff;
+    --content-max: clamp(260px, 80vw, 360px);
 
     background-color: var(--background-color);
     margin: var(--list-gap);
     padding: var(--list-gap);
     height: calc(100% - var(--list-gap) * 2);
-    width: 400px;
+    width: calc(100% - var(--list-gap) * 2);
+    max-width: 400px;
     border-radius: 25px;
     box-shadow: 0 0 10px gray;
     box-sizing: border-box;
 }
 
 #title {
-    margin: 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto 6px;
 }
 
 #logo {
     width: 100%;
+    height: auto;
+    max-height: clamp(48px, 10vh, 96px);
+    object-fit: contain;
 }
 
 #subtitle {
+    display: block;
     font-size: var(--font-lg);
+    line-height: 1.2;
+}
+
+@media (max-height: 480px), (max-width: 520px) {
+    #subtitle {
+        display: none;
+    }
+}
+
+@media (max-height: 480px) {
+    #sidebarComponent {
+        max-width: calc(150px * 16 / 9 + var(--list-gap) * 2);
+    }
+}
+
+@media (max-width: 800px) {
+    #sidebarComponent {
+        --list-gap: 8px;
+        width: calc(100% - var(--list-gap) * 2);
+        max-width: 100%;
+        height: calc(100% - var(--list-gap) * 2);
+        border-radius: 16px;
+    }
 }

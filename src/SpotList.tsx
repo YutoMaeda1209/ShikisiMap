@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { List, useListRef } from "react-window";
 import { useLocationSelection } from "./locationSelectionContext";
 import { idToIndex, spotsData } from "./mapData";
@@ -6,14 +6,22 @@ import SpotItem from "./SpotItem";
 import "./SpotList.css";
 
 // Main SpotList component
-function SpotList(props: {height: number}) {
-  const rowHeight = 300;
+function SpotList(props: { height: number }) {
   const [query, setQuery] = useState("");
   const listRef = useListRef(null);
-  const {selectedId} = useLocationSelection();
+  const { selectedId } = useLocationSelection();
+  const scrollTimeoutRef = useRef<number | null>(null);
+  const measureRef = useRef<HTMLDivElement | null>(null);
+  const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
 
-  // Scroll to selected item when it changes
-  useEffect(()=> {
+  const clearScrollTimeout = useCallback(() => {
+    if (scrollTimeoutRef.current !== null) {
+      window.clearTimeout(scrollTimeoutRef.current);
+      scrollTimeoutRef.current = null;
+    }
+  }, []);
+
+  const scrollToSelected = useCallback(() => {
     if (selectedId === null || !listRef.current) return;
     listRef.current.scrollToRow({
       align: "center",
@@ -21,6 +29,17 @@ function SpotList(props: {height: number}) {
       index: idToIndex(selectedId),
     });
   }, [listRef, selectedId]);
+
+  const scheduleScrollToSelected = useCallback(() => {
+    clearScrollTimeout();
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      scrollToSelected();
+    }, 80);
+  }, [clearScrollTimeout, scrollToSelected]);
+
+  useEffect(() => {
+    scheduleScrollToSelected();
+  }, [selectedId, scheduleScrollToSelected]);
 
   // Filter features based on search query
   const filtered = useMemo(() => {
@@ -35,6 +54,23 @@ function SpotList(props: {height: number}) {
     });
   }, [query]);
 
+  useLayoutEffect(() => {
+    const node = measureRef.current;
+    if (!node) return;
+    const update = () => {
+      const next = Math.ceil(node.getBoundingClientRect().height);
+      setMeasuredHeight((prev) => (prev === next ? prev : next));
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(node);
+    return () => ro.disconnect();
+  }, [filtered.length]);
+
+  const rowHeight = useMemo(() => {
+    return measuredHeight !== null ? measuredHeight + 8 : 240;
+  }, [measuredHeight]);
+
   return (
     <div id="spotListComponent" style={{ height: props.height }}>
       <div id="spotListSearch">
@@ -45,6 +81,29 @@ function SpotList(props: {height: number}) {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
+      {filtered[0] ? (
+        <div
+          ref={measureRef}
+          className={`spotItem${filtered[0].properties.isClosed ? " closed" : ""}`}
+          style={{
+            position: "absolute",
+            visibility: "hidden",
+            pointerEvents: "none",
+            width: "100%",
+            left: 0,
+            top: 0,
+          }}
+        >
+          <span className="spotTitle">
+            <span>{filtered[0].properties.name}</span>
+            {filtered[0].properties.isClosed ? (
+              <span className="closedBadge">閉業</span>
+            ) : null}
+          </span>
+          <div className="yt-lite" />
+          <div className="address">{filtered[0].properties.address}</div>
+        </div>
+      ) : null}
       <List
         id="spotList"
         rowComponent={SpotItem}

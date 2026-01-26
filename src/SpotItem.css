@@ -1,5 +1,6 @@
 .spotItem {
     border-radius: 10px;
+    position: relative;
 }
 
 .spotItem:hover {
@@ -32,6 +33,16 @@
     margin: 10px 0;
 }
 
+.spotItem.compact-title .spotTitle {
+    font-size: var(--font-lg);
+    margin: 6px 0;
+}
+
+.spotItem.compact-title .address {
+    font-size: var(--font-sm);
+    line-height: 1.2;
+}
+
 .spotTitle > span,
 .address {
     white-space: nowrap;
@@ -48,6 +59,11 @@
     background-color: #cccccc;
 }
 
+.spotItem.closed .spotTitle {
+    position: relative;
+    padding-right: 72px;
+}
+
 .closedBadge {
     display: inline-block;
     padding: 2px 6px;
@@ -55,9 +71,34 @@
     color: white;
     border-radius: 4px;
     font-size: var(--font-sm);
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 56px;
+    text-align: center;
+    transform: translateY(-50%);
 }
 
 .previewVideo {
     border: none;
     aspect-ratio: 16 / 9;
+}
+
+.spotContent {
+    width: 100%;
+    max-width: clamp(260px, 80vw, 360px);
+    margin: 0 auto;
+    padding: 6px 0;
+}
+
+@media (max-width: 520px) {
+    .spotTitle {
+        font-size: var(--font-lg);
+    }
+}
+
+.yt-lite {
+    width: 100%;
+    max-width: clamp(260px, 80vw, 360px);
+    margin: 0 auto;
 }

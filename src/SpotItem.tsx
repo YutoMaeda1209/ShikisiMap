@@ -1,5 +1,5 @@
 import type { Feature, Geometry } from "geojson";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
@@ -17,6 +17,7 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
   const isClosed = properties.isClosed;
   const {selectedId, select} = useLocationSelection();
   const spotItemRootRef = useRef<HTMLDivElement | null>(null);
+  const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
     if (selectedId !== feature.id || !spotItemRootRef.current) return;
@@ -29,31 +30,53 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
     };
   }, [selectedId, feature.id]);
 
+  useLayoutEffect(() => {
+    const node = spotItemRootRef.current;
+    if (!node) return;
+    const targetHeight = typeof style?.height === "number" ? style.height : null;
+    if (targetHeight === null) return;
+    let raf = 0;
+    raf = requestAnimationFrame(() => {
+      const isOverflowing = node.scrollHeight > targetHeight;
+      setIsCompact((prev) => (prev !== isOverflowing ? isOverflowing : prev));
+    });
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [style?.height, feature.id]);
+
   function onClickSpotItem() {
     if (isClosed) return;
     select(feature.id as string);
   }
 
   return (
-    <div ref={spotItemRootRef} className={`spotItem${isClosed ? ' closed' : ''}`} onClick={onClickSpotItem} style={style}>
-      <span className="spotTitle">
-        <span>{properties.name}</span>
-        {isClosed ? <span className="closedBadge">閉業</span> : null}
-      </span>
-      <LiteYouTubeEmbed
-        id={properties.youtubeId}
-        title={properties.name}
-        lazyLoad={true}
-        params={`?start=${properties.timestamp}`}
-      />
-      <a
-        className="address"
-        href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {properties.address}
-      </a>
+    <div
+      ref={spotItemRootRef}
+      className={`spotItem${isClosed ? " closed" : ""}${isCompact ? " compact-title" : ""}`}
+      onClick={onClickSpotItem}
+      style={style}
+    >
+      <div className="spotContent">
+        <span className="spotTitle">
+          <span>{properties.name}</span>
+          {isClosed ? <span className="closedBadge">閉業</span> : null}
+        </span>
+        <LiteYouTubeEmbed
+          id={properties.youtubeId}
+          title={properties.name}
+          lazyLoad={true}
+          params={`?start=${properties.timestamp}`}
+        />
+        <a
+          className="address"
+          href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {properties.address}
+        </a>
+      </div>
     </div>
   );
 }
