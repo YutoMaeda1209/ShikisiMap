@@ -5,3 +5,7 @@
     height: 100%;
     width: 100%;
 }
+
+.leaflet-marker-icon.selected-marker {
+    filter: hue-rotate(180deg) saturate(1.25) brightness(1.05);
+}

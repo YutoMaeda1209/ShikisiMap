@@ -1,5 +1,5 @@
 import type { Feature, Geometry } from "geojson";
-import { useEffect, useRef } from "react";
+import { useMemo } from "react";
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
@@ -16,18 +16,7 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
   const properties = feature.properties;
   const isClosed = properties.isClosed;
   const {selectedId, select} = useLocationSelection();
-  const spotItemRootRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (selectedId !== feature.id || !spotItemRootRef.current) return;
-    const spotItemRef = spotItemRootRef.current;
-    spotItemRef.classList.add("blink-highlight");
-    const t = setTimeout(() => spotItemRef.classList.remove("blink-highlight"), 1500);
-    return () => {
-      spotItemRef.classList.remove("blink-highlight");
-      clearTimeout(t);
-    };
-  }, [selectedId, feature.id]);
+  const isSelected = useMemo(() => selectedId === feature.id, [selectedId, feature.id]);
 
   function onClickSpotItem() {
     if (isClosed) return;
@@ -35,7 +24,11 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
   }
 
   return (
-    <div ref={spotItemRootRef} className={`spotItem${isClosed ? ' closed' : ''}`} onClick={onClickSpotItem} style={style}>
+    <div
+      className={`spotItem${isClosed ? " closed" : ""}${isSelected ? " selected" : ""}`}
+      onClick={onClickSpotItem}
+      style={style}
+    >
       <span className="spotTitle">
         <span>{properties.name}</span>
         {isClosed ? <span className="closedBadge">閉業</span> : null}
