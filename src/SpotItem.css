@@ -27,7 +27,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: x-large;
+    font-size: var(--font-xl);
     font-weight: bold;
     margin: 10px 0;
 }
@@ -54,7 +54,7 @@
     background: #c0392b;
     color: white;
     border-radius: 4px;
-    font-size: small;
+    font-size: var(--font-sm);
 }
 
 .previewVideo {

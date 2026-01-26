@@ -16,6 +16,6 @@
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: var(--font-sm);
     box-sizing: border-box;
 }

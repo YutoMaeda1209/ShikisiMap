@@ -1,3 +1,10 @@
+:root {
+    --font-sm: clamp(0.85rem, 0.83rem + 0.1vw, 0.9rem);
+    --font-md: clamp(1rem, 0.98rem + 0.1vw, 1.05rem);
+    --font-lg: clamp(1.1rem, 1.06rem + 0.15vw, 1.2rem);
+    --font-xl: clamp(1.3rem, 1.24rem + 0.2vw, 1.4rem);
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,6 +12,7 @@ body {
 
 #root {
     height: 100vh;
+    height: 100dvh;
     width: 100vw;
     user-select: none;
 }
