@@ -12,6 +12,17 @@
     border-radius: 25px;
     box-shadow: 0 0 10px gray;
     box-sizing: border-box;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+#sidebarComponent.collapsed {
+    height: auto;
+}
+
+#sidebarComponent.centered {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #title {

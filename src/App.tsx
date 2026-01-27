@@ -7,7 +7,12 @@ import UrlManager from './UrlManager';
 
 function App() {
   return (
-    <div id="app">
+    <div
+      id="app"
+      onClick={() => {
+        window.dispatchEvent(new CustomEvent("sidebar:request-close"));
+      }}
+    >
       <LocationSelectionProvider>
         <div id="sidebarContainer">
           <Sidebar />

@@ -8,7 +8,13 @@ import SpotItem from "./SpotItem";
 import "./SpotList.css";
 
 // Main SpotList component
-function SpotList(props: { height: number }) {
+function SpotList(props: {
+  height: number;
+  isCollapsible: boolean;
+  isOpen: boolean;
+  onRequestOpen: () => void;
+  onRequestClose: () => void;
+}) {
   const [query, setQuery] = useState("");
   const listRef = useListRef(null);
   const { selectedId } = useLocationSelection();
@@ -40,8 +46,17 @@ function SpotList(props: { height: number }) {
   }, [clearScrollTimeout, scrollToSelected]);
 
   useEffect(() => {
+    if (!props.isOpen) return;
     scheduleScrollToSelected();
-  }, [selectedId, scheduleScrollToSelected]);
+  }, [props.isOpen, selectedId, scheduleScrollToSelected]);
+
+  useEffect(() => {
+    if (!props.isOpen) return;
+    const t = window.setTimeout(() => {
+      scrollToSelected();
+    }, 240);
+    return () => window.clearTimeout(t);
+  }, [props.isOpen, scrollToSelected]);
 
   // Filter features based on search query
   const filtered = useMemo(() => {
@@ -73,18 +88,23 @@ function SpotList(props: { height: number }) {
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
     };
-  }, [filtered.length]);
+  }, [filtered.length, props.isOpen]);
 
   const rowHeight = (measuredHeight ?? 240) + 8;
 
   return (
-    <div id="spotListComponent" style={{ height: props.height }}>
+    <div
+      id="spotListComponent"
+      style={{ height: props.isOpen ? props.height : "auto" }}
+    >
       <div id="spotListSearch">
         <input
           aria-label="検索"
           placeholder="検索 (名前・住所)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onFocus={props.onRequestOpen}
+          onClick={props.onRequestOpen}
         />
       </div>
       {filtered[0] ? (
@@ -116,14 +136,31 @@ function SpotList(props: { height: number }) {
           </div>
         </div>
       ) : null}
-      <List
-        id="spotList"
-        rowComponent={SpotItem}
-        rowCount={filtered.length}
-        rowHeight={rowHeight}
-        rowProps={{ features: filtered }}
-        listRef={listRef}
-      />
+      <div
+        id="spotListPanel"
+        className={
+          props.isCollapsible ? (props.isOpen ? "open" : "closed") : "open"
+        }
+        style={{ height: props.isOpen ? props.height : 0 }}
+      >
+        <List
+          id="spotList"
+          rowComponent={SpotItem}
+          rowCount={filtered.length}
+          rowHeight={rowHeight}
+          rowProps={{ features: filtered }}
+          listRef={listRef}
+        />
+        {props.isCollapsible ? (
+          <button
+            id="spotListClose"
+            type="button"
+            onClick={props.onRequestClose}
+          >
+            閉じる
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }
