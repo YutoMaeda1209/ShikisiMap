@@ -116,3 +116,17 @@
         max-height: min(45dvh, 520px);
     }
 }
+
+@media (max-height: 520px) {
+    .bottomSheet {
+        max-height: min(60svh, 520px);
+    }
+}
+
+@supports (height: 1dvh) {
+    @media (max-height: 520px) {
+        .bottomSheet {
+            max-height: min(60dvh, 520px);
+        }
+    }
+}
