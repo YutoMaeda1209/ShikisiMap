@@ -52,31 +52,32 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
   }
 
   return (
-    <div
-      ref={spotItemRootRef}
-      className={`spotItem${isClosed ? " closed" : ""}${isSelected ? " selected" : ""}${isCompact ? " compact-title" : ""}`}
-      onClick={onClickSpotItem}
-      style={style}
-    >
-      <div className="spotContent">
-        <span className="spotTitle">
-          <span>{properties.name}</span>
-          {isClosed ? <span className="closedBadge">閉業</span> : null}
-        </span>
-        <LiteYouTubeEmbed
-          id={properties.youtubeId}
-          title={properties.name}
-          lazyLoad={true}
-          params={`?start=${properties.timestamp}`}
-        />
-        <a
-          className="address"
-          href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {properties.address}
-        </a>
+    <div className="spotItemRow" style={style}>
+      <div
+        ref={spotItemRootRef}
+        className={`spotItem${isClosed ? " closed" : ""}${isSelected ? " selected" : ""}${isCompact ? " compact-title" : ""}`}
+        onClick={onClickSpotItem}
+      >
+        <div className="spotContent">
+          <span className="spotTitle">
+            <span>{properties.name}</span>
+            {isClosed ? <span className="closedBadge">閉業</span> : null}
+          </span>
+          <LiteYouTubeEmbed
+            id={properties.youtubeId}
+            title={properties.name}
+            lazyLoad={true}
+            params={`?start=${properties.timestamp}`}
+          />
+          <a
+            className="address"
+            href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {properties.address}
+          </a>
+        </div>
       </div>
     </div>
   );

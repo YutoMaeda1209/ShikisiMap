@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { List, useListRef } from "react-window";
 import { useLocationSelection } from "./locationSelectionContext";
 import { idToIndex, spotsData } from "./mapData";
@@ -58,18 +60,22 @@ function SpotList(props: { height: number }) {
     const node = measureRef.current;
     if (!node) return;
     const update = () => {
-      const next = Math.ceil(node.getBoundingClientRect().height);
+      const next = Math.ceil(node.scrollHeight);
       setMeasuredHeight((prev) => (prev === next ? prev : next));
     };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(node);
-    return () => ro.disconnect();
+    window.addEventListener("resize", update);
+    window.addEventListener("orientationchange", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+      window.removeEventListener("orientationchange", update);
+    };
   }, [filtered.length]);
 
-  const rowHeight = useMemo(() => {
-    return measuredHeight !== null ? measuredHeight + 8 : 240;
-  }, [measuredHeight]);
+  const rowHeight = (measuredHeight ?? 240) + 8;
 
   return (
     <div id="spotListComponent" style={{ height: props.height }}>
@@ -83,7 +89,6 @@ function SpotList(props: { height: number }) {
       </div>
       {filtered[0] ? (
         <div
-          ref={measureRef}
           className={`spotItem${filtered[0].properties.isClosed ? " closed" : ""}`}
           style={{
             position: "absolute",
@@ -94,14 +99,21 @@ function SpotList(props: { height: number }) {
             top: 0,
           }}
         >
-          <span className="spotTitle">
-            <span>{filtered[0].properties.name}</span>
-            {filtered[0].properties.isClosed ? (
-              <span className="closedBadge">閉業</span>
-            ) : null}
-          </span>
-          <div className="yt-lite" />
-          <div className="address">{filtered[0].properties.address}</div>
+          <div className="spotContent" ref={measureRef}>
+            <span className="spotTitle">
+              <span>{filtered[0].properties.name}</span>
+              {filtered[0].properties.isClosed ? (
+                <span className="closedBadge">閉業</span>
+              ) : null}
+            </span>
+            <LiteYouTubeEmbed
+              id={filtered[0].properties.youtubeId}
+              title={filtered[0].properties.name}
+              lazyLoad={true}
+              params={`?start=${filtered[0].properties.timestamp}`}
+            />
+            <div className="address">{filtered[0].properties.address}</div>
+          </div>
         </div>
       ) : null}
       <List

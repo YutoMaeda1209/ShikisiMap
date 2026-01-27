@@ -1,8 +1,18 @@
+.spotItemRow {
+    box-sizing: border-box;
+    padding: 4px 0;
+}
+
 .spotItem {
     border-radius: 10px;
     position: relative;
     border: 1px solid transparent;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
 }
 
 .spotItem:hover {
@@ -21,12 +31,13 @@
     gap: 8px;
     font-size: var(--font-xl);
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0;
+    line-height: 1.1;
 }
 
 .spotItem.compact-title .spotTitle {
     font-size: var(--font-lg);
-    margin: 6px 0;
+    margin: 0;
 }
 
 .spotItem.compact-title .address {
@@ -76,17 +87,26 @@
 }
 
 .spotContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     width: 100%;
     max-width: clamp(260px, 80vw, 360px);
     margin: 0 auto;
     padding: 6px 0;
 }
 
-@media (max-width: 520px) {
-    .spotTitle {
-        font-size: var(--font-lg);
+@media (orientation: landscape) and (max-height: 520px),
+       (max-height: 520px) and (min-aspect-ratio: 3 / 2) {
+    .spotContent {
+        gap: 4px;
+        padding: 0;
+    }
+    .yt-lite {
+        aspect-ratio: 21 / 9;
     }
 }
+
 
 .yt-lite {
     width: 100%;
