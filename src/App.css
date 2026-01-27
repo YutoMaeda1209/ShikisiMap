@@ -31,11 +31,9 @@ a::after {
     pointer-events: none;
 }
 
-@media (max-width: 520px) {
-    #sidebarContainer {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+body.sidebar-centered #sidebarContainer {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media (max-height: 480px) {

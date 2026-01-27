@@ -5,7 +5,7 @@ import { LocationSelectionContext } from './locationSelectionContext'
 function LocationSelectionProvider({ children }: { children: React.ReactNode }) {
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
-  const select = (id: string) => {
+  const select = (id: string | null) => {
     setSelectedId(id)
   }
 

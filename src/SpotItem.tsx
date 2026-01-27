@@ -9,9 +9,17 @@ import "./SpotItem.css";
 
 interface ListItemProps {
   features: Feature<Geometry, GeoProperties>[];
+  disableInlineVideo?: boolean;
+  inlineVideoResetKey?: number;
 }
 
-function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) {
+function SpotItem({
+  index,
+  style,
+  features,
+  disableInlineVideo = false,
+  inlineVideoResetKey = 0,
+}: RowComponentProps<ListItemProps>) {
   const feature = features[index];
   const properties = feature.properties;
   const isClosed = properties.isClosed;
@@ -48,6 +56,10 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
 
   function onClickSpotItem() {
     if (isClosed) return;
+    if (selectedId === feature.id) {
+      window.dispatchEvent(new CustomEvent("sidebar:request-open-sheet"));
+      return;
+    }
     select(feature.id as string);
   }
 
@@ -63,12 +75,15 @@ function SpotItem({ index, features, style }: RowComponentProps<ListItemProps>) 
             <span>{properties.name}</span>
             {isClosed ? <span className="closedBadge">閉業</span> : null}
           </span>
-          <LiteYouTubeEmbed
-            id={properties.youtubeId}
-            title={properties.name}
-            lazyLoad={true}
-            params={`?start=${properties.timestamp}`}
-          />
+          <div className={`ytLiteWrapper${disableInlineVideo ? " disabled" : ""}`}>
+            <LiteYouTubeEmbed
+              key={`item-${feature.id}-${inlineVideoResetKey}`}
+              id={properties.youtubeId}
+              title={properties.name}
+              lazyLoad={true}
+              params={`?start=${properties.timestamp}`}
+            />
+          </div>
           <a
             className="address"
             href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}

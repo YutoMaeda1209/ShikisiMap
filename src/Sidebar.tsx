@@ -1,98 +1,120 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import logo from "./assets/img/logo.webp";
 import { useLocationSelection } from "./locationSelectionContext";
+import { spotsData } from "./mapData";
+import BottomSheet from "./BottomSheet";
 import "./Sidebar.css";
 import SpotList from "./SpotList";
+import useSidebarLayout from "./useSidebarLayout";
 
 function Sidebar() {
-  const sidebarRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLDivElement | null>(null);
-  const [listHeight, setListHeight] = useState<number>(0);
-  const [isCollapsible, setIsCollapsible] = useState(false);
-  const [isCentered, setIsCentered] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
+  const [sheetFeature, setSheetFeature] = useState<
+    (typeof spotsData.features)[number] | null
+  >(null);
   const [isListOpen, setIsListOpen] = useState(true);
-  const { selectedId } = useLocationSelection();
-
-  useLayoutEffect(() => {
-    function updateHeight() {
-      if (!sidebarRef.current || !titleRef.current) return;
-      const sidebarH = sidebarRef.current.clientHeight;
-      const titleH = titleRef.current.clientHeight;
-      const extraOffset = isCollapsible && isListOpen ? 40 : 0;
-      const offset = 50 + extraOffset;
-      const newHeight = Math.max(0, Math.floor(sidebarH - titleH - offset));
-      setListHeight(newHeight);
-    }
-    updateHeight();
-
-    const roSidebar = new ResizeObserver(updateHeight);
-    const roTitle = new ResizeObserver(updateHeight);
-    if (sidebarRef.current) roSidebar.observe(sidebarRef.current);
-    if (titleRef.current) roTitle.observe(titleRef.current);
-
-    return () => {
-      roSidebar.disconnect();
-      roTitle.disconnect();
-    };
-  }, [isCollapsible, isListOpen]);
-
-  useEffect(() => {
-    if (!isCollapsible || !isListOpen) return;
-    function updateOpenHeight() {
-      if (!sidebarRef.current || !titleRef.current) return;
-      const sidebarH = sidebarRef.current.clientHeight;
-      const titleH = titleRef.current.clientHeight;
-      const extraOffset = isCollapsible && isListOpen ? 40 : 0;
-      const offset = 50 + extraOffset;
-      const newHeight = Math.max(0, Math.floor(sidebarH - titleH - offset));
-      setListHeight(newHeight);
-    }
-    updateOpenHeight();
-    window.setTimeout(updateOpenHeight, 220);
-  }, [isCollapsible, isListOpen]);
-
-  useLayoutEffect(() => {
-    function updateCollapsible() {
-      if (!sidebarRef.current) return;
-      const sidebarW = sidebarRef.current.clientWidth;
-      const viewportW = window.innerWidth;
-      setIsCollapsible(sidebarW >= viewportW * 0.4);
-      setIsCentered(sidebarW >= viewportW * 0.5);
-    }
-    updateCollapsible();
-    const roSidebar = new ResizeObserver(updateCollapsible);
-    if (sidebarRef.current) roSidebar.observe(sidebarRef.current);
-    window.addEventListener("resize", updateCollapsible);
-    return () => {
-      roSidebar.disconnect();
-      window.removeEventListener("resize", updateCollapsible);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isCollapsible) {
-      setIsListOpen(true);
-      return;
-    }
-    setIsListOpen(false);
-  }, [isCollapsible]);
+  const prevCenteredRef = useRef(false);
+  const { selectedId, select } = useLocationSelection();
+  const {
+    sidebarRef,
+    titleRef,
+    listHeight,
+    isCollapsible,
+    isCentered,
+    isBottomSheetMode,
+  } = useSidebarLayout({
+    isListOpen,
+    centeredThreshold: 0.4,
+    collapsibleThreshold: 0.4,
+    onLayoutChange: (prevState, nextState) => {
+      if (prevState.isCollapsible !== nextState.isCollapsible) {
+        setIsListOpen(!nextState.isCollapsible);
+        if (!nextState.isBottomSheetMode) {
+          setIsSheetOpen(false);
+        }
+      }
+    },
+  });
 
   useEffect(() => {
     if (!isCollapsible) return;
     if (selectedId === null) return;
+    if (isBottomSheetMode) return;
     setIsListOpen(true);
-  }, [isCollapsible, selectedId]);
+  }, [isBottomSheetMode, isCollapsible, selectedId]);
+
+  useEffect(() => {
+    if (!isBottomSheetMode) {
+      setIsSheetOpen(false);
+      setSheetFeature(null);
+      return;
+    }
+    if (selectedId === null) {
+      setIsSheetOpen(false);
+      return;
+    }
+    setIsSheetOpen(true);
+    setIsListOpen(false);
+  }, [isBottomSheetMode, selectedId]);
 
   useEffect(() => {
     function handleRequestClose() {
       if (!isCollapsible) return;
       setIsListOpen(false);
+      setIsSheetOpen(false);
+      select(null);
     }
     window.addEventListener("sidebar:request-close", handleRequestClose);
     return () => {
       window.removeEventListener("sidebar:request-close", handleRequestClose);
     };
-  }, [isCollapsible]);
+  }, [isCollapsible, select]);
+
+  useEffect(() => {
+    function handleRequestOpenSheet() {
+      if (!isBottomSheetMode) return;
+      if (selectedId === null) return;
+      setIsSheetOpen(true);
+      setIsListOpen(false);
+    }
+    window.addEventListener("sidebar:request-open-sheet", handleRequestOpenSheet);
+    return () => {
+      window.removeEventListener("sidebar:request-open-sheet", handleRequestOpenSheet);
+    };
+  }, [isBottomSheetMode, selectedId]);
+
+  useEffect(() => {
+    document.body.classList.toggle("sidebar-centered", isCentered);
+    return () => {
+      document.body.classList.remove("sidebar-centered");
+    };
+  }, [isCentered]);
+
+  useEffect(() => {
+    if (!prevCenteredRef.current && isCentered) {
+      setInlineVideoResetKey((prev) => prev + 1);
+    }
+    prevCenteredRef.current = isCentered;
+  }, [isCentered]);
+
+  const selectedFeature = useMemo(() => {
+    if (!selectedId) return null;
+    return spotsData.features.find((f) => f.id === selectedId) ?? null;
+  }, [selectedId]);
+
+  useEffect(() => {
+    if (selectedFeature) {
+      setSheetFeature(selectedFeature);
+      return;
+    }
+    if (!isSheetOpen) {
+      const t = window.setTimeout(() => {
+        setSheetFeature(null);
+      }, 240);
+      return () => window.clearTimeout(t);
+    }
+  }, [isSheetOpen, selectedFeature]);
 
   const sidebarClassName = [
     isCollapsible && !isListOpen ? "collapsed" : "",
@@ -116,9 +138,24 @@ function Sidebar() {
         height={listHeight}
         isCollapsible={isCollapsible}
         isOpen={!isCollapsible || isListOpen}
-        onRequestOpen={() => setIsListOpen(true)}
+        disableInlineVideo={isCentered}
+        inlineVideoResetKey={inlineVideoResetKey}
+        onRequestOpen={() => {
+          setIsListOpen(true);
+          setIsSheetOpen(false);
+        }}
         onRequestClose={() => setIsListOpen(false)}
       />
+      {isBottomSheetMode && sheetFeature ? (
+        <BottomSheet
+          feature={sheetFeature}
+          isOpen={isSheetOpen}
+          onRequestClose={() => {
+            setIsSheetOpen(false);
+            select(null);
+          }}
+        />
+      ) : null}
     </div>
   );
 }

@@ -12,6 +12,8 @@ function SpotList(props: {
   height: number;
   isCollapsible: boolean;
   isOpen: boolean;
+  disableInlineVideo: boolean;
+  inlineVideoResetKey: number;
   onRequestOpen: () => void;
   onRequestClose: () => void;
 }) {
@@ -129,6 +131,7 @@ function SpotList(props: {
               ) : null}
             </span>
             <LiteYouTubeEmbed
+              key={`preview-${props.inlineVideoResetKey}`}
               id={filtered[0].properties.youtubeId}
               title={filtered[0].properties.name}
               lazyLoad={true}
@@ -150,7 +153,11 @@ function SpotList(props: {
           rowComponent={SpotItem}
           rowCount={filtered.length}
           rowHeight={rowHeight}
-          rowProps={{ features: filtered }}
+          rowProps={{
+            features: filtered,
+            disableInlineVideo: props.disableInlineVideo,
+            inlineVideoResetKey: props.inlineVideoResetKey,
+          }}
           listRef={listRef}
         />
         {props.isCollapsible ? (

@@ -113,3 +113,7 @@
     max-width: clamp(260px, 80vw, 360px);
     margin: 0 auto;
 }
+
+.ytLiteWrapper.disabled .yt-lite {
+    pointer-events: none;
+}
