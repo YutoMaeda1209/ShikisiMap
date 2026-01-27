@@ -47,16 +47,18 @@ function SpotList(props: {
 
   useEffect(() => {
     if (!props.isOpen) return;
-    scheduleScrollToSelected();
-  }, [props.isOpen, selectedId, scheduleScrollToSelected]);
-
-  useEffect(() => {
-    if (!props.isOpen) return;
+    clearScrollTimeout();
     const t = window.setTimeout(() => {
-      scrollToSelected();
-    }, 240);
-    return () => window.clearTimeout(t);
-  }, [props.isOpen, scrollToSelected]);
+      requestAnimationFrame(() => {
+        scrollToSelected();
+      });
+    }, 200);
+    scrollTimeoutRef.current = t;
+    return () => {
+      window.clearTimeout(t);
+      scrollTimeoutRef.current = null;
+    };
+  }, [props.isOpen, selectedId, scrollToSelected, clearScrollTimeout]);
 
   // Filter features based on search query
   const filtered = useMemo(() => {
