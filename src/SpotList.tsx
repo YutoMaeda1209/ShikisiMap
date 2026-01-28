@@ -7,8 +7,7 @@ import { idToIndex, spotsData } from "./mapData";
 import SpotItem from "./SpotItem";
 import "./SpotList.css";
 
-// Main SpotList component
-function SpotList(props: {
+export type SpotListProps = {
   height: number;
   isCollapsible: boolean;
   isOpen: boolean;
@@ -16,7 +15,10 @@ function SpotList(props: {
   inlineVideoResetKey: number;
   onRequestOpen: () => void;
   onRequestClose: () => void;
-}) {
+};
+
+// Main SpotList component
+const SpotList: React.FC<SpotListProps> = (props) => {
   const [query, setQuery] = useState("");
   const listRef = useListRef(null);
   const { selectedId } = useLocationSelection();
@@ -39,13 +41,6 @@ function SpotList(props: {
       index: idToIndex(selectedId),
     });
   }, [listRef, selectedId]);
-
-  const scheduleScrollToSelected = useCallback(() => {
-    clearScrollTimeout();
-    scrollTimeoutRef.current = window.setTimeout(() => {
-      scrollToSelected();
-    }, 80);
-  }, [clearScrollTimeout, scrollToSelected]);
 
   useEffect(() => {
     if (!props.isOpen) return;
@@ -172,6 +167,6 @@ function SpotList(props: {
       </div>
     </div>
   );
-}
+};
 
 export default SpotList;
