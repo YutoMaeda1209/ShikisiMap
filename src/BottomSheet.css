@@ -5,7 +5,7 @@
     transform: translateX(-50%);
     width: min(680px, 100%);
     height: auto;
-    max-height: min(45svh, 520px);
+    max-height: 60dvh;
     --sheet-header-height: 48px;
     background: #fff;
     border-radius: 16px 16px 0 0;
@@ -109,24 +109,4 @@
 .bottomSheetBody .yt-lite {
     max-width: 100%;
     margin: 0;
-}
-
-@supports (height: 1dvh) {
-    .bottomSheet {
-        max-height: min(45dvh, 520px);
-    }
-}
-
-@media (max-height: 520px) {
-    .bottomSheet {
-        max-height: min(60svh, 520px);
-    }
-}
-
-@supports (height: 1dvh) {
-    @media (max-height: 520px) {
-        .bottomSheet {
-            max-height: min(60dvh, 520px);
-        }
-    }
 }
