@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "./assets/img/logo.webp";
 import { useLocationSelection } from "./locationSelectionContext";
 import { spotsData } from "./mapData";
@@ -6,6 +6,7 @@ import BottomSheet from "./BottomSheet";
 import "./Sidebar.css";
 import SpotList from "./SpotList";
 import useSidebarLayout from "./useSidebarLayout";
+import useSidebarEvents from "./useSidebarEvents";
 
 function Sidebar() {
   const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
@@ -13,7 +14,6 @@ function Sidebar() {
     (typeof spotsData.features)[number] | null
   >(null);
   const [isListOpen, setIsListOpen] = useState(true);
-  const clearSheetTimerRef = useRef<number | null>(null);
   const { selectedId, select } = useLocationSelection();
   const {
     sidebarRef,
@@ -38,65 +38,14 @@ function Sidebar() {
 
   const isSheetOpen = isBottomSheetMode && selectedId !== null && !isListOpen;
 
-  const closeSidebar = useCallback(() => {
-    if (!isCollapsible) return;
-    setIsListOpen(false);
-    select(null);
-  }, [isCollapsible, select]);
-
-  const openSheet = useCallback(() => {
-    if (!isBottomSheetMode) return;
-    if (selectedId === null) return;
-    setIsListOpen(false);
-  }, [isBottomSheetMode, selectedId]);
-
-  const handleLocationSelected = useCallback(
-    (event: Event) => {
-      const detail = (event as CustomEvent<string | null>).detail;
-      if (clearSheetTimerRef.current !== null) {
-        window.clearTimeout(clearSheetTimerRef.current);
-        clearSheetTimerRef.current = null;
-      }
-
-      if (!detail) {
-        if (isCollapsible) {
-          setIsListOpen(false);
-        }
-        clearSheetTimerRef.current = window.setTimeout(() => {
-          setSheetFeature(null);
-        }, 240);
-        return;
-      }
-
-      const feature =
-        spotsData.features.find((f) => f.id === detail) ?? null;
-      if (feature) {
-        setSheetFeature(feature);
-      }
-
-      if (!isCollapsible) return;
-      if (isBottomSheetMode) {
-        setIsListOpen(false);
-        return;
-      }
-      setIsListOpen(true);
-    },
-    [isBottomSheetMode, isCollapsible],
-  );
-
-  useEffect(() => {
-    window.addEventListener("sidebar:request-close", closeSidebar);
-    return () => {
-      window.removeEventListener("sidebar:request-close", closeSidebar);
-    };
-  }, [closeSidebar]);
-
-  useEffect(() => {
-    window.addEventListener("sidebar:request-open-sheet", openSheet);
-    return () => {
-      window.removeEventListener("sidebar:request-open-sheet", openSheet);
-    };
-  }, [openSheet]);
+  useSidebarEvents({
+    isCollapsible,
+    isBottomSheetMode,
+    setIsListOpen,
+    setSheetFeature,
+    select,
+    spots: spotsData.features,
+  });
 
   useEffect(() => {
     document.body.classList.toggle("sidebar-centered", isCentered);
@@ -104,13 +53,6 @@ function Sidebar() {
       document.body.classList.remove("sidebar-centered");
     };
   }, [isCentered]);
-
-  useEffect(() => {
-    window.addEventListener("location:selected", handleLocationSelected);
-    return () => {
-      window.removeEventListener("location:selected", handleLocationSelected);
-    };
-  }, [handleLocationSelected]);
 
   const sidebarClassName = [
     isCollapsible && !isListOpen ? "collapsed" : "",
@@ -145,7 +87,11 @@ function Sidebar() {
         <BottomSheet
           feature={sheetFeature}
           isOpen={isSheetOpen}
-          onRequestClose={closeSidebar}
+          onRequestClose={() => {
+            if (!isCollapsible) return;
+            setIsListOpen(false);
+            select(null);
+          }}
         />
       ) : null}
     </div>
