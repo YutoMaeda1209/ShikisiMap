@@ -1,6 +1,6 @@
 # 概要 / Summary
 <!-- PRの概要を書いてください。1〜2文で、何を、なぜ追加/変更したかを説明します。 -->
-<!-- Write a brief (1–2 sentence) description of what changed and why. -->
+<!-- Write a brief (1–2 sentences) description of what changed and why. -->
 例: 新しい機能を追加するためのPRです。
 
 ## 関連Issue / Related Issue(s)
