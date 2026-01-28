@@ -1,0 +1,57 @@
+name: スポットリクエスト
+description: 新しいスポットを追加するためのテンプレートです。
+title: "[SPOT REQUEST]: "
+labels: ["new spot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        新しいスポットの追加リクエストをありがとうございます。
+        以下のテンプレートに従って、記入をお願いします。
+  - type: input
+    id: spot_name
+    attributes:
+      label: スポット名
+      description: 追加したいスポットの名前を記入してください。
+      placeholder: |
+        富士山
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: 住所
+      description: スポットの住所を記入してください。
+      placeholder: |
+        〒418-0067　静岡県富士宮市宮町1-1
+    validations:
+      required: true
+  - type: input
+    id: youtube_link
+    attributes:
+      label: YouTubeリンク
+      description: スポットに関連するYouTube動画のリンクを記入してください。また、時間指定がある場合は、リンクの後に「&t=XXs」（XXは秒数）を追加してください。
+      placeholder: |
+        https://www.youtube.com/watch?v=example&t=60s
+    validations:
+      required: true
+  - type: textarea
+    id: supplementary_info
+    attributes:
+      label: 補足情報
+      description: スポットに関する補足情報があれば記入してください。
+      placeholder: |
+        閉業しています。
+    validations:
+      required: false
+  - type: checkboxes
+    id: check_list
+    attributes:
+      label: チェックリスト
+      description: 提案内容を確認してください。
+      options:
+        - label: スポット名が正確であることを確認しました。
+        - label: 住所が正確であることを確認しました。
+        - label: YouTubeリンクが有効であることを確認しました。
+    validations:
+      required: true

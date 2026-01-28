@@ -1,0 +1,62 @@
+name: バグレポート
+description: バグや問題を報告するためのテンプレートです。
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグを報告していただきありがとうございます。
+        以下のテンプレートに従って、できる限り詳しくバグに関する情報を教えてください。
+  - type: textarea
+    id: description
+    attributes:
+      label: バグの説明
+      description: バグの内容を詳しく記入してください。スクリーンショットやログがあれば添付してください。
+      placeholder: |
+        ボタンを押したときにアプリがクラッシュする。
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: 期待する動作
+      description: 期待する動作を記入してください。
+      placeholder: |
+        ボタンを押すと設定画面が表示される。
+    validations:
+      required: true
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 再現手順
+      description: バグを再現するための手順を詳しく記入してください。
+      placeholder: |
+        1. アプリを起動する
+        2. ホーム画面で「設定」ボタンを押す
+        3. 「通知」セクションに移動する
+        4. アプリがクラッシュする
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 動作環境
+      description: 動作環境に関する情報を詳しく記入してください。
+      placeholder: |
+        - OS: Windows 10
+        - ブラウザ: Chrome 89.0.4389.90
+        - アプリバージョン: 1.2.3
+    validations:
+      required: true
+  - type: checkboxes
+    id: check_list
+    attributes:
+      label: チェックリスト
+      description: バグ報告前に以下の項目を確認してください。
+      options:
+        - label: 各項目について、詳しく記入しました。
+        - label: 最新バージョンで同じ問題が発生するか確認しました。
+        - label: 既に報告されているバグではないか確認しました。
+    validations:
+      required: true
