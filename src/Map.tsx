@@ -5,7 +5,7 @@ import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef } from 'react';
-import { GeoJSON, MapContainer, TileLayer } from 'react-leaflet';
+import { GeoJSON, MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import CurrentLocationMarker from './CurrentLocationMarker';
 import { useLocationSelection } from './locationSelectionContext';
 import "./Map.css";
@@ -68,6 +68,15 @@ function Map() {
     });
   }
 
+  function MapClickCloser() {
+    useMapEvents({
+      click: () => {
+        window.dispatchEvent(new CustomEvent("sidebar:request-close"));
+      },
+    });
+    return null;
+  }
+
   return (
     <MapContainer center={[35.676423, 139.650027]} zoom={14} zoomControl={false} ref={mapRef}>
       <TileLayer
@@ -81,6 +90,7 @@ function Map() {
         pointToLayer={pointToLayer}
       />
       <CurrentLocationMarker />
+      <MapClickCloser />
     </MapContainer>
   );
 }
