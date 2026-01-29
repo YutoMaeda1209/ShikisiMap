@@ -20,7 +20,7 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
   - `Add user profile page`
   - `Fix login bug`
   - `Update README.md`
-- The second line of the commit message should describe the details of the commit in English.
+- The second line of the commit message should describe the details of the commit.
 
 ## Branch Strategy
 
@@ -55,7 +55,6 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 
 1. Before starting work, create or check an Issue describing the purpose and background.
 2. Create a working branch from `dev` and name it according to the Issue (e.g., `feat/123-featureName`).
-3. Before starting work, create an empty commit with the message `Issue #{IssueNum}`.
-4. When your work is complete, create a pull request targeting `dev`, not `main`.
-5. Address feedback during review and reflect progress or changes in the Issue as well.
-6. After approval by a maintainer, the pull request will be merged into the `dev` branch, the working branch will be deleted, and the pull request will be closed.
+3. When your work is complete, create a pull request targeting `dev`, not `main`.
+4. Address feedback during review and reflect progress or changes in the Issue as well.
+5. After approval by a maintainer, the pull request will be merged into the `dev` branch, the working branch will be deleted, and the pull request will be closed.
