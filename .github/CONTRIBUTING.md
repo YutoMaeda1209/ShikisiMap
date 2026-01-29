@@ -9,6 +9,7 @@
 本プロジェクトは「Issue ドリブン」開発手法を採用しています。Issue ドリブンとは、バグ修正・新機能追加・ドキュメント改善など、すべての作業を GitHub Issue として管理し、Issue 単位で作業を進める方法です。これにより、各タスクの目的・背景・進捗が明確になり、チーム内での情報共有やレビューが円滑に行えます。
 
 - 作業を始める前に、必ず Issue を作成または確認してください。
+- ブランチは必ず Issue と紐付けてください。（例: `feat/123-newFeature`）
 - プルリクエストでは、必ずIssueとリンクさせてください。プルリクエストとIssueの紐付け方法については[公式ドキュメント](https://docs.github.com/ja/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)を参照してください。
 
 ## コミットについて
@@ -27,8 +28,8 @@
 
 | ブランチ種別 | 目的                             | 命名例                                    |
 | ------------ | -------------------------------- | ----------------------------------------- |
-| Feature      | 新機能の実装                     | `feat/{featureName}`                      |
-| Bugfix       | バグ修正                         | `fix/{bugName}`                           |
+| Feature      | 新機能の実装                     | `feat/{IssueNum}-{featureName}`           |
+| Bugfix       | バグ修正                         | `fix/{IssueNum}-{bugName}`                |
 | Cherry-pick  | 他ブランチから特定コミットを適用 | `cherrypick/{sourceBranch}-{description}` |
 | Sandbox      | 新機能の試験やコンセプト検証     | `sandbox/{commitId}-{userName}`           |
 
@@ -53,7 +54,7 @@
 ## コントリビュートの流れ
 
 1. 作業開始前に、目的や背景を記載した Issue を作成または確認してください。
-2. `dev`ブランチから作業用ブランチを作成し、Issue に沿った名前（例: `feat/featureName`）にしてください。
+2. `dev`ブランチから作業用ブランチを作成し、Issue に沿った名前（例: `feat/123-featureName`）にしてください。
 3. 作業が完了したら、`main`ではなく`dev`をターゲットにプルリクエストを作成してください。
 4. レビュー中のフィードバックには対応し、進捗や変更点は Issue にも反映してください。
 5. メンテナーによる承認後、プルリクエストは`dev`ブランチへマージされ、作業ブランチは削除、プルリクエストはクローズされます。
