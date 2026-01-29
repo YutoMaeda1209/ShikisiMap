@@ -47,12 +47,6 @@
     line-height: 1.2;
 }
 
-@media (max-height: 480px), (max-width: 520px) {
-    #subtitle {
-        display: none;
-    }
-}
-
 @media (max-height: 480px) {
     #sidebarComponent {
         max-width: calc(150px * 16 / 9 + var(--list-gap) * 2);

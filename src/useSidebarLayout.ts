@@ -1,4 +1,4 @@
-import type { MutableRefObject } from "react";
+import type { RefObject } from "react";
 import {
   useCallback,
   useEffect,
@@ -21,8 +21,8 @@ type UseSidebarLayoutOptions = {
 };
 
 type UseSidebarLayoutResult = LayoutState & {
-  sidebarRef: MutableRefObject<HTMLDivElement | null>;
-  titleRef: MutableRefObject<HTMLDivElement | null>;
+  sidebarRef: RefObject<HTMLDivElement | null>;
+  titleRef: RefObject<HTMLDivElement | null>;
   listHeight: number;
 };
 
