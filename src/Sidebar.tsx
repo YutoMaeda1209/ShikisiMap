@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import logo from "./assets/img/logo.webp";
+import BottomSheet from "./BottomSheet";
 import { useLocationSelection } from "./locationSelectionContext";
 import { spotsData } from "./mapData";
-import BottomSheet from "./BottomSheet";
 import "./Sidebar.css";
 import SpotList from "./SpotList";
-import useSidebarLayout from "./useSidebarLayout";
 import useSidebarEvents from "./useSidebarEvents";
+import useSidebarLayout from "./useSidebarLayout";
 
 function Sidebar() {
   const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
@@ -70,7 +70,10 @@ function Sidebar() {
     >
       <div id="title" ref={titleRef}>
         <img id="logo" src={logo} alt="Logo" />
-        <span id="subtitle">非公式 敷嶋てとら 聖地巡礼マップ</span>
+        <span id="subtitle">
+          非公式 敷嶋てとら <wbr />
+          聖地巡礼マップ
+        </span>
       </div>
       <SpotList
         height={listHeight}

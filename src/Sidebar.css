@@ -45,6 +45,8 @@
     display: block;
     font-size: var(--font-lg);
     line-height: 1.2;
+    word-break: keep-all;
+    text-align: center;
 }
 
 @media (max-height: 480px) {
