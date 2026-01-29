@@ -9,6 +9,7 @@ Please follow these guidelines when contributing, such as reporting bugs, propos
 This project adopts an "Issue-Driven" development approach. Issue-Driven means that all tasks, including bug fixes, new features, and documentation improvements, are managed as GitHub Issues and work is carried out on a per-Issue basis. This clarifies the purpose, background, and progress of each task, facilitating smooth information sharing and reviews within the team.
 
 - Before starting any work, be sure to create or check an Issue.
+- Always link your branch to an Issue. (e.g., `feat/123-newFeature`)
 - When creating a pull request, please ensure it is linked to an issue. For instructions on linking pull requests to issues, refer to the [official documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
 
 ## About Commits
@@ -27,8 +28,8 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 
 | Branch Type | Purpose                                       | Example                                   |
 | ----------- | --------------------------------------------- | ----------------------------------------- |
-| Feature     | Implementing new features                     | `feat/{featureName}`                      |
-| Bugfix      | Fixing bugs                                   | `fix/{bugName}`                           |
+| Feature     | Implementing new features                     | `feat/{IssueNum}-{featureName}`           |
+| Bugfix      | Fixing bugs                                   | `fix/{IssueNum}-{bugName}`                |
 | Cherry-pick | Applying specific commits from other branches | `cherrypick/{sourceBranch}-{description}` |
 | Sandbox     | Experimenting or prototyping                  | `sandbox/{commitId}-{userName}`           |
 
@@ -53,7 +54,7 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 ## Contribution Flow
 
 1. Before starting work, create or check an Issue describing the purpose and background.
-2. Create a working branch from `dev` and name it according to the Issue (e.g., `feat/featureName`).
+2. Create a working branch from `dev` and name it according to the Issue (e.g., `feat/123-featureName`).
 3. When your work is complete, create a pull request targeting `dev`, not `main`.
 4. Address feedback during review and reflect progress or changes in the Issue as well.
 5. After approval by a maintainer, the pull request will be merged into the `dev` branch, the working branch will be deleted, and the pull request will be closed.
