@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 
 type LocationSelectionContextType = {
   selectedId: string | null
-  select: (id: string) => void
+  select: (id: string | null) => void
 };
 
 export const LocationSelectionContext = createContext<LocationSelectionContextType | undefined>(undefined);

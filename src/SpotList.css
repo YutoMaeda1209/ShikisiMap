@@ -1,14 +1,42 @@
 #spotList {
     scrollbar-width: none;
-    height: calc(100% - 50px);
+    flex: 1 1 auto;
+    min-height: 0;
 }
 
 #spotList::-webkit-scrollbar {
     display: none;
 }
 
+#spotListPanel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: height 200ms ease;
+    max-height: 100%;
+}
+
+#spotListPanel.closed {
+    height: 0;
+}
+
+#spotListClose {
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: var(--font-sm);
+    cursor: pointer;
+}
+
 #spotListSearch {
     padding: 8px 0;
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 #spotListSearch input {
@@ -16,6 +44,6 @@
     padding: 8px 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: var(--font-sm);
     box-sizing: border-box;
 }
