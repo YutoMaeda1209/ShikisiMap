@@ -3,7 +3,7 @@ import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { List, useListRef } from "react-window";
 import { useLocationSelection } from "./locationSelectionContext";
-import { idToIndex, spotsData } from "./mapData";
+import { useMapData } from "./mapDataContext";
 import SpotItem from "./SpotItem";
 import "./SpotList.css";
 
@@ -19,9 +19,9 @@ export type SpotListProps = {
 
 // Main SpotList component
 const SpotList: React.FC<SpotListProps> = (props) => {
-  const [query, setQuery] = useState("");
   const listRef = useListRef(null);
   const { selectedId } = useLocationSelection();
+  const { listSpotData, idToIndex, filterData } = useMapData();
   const scrollTimeoutRef = useRef<number | null>(null);
   const measureRef = useRef<HTMLDivElement | null>(null);
   const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
@@ -40,7 +40,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
       behavior: "smooth",
       index: idToIndex(selectedId),
     });
-  }, [listRef, selectedId]);
+  }, [listRef, selectedId, idToIndex]);
 
   useEffect(() => {
     if (!props.isOpen) return;
@@ -57,18 +57,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
     };
   }, [props.isOpen, selectedId, scrollToSelected, clearScrollTimeout]);
 
-  // Filter features based on search query
-  const filtered = (() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return spotsData.features;
-    return spotsData.features.filter((f) => {
-      const p = f.properties;
-      return (
-        (p.name && p.name.toLowerCase().includes(q)) ||
-        (p.address && p.address.toLowerCase().includes(q))
-      );
-    });
-  })();
+  const features = listSpotData.features;
 
   useLayoutEffect(() => {
     const node = measureRef.current;
@@ -87,7 +76,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
     };
-  }, [filtered.length, props.isOpen]);
+  }, [features.length, props.isOpen]);
 
   const rowHeight = (measuredHeight ?? 240) + 8;
 
@@ -100,15 +89,14 @@ const SpotList: React.FC<SpotListProps> = (props) => {
         <input
           aria-label="検索"
           placeholder="検索 (名前・住所)"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => filterData(e.target.value)}
           onFocus={props.onRequestOpen}
           onClick={props.onRequestOpen}
         />
       </div>
-      {filtered[0] ? (
+      {features[0] ? (
         <div
-          className={`spotItem${filtered[0].properties.isClosed ? " closed" : ""}`}
+          className={`spotItem${features[0].properties.isClosed ? " closed" : ""}`}
           style={{
             position: "absolute",
             visibility: "hidden",
@@ -120,19 +108,19 @@ const SpotList: React.FC<SpotListProps> = (props) => {
         >
           <div className="spotContent" ref={measureRef}>
             <span className="spotTitle">
-              <span>{filtered[0].properties.name}</span>
-              {filtered[0].properties.isClosed ? (
+              <span>{features[0].properties.name}</span>
+              {features[0].properties.isClosed ? (
                 <span className="closedBadge">閉業</span>
               ) : null}
             </span>
             <LiteYouTubeEmbed
               key={`preview-${props.inlineVideoResetKey}`}
-              id={filtered[0].properties.youtubeId}
-              title={filtered[0].properties.name}
+              id={features[0].properties.youtubeId}
+              title={features[0].properties.name}
               lazyLoad={true}
-              params={`?start=${filtered[0].properties.timestamp}`}
+              params={`?start=${features[0].properties.timestamp}`}
             />
-            <div className="address">{filtered[0].properties.address}</div>
+            <div className="address">{features[0].properties.address}</div>
           </div>
         </div>
       ) : null}
@@ -146,10 +134,10 @@ const SpotList: React.FC<SpotListProps> = (props) => {
         <List
           id="spotList"
           rowComponent={SpotItem}
-          rowCount={filtered.length}
+          rowCount={features.length}
           rowHeight={rowHeight}
           rowProps={{
-            features: filtered,
+            features: features,
             disableInlineVideo: props.disableInlineVideo,
             inlineVideoResetKey: props.inlineVideoResetKey,
           }}

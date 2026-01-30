@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import logo from "./assets/img/logo.webp";
 import BottomSheet from "./BottomSheet";
 import { useLocationSelection } from "./locationSelectionContext";
-import { spotsData } from "./mapData";
+import { useMapData } from "./mapDataContext";
 import "./Sidebar.css";
 import SpotList from "./SpotList";
 import useSidebarEvents from "./useSidebarEvents";
 import useSidebarLayout from "./useSidebarLayout";
 
 function Sidebar() {
+  const { listSpotData } = useMapData();
   const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
   const [sheetFeature, setSheetFeature] = useState<
-    (typeof spotsData.features)[number] | null
+    (typeof listSpotData.features)[number] | null
   >(null);
   const [isListOpen, setIsListOpen] = useState(true);
   const { selectedId, select } = useLocationSelection();
@@ -44,7 +45,7 @@ function Sidebar() {
     setIsListOpen,
     setSheetFeature,
     select,
-    spots: spotsData.features,
+    spots: listSpotData.features,
   });
 
   useEffect(() => {

@@ -9,7 +9,7 @@ import { GeoJSON, MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
 import CurrentLocationMarker from './CurrentLocationMarker';
 import { useLocationSelection } from './locationSelectionContext';
 import "./Map.css";
-import { openSpotsData, spotsData, type GeoProperties } from './mapData';
+import { useMapData, type GeoProperties } from './mapDataContext';
 
 const defaultIcon = L.icon({
   iconUrl: markerIcon,
@@ -36,16 +36,17 @@ const selectedIcon = L.icon({
 // Main Map component
 function Map() {
   const {selectedId, select} = useLocationSelection();
+  const {listSpotData, mapSpotData} = useMapData();
   const mapRef = useRef<L.Map>(null);
 
   useEffect(() => {
     // Pan map to selected location when selectedId changes
     if (selectedId === null || !mapRef.current) return;
-    const feature = spotsData.features.find(feature => feature.id === selectedId);
+    const feature = listSpotData.features.find(feature => feature.id === selectedId);
     if (!feature) return;
     const coords = feature.geometry.coordinates;
     mapRef.current.panTo(new L.LatLng(coords[1], coords[0]));
-  }, [selectedId, mapRef]);
+  }, [selectedId, mapRef, listSpotData]);
 
   // Function to handle feature clicks
   function onEachFeature(feature: Feature<Geometry, GeoProperties>, layer: Layer) {
@@ -78,7 +79,7 @@ function Map() {
       />
       <GeoJSON
         key={selectedId ?? "none"}
-        data={openSpotsData}
+        data={mapSpotData}
         onEachFeature={onEachFeature}
         pointToLayer={pointToLayer}
       />

@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import type { Feature, Point } from "geojson";
-import type { GeoProperties } from "./mapData";
+import { useEffect } from "react";
+import type { GeoProperties } from "./mapDataContext";
 
 type UseSidebarEventsOptions = {
   isCollapsible: boolean;
