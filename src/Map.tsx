@@ -36,7 +36,7 @@ const selectedIcon = L.icon({
 // Main Map component
 function Map() {
   const {selectedId, select} = useLocationSelection();
-  const {listSpotData, mapSpotData} = useMapData();
+  const {listSpotData, mapSpotData, mapSpotDataRev} = useMapData();
   const mapRef = useRef<L.Map>(null);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <GeoJSON
-        key={selectedId ?? "none"}
+        key={`${selectedId}-${mapSpotDataRev}`}
         data={mapSpotData}
         onEachFeature={onEachFeature}
         pointToLayer={pointToLayer}

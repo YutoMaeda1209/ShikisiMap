@@ -12,6 +12,7 @@ export type GeoProperties = {
 type MapDataContextType = {
     listSpotData: FeatureCollection<Point, GeoProperties>;
     mapSpotData: FeatureCollection<Point, GeoProperties>;
+    mapSpotDataRev: string;
     indexToId: (index: number) => string;
     idToIndex: (id: string) => number;
     filterData: (query: string) => void;

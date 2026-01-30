@@ -23,9 +23,11 @@ function idToIndex(id: string): number {
 
 function MapDataProvider({ children }: { children: ReactNode }) {
   const [query, setQuery] = useState<string | null>(null);
+  const [mapDataRev, setMapDataRev] = useState<number>(0);
 
   const filterData = (newQuery: string) => {
     setQuery(newQuery);
+    setMapDataRev((rev) => rev + 1);
   };
 
   const listSpotData: FeatureCollection<Point, GeoProperties> = {
@@ -58,7 +60,7 @@ function MapDataProvider({ children }: { children: ReactNode }) {
 
   return (
     <MapDataContext.Provider
-      value={{ listSpotData, mapSpotData, indexToId, idToIndex, filterData }}
+      value={{ listSpotData, mapSpotData, mapSpotDataRev: String(mapDataRev), indexToId, idToIndex, filterData }}
     >
       {children}
     </MapDataContext.Provider>
