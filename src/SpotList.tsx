@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import { List, useListRef } from "react-window";
@@ -58,7 +58,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
   }, [props.isOpen, selectedId, scrollToSelected, clearScrollTimeout]);
 
   // Filter features based on search query
-  const filtered = useMemo(() => {
+  const filtered = (() => {
     const q = query.trim().toLowerCase();
     if (!q) return spotsData.features;
     return spotsData.features.filter((f) => {
@@ -68,7 +68,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
         (p.address && p.address.toLowerCase().includes(q))
       );
     });
-  }, [query]);
+  })();
 
   useLayoutEffect(() => {
     const node = measureRef.current;

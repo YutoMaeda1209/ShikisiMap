@@ -1,5 +1,5 @@
 import type { Feature, Geometry } from "geojson";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
@@ -37,7 +37,7 @@ function SpotItem({
       clearTimeout(t);
     };
   }, [selectedId, feature.id]);
-  const isSelected = useMemo(() => selectedId === feature.id, [selectedId, feature.id]);
+  const isSelected = selectedId === feature.id;
 
   useLayoutEffect(() => {
     const node = spotItemRootRef.current;
