@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { useEffect, useState } from 'react';
 import { Marker, useMapEvents } from 'react-leaflet';
 import currentLocationIcon from "./assets/img/current_location.webp";
+import { useLocationSelection } from "./locationSelectionContext";
 
 // Define custom icon for current location marker
 const currentLocationMarkerIcon = new L.Icon({
@@ -16,12 +17,13 @@ const currentLocationMarkerIcon = new L.Icon({
 function CurrentLocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null);
   const [isInitMapPan, setIsInitMapPan] = useState<boolean>(false);
+  const { selectedId } = useLocationSelection();
 
   // Set up map events to track location
   const map = useMapEvents({
     locationfound(event) {
       setPosition(event.latlng);
-      if (isInitMapPan) return;
+      if (isInitMapPan || selectedId) return;
       setIsInitMapPan(true);
       map.panTo(event.latlng);
     }
