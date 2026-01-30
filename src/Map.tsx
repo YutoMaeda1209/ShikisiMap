@@ -11,31 +11,32 @@ import { useLocationSelection } from './locationSelectionContext';
 import "./Map.css";
 import { openSpotsData, spotsData, type GeoProperties } from './mapData';
 
+const defaultIcon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  shadowSize: [41, 41],
+  shadowAnchor: [12, 41],
+  popupAnchor: [1, -34],
+});
+const selectedIcon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [29, 47],
+  iconAnchor: [14, 47],
+  shadowSize: [47, 47],
+  shadowAnchor: [14, 47],
+  popupAnchor: [1, -38],
+  className: "selected-marker",
+});
+
 // Main Map component
 function Map() {
   const {selectedId, select} = useLocationSelection();
   const mapRef = useRef<L.Map>(null);
-  const defaultIcon = L.icon({
-    iconUrl: markerIcon,
-    iconRetinaUrl: markerIcon2x,
-    shadowUrl: markerShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    shadowSize: [41, 41],
-    shadowAnchor: [12, 41],
-    popupAnchor: [1, -34],
-  });
-  const selectedIcon = L.icon({
-    iconUrl: markerIcon,
-    iconRetinaUrl: markerIcon2x,
-    shadowUrl: markerShadow,
-    iconSize: [29, 47],
-    iconAnchor: [14, 47],
-    shadowSize: [47, 47],
-    shadowAnchor: [14, 47],
-    popupAnchor: [1, -38],
-    className: "selected-marker",
-  });
 
   useEffect(() => {
     // Pan map to selected location when selectedId changes
