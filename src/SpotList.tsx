@@ -38,9 +38,9 @@ const SpotList: React.FC<SpotListProps> = (props) => {
     listRef.current.scrollToRow({
       align: "center",
       behavior: "smooth",
-      index: idToIndex(selectedId),
+      index: idToIndex(selectedId, listSpotData),
     });
-  }, [listRef, selectedId, idToIndex]);
+  }, [listRef, selectedId, idToIndex, listSpotData]);
 
   useEffect(() => {
     if (!props.isOpen) return;

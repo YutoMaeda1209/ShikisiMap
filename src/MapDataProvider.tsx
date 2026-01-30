@@ -1,4 +1,4 @@
-import type { FeatureCollection, Point } from "geojson";
+import type { FeatureCollection, Geometry, Point } from "geojson";
 import { useState, type ReactNode } from "react";
 import geoJsonRowData from "./data.json";
 import { MapDataContext, type GeoProperties } from "./mapDataContext";
@@ -9,16 +9,16 @@ const openSpotsData: FeatureCollection<Point, GeoProperties> = {
   features: spotsData.features.filter((f) => !f.properties.isClosed),
 };
 
-function indexToId(index: number): string {
-  const feature = spotsData.features[index];
+function indexToId(index: number, data: FeatureCollection<Geometry, GeoProperties>): string {
+  const feature = data.features[index];
   if (!feature) throw new Error(`No feature found at index ${index}`);
   return feature.id as string;
 }
 
-function idToIndex(id: string): number {
-  const feature = spotsData.features.find((f) => f.id === id);
+function idToIndex(id: string, data: FeatureCollection<Geometry, GeoProperties>): number {
+  const feature = data.features.find((f) => f.id === id);
   if (!feature) throw new Error(`No feature found with id ${id}`);
-  return spotsData.features.findIndex((f) => f.id === id);
+  return data.features.findIndex((f) => f.id === id);
 }
 
 function MapDataProvider({ children }: { children: ReactNode }) {
