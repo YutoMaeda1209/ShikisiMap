@@ -1,9 +1,9 @@
-import { useRef } from "react";
 import type { Feature, Geometry } from "geojson";
+import { useRef } from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import type { GeoProperties } from "./mapData";
 import "./BottomSheet.css";
+import type { GeoProperties } from "./mapDataContext";
 
 type BottomSheetProps = {
   feature: Feature<Geometry, GeoProperties>;

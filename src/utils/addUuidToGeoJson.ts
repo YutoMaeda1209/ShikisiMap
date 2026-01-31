@@ -2,7 +2,7 @@ import fs from "fs";
 import type { FeatureCollection, Geometry } from "geojson";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
-import type { GeoProperties } from "../mapData";
+import type { GeoProperties } from "../mapDataContext";
 
 const inputFilePath = process.argv[2]
 if (!inputFilePath) {

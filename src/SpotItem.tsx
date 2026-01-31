@@ -4,7 +4,7 @@ import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
 import { useLocationSelection } from "./locationSelectionContext";
-import type { GeoProperties } from "./mapData";
+import type { GeoProperties } from "./mapDataContext";
 import "./SpotItem.css";
 
 interface ListItemProps {
