@@ -24,8 +24,9 @@ const SpotList: React.FC<SpotListProps> = (props) => {
   const { listSpotData, idToIndex, filterData } = useMapData();
   const scrollTimeoutRef = useRef<number | null>(null);
   const measureRef = useRef<HTMLDivElement | null>(null);
+  const listPanelRef = useRef<HTMLDivElement | null>(null);
   const [measuredHeight, setMeasuredHeight] = useState<number | null>(null);
-
+  const searchBoxRef = useRef<HTMLDivElement | null>(null);
   const clearScrollTimeout = useCallback(() => {
     if (scrollTimeoutRef.current !== null) {
       window.clearTimeout(scrollTimeoutRef.current);
@@ -61,14 +62,18 @@ const SpotList: React.FC<SpotListProps> = (props) => {
 
   useLayoutEffect(() => {
     const node = measureRef.current;
-    if (!node) return;
+    const searchBoxNode = searchBoxRef.current;
+    if (!node || !searchBoxNode) return;
     const update = () => {
       const next = Math.ceil(node.scrollHeight);
       setMeasuredHeight((prev) => (prev === next ? prev : next));
+      if (!listPanelRef.current) return;
+      listPanelRef.current.style.maxHeight = `calc(100% - ${searchBoxNode.scrollHeight}px)`;
     };
     update();
     const ro = new ResizeObserver(update);
     ro.observe(node);
+    ro.observe(searchBoxNode);
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
     return () => {
@@ -85,7 +90,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
       id="spotListComponent"
       style={{ height: props.isOpen ? props.height : "auto" }}
     >
-      <div id="spotListSearch">
+      <div id="spotListSearch" ref={searchBoxRef}>
         <input
           aria-label="検索"
           placeholder="検索 (名前・住所)"
@@ -130,6 +135,7 @@ const SpotList: React.FC<SpotListProps> = (props) => {
           props.isCollapsible ? (props.isOpen ? "open" : "closed") : "open"
         }
         style={{ height: props.isOpen ? props.height : 0 }}
+        ref={listPanelRef}
       >
         <List
           id="spotList"

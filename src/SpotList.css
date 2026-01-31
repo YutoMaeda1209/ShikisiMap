@@ -13,7 +13,6 @@
     flex-direction: column;
     overflow: hidden;
     transition: height 200ms ease;
-    max-height: 100%;
 }
 
 #spotListPanel.closed {
