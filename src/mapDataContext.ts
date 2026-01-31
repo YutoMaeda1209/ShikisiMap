@@ -10,6 +10,7 @@ export type GeoProperties = {
 };
 
 type MapDataContextType = {
+    allSpotData: FeatureCollection<Point, GeoProperties>;
     listSpotData: FeatureCollection<Point, GeoProperties>;
     mapSpotData: FeatureCollection<Point, GeoProperties>;
     mapSpotDataRev: string;
