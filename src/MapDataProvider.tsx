@@ -60,7 +60,7 @@ function MapDataProvider({ children }: { children: ReactNode }) {
 
   return (
     <MapDataContext.Provider
-      value={{ listSpotData, mapSpotData, mapSpotDataRev: String(mapDataRev), indexToId, idToIndex, filterData }}
+      value={{ allSpotData: spotsData, listSpotData, mapSpotData, mapSpotDataRev: String(mapDataRev), indexToId, idToIndex, filterData }}
     >
       {children}
     </MapDataContext.Provider>
