@@ -2718,6 +2718,60 @@
         ]
       },
       "id": "0ad0f155-13dc-498b-b57a-75c87ed1c3b9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NEWoMan高輪",
+        "address": "〒108-0074 東京都港区高輪２丁目２１−１",
+        "isClosed": false,
+        "youtubeId": "kq7E_otp-g4",
+        "timestamp": 86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.740018,
+          35.636288
+        ]
+      },
+      "id": "ac7265bb-eb83-4ee2-aaaa-7c50c6913a69"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NEWoMan高輪LUFTBAUM",
+        "address": "〒108-0074 東京都港区高輪２丁目２１−１ THE LINKPILLAR1 NORTH 28 29F",
+        "isClosed": false,
+        "youtubeId": "kq7E_otp-g4",
+        "timestamp": 320
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.740074,
+          35.636442
+        ]
+      },
+      "id": "f96ed9d4-7944-4fc1-bbbc-c8b3273e0ea1"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Food Hall SUPER RAW - Takanawa",
+        "address": "〒108-0074 東京都港区高輪２丁目２１−１ NEWoMan高輪 North 5F",
+        "isClosed": false,
+        "youtubeId": "kq7E_otp-g4",
+        "timestamp": 499
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.739817,
+          35.635689
+        ]
+      },
+      "id": "9143df05-e015-42ed-be96-ef351d3552e0"
     }
   ]
 }
