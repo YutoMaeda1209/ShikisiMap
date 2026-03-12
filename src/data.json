@@ -2705,7 +2705,7 @@
       "type": "Feature",
       "properties": {
         "name": "アンドビール",
-        "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 １０５",
+        "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 105",
         "isClosed": false,
         "youtubeId": "hum1jzkWfyE",
         "timestamp": 645
@@ -2772,6 +2772,150 @@
         ]
       },
       "id": "9143df05-e015-42ed-be96-ef351d3552e0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "KOMEDA is □ 東銀座店",
+        "address": "〒104-0045 東京都中央区築地１丁目１３−１ 銀座松竹スクエア1階",
+        "isClosed": false,
+        "youtubeId": "84FD_QMd_wQ",
+        "timestamp": 88
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.769414,
+          35.668391
+        ]
+      },
+      "id": "c6f393ab-040c-4aae-abaf-f402ffd956ab"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "STARBUCKS RESERVE® ROASTERY TOKYO",
+        "address": "〒153-0042 東京都目黒区青葉台２丁目１９−２３",
+        "isClosed": false,
+        "youtubeId": "gR6kI-UU2ZE",
+        "timestamp": 159
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.692608,
+          35.649258
+        ]
+      },
+      "id": "3de60e5e-404e-4140-86e2-90307f9deb45"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "中目黒八幡神社",
+        "address": "〒153-0061 東京都目黒区中目黒３丁目１０−５",
+        "isClosed": false,
+        "youtubeId": "gR6kI-UU2ZE",
+        "timestamp": 652
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.700361,
+          35.639682
+        ]
+      },
+      "id": "66fe49d5-0287-4df4-aa39-0aeb08281e0b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "珈琲 王城",
+        "address": "〒110-0005 東京都台東区上野６丁目８−１４",
+        "isClosed": false,
+        "youtubeId": "0fTaxZ1rZ24",
+        "timestamp": 106
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.775827,
+          35.710114
+        ]
+      },
+      "id": "0d2a6aa3-3263-4a64-89f0-6abc499438b0"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "純喫茶 丘",
+        "address": "〒110-0005 東京都台東区上野６丁目５−３",
+        "isClosed": false,
+        "youtubeId": "0fTaxZ1rZ24",
+        "timestamp": 540
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.775339,
+          35.708796
+        ]
+      },
+      "id": "84c60b65-b5f8-4ca7-8c83-f7240ccc2955"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 古城",
+        "address": "〒110-0015 東京都台東区東上野３丁目３９−１０ 光和ビル B1F",
+        "isClosed": false,
+        "youtubeId": "fhNbnHMxWQk",
+        "timestamp": 56
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.77899,
+          35.711757
+        ]
+      },
+      "id": "239a288e-98cd-483e-a08c-e0c5e9d92d60"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "可否茶館 跡地",
+        "address": "〒110-0005 東京都台東区上野１丁目１−１０",
+        "isClosed": false,
+        "youtubeId": "fhNbnHMxWQk",
+        "timestamp": 527
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.771796,
+          35.705534
+        ]
+      },
+      "id": "fa1b9f56-aa44-4681-b744-2c8274f5c87d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "THIS BREWING",
+        "address": "〒110-0005 東京都台東区上野１丁目３−７",
+        "isClosed": false,
+        "youtubeId": "fhNbnHMxWQk",
+        "timestamp": 744
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.77081,
+          35.705351
+        ]
+      },
+      "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
     }
   ]
 }
