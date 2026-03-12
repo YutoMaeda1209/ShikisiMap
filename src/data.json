@@ -2705,7 +2705,7 @@
       "type": "Feature",
       "properties": {
         "name": "アンドビール",
-        "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 １０５",
+        "address": "〒166-0002 東京都杉並区高円寺北４丁目２−２４ アールリエット高円寺 Ａ棟 105",
         "isClosed": false,
         "youtubeId": "hum1jzkWfyE",
         "timestamp": 645
@@ -2777,7 +2777,7 @@
       "type": "Feature",
       "properties": {
         "name": "KOMEDA is □ 東銀座店",
-        "address": "〒104-0045 東京都中央区築地1-13-1 銀座松竹スクエア1階",
+        "address": "〒104-0045 東京都中央区築地１丁目１３−１ 銀座松竹スクエア1階",
         "isClosed": false,
         "youtubeId": "84FD_QMd_wQ",
         "timestamp": 88
@@ -2795,7 +2795,7 @@
       "type": "Feature",
       "properties": {
         "name": "STARBUCKS RESERVE® ROASTERY TOKYO",
-        "address": "〒153-0042 東京都 目黒区 青葉台2-19-23",
+        "address": "〒153-0042 東京都目黒区青葉台２丁目１９−２３",
         "isClosed": false,
         "youtubeId": "gR6kI-UU2ZE",
         "timestamp": 159
@@ -2885,7 +2885,7 @@
       "type": "Feature",
       "properties": {
         "name": "可否茶館 跡地",
-        "address": "〒110-0005 東京都台東区上野１丁目１−１−１０",
+        "address": "〒110-0005 東京都台東区上野１丁目１−１０",
         "isClosed": false,
         "youtubeId": "fhNbnHMxWQk",
         "timestamp": 527
