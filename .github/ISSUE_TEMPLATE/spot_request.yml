@@ -27,6 +27,22 @@ body:
     validations:
       required: true
   - type: input
+    id: coord_lat
+    attributes:
+      label: 緯度
+      description: スポット住所の緯度を入力してください。
+      placeholder: 35.2275
+    validations:
+      required: true
+  - type: input
+    id: coord_lon
+    attributes:
+      label: 経度
+      description: スポット住所の経度を入力してください。
+      placeholder: 138.610032
+    validations:
+      required: true
+  - type: input
     id: youtube_link
     attributes:
       label: YouTubeリンク
@@ -51,6 +67,7 @@ body:
       description: 提案内容を確認してください。
       options:
         - label: スポット名が正確であることを確認しました。
+        - label: 緯度経度が正確であることを確認しました。
         - label: 住所が正確であることを確認しました。
         - label: YouTubeリンクが有効であることを確認しました。
     validations:
