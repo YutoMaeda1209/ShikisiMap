@@ -31,7 +31,7 @@ body:
     attributes:
       label: 緯度
       description: スポット住所の緯度を入力してください。
-      placeholder: 35.2275
+      placeholder: "35.2275"
     validations:
       required: true
   - type: input
@@ -39,7 +39,7 @@ body:
     attributes:
       label: 経度
       description: スポット住所の経度を入力してください。
-      placeholder: 138.610032
+      placeholder: "138.610032"
     validations:
       required: true
   - type: input
