@@ -71,20 +71,51 @@ function parseYoutube(url: string): { id: string | null; timestamp: number } {
   };
 }
 
+interface GsiAddressResult {
+  geometry: { coordinates: [number, number] };
+}
+
+// Strips the postal code and any trailing building name/floor (usually
+// separated by a space) so the 国土地理院 (GSI) address search API can match it.
+function simplifyAddress(address: string): string {
+  return address.replace(/^〒?\s*\d{3}-?\d{4}\s*/, "").trim();
+}
+
+async function geocode(address: string): Promise<{ lat: number; lon: number } | null> {
+  const candidates = [simplifyAddress(address).split(/\s+/)[0], simplifyAddress(address)];
+  for (const query of candidates) {
+    if (!query) continue;
+    const url = `https://msearch.gsi.go.jp/address-search/AddressSearch?q=${encodeURIComponent(query)}`;
+    const res = await fetch(url);
+    if (!res.ok) continue;
+    const results = (await res.json()) as GsiAddressResult[];
+    if (results.length > 0) {
+      const [lon, lat] = results[0].geometry.coordinates;
+      return { lat, lon };
+    }
+  }
+  return null;
+}
+
 // 1. Parse the issue body into the fields defined by the issue template.
 const sections = parseSections(issueBody);
 const name = sections["スポット名"];
 const address = sections["住所"];
-const lat = parseFloat(sections["緯度"]);
-const lon = parseFloat(sections["経度"]);
 const youtubeLink = sections["YouTubeリンク"];
 const supplementary =
   sections["補足情報"] === "_No response_" ? "" : (sections["補足情報"] ?? "");
 
-if (!name || !address || !youtubeLink || Number.isNaN(lat) || Number.isNaN(lon)) {
+if (!name || !address || !youtubeLink) {
   console.error("Required fields are missing or malformed; aborting without changes.");
   process.exit(1);
 }
+
+const coords = await geocode(address);
+if (!coords) {
+  console.error(`Could not geocode the address "${address}"; aborting without changes.`);
+  process.exit(1);
+}
+const { lat, lon } = coords;
 
 const { id: youtubeId, timestamp } = parseYoutube(youtubeLink);
 if (!youtubeId) {
