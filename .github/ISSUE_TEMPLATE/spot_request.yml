@@ -21,7 +21,7 @@ body:
     id: location
     attributes:
       label: 住所
-      description: スポットの住所を記入してください。緯度経度はこの住所から自動で取得されます。
+      description: スポットの住所を記入してください。
       placeholder: |
         〒418-0067　静岡県富士宮市宮町1-1
     validations:
