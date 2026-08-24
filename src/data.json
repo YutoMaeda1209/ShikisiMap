@@ -2916,6 +2916,24 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "モスバーガー 成増店",
+        "address": "〒175-0094 東京都板橋区成増２丁目１５−１０",
+        "isClosed": false,
+        "youtubeId": "wK63aZOEPFw",
+        "timestamp": 135
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.631851,
+          35.777557
+        ]
+      },
+      "id": "dc7031c7-9a7f-40f3-90a3-29ada6c24035"
     }
   ]
 }
