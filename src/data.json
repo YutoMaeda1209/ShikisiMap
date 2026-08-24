@@ -2934,6 +2934,24 @@
         ]
       },
       "id": "b0994b02-c3f5-4238-8094-b881aed45a95"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "【自動テスト】動作確認用スポット",
+        "address": "〒100-0005 東京都千代田区丸の内1丁目",
+        "isClosed": false,
+        "youtubeId": "dQw4w9WgXcQ",
+        "timestamp": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.767197,
+          35.681561
+        ]
+      },
+      "id": "ff80cd62-a537-4b3b-9750-731d0b2aa527"
     }
   ]
 }
