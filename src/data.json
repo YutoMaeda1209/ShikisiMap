@@ -2916,6 +2916,24 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shake Shack 渋谷店",
+        "address": "〒150−0042 東京都渋谷区宇田川町１２−９ JouLe SHIBUYA 2階",
+        "isClosed": false,
+        "youtubeId": "aItWWQTFtqw",
+        "timestamp": 479
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.697983,
+          35.66148
+        ]
+      },
+      "id": "6bbf1353-91d0-4832-a37d-b85db58f2a9d"
     }
   ]
 }
