@@ -2916,6 +2916,24 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "月光荘サロン 月のはなれ",
+        "address": "〒104−0061 東京都中央区銀座８丁目７−１８",
+        "isClosed": false,
+        "youtubeId": "Sfqq6fM2gak",
+        "timestamp": 727
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.760834,
+          35.668453
+        ]
+      },
+      "id": "2344ad9f-0895-4274-b689-3c165e89de1c"
     }
   ]
 }
