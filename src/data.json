@@ -2916,6 +2916,24 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "本陣",
+        "address": "〒850-0841 長崎県長崎市銅座町９−１１",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 521
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.877151,
+          32.742111
+        ]
+      },
+      "id": "b4b580a9-869e-4f1b-8ef7-40ba91c05ba2"
     }
   ]
 }
