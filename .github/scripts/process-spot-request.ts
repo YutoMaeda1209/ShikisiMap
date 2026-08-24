@@ -75,10 +75,11 @@ interface GsiAddressResult {
   geometry: { coordinates: [number, number] };
 }
 
-// Strips the postal code and any trailing building name/floor (usually
-// separated by a space) so the 国土地理院 (GSI) address search API can match it.
+// Strips the postal code prefix so the 国土地理院 (GSI) address search API can match it.
+// The separator between the two digit groups varies by submitter: half-width
+// hyphen, full-width hyphen, or a full-width minus sign are all seen in practice.
 function simplifyAddress(address: string): string {
-  return address.replace(/^〒?\s*\d{3}-?\d{4}\s*/, "").trim();
+  return address.replace(/^〒?\s*\d{3}[-‐‑‒–—−－]?\d{4}\s*/, "").trim();
 }
 
 async function geocode(address: string): Promise<{ lat: number; lon: number } | null> {
