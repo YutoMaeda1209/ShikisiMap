@@ -2916,6 +2916,24 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "足立区生物園",
+        "address": "〒121−0064 東京都足立区保木間２丁目１７−１",
+        "isClosed": false,
+        "youtubeId": "1XYbTJzY6oc",
+        "timestamp": 186
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.806992,
+          35.793121
+        ]
+      },
+      "id": "a496293b-bfe7-48be-a911-bf51a03ba883"
     }
   ]
 }
