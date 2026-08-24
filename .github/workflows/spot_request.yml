@@ -1,0 +1,35 @@
+name: Spot Request Automation
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+
+jobs:
+  process-spot-request:
+    if: contains(github.event.issue.labels.*.name, 'new spot')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: dev
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+
+      - name: Process spot request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          # Comma-separated GitHub usernames/teams to request review from.
+          # Configure via repo Settings > Secrets and variables > Actions > Variables.
+          REVIEWERS: ${{ vars.SPOT_REQUEST_REVIEWERS }}
+        run: node .github/scripts/process-spot-request.ts
