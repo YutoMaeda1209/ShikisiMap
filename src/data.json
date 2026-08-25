@@ -3222,6 +3222,24 @@
         ]
       },
       "id": "d35780c4-92a6-48d9-ad91-f84e00ea9353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 ぶんぶん",
+        "address": "〒850-0905 長崎県長崎市籠町５−８",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1244
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875916,
+          32.740162
+        ]
+      },
+      "id": "9eb35d7f-e2c9-4c96-8c72-e5f4fbab3856"
     }
   ]
 }
