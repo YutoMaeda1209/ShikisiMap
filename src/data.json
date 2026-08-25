@@ -3204,6 +3204,24 @@
         ]
       },
       "id": "8526fd6f-4e6e-4061-a736-989d3f8de18f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BEERPUB＆CAFE AWAKE",
+        "address": "〒852-8105 長崎県長崎市目覚町１１−２",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1020
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.865265,
+          32.764698
+        ]
+      },
+      "id": "d35780c4-92a6-48d9-ad91-f84e00ea9353"
     }
   ]
 }
