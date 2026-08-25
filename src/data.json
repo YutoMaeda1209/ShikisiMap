@@ -2988,6 +2988,24 @@
         ]
       },
       "id": "b4b580a9-869e-4f1b-8ef7-40ba91c05ba2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "おにぎり専門店 かにや 銅座本店",
+        "address": "〒850-0841 長崎県長崎市銅座町１０−２",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 636
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.877487,
+          32.742653
+        ]
+      },
+      "id": "485d0970-695d-411a-877c-7c8d03fb987b"
     }
   ]
 }
