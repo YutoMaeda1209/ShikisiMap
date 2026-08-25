@@ -3150,6 +3150,24 @@
         ]
       },
       "id": "3ba303c3-3436-4845-bad8-3b53cb0d6368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "日新ビル",
+        "address": "〒850-0862 長崎県長崎市出島町１０−１５",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 872
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.873611,
+          32.742744
+        ]
+      },
+      "id": "197b7c18-69e3-4452-ba5a-e55c9b66d26c"
     }
   ]
 }
