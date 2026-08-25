@@ -3186,6 +3186,24 @@
         ]
       },
       "id": "0e9dd4dd-696f-4193-b29c-edee2b2595bf"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ツル茶ん",
+        "address": "〒850-0832 長崎県長崎市油屋町２−４７ リバソンクレインビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 899
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.880661,
+          32.743137
+        ]
+      },
+      "id": "8526fd6f-4e6e-4061-a736-989d3f8de18f"
     }
   ]
 }
