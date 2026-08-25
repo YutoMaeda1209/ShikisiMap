@@ -2952,6 +2952,24 @@
         ]
       },
       "id": "c2a2c522-b8ac-4fd6-be96-fbabe682622a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶冨士",
+        "address": "〒850-0017 長崎県長崎市新大工町２−１９",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 428
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.885422,
+          32.753014
+        ]
+      },
+      "id": "42ce7b6d-70d0-44db-b7df-4bd84863c625"
     }
   ]
 }
