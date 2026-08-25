@@ -3078,6 +3078,24 @@
         ]
       },
       "id": "49a00384-dcd4-4b83-b7e9-34e7ce22b460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "老李 長崎中華街 総本店",
+        "address": "〒850−0842 長崎県長崎市新地町１２−７",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 209
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875504,
+          32.74094
+        ]
+      },
+      "id": "cbd3cfa7-fa49-4343-a1f6-34b09c459281"
     }
   ]
 }
