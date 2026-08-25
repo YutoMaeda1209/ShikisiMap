@@ -3006,6 +3006,24 @@
         ]
       },
       "id": "485d0970-695d-411a-877c-7c8d03fb987b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "タワーレコード 渋谷店",
+        "address": "〒150−0041 東京都渋谷区神南１−２２−１４",
+        "isClosed": false,
+        "youtubeId": "aItWWQTFtqw",
+        "timestamp": 149
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.700943,
+          35.662018
+        ]
+      },
+      "id": "86420a48-8afd-4ebd-a40d-63beafa58724"
     }
   ]
 }
