@@ -3168,6 +3168,24 @@
         ]
       },
       "id": "197b7c18-69e3-4452-ba5a-e55c9b66d26c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "出島",
+        "address": "〒850-0862 長崎県長崎市出島町６−１",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 898
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.872299,
+          32.743591
+        ]
+      },
+      "id": "0e9dd4dd-696f-4193-b29c-edee2b2595bf"
     }
   ]
 }
