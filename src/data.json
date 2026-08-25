@@ -3060,6 +3060,24 @@
         ]
       },
       "id": "a496293b-bfe7-48be-a911-bf51a03ba883"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "カフェー パウリスタ",
+        "address": "〒104−0061 東京都中央区銀座８−９ 長崎センタービル1F",
+        "isClosed": false,
+        "youtubeId": "Sfqq6fM2gak",
+        "timestamp": 76
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.761932,
+          35.667988
+        ]
+      },
+      "id": "49a00384-dcd4-4b83-b7e9-34e7ce22b460"
     }
   ]
 }
