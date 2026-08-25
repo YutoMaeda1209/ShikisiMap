@@ -3114,6 +3114,24 @@
         ]
       },
       "id": "2344ad9f-0895-4274-b689-3c165e89de1c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stringstand Eito",
+        "address": "〒121−0813 東京都足立区竹の塚３丁目１９−５ 松久ハイツ",
+        "isClosed": false,
+        "youtubeId": "1XYbTJzY6oc",
+        "timestamp": 362
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.79924,
+          35.791763
+        ]
+      },
+      "id": "a6ddb322-b505-4fd4-a542-d5b08ee93e85"
     }
   ]
 }
