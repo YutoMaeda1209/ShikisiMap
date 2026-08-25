@@ -2934,6 +2934,24 @@
         ]
       },
       "id": "dc7031c7-9a7f-40f3-90a3-29ada6c24035"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "香福味坊",
+        "address": "〒101-0025 東京都千代田区神田佐久間町１丁目２１−１ Chiyoda Terrace B1F",
+        "isClosed": false,
+        "youtubeId": "VGsppw9EpEA",
+        "timestamp": 54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.775192,
+          35.697784
+        ]
+      },
+      "id": "c2a2c522-b8ac-4fd6-be96-fbabe682622a"
     }
   ]
 }
