@@ -3240,6 +3240,24 @@
         ]
       },
       "id": "9eb35d7f-e2c9-4c96-8c72-e5f4fbab3856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "そとめベーカリー",
+        "address": "〒851-2403 長崎県長崎市神浦江川町６２３−２",
+        "isClosed": false,
+        "youtubeId": "mCkItaxlBF0",
+        "timestamp": 175
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.681595,
+          32.881165
+        ]
+      },
+      "id": "41330503-12ce-429b-8c89-7c932a778f29"
     }
   ]
 }
