@@ -3276,6 +3276,24 @@
         ]
       },
       "id": "5425b03d-3506-45ee-baa2-7ec4191a6af2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "8階建てアパート郡",
+        "address": "〒857-0071 長崎県長崎市池島町１３５１−９",
+        "isClosed": false,
+        "youtubeId": "mCkItaxlBF0",
+        "timestamp": 881
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.599625,
+          32.885529
+        ]
+      },
+      "id": "bc4091c1-6cf2-4f11-83c5-00feda9e6fce"
     }
   ]
 }
