@@ -3132,6 +3132,24 @@
         ]
       },
       "id": "485d0970-695d-411a-877c-7c8d03fb987b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "異人館",
+        "address": "〒850-0842 長崎県長崎市新地町１２−８ 理研ビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 730
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875427,
+          32.740871
+        ]
+      },
+      "id": "3ba303c3-3436-4845-bad8-3b53cb0d6368"
     }
   ]
 }
