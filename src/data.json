@@ -2916,6 +2916,222 @@
         ]
       },
       "id": "c330fb67-c6ed-40ab-918d-dc867f68ff8d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "モスバーガー 成増店",
+        "address": "〒175-0094 東京都板橋区成増２丁目１５−１０",
+        "isClosed": false,
+        "youtubeId": "wK63aZOEPFw",
+        "timestamp": 135
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.631851,
+          35.777557
+        ]
+      },
+      "id": "dc7031c7-9a7f-40f3-90a3-29ada6c24035"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "香福味坊",
+        "address": "〒101-0025 東京都千代田区神田佐久間町１丁目２１−１ Chiyoda Terrace B1F",
+        "isClosed": false,
+        "youtubeId": "VGsppw9EpEA",
+        "timestamp": 54
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.775192,
+          35.697784
+        ]
+      },
+      "id": "c2a2c522-b8ac-4fd6-be96-fbabe682622a"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶冨士",
+        "address": "〒850-0017 長崎県長崎市新大工町２−１９",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 428
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.885422,
+          32.753014
+        ]
+      },
+      "id": "42ce7b6d-70d0-44db-b7df-4bd84863c625"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "本陣",
+        "address": "〒850-0841 長崎県長崎市銅座町９−１１",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 521
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.877151,
+          32.742111
+        ]
+      },
+      "id": "b4b580a9-869e-4f1b-8ef7-40ba91c05ba2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "おにぎり専門店 かにや 銅座本店",
+        "address": "〒850-0841 長崎県長崎市銅座町１０−２",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 636
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.877487,
+          32.742653
+        ]
+      },
+      "id": "485d0970-695d-411a-877c-7c8d03fb987b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "タワーレコード 渋谷店",
+        "address": "〒150−0041 東京都渋谷区神南１−２２−１４",
+        "isClosed": false,
+        "youtubeId": "aItWWQTFtqw",
+        "timestamp": 149
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.700943,
+          35.662018
+        ]
+      },
+      "id": "86420a48-8afd-4ebd-a40d-63beafa58724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Shake Shack 渋谷店",
+        "address": "〒150−0042 東京都渋谷区宇田川町１２−９ JouLe SHIBUYA 2階",
+        "isClosed": false,
+        "youtubeId": "aItWWQTFtqw",
+        "timestamp": 479
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.697983,
+          35.66148
+        ]
+      },
+      "id": "6bbf1353-91d0-4832-a37d-b85db58f2a9d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "足立区生物園",
+        "address": "〒121−0064 東京都足立区保木間２丁目１７−１",
+        "isClosed": false,
+        "youtubeId": "1XYbTJzY6oc",
+        "timestamp": 186
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.806992,
+          35.793121
+        ]
+      },
+      "id": "a496293b-bfe7-48be-a911-bf51a03ba883"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "カフェー パウリスタ",
+        "address": "〒104−0061 東京都中央区銀座８−９ 長崎センタービル1F",
+        "isClosed": false,
+        "youtubeId": "Sfqq6fM2gak",
+        "timestamp": 76
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.761932,
+          35.667988
+        ]
+      },
+      "id": "49a00384-dcd4-4b83-b7e9-34e7ce22b460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "老李 長崎中華街 総本店",
+        "address": "〒850−0842 長崎県長崎市新地町１２−７",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 209
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875504,
+          32.74094
+        ]
+      },
+      "id": "cbd3cfa7-fa49-4343-a1f6-34b09c459281"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "月光荘サロン 月のはなれ",
+        "address": "〒104−0061 東京都中央区銀座８丁目７−１８",
+        "isClosed": false,
+        "youtubeId": "Sfqq6fM2gak",
+        "timestamp": 727
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.760834,
+          35.668453
+        ]
+      },
+      "id": "2344ad9f-0895-4274-b689-3c165e89de1c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Stringstand Eito",
+        "address": "〒121−0813 東京都足立区竹の塚３丁目１９−５ 松久ハイツ",
+        "isClosed": false,
+        "youtubeId": "1XYbTJzY6oc",
+        "timestamp": 362
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.79924,
+          35.791763
+        ]
+      },
+      "id": "a6ddb322-b505-4fd4-a542-d5b08ee93e85"
     }
   ]
 }
