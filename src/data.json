@@ -3132,6 +3132,114 @@
         ]
       },
       "id": "485d0970-695d-411a-877c-7c8d03fb987b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "異人館",
+        "address": "〒850-0842 長崎県長崎市新地町１２−８ 理研ビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 730
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875427,
+          32.740871
+        ]
+      },
+      "id": "3ba303c3-3436-4845-bad8-3b53cb0d6368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "日新ビル",
+        "address": "〒850-0862 長崎県長崎市出島町１０−１５",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 872
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.873611,
+          32.742744
+        ]
+      },
+      "id": "197b7c18-69e3-4452-ba5a-e55c9b66d26c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "出島",
+        "address": "〒850-0862 長崎県長崎市出島町６−１",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 898
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.872299,
+          32.743591
+        ]
+      },
+      "id": "0e9dd4dd-696f-4193-b29c-edee2b2595bf"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ツル茶ん",
+        "address": "〒850-0832 長崎県長崎市油屋町２−４７ リバソンクレインビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 899
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.880661,
+          32.743137
+        ]
+      },
+      "id": "8526fd6f-4e6e-4061-a736-989d3f8de18f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BEERPUB＆CAFE AWAKE",
+        "address": "〒852-8105 長崎県長崎市目覚町１１−２",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1020
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.865265,
+          32.764698
+        ]
+      },
+      "id": "d35780c4-92a6-48d9-ad91-f84e00ea9353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 ぶんぶん",
+        "address": "〒850-0905 長崎県長崎市籠町５−８",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1244
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875916,
+          32.740162
+        ]
+      },
+      "id": "9eb35d7f-e2c9-4c96-8c72-e5f4fbab3856"
     }
   ]
 }
