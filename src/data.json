@@ -3528,6 +3528,24 @@
         ]
       },
       "id": "12e5f5b9-1938-455f-95a5-e501a3b7660e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "VERTERE Daikanyama Taproom",
+        "address": "〒150-0034 東京都渋谷区代官山町２０−１２ Forestgate Daikanyama TENOHA棟",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 710
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.702835,
+          35.648033
+        ]
+      },
+      "id": "662cfab8-a187-4bda-b585-beb22ca8980f"
     }
   ]
 }
