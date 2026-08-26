@@ -3510,6 +3510,24 @@
         ]
       },
       "id": "f03b959b-19b5-40d4-869c-daedf9ee431c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "代官山 蔦屋書店",
+        "address": "〒150-0033 東京都渋谷区猿楽町１７−５ 代官山Ｔ－ＳＩＴＥ １号館～３号館 １階～２階",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 612
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.699509,
+          35.648823
+        ]
+      },
+      "id": "12e5f5b9-1938-455f-95a5-e501a3b7660e"
     }
   ]
 }
