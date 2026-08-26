@@ -3294,6 +3294,24 @@
         ]
       },
       "id": "bc4091c1-6cf2-4f11-83c5-00feda9e6fce"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "赤城神社",
+        "address": "〒162-0817 東京都新宿区赤城元町１−１０",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 125
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.735977,
+          35.704987
+        ]
+      },
+      "id": "3d6802ac-62ed-43f8-91d9-9170c59bbcb9"
     }
   ]
 }
