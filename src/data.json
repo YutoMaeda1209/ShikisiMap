@@ -3330,6 +3330,24 @@
         ]
       },
       "id": "3a201d32-3dde-4ad7-97ce-85b68e7fa4b7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ル ブルターニュ 神楽坂店",
+        "address": "〒162-0825 東京都新宿区神楽坂４丁目２",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 345
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.739639,
+          35.701813
+        ]
+      },
+      "id": "461b42b8-49ca-4e36-98d1-3e2570ff71ad"
     }
   ]
 }
