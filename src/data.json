@@ -3456,6 +3456,24 @@
         ]
       },
       "id": "8aa1cf20-0a6f-42c8-8363-87eacac69472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "丸善 丸の内本店",
+        "address": "〒100-8203 東京都千代田区丸の内１丁目６−４ 丸の内オアゾ 1階～4階",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 215
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.766266,
+          35.683708
+        ]
+      },
+      "id": "3625d029-38bb-4097-bd89-f31875237748"
     }
   ]
 }
