@@ -3132,6 +3132,420 @@
         ]
       },
       "id": "485d0970-695d-411a-877c-7c8d03fb987b"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "異人館",
+        "address": "〒850-0842 長崎県長崎市新地町１２−８ 理研ビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 730
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875427,
+          32.740871
+        ]
+      },
+      "id": "3ba303c3-3436-4845-bad8-3b53cb0d6368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "日新ビル",
+        "address": "〒850-0862 長崎県長崎市出島町１０−１５",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 872
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.873611,
+          32.742744
+        ]
+      },
+      "id": "197b7c18-69e3-4452-ba5a-e55c9b66d26c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "出島",
+        "address": "〒850-0862 長崎県長崎市出島町６−１",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 898
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.872299,
+          32.743591
+        ]
+      },
+      "id": "0e9dd4dd-696f-4193-b29c-edee2b2595bf"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ツル茶ん",
+        "address": "〒850-0832 長崎県長崎市油屋町２−４７ リバソンクレインビル",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 899
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.880661,
+          32.743137
+        ]
+      },
+      "id": "8526fd6f-4e6e-4061-a736-989d3f8de18f"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "BEERPUB＆CAFE AWAKE",
+        "address": "〒852-8105 長崎県長崎市目覚町１１−２",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1020
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.865265,
+          32.764698
+        ]
+      },
+      "id": "d35780c4-92a6-48d9-ad91-f84e00ea9353"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 ぶんぶん",
+        "address": "〒850-0905 長崎県長崎市籠町５−８",
+        "isClosed": false,
+        "youtubeId": "AAPlnm9hyno",
+        "timestamp": 1244
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.875916,
+          32.740162
+        ]
+      },
+      "id": "9eb35d7f-e2c9-4c96-8c72-e5f4fbab3856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "そとめベーカリー",
+        "address": "〒851-2403 長崎県長崎市神浦江川町６２３−２",
+        "isClosed": false,
+        "youtubeId": "mCkItaxlBF0",
+        "timestamp": 175
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.681595,
+          32.881165
+        ]
+      },
+      "id": "41330503-12ce-429b-8c89-7c932a778f29"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "池島",
+        "address": "〒857-0071 長崎県池島町",
+        "isClosed": false,
+        "youtubeId": "mCkItaxlBF0",
+        "timestamp": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.867249,
+          32.750038
+        ]
+      },
+      "id": "5425b03d-3506-45ee-baa2-7ec4191a6af2"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "8階建てアパート郡",
+        "address": "〒857-0071 長崎県長崎市池島町１３５１−９",
+        "isClosed": false,
+        "youtubeId": "mCkItaxlBF0",
+        "timestamp": 881
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          129.599625,
+          32.885529
+        ]
+      },
+      "id": "bc4091c1-6cf2-4f11-83c5-00feda9e6fce"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "赤城神社",
+        "address": "〒162-0817 東京都新宿区赤城元町１−１０",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 125
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.735977,
+          35.704987
+        ]
+      },
+      "id": "3d6802ac-62ed-43f8-91d9-9170c59bbcb9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 トンボロ",
+        "address": "〒162-0825 東京都新宿区神楽坂６丁目１６",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 271
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.737305,
+          35.703049
+        ]
+      },
+      "id": "3a201d32-3dde-4ad7-97ce-85b68e7fa4b7"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ル ブルターニュ 神楽坂店",
+        "address": "〒162-0825 東京都新宿区神楽坂４丁目２",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 345
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.739639,
+          35.701813
+        ]
+      },
+      "id": "461b42b8-49ca-4e36-98d1-3e2570ff71ad"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "まいんコロッケ",
+        "address": "〒301-0000 茨城県龍ケ崎市上町４８３７",
+        "isClosed": false,
+        "youtubeId": "xR3UIGSuSg4",
+        "timestamp": 437
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.188416,
+          35.90514
+        ]
+      },
+      "id": "bf8f0668-d239-4885-8eea-9f910a301d2c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "トコシエ醸造",
+        "address": "〒301-0018 茨城県龍ケ崎市米町４５６５−１ アーバンパレス竜ケ崎 102号室",
+        "isClosed": false,
+        "youtubeId": "xR3UIGSuSg4",
+        "timestamp": 648
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.180954,
+          35.907127
+        ]
+      },
+      "id": "ae870af9-13a3-4537-ad79-bc1b66b171ee"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "アンナミラーズ 南青山店",
+        "address": "〒107-0062 東京都港区南青山２丁目２６−３４ セイザンⅡ",
+        "isClosed": false,
+        "youtubeId": "DgXIBvM3ONU",
+        "timestamp": 115
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.717606,
+          35.669441
+        ]
+      },
+      "id": "c1767337-1906-468b-8d54-85171ea51837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafe1894",
+        "address": "〒100-0005 東京都千代田区丸の内２丁目６−２ 三菱一号館美術館 1F",
+        "isClosed": false,
+        "youtubeId": "JOzSe4TCKIw",
+        "timestamp": 139
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.763062,
+          35.678783
+        ]
+      },
+      "id": "5138e927-0eb0-40af-ac51-f24fef2dfb05"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "寛永寺不忍池辨天堂",
+        "address": "〒110-0007 東京都台東区上野公園２",
+        "isClosed": false,
+        "youtubeId": "th1hu-qt4ec",
+        "timestamp": 191
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.768692,
+          35.712292
+        ]
+      },
+      "id": "7ecec2f7-a5a2-4b3d-ab0a-a8782776126d"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "三省堂書店 神田神保町本店",
+        "address": "〒101-0051 東京都千代田区神田神保町１丁目１",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 85
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.760635,
+          35.695671
+        ]
+      },
+      "id": "8aa1cf20-0a6f-42c8-8363-87eacac69472"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "丸善 丸の内本店",
+        "address": "〒100-8203 東京都千代田区丸の内１丁目６−４ 丸の内オアゾ 1階～4階",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 215
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.766266,
+          35.683708
+        ]
+      },
+      "id": "3625d029-38bb-4097-bd89-f31875237748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ジュンク堂書店 池袋本店",
+        "address": "〒171-0022 東京都豊島区南池袋２丁目１５−５",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 377
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.712143,
+          35.72686
+        ]
+      },
+      "id": "b0be1c6d-16b7-41b3-aaf1-edcd7f40378e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "紀伊國屋書店 新宿本店",
+        "address": "〒160-0022 東京都新宿区新宿３丁目１７−７",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 469
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.702774,
+          35.691921
+        ]
+      },
+      "id": "f03b959b-19b5-40d4-869c-daedf9ee431c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "代官山 蔦屋書店",
+        "address": "〒150-0033 東京都渋谷区猿楽町１７−５ 代官山Ｔ－ＳＩＴＥ １号館～３号館 １階～２階",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 612
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.699509,
+          35.648823
+        ]
+      },
+      "id": "12e5f5b9-1938-455f-95a5-e501a3b7660e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "VERTERE Daikanyama Taproom",
+        "address": "〒150-0034 東京都渋谷区代官山町２０−１２ Forestgate Daikanyama TENOHA棟",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 710
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.702835,
+          35.648033
+        ]
+      },
+      "id": "662cfab8-a187-4bda-b585-beb22ca8980f"
     }
   ]
 }
