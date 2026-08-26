@@ -3384,6 +3384,24 @@
         ]
       },
       "id": "ae870af9-13a3-4537-ad79-bc1b66b171ee"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "アンナミラーズ 南青山店",
+        "address": "〒107-0062 東京都港区南青山２丁目２６−３４ セイザンⅡ",
+        "isClosed": false,
+        "youtubeId": "DgXIBvM3ONU",
+        "timestamp": 115
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.717606,
+          35.669441
+        ]
+      },
+      "id": "c1767337-1906-468b-8d54-85171ea51837"
     }
   ]
 }
