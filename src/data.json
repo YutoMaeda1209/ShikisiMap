@@ -3366,6 +3366,24 @@
         ]
       },
       "id": "bf8f0668-d239-4885-8eea-9f910a301d2c"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "トコシエ醸造",
+        "address": "〒301-0018 茨城県龍ケ崎市米町４５６５−１ アーバンパレス竜ケ崎 102号室",
+        "isClosed": false,
+        "youtubeId": "xR3UIGSuSg4",
+        "timestamp": 648
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.180954,
+          35.907127
+        ]
+      },
+      "id": "ae870af9-13a3-4537-ad79-bc1b66b171ee"
     }
   ]
 }
