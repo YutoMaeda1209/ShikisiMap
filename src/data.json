@@ -3492,6 +3492,24 @@
         ]
       },
       "id": "b0be1c6d-16b7-41b3-aaf1-edcd7f40378e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "紀伊國屋書店 新宿本店",
+        "address": "〒160-0022 東京都新宿区新宿３丁目１７−７",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 469
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.702774,
+          35.691921
+        ]
+      },
+      "id": "f03b959b-19b5-40d4-869c-daedf9ee431c"
     }
   ]
 }
