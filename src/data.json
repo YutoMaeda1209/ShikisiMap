@@ -3420,6 +3420,24 @@
         ]
       },
       "id": "5138e927-0eb0-40af-ac51-f24fef2dfb05"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "寛永寺不忍池辨天堂",
+        "address": "〒110-0007 東京都台東区上野公園２",
+        "isClosed": false,
+        "youtubeId": "th1hu-qt4ec",
+        "timestamp": 191
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.768692,
+          35.712292
+        ]
+      },
+      "id": "7ecec2f7-a5a2-4b3d-ab0a-a8782776126d"
     }
   ]
 }
