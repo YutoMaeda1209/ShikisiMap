@@ -3348,6 +3348,24 @@
         ]
       },
       "id": "461b42b8-49ca-4e36-98d1-3e2570ff71ad"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "まいんコロッケ",
+        "address": "〒301-0000 茨城県龍ケ崎市上町４８３７",
+        "isClosed": false,
+        "youtubeId": "xR3UIGSuSg4",
+        "timestamp": 437
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140.188416,
+          35.90514
+        ]
+      },
+      "id": "bf8f0668-d239-4885-8eea-9f910a301d2c"
     }
   ]
 }
