@@ -3312,6 +3312,24 @@
         ]
       },
       "id": "3d6802ac-62ed-43f8-91d9-9170c59bbcb9"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "喫茶 トンボロ",
+        "address": "〒162-0825 東京都新宿区神楽坂６丁目１６",
+        "isClosed": false,
+        "youtubeId": "Ia_GakilJ3I",
+        "timestamp": 271
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.737305,
+          35.703049
+        ]
+      },
+      "id": "3a201d32-3dde-4ad7-97ce-85b68e7fa4b7"
     }
   ]
 }
