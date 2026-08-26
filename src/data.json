@@ -3402,6 +3402,24 @@
         ]
       },
       "id": "c1767337-1906-468b-8d54-85171ea51837"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cafe1894",
+        "address": "〒100-0005 東京都千代田区丸の内２丁目６−２ 三菱一号館美術館 1F",
+        "isClosed": false,
+        "youtubeId": "JOzSe4TCKIw",
+        "timestamp": 139
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.763062,
+          35.678783
+        ]
+      },
+      "id": "5138e927-0eb0-40af-ac51-f24fef2dfb05"
     }
   ]
 }
