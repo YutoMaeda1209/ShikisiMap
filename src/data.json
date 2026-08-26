@@ -3474,6 +3474,24 @@
         ]
       },
       "id": "3625d029-38bb-4097-bd89-f31875237748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ジュンク堂書店 池袋本店",
+        "address": "〒171-0022 東京都豊島区南池袋２丁目１５−５",
+        "isClosed": false,
+        "youtubeId": "ZLvv5miUZic",
+        "timestamp": 377
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.712143,
+          35.72686
+        ]
+      },
+      "id": "b0be1c6d-16b7-41b3-aaf1-edcd7f40378e"
     }
   ]
 }
