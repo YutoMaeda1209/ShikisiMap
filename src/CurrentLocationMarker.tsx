@@ -1,50 +1,60 @@
-import L, { type LatLng } from 'leaflet';
-import "leaflet/dist/leaflet.css";
-import { useEffect, useState } from 'react';
-import { Marker, useMapEvents } from 'react-leaflet';
+import * as maplibregl from "maplibre-gl";
+import type { Map as MapLibreMap } from "maplibre-gl";
+import { useEffect, useRef } from "react";
 import currentLocationIcon from "./assets/img/current_location.webp";
 import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData } from './mapDataContext';
+import { useMapData } from "./mapDataContext";
 
-// Define custom icon for current location marker
-const currentLocationMarkerIcon = new L.Icon({
-  iconUrl: currentLocationIcon,
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-  popupAnchor: [0, -16],
-});
+type CurrentLocationMarkerProps = {
+  map: MapLibreMap | null;
+};
 
-// Component to handle user's current location
-function CurrentLocationMarker() {
-  const [position, setPosition] = useState<LatLng | null>(null);
-  const [isInitMapPan, setIsInitMapPan] = useState<boolean>(false);
+function CurrentLocationMarker({ map }: CurrentLocationMarkerProps) {
   const { selectedId } = useLocationSelection();
   const { allSpotData } = useMapData();
-  const hasValidSelection =
-    selectedId !== null &&
-    allSpotData.features.some((feature) => feature.id === selectedId);
+  const hasInitialMapPanRef = useRef(false);
+  const hasValidSelectionRef = useRef(false);
 
-  // Set up map events to track location
-  const map = useMapEvents({
-    locationfound(event) {
-      setPosition(event.latlng);
-      if (isInitMapPan || hasValidSelection) return;
-      setIsInitMapPan(true);
-      map.panTo(event.latlng);
-    }
-  });
-
-  // Start locating the user when the component mounts
   useEffect(() => {
-    map.locate({ watch: true });
+    hasValidSelectionRef.current =
+      selectedId !== null &&
+      allSpotData.features.some((feature) => feature.id === selectedId);
+  }, [selectedId, allSpotData]);
+
+  useEffect(() => {
+    if (!map || !("geolocation" in navigator)) return;
+
+    const element = document.createElement("img");
+    element.className = "h-8 w-8";
+    element.src = currentLocationIcon;
+    element.alt = "Current location";
+    const marker = new maplibregl.Marker({ element });
+    let markerAdded = false;
+
+    const watchId = navigator.geolocation.watchPosition((position) => {
+      const coordinates: [number, number] = [
+        position.coords.longitude,
+        position.coords.latitude,
+      ];
+
+      marker.setLngLat(coordinates);
+      if (!markerAdded) {
+        marker.addTo(map);
+        markerAdded = true;
+      }
+
+      if (hasInitialMapPanRef.current || hasValidSelectionRef.current) return;
+      hasInitialMapPanRef.current = true;
+      map.panTo(coordinates);
+    });
+
     return () => {
-      map.stopLocate();
+      navigator.geolocation.clearWatch(watchId);
+      marker.remove();
     };
   }, [map]);
 
-  return position === null ? null : (
-    <Marker position={position} icon={currentLocationMarkerIcon} />
-  );
+  return null;
 }
 
 export default CurrentLocationMarker;

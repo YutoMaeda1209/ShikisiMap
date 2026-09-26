@@ -1,103 +1,33 @@
-import { useEffect, useState } from "react";
 import logo from "./assets/img/logo.webp";
-import BottomSheet from "./BottomSheet";
-import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData } from "./mapDataContext";
-import "./Sidebar.css";
 import SpotList from "./SpotList";
-import useSidebarEvents from "./useSidebarEvents";
 import useSidebarLayout from "./useSidebarLayout";
 
 function Sidebar() {
-  const { listSpotData } = useMapData();
-  const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
-  const [sheetFeature, setSheetFeature] = useState<
-    (typeof listSpotData.features)[number] | null
-  >(null);
-  const [isListOpen, setIsListOpen] = useState(true);
-  const { selectedId, select } = useLocationSelection();
-  const {
-    sidebarRef,
-    titleRef,
-    listHeight,
-    isCollapsible,
-    isCentered,
-    isBottomSheetMode,
-  } = useSidebarLayout({
-    isListOpen,
-    centeredThreshold: 0.4,
-    collapsibleThreshold: 0.4,
-    onLayoutChange: (prevState, nextState) => {
-      if (prevState.isCollapsible !== nextState.isCollapsible) {
-        setIsListOpen(!nextState.isCollapsible);
-      }
-      if (!prevState.isCentered && nextState.isCentered) {
-        setInlineVideoResetKey((prev) => prev + 1);
-      }
-    },
-  });
-
-  const isSheetOpen = isBottomSheetMode && selectedId !== null && !isListOpen;
-
-  useSidebarEvents({
-    isCollapsible,
-    isBottomSheetMode,
-    setIsListOpen,
-    setSheetFeature,
-    select,
-    spots: listSpotData.features,
-  });
-
-  useEffect(() => {
-    document.body.classList.toggle("sidebar-centered", isCentered);
-    return () => {
-      document.body.classList.remove("sidebar-centered");
-    };
-  }, [isCentered]);
-
-  const sidebarClassName = [
-    isCollapsible && !isListOpen ? "collapsed" : "",
-    isCentered ? "centered" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const { sidebarRef, titleRef, listHeight } = useSidebarLayout();
 
   return (
     <div
-      id="sidebarComponent"
       ref={sidebarRef}
-      className={sidebarClassName}
+      className="md:flex flex-col fixed top-0 left-0 z-10 hidden h-full flex-1 w-100 max-w-[80%] overflow-hidden rounded-r-lg bg-white/70 px-3 shadow-lg backdrop-blur-sm"
       onClick={(event) => event.stopPropagation()}
     >
-      <div id="title" ref={titleRef}>
-        <img id="logo" src={logo} alt="Logo" />
-        <span id="subtitle">
-          非公式 敷嶋てとら <wbr />
+      <div ref={titleRef} className="flex flex-col items-center mb-4 mt-2 gap-1">
+        <img src={logo} alt="Logo" className="w-50" />
+        <span className="block text-center text-sm text-gray-700">
+          非公式 敷嶋てとら<br />
           聖地巡礼マップ
         </span>
       </div>
       <SpotList
         height={listHeight}
-        isCollapsible={isCollapsible}
-        isOpen={!isCollapsible || isListOpen}
-        disableInlineVideo={isCentered}
-        inlineVideoResetKey={inlineVideoResetKey}
-        onRequestOpen={() => {
-          setIsListOpen(true);
-        }}
-        onRequestClose={() => setIsListOpen(false)}
+        isCollapsible={false}
+        isOpen={true}
+        disableInlineVideo={false}
+        inlineVideoResetKey={0}
+        onRequestOpen={() => undefined}
+        onRequestClose={() => undefined}
+        focusMapOnSelect={true}
       />
-      {isBottomSheetMode && sheetFeature ? (
-        <BottomSheet
-          feature={sheetFeature}
-          isOpen={isSheetOpen}
-          onRequestClose={() => {
-            if (!isCollapsible) return;
-            setIsListOpen(false);
-            select(null);
-          }}
-        />
-      ) : null}
     </div>
   );
 }

@@ -6,7 +6,7 @@ Vtuberの[敷嶋てとら](https://www.youtube.com/@ch.1676)さんが投稿し�
 現在地周辺のスポット表示や、YouTube動画のプレビューもサポートしています。
 
 ## 主な特徴
-- **地図表示**: `leaflet`と`react-leaflet`によるインタラクティブな地図表示
+- **地図表示**: `maplibre-gl`によるインタラクティブな地図表示
 - **スポット一覧**: サイドバーでスポットを一覧・フィルタ・選択可能
 - **現在地マーカー**: ブラウザの位置情報に基づく現在地表示
 - **軽量メディア埋め込み**: `react-lite-youtube-embed`を用いた動画プレビュー
@@ -14,7 +14,7 @@ Vtuberの[敷嶋てとら](https://www.youtube.com/@ch.1676)さんが投稿し�
 ## 技術スタック
 - フレームワーク: React 19, TypeScript
 - ビルド: Vite
-- 地図: Leaflet (`leaflet`, `react-leaflet`)
+- 地図: MapLibre GL JS (`maplibre-gl`)
 - その他: `react-window`（リスト仮想化）など
 
 ## クイックスタート

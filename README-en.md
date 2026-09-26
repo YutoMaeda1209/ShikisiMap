@@ -6,7 +6,7 @@ This is a map web app that collects spots introduced in videos by Vtuber [Tetora
 It shows spots around the user's current location and supports lightweight YouTube video previews.
 
 ## Key Features
-- **Interactive Map**: Built with `leaflet` and `react-leaflet` for a responsive map experience.
+- **Interactive Map**: Built with `maplibre-gl` for a responsive map experience.
 - **Spot List**: Browse, filter, and select spots from a sidebar.
 - **Current Location Marker**: Displays the user's current location using the browser's geolocation.
 - **Lightweight Media Embeds**: Uses `react-lite-youtube-embed` for efficient video previews.
@@ -14,7 +14,7 @@ It shows spots around the user's current location and supports lightweight YouTu
 ## Tech Stack
 - Framework: React 19 + TypeScript
 - Bundler: Vite
-- Mapping: Leaflet (`leaflet`, `react-leaflet`)
+- Mapping: MapLibre GL JS (`maplibre-gl`)
 - Utilities: `react-window` for list virtualization, plus small helpers in `src/utils`
 
 ## Quick Start

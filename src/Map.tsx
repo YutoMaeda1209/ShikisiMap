@@ -1,91 +1,171 @@
-import type { Feature, Geometry } from 'geojson';
-import L, { type Layer } from 'leaflet';
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-import "leaflet/dist/leaflet.css";
-import { useEffect, useRef } from 'react';
-import { GeoJSON, MapContainer, TileLayer, useMapEvents } from 'react-leaflet';
-import CurrentLocationMarker from './CurrentLocationMarker';
-import { useLocationSelection } from './locationSelectionContext';
-import "./Map.css";
-import { useMapData, type GeoProperties } from './mapDataContext';
+import * as maplibregl from "maplibre-gl";
+import type { Map as MapLibreMap, Marker } from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
+import { useEffect, useRef, useState } from "react";
+import CurrentLocationMarker from "./CurrentLocationMarker";
+import { useLocationSelection } from "./locationSelectionContext";
+import { useMapData } from "./mapDataContext";
 
-const defaultIcon = L.icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  shadowSize: [41, 41],
-  shadowAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
-const selectedIcon = L.icon({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-  iconSize: [29, 47],
-  iconAnchor: [14, 47],
-  shadowSize: [47, 47],
-  shadowAnchor: [14, 47],
-  popupAnchor: [1, -38],
-  className: "selected-marker",
-});
+const INITIAL_CENTER: [number, number] = [139.650027, 35.676423];
+const SIDEBAR_FOCUS_ZOOM = 16;
 
-// Main Map component
+type FocusSpotEventDetail = {
+  id: string;
+  coordinates: [number, number];
+};
+
+const mapStyle: maplibregl.StyleSpecification = {
+  version: 8,
+  sources: {
+    openStreetMap: {
+      type: "raster",
+      tiles: [
+        "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      ],
+      tileSize: 256,
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    },
+  },
+  layers: [{ id: "openStreetMap", type: "raster", source: "openStreetMap" }],
+};
+
+function createSpotMarkerElement(
+  name: string,
+  isSelected: boolean,
+  onSelect: () => void,
+) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.dataset.spotMarker = "true";
+  button.className = isSelected
+    ? "relative h-[47px] w-[29px] cursor-pointer border-0 bg-transparent p-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-black"
+    : "relative h-[41px] w-[25px] cursor-pointer border-0 bg-transparent p-0 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-black";
+  button.setAttribute("aria-label", name);
+  button.title = name;
+
+  const pin = document.createElement("span");
+  pin.className = isSelected
+    ? "absolute top-0.5 left-0.5 box-border h-[25px] w-[25px] -rotate-45 rounded-[50%_50%_50%_0] border-2 border-white bg-[#d95f18] shadow-[1px_1px_3px_rgb(0_0_0/45%)] after:absolute after:top-1.5 after:left-1.5 after:h-[9px] after:w-[9px] after:rounded-full after:bg-white after:content-['']"
+    : "absolute top-0.5 left-0.5 box-border h-[21px] w-[21px] -rotate-45 rounded-[50%_50%_50%_0] border-2 border-white bg-[#2878c8] shadow-[1px_1px_3px_rgb(0_0_0/45%)] after:absolute after:top-[5px] after:left-[5px] after:h-[7px] after:w-[7px] after:rounded-full after:bg-white after:content-['']";
+  button.append(pin);
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    onSelect();
+  });
+  return button;
+}
+
 function Map() {
-  const {selectedId, select} = useLocationSelection();
-  const {listSpotData, mapSpotData, mapSpotDataRev} = useMapData();
-  const mapRef = useRef<L.Map>(null);
+  const { selectedId, select } = useLocationSelection();
+  const { listSpotData, mapSpotData } = useMapData();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MapLibreMap | null>(null);
+  const markersRef = useRef<Marker[]>([]);
+  const selectRef = useRef(select);
+  const focusedFromSidebarRef = useRef<string | null>(null);
+  const [map, setMap] = useState<MapLibreMap | null>(null);
 
   useEffect(() => {
-    // Pan map to selected location when selectedId changes
-    if (selectedId === null || !mapRef.current) return;
-    const feature = listSpotData.features.find(feature => feature.id === selectedId);
-    if (!feature) return;
-    const coords = feature.geometry.coordinates;
-    mapRef.current.panTo(new L.LatLng(coords[1], coords[0]));
-  }, [selectedId, mapRef, listSpotData]);
+    selectRef.current = select;
+  }, [select]);
 
-  // Function to handle feature clicks
-  function onEachFeature(feature: Feature<Geometry, GeoProperties>, layer: Layer) {
-    (layer as L.Evented).on('click', () => {
-      select(feature.id as string);
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const nextMap = new maplibregl.Map({
+      container: containerRef.current,
+      style: mapStyle,
+      center: INITIAL_CENTER,
+      zoom: 14,
+      attributionControl: { compact: true },
     });
-  }
+    const closeSidebar = (event: maplibregl.MapMouseEvent) => {
+      const target = event.originalEvent.target;
+      if (
+        target instanceof Element &&
+        target.closest('[data-spot-marker="true"]')
+      ) {
+        return;
+      }
+      window.dispatchEvent(new CustomEvent("sidebar:request-close"));
+    };
+    const focusSpot = (event: Event) => {
+      const { id, coordinates } = (
+        event as CustomEvent<FocusSpotEventDetail>
+      ).detail;
+      focusedFromSidebarRef.current = id;
+      nextMap.easeTo({
+        center: coordinates,
+        zoom: Math.max(nextMap.getZoom(), SIDEBAR_FOCUS_ZOOM),
+        duration: 1200,
+      });
+    };
+    nextMap.on("click", closeSidebar);
+    window.addEventListener("map:focus-spot", focusSpot);
+    mapRef.current = nextMap;
+    setMap(nextMap);
+    return () => {
+      nextMap.off("click", closeSidebar);
+      window.removeEventListener("map:focus-spot", focusSpot);
+      nextMap.remove();
+      mapRef.current = null;
+      setMap(null);
+    };
+  }, []);
 
-  function pointToLayer(feature: Feature<Geometry, GeoProperties>, latlng: L.LatLng) {
-    const isSelected = feature.id === selectedId;
-    return L.marker(latlng, {
-      icon: isSelected ? selectedIcon : defaultIcon,
-    });
-  }
+  useEffect(() => {
+    if (!mapRef.current || selectedId === null) return;
+    const feature = listSpotData.features.find(
+      (candidate) => candidate.id === selectedId,
+    );
+    if (feature) {
+      if (focusedFromSidebarRef.current === selectedId) {
+        focusedFromSidebarRef.current = null;
+      } else {
+        focusedFromSidebarRef.current = null;
+        mapRef.current.panTo(feature.geometry.coordinates as [number, number]);
+      }
+    }
+  }, [selectedId, listSpotData]);
 
-  function MapClickCloser() {
-    useMapEvents({
-      click: () => {
-        window.dispatchEvent(new CustomEvent("sidebar:request-close"));
-      },
+  useEffect(() => {
+    if (!map) return;
+    markersRef.current.forEach((marker) => marker.remove());
+    markersRef.current = mapSpotData.features.map((feature) => {
+      const element = createSpotMarkerElement(
+        feature.properties.name,
+        feature.id === selectedId,
+        () => {
+          const id = feature.id as string;
+          window.dispatchEvent(
+            new CustomEvent("map:focus-spot", {
+              detail: {
+                id,
+                coordinates: feature.geometry.coordinates,
+              },
+            }),
+          );
+          selectRef.current(id);
+        },
+      );
+      return new maplibregl.Marker({ element, anchor: "bottom" })
+        .setLngLat(feature.geometry.coordinates as [number, number])
+        .addTo(map);
     });
-    return null;
-  }
+    return () => {
+      markersRef.current.forEach((marker) => marker.remove());
+      markersRef.current = [];
+    };
+  }, [map, mapSpotData, selectedId]);
 
   return (
-    <MapContainer center={[35.676423, 139.650027]} zoom={14} zoomControl={false} ref={mapRef}>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <GeoJSON
-        key={`${selectedId}-${mapSpotDataRev}`}
-        data={mapSpotData}
-        onEachFeature={onEachFeature}
-        pointToLayer={pointToLayer}
-      />
-      <CurrentLocationMarker />
-      <MapClickCloser />
-    </MapContainer>
+    <>
+      <div ref={containerRef} className="absolute inset-0 h-screen w-full" />
+      <CurrentLocationMarker map={map} />
+    </>
   );
 }
 

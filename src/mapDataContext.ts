@@ -13,7 +13,6 @@ type MapDataContextType = {
     allSpotData: FeatureCollection<Point, GeoProperties>;
     listSpotData: FeatureCollection<Point, GeoProperties>;
     mapSpotData: FeatureCollection<Point, GeoProperties>;
-    mapSpotDataRev: string;
     indexToId: (index: number, data: FeatureCollection<Geometry, GeoProperties>) => string;
     idToIndex: (id: string, data: FeatureCollection<Geometry, GeoProperties>) => number;
     filterData: (query: string) => void;
