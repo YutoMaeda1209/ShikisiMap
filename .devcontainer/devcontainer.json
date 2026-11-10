@@ -1,17 +1,24 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
   "name": "ShikisiMap",
   "dockerComposeFile": "docker-compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
-  "remoteUser": "node",
+  "remoteUser": "vscode",
   "onCreateCommand": "/bin/bash ./.devcontainer/onCreateCommand.sh",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "upgradePackages": true
     },
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers-extra/features/typescript:2": {
+      "version": "5.9.3"
+    },
+    "ghcr.io/devcontainers/features/go:1": {}
   },
   "customizations": {
     "vscode": {
@@ -22,9 +29,13 @@
         }
       },
       "extensions": [
+        // Common
         "EditorConfig.EditorConfig",
+        // TypeScript
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        // Go
+        "golang.go"
       ]
     }
   }
