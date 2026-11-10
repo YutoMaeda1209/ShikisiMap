@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Parses a "new spot" issue (see .github/ISSUE_TEMPLATE/spot_request.yml), appends the
-// spot to src/data.json on a feature branch, and opens a PR against dev once every
+// spot to src/frontend/src/data.json on a feature branch, and opens a PR against dev once every
 // related issue (including sub-issues of a shared parent issue) has been processed.
 // See .github/CONTRIBUTING.md for the branch/commit/PR conventions this follows.
 //
@@ -147,7 +147,7 @@ if (remoteHasBranch) {
 }
 
 // 4. Append the new spot to the GeoJSON FeatureCollection.
-const dataPath = "src/data.json";
+const dataPath = "src/frontend/src/data.json";
 const data = JSON.parse(readFileSync(dataPath, "utf8")) as FeatureCollection<
   Point,
   SpotProperties
@@ -205,13 +205,13 @@ if (existingPrs.length > 0) {
 const title = parentNumber ? `Add new spots (#${parentNumber})` : `Add spot: ${name}`;
 const body = [
   "# 概要 / Summary",
-  "スポットリクエストIssueの内容を `src/data.json` に反映しました。",
+  "スポットリクエストIssueの内容を `src/frontend/src/data.json` に反映しました。",
   "",
   "## 関連Issue / Related Issue(s)",
   ...issuesForPr.map((n) => `- #${n}`),
   "",
   "## 変更内容 / Changes",
-  `- \`src/data.json\` に${issuesForPr.length}件のスポット情報を追加`,
+  `- \`src/frontend/src/data.json\` に${issuesForPr.length}件のスポット情報を追加`,
   "",
   "## チェックリスト / Checklist",
   "- [x] 文法エラーがないことを確認しました。",

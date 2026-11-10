@@ -21,8 +21,10 @@ jobs:
         with:
           node-version: "22"
       - name: Install Dependencies
+        working-directory: src/frontend
         run: npm ci
       - name: Build Project
+        working-directory: src/frontend
         run: npm run build
       - name: Connect to Tailscale
         uses: tailscale/github-action@v4
@@ -35,7 +37,7 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlDzvc -i --delete"
-          SOURCE: "dist/"
+          SOURCE: "src/frontend/dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}

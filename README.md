@@ -22,17 +22,19 @@ Vtuberの[敷嶋てとら](https://www.youtube.com/@ch.1676)さんが投稿し�
 1. 開発サーバー起動:
 
 ```bash
+cd src/frontend
 npm run dev
 ```
 
 ブラウザでViteが表示するアドレス（通常は`http://localhost:5173`）にアクセスしてください。
 
 ## 主なファイル
-- `src/`: ソースコードディレクトリ
-    - `Map.tsx`: 地図コンポーネント
-    - `Sidebar.tsx`: スポット一覧／選択 UI
-    - `SpotList.tsx`, `SpotItem.tsx`: スポット一覧表示ロジック
-    - `data.json` / `mapData.ts`: スポットデータ
+- `src/frontend/`: フロントエンド (Vite + React)
+    - `src/`: ソースコードディレクトリ
+        - `Map.tsx`: 地図コンポーネント
+        - `Sidebar.tsx`: スポット一覧／選択 UI
+        - `SpotList.tsx`, `SpotItem.tsx`: スポット一覧表示ロジック
+        - `data.json` / `mapData.ts`: スポットデータ
 - `docs/spot_guideline.md`: スポットの記載ガイドライン
 
 ## コントリビューション
