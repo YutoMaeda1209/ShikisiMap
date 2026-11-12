@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Build Test
 on:
   pull_request:
 
@@ -18,3 +18,18 @@ jobs:
           cache-dependency-path: src/frontend/package-lock.json
       - run: npm ci
       - run: npm run build
+
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: src/backend
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: src/backend/go.mod
+          cache-dependency-path: src/backend/go.sum
+      - run: go vet ./...
+      - run: go build ./...
