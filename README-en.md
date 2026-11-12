@@ -15,24 +15,26 @@ It shows spots around the user's current location and supports lightweight YouTu
 - Framework: React 19 + TypeScript
 - Bundler: Vite
 - Mapping: Leaflet (`leaflet`, `react-leaflet`)
-- Utilities: `react-window` for list virtualization, plus small helpers in `src/utils`
+- Utilities: `react-window` for list virtualization, plus small helpers in `src/frontend/src/utils`
 
 ## Quick Start
 1. Set up the development environment using DevContainer.
 1. Start the development server:
 
 ```bash
+cd src/frontend
 npm run dev
 ```
 
 Open the app at the address printed by Vite (usually `http://localhost:5173`).
 
 **Important Files**
-- `src/`: source code
-  - `Map.tsx`: map component
-  - `Sidebar.tsx`: spot list and selection UI
-  - `SpotList.tsx`, `SpotItem.tsx`: list rendering logic
-  - `data.json` / `mapData.ts`: spot data
+- `src/frontend/`: frontend (Vite + React)
+  - `src/`: source code
+    - `Map.tsx`: map component
+    - `Sidebar.tsx`: spot list and selection UI
+    - `SpotList.tsx`, `SpotItem.tsx`: list rendering logic
+    - `data.json` / `mapData.ts`: spot data
 - `docs/spot_guideline.md`: guidelines for adding spot entries
 
 ## Contributing

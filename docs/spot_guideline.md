@@ -23,7 +23,7 @@
 - 敷嶋てとらがスポットに最も詳しく言及している動画
 
 ## フォーマット
-スポットは`src/data.json`に[GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946)形式で追加します。
+スポットは`src/frontend/src/data.json`に[GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946)形式で追加します。
 下記のフィールド一覧に従って追記してください。
 - `type`: string - `Feature`固定
 - `properties`
@@ -38,7 +38,7 @@
 
 ## レビュー手順
 1. どのようなスポットを追加するかをIssueで提案する
-1. `src/data.json`にスポットを追加する
+1. `src/frontend/src/data.json`にスポットを追加する
 1. [コントリビューションガイドライン](/.github/CONTRIBUTING.md)に従って、Pull Requestを作成する
 1. 一名以上のレビュアーが掲載妥当性、フォーマット、情報を確認する
 1. レビュアーがスクリプトを実行してIdを付与する
