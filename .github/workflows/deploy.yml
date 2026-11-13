@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  # OIDC token for the Tailscale federated identity.
+  id-token: write
 
 jobs:
   deploy:
@@ -27,17 +33,15 @@ jobs:
         working-directory: src/frontend
         run: npm run build
       - name: Connect to Tailscale
-        uses: tailscale/github-action@v4
+        uses: tailscale/github-action@v4.2.0
         with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
+          oauth-client-id: ${{ vars.TS_CLIENT_ID }}
+          audience: ${{ vars.TS_AUDIENCE }}
+          tags: tag:deploy-shikisimap
+          ping: shikisimap.taile65cb9.ts.net
+      # Tailscale SSH authenticates the runner by its tailnet identity, so no SSH key is needed.
       - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rlDzvc -i --delete"
-          SOURCE: "src/frontend/dist/"
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+        run: >-
+          rsync -rlcvz --delete --chmod=D755,F644
+          -e "ssh -o StrictHostKeyChecking=accept-new"
+          src/frontend/dist/ deploy@shikisimap.taile65cb9.ts.net:/srv/www/
