@@ -1,5 +1,3 @@
-[日本語 (JA) / [English (EN)](/README-en.md)]
-
 # ShikisiMap
 
 Vtuberの[敷嶋てとら](https://www.youtube.com/@ch.1676)さんが投稿した動画で紹介されたスポットをまとめたマップウェブサイトです。
