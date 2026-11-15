@@ -28,6 +28,7 @@
 | ------------ | -------------------------------- | ----------------------------------------- |
 | Feature      | 新機能の実装                     | `feat/{IssueNum}-{featureName}`           |
 | Bugfix       | バグ修正                         | `fix/{IssueNum}-{bugName}`                |
+| Document     | ドキュメントの追加・更新         | `doc/{IssueNum}-{documentName}`           |
 | Cherry-pick  | 他ブランチから特定コミットを適用 | `cherrypick/{sourceBranch}-{description}` |
 | Sandbox      | 試験やプロトタイピング           | `sandbox/{commitId}-{userName}`           |
 
@@ -37,6 +38,8 @@
     新機能実装用のブランチです。
   - Bugfix: `fix`<br>
     バグ修正用のブランチです。
+  - Document: `doc`<br>
+    ドキュメントの追加・更新用のブランチです。
   - Cherry-pick: `cherrypick`<br>
     特定コミットのみを他ブランチへ適用するためのブランチです。
   - Sandbox: `sandbox`<br>
