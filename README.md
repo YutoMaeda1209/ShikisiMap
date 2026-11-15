@@ -35,11 +35,10 @@ npm run dev
         - `Sidebar.tsx`: スポット一覧／選択 UI
         - `SpotList.tsx`, `SpotItem.tsx`: スポット一覧表示ロジック
         - `data.json` / `mapData.ts`: スポットデータ
-- `docs/spot_guideline.md`: スポットの記載ガイドライン
 
 ## コントリビューション
 コントリビューションは大歓迎です！バグ報告、機能提案、プルリクエストなど、お気軽にどうぞ。
-コントリビューション時は[コントリビューションガイドライン](/.github/CONTRIBUTING.md)を参照してください。
+コントリビューション時は[コントリビューションガイドライン](/.github/CONTRIBUTING.md)を参照してください。スポットの追加基準もこちらに記載しています。
 
 ## ライセンス
 [ライセンスファイル](/LICENSE)を参照してください。

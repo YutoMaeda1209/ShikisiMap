@@ -66,3 +66,58 @@ You may use AI tools (e.g., code generation, writing assistance) when contributi
 3. When your work is complete, create a pull request targeting `main`.
 4. Address feedback during review and reflect progress or changes in the Issue as well.
 5. After approval by a maintainer, the pull request will be merged into the `main` branch, the working branch will be deleted, and the pull request will be closed.
+
+## Adding Spots
+
+Follow these guidelines when adding a spot to ShikisiMap, the fan-made pilgrimage map for Shikishima Tetora.
+
+### Purpose
+
+- Provide useful information to users
+- Avoid duplicate or incorrect data and keep it easy to maintain
+
+### Eligibility
+
+- The spot complies with the [Shikishima Tetora / Shikishima Heavy Industries Fan Work Guidelines](https://tetratex01.my.canva.site/guideline)
+- Shikishima Tetora actually visited the place in content related to Shikishima Tetora
+- Shikishima Tetora mentions it sufficiently
+- It is mentioned in content that anyone can access without restriction (not paid content, etc.)
+
+### Quality Standards
+
+Make sure a new spot meets the following quality standards.
+
+- Accuracy: Take location data from reliable sources such as Google Maps or OpenStreetMap, and confirm closure information with multiple sources
+- Usefulness: The spot is sufficiently mentioned in Shikishima Tetora's content and was actually visited
+- Legality: The spot is not a restricted area or private property at the time it is added
+
+### Choosing the Cited Video
+
+If the same spot appears in several videos, choose the cited video by these criteria.
+
+- The video in which Shikishima Tetora first visited the spot
+- The video in which Shikishima Tetora mentions the spot in the most detail
+
+### Format
+
+Spots are added to `src/frontend/src/data.json` in [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946) format. Follow the field list below.
+
+- `type`: string - always `Feature`
+- `properties`
+  - `name`: string - spot name
+  - `address`: string - exact address of the spot
+  - `isClosed`: boolean - `true` if the spot is currently closed
+  - `youtubeId`: string - ID of the YouTube video in which the spot appears
+  - `timestamp`: string - timestamp (seconds) in the YouTube video at which the spot appears
+- `geometry`
+  - `type`: string - always `Point`
+  - `coordinates`: array[number] - coordinates of `address` ([longitude, latitude])
+
+### Review Procedure
+
+1. Propose the spot to add in an Issue
+1. Add the spot to `src/frontend/src/data.json`
+1. Create a pull request following the [Contribution Flow](#contribution-flow)
+1. At least one reviewer checks the eligibility, format and information
+1. A reviewer runs the script to assign an ID
+1. Merge after approval
