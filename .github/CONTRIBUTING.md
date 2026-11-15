@@ -7,7 +7,7 @@
 本プロジェクトは「Issue ドリブン」開発手法を採用しています。Issue ドリブンとは、バグ修正・新機能追加・ドキュメント改善など、すべての作業を GitHub Issue として管理し、Issue 単位で作業を進める方法です。これにより、各タスクの目的・背景・進捗が明確になり、チーム内での情報共有やレビューが円滑に行えます。
 
 - 作業を始める前に、必ず Issue を作成または確認してください。
-- ブランチは必ず Issue と紐付けてください。(例: `feat/123-newFeature`)
+- ブランチは必ず Issue と紐付けてください。(例: `feat/123-new-feature`)
 - プルリクエストを作成する際は、必ず Issue とリンクさせてください。プルリクエストと Issue の紐付け方法については[公式ドキュメント](https://docs.github.com/ja/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)を参照してください。
 
 ## コミットについて
@@ -24,13 +24,13 @@
 
 ### ブランチ命名規則
 
-| ブランチ種別 | 目的                             | 命名例                                    |
-| ------------ | -------------------------------- | ----------------------------------------- |
-| Feature      | 新機能の実装                     | `feat/{IssueNum}-{featureName}`           |
-| Bugfix       | バグ修正                         | `fix/{IssueNum}-{bugName}`                |
-| Document     | ドキュメントの追加・更新         | `doc/{IssueNum}-{documentName}`           |
-| Cherry-pick  | 他ブランチから特定コミットを適用 | `cherrypick/{sourceBranch}-{description}` |
-| Sandbox      | 試験やプロトタイピング           | `sandbox/{commitId}-{userName}`           |
+| ブランチ種別 | 目的                             | 命名例                                     |
+| ------------ | -------------------------------- | ------------------------------------------ |
+| Feature      | 新機能の実装                     | `feat/{IssueNum}-{featureName}`            |
+| Bugfix       | バグ修正                         | `fix/{IssueNum}-{bugName}`                 |
+| Document     | ドキュメントの追加・更新         | `doc/{IssueNum}-{documentName}`            |
+| Cherry-pick  | 他ブランチから特定コミットを適用 | `cherry-pick/{sourceBranch}-{description}` |
+| Sandbox      | 試験やプロトタイピング           | `sandbox/{commitId}-{userName}`            |
 
 - `main`ブランチ：本番用の安定したブランチです。
 - 開発時は、目的に応じて`main`から新しいブランチを作成してください。
@@ -40,7 +40,7 @@
     バグ修正用のブランチです。
   - Document: `doc`<br>
     ドキュメントの追加・更新用のブランチです。
-  - Cherry-pick: `cherrypick`<br>
+  - Cherry-pick: `cherry-pick`<br>
     特定コミットのみを他ブランチへ適用するためのブランチです。
   - Sandbox: `sandbox`<br>
     新機能の試験やプロトタイピング用のブランチです。
@@ -63,7 +63,7 @@
 ## コントリビュートの流れ
 
 1. 作業開始前に、目的や背景を記載した Issue を作成または確認してください。
-2. `main`ブランチから作業用ブランチを作成し、Issue に沿った名前 (例: `feat/123-featureName`) にしてください。
+2. `main`ブランチから作業用ブランチを作成し、Issue に沿った名前 (例: `feat/123-feature-name`) にしてください。
 3. 作業が完了したら、`main`をターゲットにプルリクエストを作成してください。
 4. レビュー中のフィードバックに対応し、進捗や変更点は Issue にも反映してください。
 5. メンテナーによる承認後、プルリクエストは`main`ブランチへマージされ、作業ブランチは削除、プルリクエストはクローズされます。
