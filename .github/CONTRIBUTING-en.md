@@ -34,8 +34,7 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 | Sandbox     | Experimenting or prototyping                  | `sandbox/{commitId}-{userName}`           |
 
 - `main` branch: The stable branch for production.
-- `dev` branch: The integration branch for development. All development branches should be created from `dev` and merged back into `dev` after completion.
-- When developing, create a new branch from `dev` according to your purpose.
+- When developing, create a new branch from `main` according to your purpose.
   - Feature: `feat`<br>
     For implementing new features.
   - Bugfix: `fix`<br>
@@ -47,14 +46,78 @@ This project adopts an "Issue-Driven" development approach. Issue-Driven means t
 
 ### Branch Merging Rules
 
-- Create a pull request from your working branch (such as `feat` or `fix`) to the `dev` branch before merging.
-- Direct commits or merges to the `main` or `dev` branches are prohibited.
+- Create a pull request from your working branch (such as `feat` or `fix`) to the `main` branch before merging.
+- Direct commits or merges to the `main` branch are prohibited.
 - Always resolve conflicts before merging.
+
+## About AI Usage
+
+You may use AI tools (e.g., code generation, writing assistance) when contributing, but only if you can take full responsibility for the result.
+
+- Review, understand, and verify all AI-generated content (code, documentation, Issues, pull requests) before submitting it.
+- Do not submit content that you cannot explain or maintain yourself.
+- Make sure AI-generated content does not violate licenses or include confidential information.
+- You, not the AI, are responsible for everything you submit.
 
 ## Contribution Flow
 
 1. Before starting work, create or check an Issue describing the purpose and background.
-2. Create a working branch from `dev` and name it according to the Issue (e.g., `feat/123-featureName`).
-3. When your work is complete, create a pull request targeting `dev`, not `main`.
+2. Create a working branch from `main` and name it according to the Issue (e.g., `feat/123-featureName`).
+3. When your work is complete, create a pull request targeting `main`.
 4. Address feedback during review and reflect progress or changes in the Issue as well.
-5. After approval by a maintainer, the pull request will be merged into the `dev` branch, the working branch will be deleted, and the pull request will be closed.
+5. After approval by a maintainer, the pull request will be merged into the `main` branch, the working branch will be deleted, and the pull request will be closed.
+
+## Adding Spots
+
+Follow these guidelines when adding a spot to ShikisiMap, the fan-made pilgrimage map for Shikishima Tetora.
+
+### Purpose
+
+- Provide useful information to users
+- Avoid duplicate or incorrect data and keep it easy to maintain
+
+### Eligibility
+
+- The spot complies with the [Shikishima Tetora / Shikishima Heavy Industries Fan Work Guidelines](https://tetratex01.my.canva.site/guideline)
+- Shikishima Tetora actually visited the place in content related to Shikishima Tetora
+- Shikishima Tetora mentions it sufficiently
+- It is mentioned in content that anyone can access without restriction (not paid content, etc.)
+
+### Quality Standards
+
+Make sure a new spot meets the following quality standards.
+
+- Accuracy: Take location data from reliable sources such as Google Maps or OpenStreetMap, and confirm closure information with multiple sources
+- Usefulness: The spot is sufficiently mentioned in Shikishima Tetora's content and was actually visited
+- Legality: The spot is not a restricted area or private property at the time it is added
+
+### Choosing the Cited Video
+
+If the same spot appears in several videos, choose the cited video by these criteria.
+
+- The video in which Shikishima Tetora first visited the spot
+- The video in which Shikishima Tetora mentions the spot in the most detail
+
+### Format
+
+Spots are added to `src/frontend/src/data.json` in [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946) format. Follow the field list below.
+
+- `type`: string - always `Feature`
+- `properties`
+  - `name`: string - spot name
+  - `address`: string - exact address of the spot
+  - `isClosed`: boolean - `true` if the spot is currently closed
+  - `youtubeId`: string - ID of the YouTube video in which the spot appears
+  - `timestamp`: string - timestamp (seconds) in the YouTube video at which the spot appears
+- `geometry`
+  - `type`: string - always `Point`
+  - `coordinates`: array[number] - coordinates of `address` ([longitude, latitude])
+
+### Review Procedure
+
+1. Propose the spot to add in an Issue
+1. Add the spot to `src/frontend/src/data.json`
+1. Create a pull request following the [Contribution Flow](#contribution-flow)
+1. At least one reviewer checks the eligibility, format and information
+1. A reviewer runs the script to assign an ID
+1. Merge after approval

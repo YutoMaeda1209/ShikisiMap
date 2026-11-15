@@ -2,7 +2,7 @@
 
 [`docs/spec.md`](./spec.md) の改修を実装するための計画。
 
-- 各フェーズは Issue を作成し、`dev` から `feat/{IssueNum}-{featureName}` ブランチを切って `dev` 向けの PR にする ([CONTRIBUTING](../.github/CONTRIBUTING.md))
+- 各フェーズは Issue を作成し、`main` から `feat/{IssueNum}-{featureName}` ブランチを切って `main` 向けの PR にする ([CONTRIBUTING](../.github/CONTRIBUTING.md))
 - インフラの変更は [`home-server`](https://github.com/YutoMaeda1209/home-server) リポジトリで行う。`main` への push で本番に適用されるため、事前に `--check --diff` で確認する
 
 ## 依存関係

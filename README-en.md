@@ -35,11 +35,10 @@ Open the app at the address printed by Vite (usually `http://localhost:5173`).
     - `Sidebar.tsx`: spot list and selection UI
     - `SpotList.tsx`, `SpotItem.tsx`: list rendering logic
     - `data.json` / `mapData.ts`: spot data
-- `docs/spot_guideline.md`: guidelines for adding spot entries
 
 ## Contributing
 Contributions are welcome — bug reports, feature ideas, and pull requests.
-Please follow the repository's [contribution guidelines](/.github/CONTRIBUTING.md).
+Please follow the repository's [contribution guidelines](/.github/CONTRIBUTING-en.md), which also cover the criteria for adding spots.
 
 ## License
 See the [LICENSE](/LICENSE) file for project licensing information.
