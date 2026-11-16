@@ -3,8 +3,11 @@ package main
 import (
 	"context"
 	"errors"
+	"flag"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"os/signal"
 	"syscall"
 	"time"
@@ -16,15 +19,29 @@ import (
 const shutdownTimeout = 10 * time.Second
 
 func main() {
-	if err := run(); err != nil {
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stop()
+
+	var err error
+	switch {
+	case len(os.Args) == 1:
+		err = serve(ctx)
+	case os.Args[1] == "import-spots":
+		err = runImport(ctx, os.Args[2:], os.Stdout, os.Stderr)
+	default:
+		err = fmt.Errorf("unknown command %q; run without arguments to start the server, or with import-spots", os.Args[1])
+	}
+	if errors.Is(err, flag.ErrHelp) {
+		return
+	}
+	if err != nil {
+		stop()
 		log.Fatal(err)
 	}
 }
 
-func run() error {
-	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
-	defer stop()
-
+// serve runs the HTTP server until ctx is cancelled.
+func serve(ctx context.Context) error {
 	cfg, err := config.Load()
 	if err != nil {
 		return err

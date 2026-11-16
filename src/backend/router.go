@@ -8,6 +8,7 @@ import (
 
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/httpx"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/spots"
 )
 
 const codeDBUnavailable = "db_unavailable"
@@ -24,6 +25,7 @@ func newRouter(cfg config.Config, pool *pgxpool.Pool) (*gin.Engine, error) {
 
 	api := r.Group("/api", httpx.RequireSameOrigin(cfg.PublicOrigin), httpx.RequireJSON())
 	api.GET("/healthz", health)
+	spots.Register(api, pool)
 
 	return r, nil
 }
