@@ -14,6 +14,8 @@ import (
 
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/db"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/places"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/scheduler"
 )
 
 const shutdownTimeout = 10 * time.Second
@@ -41,7 +43,10 @@ func main() {
 }
 
 // serve runs the HTTP server until ctx is cancelled.
-func serve(ctx context.Context) error {
+func serve(parent context.Context) error {
+	ctx, stop := context.WithCancel(parent)
+	defer stop()
+
 	cfg, err := config.Load()
 	if err != nil {
 		return err
@@ -56,6 +61,26 @@ func serve(ctx context.Context) error {
 	if err := db.Migrate(ctx, pool); err != nil {
 		return err
 	}
+
+	placesClient := places.NewClient(cfg.GooglePlacesAPIKey)
+	// Without a key the job still deletes the expired sessions.
+	var placesAPI places.API
+	if placesClient.Configured() {
+		placesAPI = placesClient
+	} else {
+		log.Print("GOOGLE_PLACES_API_KEY is not set; the spots will not be refreshed")
+	}
+	jobs := scheduler.New(pool, placesAPI, cfg.SpotRefreshLimit)
+	jobsDone := make(chan struct{})
+	go func() {
+		defer close(jobsDone)
+		jobs.Run(ctx)
+	}()
+	// The pool must outlive the job, which stops when ctx is cancelled.
+	defer func() {
+		stop()
+		<-jobsDone
+	}()
 
 	router, err := newRouter(cfg, pool)
 	if err != nil {
