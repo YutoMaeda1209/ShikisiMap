@@ -6,9 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/admin"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/auth"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/httpx"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/places"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/spots"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/users"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/visits"
@@ -16,7 +18,9 @@ import (
 
 const codeDBUnavailable = "db_unavailable"
 
-func newRouter(cfg config.Config, pool *pgxpool.Pool) (*gin.Engine, error) {
+// newRouter builds the HTTP API. placesAPI is nil when Places API is not
+// configured.
+func newRouter(cfg config.Config, pool *pgxpool.Pool, placesAPI places.API) (*gin.Engine, error) {
 	r, err := httpx.NewEngine()
 	if err != nil {
 		return nil, err
@@ -40,6 +44,14 @@ func newRouter(cfg config.Config, pool *pgxpool.Pool) (*gin.Engine, error) {
 	spots.Register(api, pool)
 	users.Register(api, pool, authSvc)
 	visits.Register(api, pool, authSvc)
+
+	// The admin API is called from GitHub Actions with an OIDC token instead
+	// of a cookie, so the Origin check does not apply to it.
+	admin.Register(r.Group("/api/admin", httpx.RequireJSON()), admin.Options{
+		Pool:     pool,
+		Places:   placesAPI,
+		Audience: cfg.AdminOIDCAudience,
+	})
 
 	return r, nil
 }

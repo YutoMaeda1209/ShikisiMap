@@ -82,7 +82,7 @@ func serve(parent context.Context) error {
 		<-jobsDone
 	}()
 
-	router, err := newRouter(cfg, pool)
+	router, err := newRouter(cfg, pool, placesAPI)
 	if err != nil {
 		return err
 	}

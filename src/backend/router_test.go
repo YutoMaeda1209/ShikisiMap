@@ -18,7 +18,7 @@ func init() {
 
 func TestHealth(t *testing.T) {
 	pool := dbtest.New(t)
-	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool)
+	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -54,7 +54,7 @@ func TestHealth(t *testing.T) {
 // telling a 404 or 405 of the router apart from the answer of a handler.
 func TestRoutes(t *testing.T) {
 	pool := dbtest.New(t)
-	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool)
+	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool, nil)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -75,6 +75,9 @@ func TestRoutes(t *testing.T) {
 		{"PATCH", "/api/me/visits/" + id, 401},
 		{"DELETE", "/api/me/visits/" + id, 401},
 		{"GET", "/api/users/" + id, 404},
+		// The admin API is not configured in this test.
+		{"POST", "/api/admin/spots", 503},
+		{"PATCH", "/api/admin/spots/" + id, 503},
 	}
 	for _, rt := range routes {
 		body := strings.NewReader("")
@@ -94,7 +97,7 @@ func TestRoutes(t *testing.T) {
 		}
 
 		// Requests that change data are refused from other origins.
-		if rt.method != "GET" {
+		if rt.method != "GET" && !strings.HasPrefix(rt.path, "/api/admin/") {
 			req := httptest.NewRequest(rt.method, rt.path, strings.NewReader("{}"))
 			req.Header.Set("Origin", "https://evil.example")
 			req.Header.Set("Content-Type", "application/json")
