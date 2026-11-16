@@ -20,6 +20,8 @@ services:
       - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
       - PULSE_SERVER=$PULSE_SERVER
       - DATABASE_URL=postgres://shikisimap:shikisimap@db:5432/shikisimap?sslmode=disable
+      # The tests create and drop their own databases on this server.
+      - TEST_DATABASE_URL=postgres://shikisimap:shikisimap@db:5432/shikisimap?sslmode=disable
     depends_on:
       db:
         condition: service_healthy
