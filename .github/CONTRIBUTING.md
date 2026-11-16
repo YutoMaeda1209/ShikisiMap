@@ -99,26 +99,15 @@
 - 敷嶋てとらがスポットに初めて訪れた動画
 - 敷嶋てとらがスポットに最も詳しく言及している動画
 
-### フォーマット
+### 登録の流れ
 
-スポットは`src/frontend/src/data.json`に [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946) 形式で追加します。下記のフィールド一覧に従って追記してください。
+スポットは Issue から登録します。`src/frontend/src/data.json` を編集するプルリクエストは不要です。
 
-- `type`: string - `Feature`固定
-- `properties`
-  - `name`: string - スポット名
-  - `address`: string - スポットの正確な住所
-  - `isClosed`: boolean - 現在閉業している場合は`true`
-  - `youtubeId`: string - スポットが登場する YouTube 動画の ID
-  - `timestamp`: string - スポットが登場する YouTube 動画内のタイムスタンプ (秒)
-- `geometry`
-  - `type`: string - `Point`固定
-  - `coordinates`: array[number] - `address`の座標 ([経度, 緯度] の順)
+1. [スポットリクエスト](https://github.com/YutoMaeda1209/ShikisiMap/issues/new?template=spot_request.yml)のテンプレートで Issue を作成する
+1. メンテナーが掲載の妥当性と記入内容を確認し、Issue に `/approve` とコメントする
+1. GitHub Actions がスポット名と住所から Google マップ上の場所を特定し、スポットを登録する
+   - 登録できた場合は、結果が Issue にコメントされ、Issue がクローズされる
+   - 場所が見つからない、または候補が複数ある場合は、候補が Issue にコメントされる。メンテナーが正しい場所の place_id を選び、`/approve place_id=<place_id>` とコメントして登録する
+1. 同じ場所のスポットが登録済みの場合は、新しいスポットは作られず、動画の登場シーンだけが追加される
 
-### レビュー手順
-
-1. どのようなスポットを追加するかを Issue で提案する
-1. `src/frontend/src/data.json`にスポットを追加する
-1. [コントリビュートの流れ](#コントリビュートの流れ)に従って、プルリクエストを作成する
-1. 1 名以上のレビュアーが掲載妥当性、フォーマット、情報を確認する
-1. レビュアーがスクリプトを実行して ID を付与する
-1. 承認後にマージする
+`/approve` は、リポジトリの書き込み権限を持つメンテナーのコメントだけが有効です。
