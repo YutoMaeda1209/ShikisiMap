@@ -26,7 +26,7 @@ P3 と P4 は P2 の完了後に並行して進められる。インフラ (P1 �
     - `https://map.mendako.dev/api/auth/google/callback`
   - API キーを 2 つ作成する
     - フロント用: HTTP リファラー制限 (`https://map.mendako.dev/*`、`http://localhost:5173/*`)、Maps JavaScript API のみ
-    - バックエンド用: IP 制限 (自宅回線の グローバル IP)、Places API (New) のみ
+    - バックエンド用: アプリケーションの制限なし (自宅回線が固定 IP でないため)、Places API (New) のみ。キーはサーバーにだけ置き、漏れた場合の被害は割り当て上限で抑える
   - Map ID を発行し、クラウドスタイルで店舗 POI アイコンを非表示にする
   - 予算アラートと割り当て上限を設定する (spec §5「費用管理」)
 - GitHub (ShikisiMap リポジトリ)
