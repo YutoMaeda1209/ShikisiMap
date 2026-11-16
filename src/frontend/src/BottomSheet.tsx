@@ -1,17 +1,15 @@
-import type { Feature, Geometry } from "geojson";
 import { useRef } from "react";
-import LiteYouTubeEmbed from "react-lite-youtube-embed";
-import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+import type { Spot } from "./api";
 import "./BottomSheet.css";
-import type { GeoProperties } from "./mapDataContext";
+import SpotCard from "./SpotCard";
 
 type BottomSheetProps = {
-  feature: Feature<Geometry, GeoProperties>;
+  spot: Spot;
   isOpen: boolean;
   onRequestClose: () => void;
 };
 
-function BottomSheet({ feature, isOpen, onRequestClose }: BottomSheetProps) {
+function BottomSheet({ spot, isOpen, onRequestClose }: BottomSheetProps) {
   const touchStartYRef = useRef<number | null>(null);
   const touchDeltaYRef = useRef(0);
 
@@ -50,7 +48,7 @@ function BottomSheet({ feature, isOpen, onRequestClose }: BottomSheetProps) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <span className="bottomSheetTitle">{feature.properties.name}</span>
+        <span className="bottomSheetTitle">{spot.name}</span>
         <button
           type="button"
           className="bottomSheetClose"
@@ -61,20 +59,7 @@ function BottomSheet({ feature, isOpen, onRequestClose }: BottomSheetProps) {
         </button>
       </div>
       <div className="bottomSheetBody">
-        <LiteYouTubeEmbed
-          id={feature.properties.youtubeId}
-          title={feature.properties.name}
-          lazyLoad={true}
-          params={`?start=${feature.properties.timestamp}`}
-        />
-        <a
-          className="address"
-          href={`https://www.google.com/maps/search/${feature.properties.name} ${feature.properties.address}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {feature.properties.address}
-        </a>
+        <SpotCard key={spot.id} spot={spot} videoKey="sheet" hideTitle />
       </div>
     </div>
   );

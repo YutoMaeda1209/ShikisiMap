@@ -1,21 +1,20 @@
-import type { Feature, Point } from "geojson";
 import { useEffect } from "react";
-import type { GeoProperties } from "./mapDataContext";
+import type { Spot } from "./api";
 
 type UseSidebarEventsOptions = {
   isCollapsible: boolean;
   isBottomSheetMode: boolean;
   setIsListOpen: (value: boolean) => void;
-  setSheetFeature: (value: Feature<Point, GeoProperties> | null) => void;
+  setSheetSpot: (value: Spot | null) => void;
   select: (id: string | null) => void;
-  spots: Feature<Point, GeoProperties>[];
+  spots: Spot[];
 };
 
 function useSidebarEvents({
   isCollapsible,
   isBottomSheetMode,
   setIsListOpen,
-  setSheetFeature,
+  setSheetSpot,
   select,
   spots,
 }: UseSidebarEventsOptions) {
@@ -56,14 +55,14 @@ function useSidebarEvents({
           setIsListOpen(false);
         }
         clearSheetTimer = window.setTimeout(() => {
-          setSheetFeature(null);
+          setSheetSpot(null);
         }, 240);
         return;
       }
 
-      const feature = spots.find((f) => f.id === detail) ?? null;
-      if (feature) {
-        setSheetFeature(feature);
+      const spot = spots.find((s) => s.id === detail) ?? null;
+      if (spot) {
+        setSheetSpot(spot);
       }
 
       if (!isCollapsible) return;
@@ -80,7 +79,7 @@ function useSidebarEvents({
       }
       window.removeEventListener("location:selected", handleLocationSelected);
     };
-  }, [isBottomSheetMode, isCollapsible, setIsListOpen, setSheetFeature, spots]);
+  }, [isBottomSheetMode, isCollapsible, setIsListOpen, setSheetSpot, spots]);
 }
 
 export default useSidebarEvents;

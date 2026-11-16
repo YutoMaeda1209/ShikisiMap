@@ -46,3 +46,50 @@
     font-size: var(--font-sm);
     box-sizing: border-box;
 }
+
+#visitFilter {
+    display: flex;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#visitFilter button {
+    flex: 1 1 0;
+    padding: 6px 4px;
+    border: none;
+    border-left: 1px solid #ccc;
+    background: #fff;
+    font-size: var(--font-sm);
+    cursor: pointer;
+}
+
+#visitFilter button:first-child {
+    border-left: none;
+}
+
+#visitFilter button[aria-pressed="true"] {
+    background: #202124;
+    color: #fff;
+}
+
+#spotListEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 8px;
+    color: #5f6368;
+    font-size: var(--font-sm);
+    text-align: center;
+}
+
+#spotListEmpty button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: var(--font-sm);
+    cursor: pointer;
+}

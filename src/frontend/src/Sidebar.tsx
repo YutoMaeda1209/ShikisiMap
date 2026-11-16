@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { Spot } from "./api";
 import logo from "./assets/img/logo.webp";
 import BottomSheet from "./BottomSheet";
 import { useLocationSelection } from "./locationSelectionContext";
@@ -7,13 +8,18 @@ import "./Sidebar.css";
 import SpotList from "./SpotList";
 import useSidebarEvents from "./useSidebarEvents";
 import useSidebarLayout from "./useSidebarLayout";
+import { useVisits } from "./visitsContext";
 
-function Sidebar() {
-  const { listSpotData } = useMapData();
+type SidebarProps = {
+  /** What stands under the title: the visitor's progress, or a profile's heading. */
+  status: React.ReactNode;
+};
+
+function Sidebar({ status }: SidebarProps) {
+  const { allSpots } = useMapData();
+  const { readOnly } = useVisits();
   const [inlineVideoResetKey, setInlineVideoResetKey] = useState(0);
-  const [sheetFeature, setSheetFeature] = useState<
-    (typeof listSpotData.features)[number] | null
-  >(null);
+  const [sheetSpot, setSheetSpot] = useState<Spot | null>(null);
   const [isListOpen, setIsListOpen] = useState(true);
   const { selectedId, select } = useLocationSelection();
   const {
@@ -43,10 +49,15 @@ function Sidebar() {
     isCollapsible,
     isBottomSheetMode,
     setIsListOpen,
-    setSheetFeature,
+    setSheetSpot,
     select,
-    spots: listSpotData.features,
+    spots: allSpots,
   });
+
+  // The sheet shows the spot as it is now (e.g. a new visitor count). A spot
+  // selected from the URL is not known to the event handler until the spots load.
+  const currentSheetSpot =
+    allSpots.find((s) => s.id === (sheetSpot?.id ?? selectedId)) ?? sheetSpot;
 
   useEffect(() => {
     document.body.classList.toggle("sidebar-centered", isCentered);
@@ -75,6 +86,9 @@ function Sidebar() {
           非公式 敷嶋てとら <wbr />
           聖地巡礼マップ
         </span>
+        <div id="sidebarStatus" className={readOnly ? "profile" : undefined}>
+          {status}
+        </div>
       </div>
       <SpotList
         height={listHeight}
@@ -87,9 +101,9 @@ function Sidebar() {
         }}
         onRequestClose={() => setIsListOpen(false)}
       />
-      {isBottomSheetMode && sheetFeature ? (
+      {isBottomSheetMode && currentSheetSpot ? (
         <BottomSheet
-          feature={sheetFeature}
+          spot={currentSheetSpot}
           isOpen={isSheetOpen}
           onRequestClose={() => {
             if (!isCollapsible) return;

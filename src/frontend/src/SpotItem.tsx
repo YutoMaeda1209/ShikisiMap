@@ -1,14 +1,12 @@
-import type { Feature, Geometry } from "geojson";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 import type { RowComponentProps } from "react-window";
+import type { Spot } from "./api";
 import { useLocationSelection } from "./locationSelectionContext";
-import type { GeoProperties } from "./mapDataContext";
+import SpotCard from "./SpotCard";
 import "./SpotItem.css";
 
 interface ListItemProps {
-  features: Feature<Geometry, GeoProperties>[];
+  spots: Spot[];
   disableInlineVideo?: boolean;
   inlineVideoResetKey?: number;
 }
@@ -16,19 +14,18 @@ interface ListItemProps {
 function SpotItem({
   index,
   style,
-  features,
+  spots,
   disableInlineVideo = false,
   inlineVideoResetKey = 0,
 }: RowComponentProps<ListItemProps>) {
-  const feature = features[index];
-  const properties = feature.properties;
-  const isClosed = properties.isClosed;
+  const spot = spots[index];
   const {selectedId, select} = useLocationSelection();
   const spotItemRootRef = useRef<HTMLDivElement | null>(null);
   const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
-    if (selectedId !== feature.id || !spotItemRootRef.current) return;
+    if (selectedId !== spot.id || !spotItemRootRef.current) return;
+
     const spotItemRef = spotItemRootRef.current;
     spotItemRef.classList.add("blink-highlight");
     const t = setTimeout(() => spotItemRef.classList.remove("blink-highlight"), 1500);
@@ -36,14 +33,16 @@ function SpotItem({
       spotItemRef.classList.remove("blink-highlight");
       clearTimeout(t);
     };
-  }, [selectedId, feature.id]);
-  const isSelected = selectedId === feature.id;
+  }, [selectedId, spot.id]);
+
+  const isSelected = selectedId === spot.id;
 
   useLayoutEffect(() => {
     const node = spotItemRootRef.current;
     if (!node) return;
     const targetHeight = typeof style?.height === "number" ? style.height : null;
     if (targetHeight === null) return;
+
     let raf = 0;
     raf = requestAnimationFrame(() => {
       const isOverflowing = node.scrollHeight > targetHeight;
@@ -52,47 +51,30 @@ function SpotItem({
     return () => {
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [style?.height, feature.id]);
+  }, [style?.height, spot.id]);
 
   function onClickSpotItem() {
-    if (isClosed) return;
-    if (selectedId === feature.id) {
+    if (selectedId === spot.id) {
       window.dispatchEvent(new CustomEvent("sidebar:request-open-sheet"));
       return;
     }
-    select(feature.id as string);
+    select(spot.id);
   }
 
   return (
     <div className="spotItemRow" style={style}>
       <div
         ref={spotItemRootRef}
-        className={`spotItem${isClosed ? " closed" : ""}${isSelected ? " selected" : ""}${isCompact ? " compact-title" : ""}`}
+        className={`spotItem${spot.isClosed ? " closed" : ""}${isSelected ? " selected" : ""}${isCompact ? " compact-title" : ""}`}
         onClick={onClickSpotItem}
       >
-        <div className="spotContent">
-          <span className="spotTitle">
-            <span>{properties.name}</span>
-            {isClosed ? <span className="closedBadge">閉業</span> : null}
-          </span>
-          <div className={`ytLiteWrapper${disableInlineVideo ? " disabled" : ""}`}>
-            <LiteYouTubeEmbed
-              key={`item-${feature.id}-${inlineVideoResetKey}`}
-              id={properties.youtubeId}
-              title={properties.name}
-              lazyLoad={true}
-              params={`?start=${properties.timestamp}`}
-            />
-          </div>
-          <a
-            className="address"
-            href={`https://www.google.com/maps/search/${properties.name} ${properties.address}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {properties.address}
-          </a>
-        </div>
+        <SpotCard
+          // A row is reused for another spot while scrolling; the key resets its state.
+          key={spot.id}
+          spot={spot}
+          videoKey={`item-${inlineVideoResetKey}`}
+          disableInlineVideo={disableInlineVideo}
+        />
       </div>
     </div>
   );

@@ -1,66 +1,61 @@
-import type { FeatureCollection, Geometry, Point } from "geojson";
-import { useState, type ReactNode } from "react";
-import geoJsonRowData from "./data.json";
-import { MapDataContext, type GeoProperties } from "./mapDataContext";
+import { useEffect, useState, type ReactNode } from "react";
+import { api, type Spot } from "./api";
+import { MapDataContext, type VisitFilter } from "./mapDataContext";
+import { useVisits } from "./visitsContext";
 
-const spotsData = geoJsonRowData as FeatureCollection<Point, GeoProperties>;
-const openSpotsData: FeatureCollection<Point, GeoProperties> = {
-  ...spotsData,
-  features: spotsData.features.filter((f) => !f.properties.isClosed),
+type MapDataProviderProps = {
+  /** Limits the page to these spots. A profile page shows only the visited ones. */
+  onlySpotIds?: string[];
+  children: ReactNode;
 };
 
-function indexToId(index: number, data: FeatureCollection<Geometry, GeoProperties>): string {
-  const feature = data.features[index];
-  if (!feature) throw new Error(`No feature found at index ${index}`);
-  return feature.id as string;
-}
+function MapDataProvider({ onlySpotIds, children }: MapDataProviderProps) {
+  const { visitedSpotIds, accountRevision } = useVisits();
+  const [spots, setSpots] = useState<Spot[]>([]);
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [attempt, setAttempt] = useState(0);
+  const [query, setQuery] = useState("");
+  const [visitFilter, setVisitFilter] = useState<VisitFilter>("all");
 
-function idToIndex(id: string, data: FeatureCollection<Geometry, GeoProperties>): number {
-  const feature = data.features.find((f) => f.id === id);
-  if (!feature) throw new Error(`No feature found with id ${id}`);
-  return data.features.findIndex((f) => f.id === id);
-}
+  useEffect(() => {
+    let cancelled = false;
+    api<{ spots: Spot[] }>("/spots")
+      .then((res) => {
+        if (cancelled) return;
+        setSpots(res.spots);
+        setStatus("ready");
+      })
+      .catch((err: unknown) => {
+        console.error("Could not load the spots:", err);
+        if (!cancelled) setStatus("error");
+      });
+    return () => {
+      cancelled = true;
+    };
+    // Loading again after the account's visits changed updates the visitor counts.
+  }, [attempt, accountRevision]);
 
-function MapDataProvider({ children }: { children: ReactNode }) {
-  const [query, setQuery] = useState<string | null>(null);
-  const [mapDataRev, setMapDataRev] = useState<number>(0);
-
-  const filterData = (newQuery: string) => {
-    setQuery(newQuery);
-    setMapDataRev((rev) => rev + 1);
+  const reload = () => {
+    setStatus("loading");
+    setAttempt((n) => n + 1);
   };
 
-  const listSpotData: FeatureCollection<Point, GeoProperties> = {
-    ...spotsData,
-    features: query
-      ? spotsData.features.filter((f) => {
-          const p = f.properties;
-          const q = query.trim().toLowerCase();
-          return (
-            p.name.toLowerCase().includes(q) ||
-            p.address.toLowerCase().includes(q)
-          );
-        })
-      : spotsData.features,
-  };
+  const only = onlySpotIds ? new Set(onlySpotIds) : null;
+  const allSpots = only ? spots.filter((s) => only.has(s.id)) : spots;
 
-  const mapSpotData: FeatureCollection<Point, GeoProperties> = {
-    ...openSpotsData,
-    features: query
-      ? openSpotsData.features.filter((f) => {
-          const p = f.properties;
-          const q = query.trim().toLowerCase();
-          return (
-            p.name.toLowerCase().includes(q) ||
-            p.address.toLowerCase().includes(q)
-          );
-        })
-      : openSpotsData.features,
-  };
+  const q = query.trim().toLowerCase();
+  const shownSpots = allSpots.filter((s) => {
+    if (q && !s.name.toLowerCase().includes(q) && !s.address.toLowerCase().includes(q)) {
+      return false;
+    }
+    if (visitFilter === "visited") return visitedSpotIds.has(s.id);
+    if (visitFilter === "unvisited") return !visitedSpotIds.has(s.id);
+    return true;
+  });
 
   return (
     <MapDataContext.Provider
-      value={{ allSpotData: spotsData, listSpotData, mapSpotData, mapSpotDataRev: String(mapDataRev), indexToId, idToIndex, filterData }}
+      value={{ allSpots, shownSpots, status, reload, setQuery, visitFilter, setVisitFilter }}
     >
       {children}
     </MapDataContext.Provider>

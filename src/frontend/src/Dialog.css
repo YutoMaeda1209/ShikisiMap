@@ -1,0 +1,166 @@
+.dialog {
+    width: min(440px, calc(100vw - 24px));
+    max-height: calc(100dvh - 24px);
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    user-select: text;
+}
+
+.dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.dialogHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 14px 16px 8px;
+}
+
+.dialogHeader h2 {
+    margin: 0;
+    font-size: var(--font-lg);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dialogClose {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dialogBody {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 4px 16px 16px;
+    font-size: var(--font-sm);
+}
+
+.dialogBody section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dialogBody h3 {
+    margin: 0;
+    font-size: var(--font-md);
+}
+
+.dialogBody p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.dialogBody label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dialogBody label.inline {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.dialogBody input[type="text"],
+.dialogBody input[type="datetime-local"],
+.dialogBody textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.dialogBody textarea {
+    min-height: 64px;
+    resize: vertical;
+}
+
+.dialogActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.dialogBody button {
+    padding: 7px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+.dialogBody button.primary {
+    border-color: #202124;
+    background: #202124;
+    color: #fff;
+}
+
+.dialogBody button.danger {
+    border-color: #c0392b;
+    color: #c0392b;
+}
+
+.dialogBody button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.dialogNote {
+    color: #5f6368;
+}
+
+.dialogError {
+    color: #c0392b;
+}
+
+.dialogDivider {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.visitHistory {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.visitHistory li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.visitHistoryMemo {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.profileUrl {
+    overflow-wrap: anywhere;
+}

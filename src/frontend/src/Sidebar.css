@@ -64,3 +64,53 @@
         border-radius: 16px;
     }
 }
+
+#sidebarStatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 32px;
+    font-size: var(--font-sm);
+}
+
+#sidebarStatus.profile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    text-align: center;
+}
+
+#visitProgress {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#accountButton {
+    flex: 0 1 auto;
+    max-width: 55%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #fff;
+    font-size: var(--font-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+#accountButton::before {
+    margin-right: 4px;
+    font-family: "bootstrap-icons";
+    content: "\f4d7"; /* bi-person-circle */
+    vertical-align: -1px;
+}
+
+#profileName {
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
