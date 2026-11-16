@@ -2,68 +2,72 @@ package main
 
 import (
 	"context"
+	"errors"
 	"log"
 	"net/http"
-	"os"
-	"strings"
+	"os/signal"
+	"syscall"
+	"time"
 
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
-	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/jackc/pgx/v5/stdlib"
-	"github.com/pressly/goose/v3"
-
-	"github.com/YutoMaeda1209/ShikisiMap/src/backend/migrations"
-
-	// Not used yet; keeps the dependency until Google login is implemented.
-	_ "golang.org/x/oauth2/google"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/db"
 )
 
-func main() {
-	ctx := context.Background()
+const shutdownTimeout = 10 * time.Second
 
-	pool, err := pgxpool.New(ctx, os.Getenv("DATABASE_URL"))
-	if err != nil {
+func main() {
+	if err := run(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func run() error {
+	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stop()
+
+	cfg, err := config.Load()
+	if err != nil {
+		return err
+	}
+
+	pool, err := db.Open(ctx, cfg.DatabaseURL)
+	if err != nil {
+		return err
 	}
 	defer pool.Close()
 
-	if err := migrate(pool); err != nil {
-		log.Fatal(err)
-	}
-
-	r := gin.Default()
-	r.Use(cors.New(cors.Config{
-		AllowOrigins: allowOrigins(),
-		AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE"},
-		AllowHeaders: []string{"Content-Type"},
-	}))
-	r.GET("/healthz", func(c *gin.Context) {
-		if err := pool.Ping(c.Request.Context()); err != nil {
-			c.JSON(http.StatusServiceUnavailable, gin.H{"status": "db unavailable"})
-			return
-		}
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
-	})
-	if err := r.Run(":8080"); err != nil {
-		log.Fatal(err)
-	}
-}
-
-func migrate(pool *pgxpool.Pool) error {
-	db := stdlib.OpenDBFromPool(pool)
-	defer db.Close()
-
-	goose.SetBaseFS(migrations.FS)
-	if err := goose.SetDialect("postgres"); err != nil {
+	if err := db.Migrate(ctx, pool); err != nil {
 		return err
 	}
-	return goose.Up(db, ".")
-}
 
-func allowOrigins() []string {
-	if v := os.Getenv("CORS_ALLOW_ORIGINS"); v != "" {
-		return strings.Split(v, ",")
+	router, err := newRouter(cfg, pool)
+	if err != nil {
+		return err
 	}
-	return []string{"http://localhost:5173"}
+	srv := &http.Server{
+		Addr:              cfg.ListenAddr,
+		Handler:           router,
+		ReadHeaderTimeout: 10 * time.Second,
+	}
+
+	serveErr := make(chan error, 1)
+	go func() { serveErr <- srv.ListenAndServe() }()
+	log.Printf("listening on %s", cfg.ListenAddr)
+
+	select {
+	case err := <-serveErr:
+		return err
+	case <-ctx.Done():
+	}
+
+	// Let the requests in progress finish before the pool closes.
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), shutdownTimeout)
+	defer cancel()
+	if err := srv.Shutdown(shutdownCtx); err != nil {
+		return err
+	}
+	if err := <-serveErr; !errors.Is(err, http.ErrServerClosed) {
+		return err
+	}
+	return nil
 }

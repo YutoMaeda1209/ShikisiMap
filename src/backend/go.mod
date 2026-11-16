@@ -3,7 +3,6 @@ module github.com/YutoMaeda1209/ShikisiMap/src/backend
 go 1.27.3
 
 require (
-	github.com/gin-contrib/cors v1.7.11
 	github.com/gin-gonic/gin v1.12.0
 	github.com/jackc/pgx/v5 v5.13.0
 	github.com/pressly/goose/v3 v3.30.0

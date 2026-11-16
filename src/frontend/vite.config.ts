@@ -13,6 +13,10 @@ export default defineConfig({
     },
     server: {
         host: true,
+        // Serve the API from the same origin as in production, where nginx forwards /api/ to the backend.
+        proxy: {
+            '/api': 'http://localhost:8080'
+        },
         watch: {
             usePolling: true,
             interval: 100
