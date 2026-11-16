@@ -6,9 +6,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
 
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/auth"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/httpx"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/spots"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/users"
+	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/visits"
 )
 
 const codeDBUnavailable = "db_unavailable"
@@ -23,9 +26,20 @@ func newRouter(cfg config.Config, pool *pgxpool.Pool) (*gin.Engine, error) {
 	// For checks on the host itself. nginx only forwards /api/.
 	r.GET("/healthz", health)
 
+	// The API the site's frontend calls, authenticated by the session cookie.
 	api := r.Group("/api", httpx.RequireSameOrigin(cfg.PublicOrigin), httpx.RequireJSON())
 	api.GET("/healthz", health)
+
+	authSvc := auth.New(auth.Options{
+		Pool:         pool,
+		PublicOrigin: cfg.PublicOrigin,
+		ClientID:     cfg.GoogleOAuthClientID,
+		ClientSecret: cfg.GoogleOAuthClientSecret,
+	})
+	authSvc.Register(api)
 	spots.Register(api, pool)
+	users.Register(api, pool, authSvc)
+	visits.Register(api, pool, authSvc)
 
 	return r, nil
 }
