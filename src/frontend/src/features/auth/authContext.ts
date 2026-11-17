@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Me } from "./api";
+import type { Me } from "../../lib/api";
 
 export type AuthContextType = {
   /** The signed-in user, or null when signed out or still loading. */

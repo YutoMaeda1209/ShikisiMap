@@ -1,6 +1,6 @@
 import { APIProvider, Map as GoogleMap } from "@vis.gl/react-google-maps";
 import CurrentLocationMarker from "./CurrentLocationMarker";
-import "./Map.css";
+import "./MapView.css";
 import MapErrorBoundary from "./MapErrorBoundary";
 import SpotMarkers from "./SpotMarkers";
 

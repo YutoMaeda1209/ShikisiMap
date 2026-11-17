@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useAuth } from "./authContext";
-import Dialog from "./Dialog";
-import { useMapData } from "./mapDataContext";
-import { profileUrl } from "./route";
+import Dialog from "../../components/Dialog";
+import { useMapData } from "../spots/mapDataContext";
+import { profileUrl } from "../../lib/route";
 import {
   downloadBlob,
   exportAccountVisits,
   exportLocalVisits,
   type ExportFormat,
-} from "./visitStore";
-import { useVisits } from "./visitsContext";
+} from "../visits/visitStore";
+import { useVisits } from "../visits/visitsContext";
 
 const maxDisplayNameLength = 50;
 

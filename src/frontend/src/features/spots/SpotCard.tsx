@@ -1,9 +1,9 @@
 import { useState, type Ref } from "react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
-import { googleMapsUrl, type Spot } from "./api";
+import { googleMapsUrl, type Spot } from "../../lib/api";
 import "./SpotCard.css";
-import { requestVisitDialog, useVisits } from "./visitsContext";
+import { requestVisitDialog, useVisits } from "../visits/visitsContext";
 
 type SpotCardProps = {
   spot: Spot;

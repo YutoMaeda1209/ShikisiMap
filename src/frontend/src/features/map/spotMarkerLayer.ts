@@ -2,7 +2,7 @@
 // code: the clusterer owns the placement of the markers, so they cannot be
 // React elements.
 import { MarkerClusterer, SuperClusterAlgorithm } from "@googlemaps/markerclusterer";
-import type { Spot } from "./api";
+import type { Spot } from "../../lib/api";
 import {
   createClusterElement,
   createPinElement,

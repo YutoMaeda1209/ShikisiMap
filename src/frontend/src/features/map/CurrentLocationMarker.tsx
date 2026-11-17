@@ -1,7 +1,7 @@
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useEffect, useRef, useState } from "react";
-import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData } from "./mapDataContext";
+import { useLocationSelection } from "../spots/locationSelectionContext";
+import { useMapData } from "../spots/mapDataContext";
 import { createCurrentLocationElement } from "./markerElements";
 
 type Position = {

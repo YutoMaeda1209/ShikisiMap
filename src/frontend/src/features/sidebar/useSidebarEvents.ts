@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import type { Spot } from "./api";
+import type { Spot } from "../../lib/api";
 
 type UseSidebarEventsOptions = {
   isCollapsible: boolean;

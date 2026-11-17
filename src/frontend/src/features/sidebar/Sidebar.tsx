@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import type { Spot } from "./api";
-import logo from "./assets/img/logo.webp";
+import type { Spot } from "../../lib/api";
+import logo from "../../assets/img/logo.webp";
 import BottomSheet from "./BottomSheet";
-import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData } from "./mapDataContext";
+import { useLocationSelection } from "../spots/locationSelectionContext";
+import { useMapData } from "../spots/mapDataContext";
 import "./Sidebar.css";
 import SpotList from "./SpotList";
 import useSidebarEvents from "./useSidebarEvents";
 import useSidebarLayout from "./useSidebarLayout";
-import { useVisits } from "./visitsContext";
+import { useVisits } from "../visits/visitsContext";
 
 type SidebarProps = {
   /** What stands under the title: the visitor's progress, or a profile's heading. */

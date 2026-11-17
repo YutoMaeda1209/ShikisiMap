@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import type { RowComponentProps } from "react-window";
-import type { Spot } from "./api";
-import { useLocationSelection } from "./locationSelectionContext";
-import SpotCard from "./SpotCard";
+import type { Spot } from "../../lib/api";
+import { useLocationSelection } from "../spots/locationSelectionContext";
+import SpotCard from "../spots/SpotCard";
 import "./SpotItem.css";
 
 interface ListItemProps {

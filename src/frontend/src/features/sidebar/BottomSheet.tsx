@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import type { Spot } from "./api";
+import type { Spot } from "../../lib/api";
 import "./BottomSheet.css";
-import SpotCard from "./SpotCard";
+import SpotCard from "../spots/SpotCard";
 
 type BottomSheetProps = {
   spot: Spot;

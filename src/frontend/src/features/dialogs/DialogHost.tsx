@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import AccountDialog, { LocalImportSection } from "./AccountDialog";
-import { useAuth } from "./authContext";
-import Dialog from "./Dialog";
-import { useMapData } from "./mapDataContext";
-import VisitDialog from "./VisitDialog";
-import { useVisits } from "./visitsContext";
+import AccountDialog, { LocalImportSection } from "../auth/AccountDialog";
+import { useAuth } from "../auth/authContext";
+import Dialog from "../../components/Dialog";
+import { useMapData } from "../spots/mapDataContext";
+import VisitDialog from "../visits/VisitDialog";
+import { useVisits } from "../visits/visitsContext";
 
 type OpenDialog =
   | { kind: "visit"; spotId: string }

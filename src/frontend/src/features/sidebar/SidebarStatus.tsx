@@ -1,7 +1,7 @@
-import type { Profile } from "./api";
-import { useAuth } from "./authContext";
-import { useMapData } from "./mapDataContext";
-import { useVisits } from "./visitsContext";
+import type { Profile } from "../../lib/api";
+import { useAuth } from "../auth/authContext";
+import { useMapData } from "../spots/mapDataContext";
+import { useVisits } from "../visits/visitsContext";
 
 function requestAccountDialog() {
   window.dispatchEvent(new CustomEvent("account:open"));

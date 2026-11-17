@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { List, useListRef } from "react-window";
-import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData, type VisitFilter } from "./mapDataContext";
-import SpotCard from "./SpotCard";
+import { useLocationSelection } from "../spots/locationSelectionContext";
+import { useMapData, type VisitFilter } from "../spots/mapDataContext";
+import SpotCard from "../spots/SpotCard";
 import SpotItem from "./SpotItem";
 import "./SpotList.css";
-import { useVisits } from "./visitsContext";
+import { useVisits } from "../visits/visitsContext";
 
 const visitFilters: { value: VisitFilter; label: string }[] = [
   { value: "all", label: "すべて" },

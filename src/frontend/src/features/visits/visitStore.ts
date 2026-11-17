@@ -1,6 +1,6 @@
 // Where the visit records live: in the account when signed in, otherwise in
 // this browser's localStorage. Both sit behind the same interface.
-import { api, apiBlob, ApiError, type Spot, type Visit } from "./api";
+import { api, apiBlob, ApiError, type Spot, type Visit } from "../../lib/api";
 
 export type VisitInput = {
   spotId: string;

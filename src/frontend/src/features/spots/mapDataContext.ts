@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Spot } from "./api";
+import type { Spot } from "../../lib/api";
 
 export type VisitFilter = "all" | "visited" | "unvisited";
 

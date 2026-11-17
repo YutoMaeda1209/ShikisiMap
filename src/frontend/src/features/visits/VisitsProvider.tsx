@@ -1,6 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
-import type { Visit } from "./api";
-import { useAuth } from "./authContext";
+import type { Visit } from "../../lib/api";
+import { useAuth } from "../auth/authContext";
 import {
   accountVisitStore,
   clearLocalVisits,

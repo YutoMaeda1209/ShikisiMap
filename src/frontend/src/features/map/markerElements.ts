@@ -1,6 +1,6 @@
 // DOM elements for the markers. AdvancedMarkerElement draws whatever element
 // it is given, so the look lives in Map.css.
-import type { Spot } from "./api";
+import type { Spot } from "../../lib/api";
 
 export type SpotState = "unvisited" | "visited" | "closed";
 

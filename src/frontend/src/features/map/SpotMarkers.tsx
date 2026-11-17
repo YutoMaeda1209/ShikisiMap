@@ -1,9 +1,9 @@
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useEffect, useRef } from "react";
-import { useLocationSelection } from "./locationSelectionContext";
-import { useMapData } from "./mapDataContext";
+import { useLocationSelection } from "../spots/locationSelectionContext";
+import { useMapData } from "../spots/mapDataContext";
 import { SpotMarkerLayer } from "./spotMarkerLayer";
-import { useVisits } from "./visitsContext";
+import { useVisits } from "../visits/visitsContext";
 
 // Draws the spots on the map and keeps the map on the selected one.
 function SpotMarkers() {

@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { api, type Spot } from "./api";
+import { api, type Spot } from "../../lib/api";
 import { MapDataContext, type VisitFilter } from "./mapDataContext";
-import { useVisits } from "./visitsContext";
+import { useVisits } from "../visits/visitsContext";
 
 type MapDataProviderProps = {
   /** Limits the page to these spots. A profile page shows only the visited ones. */

@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { api, ApiError, type Me } from "./api";
+import { api, ApiError, type Me } from "../../lib/api";
 import { AuthContext } from "./authContext";
 
 // Tracks who is signed in. The browser holds only the session cookie, which

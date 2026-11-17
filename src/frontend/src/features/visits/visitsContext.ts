@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import type { Visit } from "./api";
+import type { Visit } from "../../lib/api";
 import type { AddResult, VisitInput, VisitPatch } from "./visitStore";
 
 export type VisitsContextType = {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { ApiError, type Spot, type Visit } from "./api";
-import { formatDateTime, fromLocalInputValue, toLocalInputValue } from "./datetime";
-import Dialog from "./Dialog";
+import { ApiError, type Spot, type Visit } from "../../lib/api";
+import { formatDateTime, fromLocalInputValue, toLocalInputValue } from "../../lib/datetime";
+import Dialog from "../../components/Dialog";
 import { DuplicateVisitError } from "./visitStore";
 import { useVisits } from "./visitsContext";
 
