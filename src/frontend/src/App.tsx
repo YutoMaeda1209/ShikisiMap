@@ -3,7 +3,6 @@ import { api, ApiError, type Profile } from "./api";
 import "./App.css";
 import AuthProvider from "./AuthProvider";
 import DialogHost from "./DialogHost";
-import GitHubRibbon from "./GitHubRibbon";
 import LocationSelectionProvider from "./LocationSelectionProvider";
 import MapView from "./Map";
 import MapDataProvider from "./MapDataProvider";
@@ -25,7 +24,6 @@ function MapPage() {
               <Sidebar status={<VisitorStatus />} />
             </div>
             <MapView />
-            <GitHubRibbon />
             <DialogHost />
             <UrlManager />
           </MapDataProvider>
@@ -85,7 +83,6 @@ function ProfilePage({ userId }: { userId: string }) {
             <Sidebar status={<ProfileStatus profile={profile} />} />
           </div>
           <MapView />
-          <GitHubRibbon />
           <UrlManager />
         </MapDataProvider>
       </ProfileVisitsProvider>
