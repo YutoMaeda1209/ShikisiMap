@@ -71,6 +71,11 @@
     content: "\f659"; /* bi-x-lg */
 }
 
+/* The pin of the selected spot inside the clusterer, covered by the selected marker. */
+.spotPin.hiddenBySelection {
+    visibility: hidden;
+}
+
 .spotPin.selected {
     transform: scale(1.3);
     opacity: 1;

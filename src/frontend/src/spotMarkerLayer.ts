@@ -35,9 +35,11 @@ export class SpotMarkerLayer {
   private readonly entries = new Map<string, Entry>();
   private readonly spotByMarker = new WeakMap<object, Spot>();
   private visitedSpotIds: ReadonlySet<string> = new Set();
-  // The selected pin is taken out of the clusterer so that it stays visible
-  // at every zoom level.
-  private standaloneId: string | null = null;
+  // The selected spot is drawn by a marker of its own, outside the clusterer,
+  // so that it stays visible at every zoom level. Its pin in the clusterer is
+  // hidden meanwhile but stays there: taking it out would make the clusterer
+  // take the marker off the map on its next redraw, and would split clusters.
+  private selected: Entry | null = null;
 
   constructor(
     map: google.maps.Map,
@@ -73,6 +75,23 @@ export class SpotMarkerLayer {
     });
   }
 
+  // The position and the title are only given when a marker is created:
+  // a marker is replaced rather than changed, which keeps to the most common
+  // use of AdvancedMarkerElement.
+  private createMarker(spot: Spot, options: { map?: google.maps.Map; zIndex?: number } = {}): Entry {
+    const element = createPinElement();
+    const marker = new this.markerLibrary.AdvancedMarkerElement({
+      ...options,
+      position: spot.location,
+      content: element,
+      // Shown as a tooltip on hover.
+      title: spot.name,
+      gmpClickable: true,
+    });
+    marker.addEventListener("gmp-click", () => this.onSelect(spot.id));
+    return { spot, marker, element };
+  }
+
   /**
    * Makes the markers match the spots. Markers of spots that stay are kept,
    * so that recording a visit or typing in the search does not redraw them
@@ -82,43 +101,30 @@ export class SpotMarkerLayer {
     const shownIds = new Set(spots.map((s) => s.id));
     for (const [id, entry] of this.entries) {
       if (shownIds.has(id)) continue;
-      if (this.standaloneId === id) {
-        entry.marker.map = null;
-        this.standaloneId = null;
-      } else {
-        this.clusterer.removeMarker(entry.marker, true);
-      }
+      this.clusterer.removeMarker(entry.marker, true);
       this.entries.delete(id);
     }
 
     for (const spot of spots) {
       const existing = this.entries.get(spot.id);
       if (existing) {
+        if (existing.spot === spot) continue;
         // The spot object is replaced when the spots are loaded again.
-        const previous = existing.spot;
-        if (previous === spot) continue;
-        existing.spot = spot;
-        this.spotByMarker.set(existing.marker, spot);
-        if (previous.location.lat !== spot.location.lat || previous.location.lng !== spot.location.lng) {
-          existing.marker.position = spot.location;
+        const moved =
+          existing.spot.location.lat !== spot.location.lat ||
+          existing.spot.location.lng !== spot.location.lng ||
+          existing.spot.name !== spot.name;
+        if (!moved) {
+          existing.spot = spot;
+          this.spotByMarker.set(existing.marker, spot);
+          continue;
         }
-        if (previous.name !== spot.name) {
-          existing.marker.title = spot.name;
-        }
-        continue;
+        this.clusterer.removeMarker(existing.marker, true);
       }
-      const element = createPinElement();
-      const marker = new this.markerLibrary.AdvancedMarkerElement({
-        position: spot.location,
-        content: element,
-        // Shown as a tooltip on hover.
-        title: spot.name,
-        gmpClickable: true,
-      });
-      marker.addEventListener("gmp-click", () => this.onSelect(spot.id));
-      this.entries.set(spot.id, { spot, marker, element });
-      this.spotByMarker.set(marker, spot);
-      this.clusterer.addMarker(marker, true);
+      const entry = this.createMarker(spot);
+      this.entries.set(spot.id, entry);
+      this.spotByMarker.set(entry.marker, spot);
+      this.clusterer.addMarker(entry.marker, true);
     }
   }
 
@@ -128,24 +134,26 @@ export class SpotMarkerLayer {
 
     for (const { spot, marker, element } of this.entries.values()) {
       const state = spotState(spot, visitedSpotIds);
-      const selected = spot.id === selectedId;
-      updatePinElement(element, state, selected);
-      marker.zIndex = selected ? selectedZIndex : zIndexByState[state];
+      updatePinElement(element, state, false);
+      // Covered by the selected marker; hidden so that the two do not show at once.
+      element.classList.toggle("hiddenBySelection", spot.id === selectedId);
+      marker.zIndex = zIndexByState[state];
     }
 
-    const previous = this.standaloneId ? this.entries.get(this.standaloneId) : undefined;
-    const next = selectedId ? this.entries.get(selectedId) : undefined;
-    if (previous && previous !== next) {
-      previous.marker.map = null;
-      this.clusterer.addMarker(previous.marker, true);
+    // A selected spot that is filtered out of the map is not shown either.
+    const entry = selectedId ? this.entries.get(selectedId) : undefined;
+    if (this.selected && this.selected.spot !== entry?.spot) {
+      this.selected.marker.map = null;
+      this.selected = null;
     }
-    if (next && previous !== next) {
-      this.clusterer.removeMarker(next.marker, true);
-      next.marker.map = this.map;
+    if (entry && !this.selected) {
+      this.selected = this.createMarker(entry.spot, { map: this.map, zIndex: selectedZIndex });
     }
-    this.standaloneId = next ? next.spot.id : null;
+    if (this.selected) {
+      updatePinElement(this.selected.element, spotState(this.selected.spot, visitedSpotIds), true);
+    }
 
-    // The members of the clusters or their visited share may have changed.
+    // The visited share of the clusters may have changed.
     this.clusterer.render();
   }
 
@@ -156,6 +164,7 @@ export class SpotMarkerLayer {
       marker.map = null;
     }
     this.entries.clear();
-    this.standaloneId = null;
+    if (this.selected) this.selected.marker.map = null;
+    this.selected = null;
   }
 }
