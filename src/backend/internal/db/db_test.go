@@ -47,13 +47,13 @@ func tables(t *testing.T, pool *pgxpool.Pool) []string {
 	return names
 }
 
-func insertSpot(t *testing.T, pool *pgxpool.Pool, name string, placeID *string) string {
+func insertSpot(t *testing.T, pool *pgxpool.Pool, name string) string {
 	t.Helper()
 	var id string
 	err := pool.QueryRow(context.Background(), `
-		INSERT INTO spots (place_id, name, address, location)
-		VALUES ($1, $2, '東京都', ST_SetSRID(ST_MakePoint(139.7671, 35.6812), 4326)::geography)
-		RETURNING id`, placeID, name).Scan(&id)
+		INSERT INTO spots (name, address, location)
+		VALUES ($1, '東京都', ST_SetSRID(ST_MakePoint(139.7671, 35.6812), 4326)::geography)
+		RETURNING id`, name).Scan(&id)
 	if err != nil {
 		t.Fatalf("insert spot: %v", err)
 	}
@@ -93,7 +93,7 @@ func TestMigrateCreatesTables(t *testing.T) {
 
 func TestMigrateIsIdempotent(t *testing.T) {
 	pool := dbtest.New(t)
-	insertSpot(t, pool, "spot", nil)
+	insertSpot(t, pool, "spot")
 
 	if err := db.Migrate(context.Background(), pool); err != nil {
 		t.Fatalf("second Migrate: %v", err)
@@ -129,40 +129,38 @@ func TestSpots(t *testing.T) {
 	pool := dbtest.New(t)
 	ctx := context.Background()
 
-	placeID := "ChIJ-test"
-	id := insertSpot(t, pool, "with place", &placeID)
+	id := insertSpot(t, pool, "spot")
 
 	t.Run("defaults", func(t *testing.T) {
 		var (
-			isClosed          bool
-			fetchedAt, status *time.Time
-			lng, lat          float64
+			isClosed bool
+			lng, lat float64
 		)
 		err := pool.QueryRow(ctx, `
-			SELECT is_closed, location_fetched_at, status_checked_at,
-			       ST_X(location::geometry), ST_Y(location::geometry)
-			FROM spots WHERE id = $1`, id).Scan(&isClosed, &fetchedAt, &status, &lng, &lat)
+			SELECT is_closed, ST_X(location::geometry), ST_Y(location::geometry)
+			FROM spots WHERE id = $1`, id).Scan(&isClosed, &lng, &lat)
 		if err != nil {
 			t.Fatal(err)
 		}
-		if isClosed || fetchedAt != nil || status != nil {
-			t.Errorf("is_closed = %v, location_fetched_at = %v, status_checked_at = %v", isClosed, fetchedAt, status)
+		if isClosed {
+			t.Error("is_closed defaults to true, want false")
 		}
 		if lng != 139.7671 || lat != 35.6812 {
 			t.Errorf("location = (%v, %v)", lng, lat)
 		}
 	})
 
-	t.Run("place_id is unique", func(t *testing.T) {
-		_, err := pool.Exec(ctx, `
-			INSERT INTO spots (place_id, name, address, location)
-			VALUES ($1, 'dup', 'x', 'POINT(0 0)')`, placeID)
-		wantPgError(t, err, uniqueViolation)
-	})
-
-	t.Run("several spots may have no place_id", func(t *testing.T) {
-		insertSpot(t, pool, "unresolved 1", nil)
-		insertSpot(t, pool, "unresolved 2", nil)
+	t.Run("no column comes from Google", func(t *testing.T) {
+		var n int
+		if err := pool.QueryRow(ctx, `
+			SELECT count(*) FROM information_schema.columns
+			WHERE table_name = 'spots' AND column_name IN ('place_id', 'location_fetched_at', 'status_checked_at')`,
+		).Scan(&n); err != nil {
+			t.Fatal(err)
+		}
+		if n != 0 {
+			t.Errorf("%d Google columns remain", n)
+		}
 	})
 
 	t.Run("location is required", func(t *testing.T) {
@@ -175,7 +173,7 @@ func TestUpdatedAtIsMaintained(t *testing.T) {
 	pool := dbtest.New(t)
 	ctx := context.Background()
 
-	spotID := insertSpot(t, pool, "spot", nil)
+	spotID := insertSpot(t, pool, "spot")
 	userID := insertUser(t, pool, "sub")
 	var visitID string
 	if err := pool.QueryRow(ctx,
@@ -223,8 +221,8 @@ func TestUpdatedAtIsMaintained(t *testing.T) {
 func TestAppearances(t *testing.T) {
 	pool := dbtest.New(t)
 	ctx := context.Background()
-	spotID := insertSpot(t, pool, "spot", nil)
-	otherSpotID := insertSpot(t, pool, "other", nil)
+	spotID := insertSpot(t, pool, "spot")
+	otherSpotID := insertSpot(t, pool, "other")
 
 	insert := func(spot, youtubeID string, timestamp int) error {
 		_, err := pool.Exec(ctx,
@@ -289,8 +287,8 @@ func TestUsers(t *testing.T) {
 func TestVisits(t *testing.T) {
 	pool := dbtest.New(t)
 	ctx := context.Background()
-	spotID := insertSpot(t, pool, "spot", nil)
-	otherSpotID := insertSpot(t, pool, "other", nil)
+	spotID := insertSpot(t, pool, "spot")
+	otherSpotID := insertSpot(t, pool, "other")
 	userID := insertUser(t, pool, "sub")
 	otherUserID := insertUser(t, pool, "other")
 	at := time.Date(2026, 1, 2, 3, 4, 5, 0, time.UTC)
@@ -360,7 +358,7 @@ func TestVisits(t *testing.T) {
 func TestDeletingUserCascades(t *testing.T) {
 	pool := dbtest.New(t)
 	ctx := context.Background()
-	spotID := insertSpot(t, pool, "spot", nil)
+	spotID := insertSpot(t, pool, "spot")
 	userID := insertUser(t, pool, "sub")
 	otherUserID := insertUser(t, pool, "other")
 

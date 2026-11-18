@@ -3,8 +3,6 @@ package admin_test
 import (
 	"context"
 	"encoding/json"
-	"errors"
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -18,7 +16,6 @@ import (
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/db/dbtest"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/httpx"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/oidctest"
-	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/places"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/spots"
 )
 
@@ -28,46 +25,17 @@ func init() {
 	gin.SetMode(gin.TestMode)
 }
 
-type fakePlaces struct {
-	search     map[string][]places.Place
-	details    map[string]places.Details
-	err        error
-	searches   []string
-	detailsFor []string
-}
-
-func (f *fakePlaces) SearchText(_ context.Context, query string) ([]places.Place, error) {
-	f.searches = append(f.searches, query)
-	if f.err != nil {
-		return nil, f.err
-	}
-	return f.search[query], nil
-}
-
-func (f *fakePlaces) Details(_ context.Context, placeID string) (places.Details, error) {
-	f.detailsFor = append(f.detailsFor, placeID)
-	if f.err != nil {
-		return places.Details{}, f.err
-	}
-	d, ok := f.details[placeID]
-	if !ok {
-		return places.Details{}, places.ErrNotFound
-	}
-	return d, nil
-}
-
 type env struct {
 	t        *testing.T
 	pool     *pgxpool.Pool
 	provider *oidctest.Provider
-	places   *fakePlaces
 	router   *gin.Engine
 }
 
 func newEnv(t *testing.T) *env {
 	t.Helper()
-	e := &env{t: t, pool: dbtest.New(t), provider: oidctest.New(t), places: &fakePlaces{}}
-	e.router = e.newRouter(admin.Options{Pool: e.pool, Places: e.places, Audience: audience, Issuer: e.provider.Issuer})
+	e := &env{t: t, pool: dbtest.New(t), provider: oidctest.New(t)}
+	e.router = e.newRouter(admin.Options{Pool: e.pool, Audience: audience, Issuer: e.provider.Issuer})
 	return e
 }
 
@@ -131,11 +99,10 @@ func wantError(t *testing.T, w *httptest.ResponseRecorder, status int, code stri
 	}
 }
 
-const validBody = `{"name": "店", "address": "東京都", "youtubeId": "abcDEF_-123", "timestamp": 60, "placeId": "ChIJ-given"}`
+const validBody = `{"name": "店", "address": "東京都", "location": {"lat": 35.68, "lng": 139.76}, "youtubeId": "abcDEF_-123", "timestamp": 60}`
 
 func TestAuthentication(t *testing.T) {
 	e := newEnv(t)
-	e.places.details = map[string]places.Details{"ChIJ-given": {}}
 
 	rejected := func(name string, status int, code, authorization string) {
 		t.Helper()
@@ -195,8 +162,17 @@ func TestAuthentication(t *testing.T) {
 		}
 	})
 
+	t.Run("the spot update workflow", func(t *testing.T) {
+		token := with(func(c map[string]any) {
+			c["workflow_ref"] = "YutoMaeda1209/ShikisiMap/.github/workflows/spot_update.yml@refs/heads/main"
+		})
+		if w := e.do(e.router, "POST", "/api/admin/spots", validBody, token); w.Code != http.StatusOK {
+			t.Errorf("status = %d, body = %s", w.Code, w.Body)
+		}
+	})
+
 	t.Run("not configured", func(t *testing.T) {
-		r := e.newRouter(admin.Options{Pool: e.pool, Places: e.places, Issuer: e.provider.Issuer})
+		r := e.newRouter(admin.Options{Pool: e.pool, Issuer: e.provider.Issuer})
 		wantError(t, e.do(r, "POST", "/api/admin/spots", validBody, "Bearer "+e.token()), 503, "admin_unavailable")
 	})
 
@@ -225,135 +201,78 @@ func (e *env) create(body string) (*httptest.ResponseRecorder, createResponse) {
 	return w, res
 }
 
-func TestCreateSpotBySearch(t *testing.T) {
+func TestCreateSpot(t *testing.T) {
 	e := newEnv(t)
-	e.places.search = map[string][]places.Place{
-		"東京駅 東京都千代田区丸の内": {{ID: "ChIJ-tokyo", Name: "東京駅 (Google)", Address: "Google の住所", Location: places.LatLng{Lat: 35.6812, Lng: 139.7671}}},
-		"カフェ 東京都": {
-			{ID: "ChIJ-cafe1", Name: "カフェ 1号店", Address: "住所1", Location: places.LatLng{Lat: 1, Lng: 2}},
-			{ID: "ChIJ-cafe2", Name: "カフェ 2号店", Address: "住所2", Location: places.LatLng{Lat: 3, Lng: 4}},
-		},
-	}
 
-	w, res := e.create(`{"name": " 東京駅 ", "address": "東京都千代田区丸の内", "youtubeId": "video000001", "timestamp": 90}`)
+	w, res := e.create(`{"name": " 東京駅 ", "address": "東京都千代田区丸の内", "location": {"lat": 35.6812, "lng": 139.7671},
+		"youtubeId": "video000001", "timestamp": 90}`)
 	if w.Code != http.StatusCreated || !res.Created || !res.AppearanceAdded {
 		t.Fatalf("status = %d, body = %s", w.Code, w.Body)
 	}
 	s := res.Spot
-	// The name and address are the maintainer's; the place and location are Google's.
-	if s.Name != "東京駅" || s.Address != "東京都千代田区丸の内" || *s.PlaceID != "ChIJ-tokyo" || s.IsClosed {
+	if s.Name != "東京駅" || s.Address != "東京都千代田区丸の内" || s.IsClosed || s.Location != (spots.LatLng{Lat: 35.6812, Lng: 139.7671}) {
 		t.Errorf("spot = %+v", s)
-	}
-	if s.Location != (places.LatLng{Lat: 35.6812, Lng: 139.7671}) {
-		t.Errorf("location = %+v", s.Location)
 	}
 	if len(s.Appearances) != 1 || s.Appearances[0].YouTubeID != "video000001" || s.Appearances[0].Timestamp != 90 {
 		t.Errorf("appearances = %+v", s.Appearances)
 	}
-	if n := e.count(`SELECT count(*) FROM spots WHERE location_fetched_at > now() - interval '1 minute'`); n != 1 {
-		t.Error("location_fetched_at was not set")
-	}
 
-	t.Run("same place again adds only the appearance", func(t *testing.T) {
-		w, res := e.create(`{"name": "東京駅", "address": "東京都千代田区丸の内", "youtubeId": "video000002", "timestamp": 0, "isClosed": true}`)
+	t.Run("same name and address adds only the appearance", func(t *testing.T) {
+		// The location and the closure of the request are ignored for an existing spot.
+		w, res := e.create(`{"name": "東京駅", "address": "東京都千代田区丸の内", "location": {"lat": 1, "lng": 2},
+			"isClosed": true, "youtubeId": "video000002", "timestamp": 0}`)
 		if w.Code != http.StatusOK || res.Created || !res.AppearanceAdded || res.Spot.ID != s.ID {
 			t.Fatalf("status = %d, body = %s", w.Code, w.Body)
 		}
-		if len(res.Spot.Appearances) != 2 || res.Spot.IsClosed {
+		if len(res.Spot.Appearances) != 2 || res.Spot.IsClosed || res.Spot.Location != s.Location {
 			t.Errorf("spot = %+v, want two appearances and the spot otherwise unchanged", res.Spot)
 		}
-		if n := e.count(`SELECT count(*) FROM spots`); n != 1 {
-			t.Errorf("spots = %d, want 1", n)
+	})
+
+	t.Run("no location is needed for an existing spot", func(t *testing.T) {
+		w, res := e.create(`{"name": "東京駅", "address": "東京都千代田区丸の内", "youtubeId": "video000003", "timestamp": 5}`)
+		if w.Code != http.StatusOK || res.Created || len(res.Spot.Appearances) != 3 {
+			t.Errorf("status = %d, body = %s", w.Code, w.Body)
 		}
 	})
 
 	t.Run("same appearance again changes nothing", func(t *testing.T) {
 		w, res := e.create(`{"name": "東京駅", "address": "東京都千代田区丸の内", "youtubeId": "video000002", "timestamp": 0}`)
-		if w.Code != http.StatusOK || res.Created || res.AppearanceAdded || len(res.Spot.Appearances) != 2 {
+		if w.Code != http.StatusOK || res.Created || res.AppearanceAdded || len(res.Spot.Appearances) != 3 {
 			t.Errorf("status = %d, body = %s", w.Code, w.Body)
 		}
 	})
 
-	t.Run("several candidates", func(t *testing.T) {
-		w, _ := e.create(`{"name": "カフェ", "address": "東京都", "youtubeId": "video000003", "timestamp": 0}`)
-		wantError(t, w, http.StatusConflict, "place_not_resolved")
-		var body struct {
-			Candidates []places.Place `json:"candidates"`
+	t.Run("by spot ID", func(t *testing.T) {
+		w, res := e.create(`{"spotId": "` + strings.ToUpper(s.ID) + `", "youtubeId": "video000004", "timestamp": 7}`)
+		if w.Code != http.StatusOK || res.Created || !res.AppearanceAdded || res.Spot.ID != s.ID || len(res.Spot.Appearances) != 4 {
+			t.Errorf("status = %d, body = %s", w.Code, w.Body)
 		}
-		json.Unmarshal(w.Body.Bytes(), &body)
-		if len(body.Candidates) != 2 || body.Candidates[1].ID != "ChIJ-cafe2" || body.Candidates[1].Name != "カフェ 2号店" || body.Candidates[1].Address != "住所2" {
-			t.Errorf("body = %s", w.Body)
-		}
-		if !strings.Contains(w.Body.String(), `"placeId":"ChIJ-cafe1"`) {
-			t.Errorf("body = %s, want the candidates' place IDs as placeId", w.Body)
+		w, _ = e.create(`{"spotId": "00000000-0000-4000-8000-000000000000", "youtubeId": "video000004", "timestamp": 7}`)
+		wantError(t, w, http.StatusUnprocessableEntity, "unknown_spot")
+	})
+
+	t.Run("another address is another spot", func(t *testing.T) {
+		w, res := e.create(`{"name": "東京駅", "address": "別の住所", "location": {"lat": 35.6812, "lng": 139.7671},
+			"isClosed": true, "youtubeId": "video000005", "timestamp": 0}`)
+		if w.Code != http.StatusCreated || !res.Created || res.Spot.ID == s.ID || !res.Spot.IsClosed {
+			t.Errorf("status = %d, body = %s", w.Code, w.Body)
 		}
 	})
 
-	t.Run("no candidate", func(t *testing.T) {
-		w, _ := e.create(`{"name": "どこにもない店", "address": "東京都", "youtubeId": "video000003", "timestamp": 0}`)
-		wantError(t, w, http.StatusConflict, "place_not_resolved")
-		if !strings.Contains(w.Body.String(), `"candidates":[]`) {
-			t.Errorf("body = %s, want an empty candidate list", w.Body)
-		}
+	t.Run("a new spot needs a location", func(t *testing.T) {
+		w, _ := e.create(`{"name": "新しい店", "address": "東京都", "youtubeId": "video000006", "timestamp": 0}`)
+		wantError(t, w, http.StatusUnprocessableEntity, "location_required")
 	})
 
-	if n := e.count(`SELECT (SELECT count(*) FROM spots) * 10 + (SELECT count(*) FROM appearances)`); n != 12 {
-		t.Errorf("spots, appearances = %d, want 1 and 2", n)
+	if n := e.count(`SELECT (SELECT count(*) FROM spots) * 10 + (SELECT count(*) FROM appearances)`); n != 25 {
+		t.Errorf("spots, appearances = %d, want 2 and 5", n)
 	}
-}
-
-func TestCreateSpotWithPlaceID(t *testing.T) {
-	e := newEnv(t)
-	e.places.details = map[string]places.Details{
-		"ChIJ-cafe2":  {Location: places.LatLng{Lat: 3, Lng: 4}, BusinessStatus: "OPERATIONAL"},
-		"ChIJ-closed": {Location: places.LatLng{Lat: 5, Lng: 6}, BusinessStatus: "CLOSED_PERMANENTLY"},
-	}
-
-	w, res := e.create(`{"name": "カフェ", "address": "東京都", "youtubeId": "video000003", "timestamp": 5, "placeId": "ChIJ-cafe2"}`)
-	if w.Code != http.StatusCreated || !res.Created || *res.Spot.PlaceID != "ChIJ-cafe2" || res.Spot.Location != (places.LatLng{Lat: 3, Lng: 4}) {
-		t.Fatalf("status = %d, body = %s", w.Code, w.Body)
-	}
-	// The place was given, so nothing is searched.
-	if len(e.places.searches) != 0 || len(e.places.detailsFor) != 1 {
-		t.Errorf("searches = %v, details = %v", e.places.searches, e.places.detailsFor)
-	}
-
-	t.Run("existing place needs no API call", func(t *testing.T) {
-		e.places.detailsFor = nil
-		w, res := e.create(`{"name": "カフェ", "address": "東京都", "youtubeId": "video000004", "timestamp": 0, "placeId": "ChIJ-cafe2"}`)
-		if w.Code != http.StatusOK || res.Created || len(res.Spot.Appearances) != 2 || len(e.places.detailsFor) != 0 {
-			t.Errorf("status = %d, body = %s, details = %v", w.Code, w.Body, e.places.detailsFor)
-		}
-	})
-
-	t.Run("closed according to Google", func(t *testing.T) {
-		_, res := e.create(`{"name": "閉業店", "address": "東京都", "youtubeId": "video000005", "timestamp": 0, "placeId": "ChIJ-closed"}`)
-		if !res.Created || !res.Spot.IsClosed {
-			t.Errorf("spot = %+v", res.Spot)
-		}
-	})
-
-	t.Run("closed according to the request", func(t *testing.T) {
-		e.places.details["ChIJ-open"] = places.Details{BusinessStatus: "OPERATIONAL"}
-		_, res := e.create(`{"name": "閉業店2", "address": "東京都", "youtubeId": "video000006", "timestamp": 0, "placeId": "ChIJ-open", "isClosed": true}`)
-		if !res.Created || !res.Spot.IsClosed {
-			t.Errorf("spot = %+v", res.Spot)
-		}
-	})
-
-	t.Run("unknown place ID", func(t *testing.T) {
-		before := e.count(`SELECT count(*) FROM spots`)
-		w, _ := e.create(`{"name": "店", "address": "東京都", "youtubeId": "video000007", "timestamp": 0, "placeId": "ChIJ-typo"}`)
-		wantError(t, w, http.StatusUnprocessableEntity, "validation_failed")
-		if e.count(`SELECT count(*) FROM spots`) != before {
-			t.Error("a spot was created")
-		}
-	})
 }
 
 func TestCreateSpotValidation(t *testing.T) {
 	e := newEnv(t)
-	base := map[string]any{"name": "店", "address": "東京都", "youtubeId": "abcDEF_-123", "timestamp": 0, "placeId": "ChIJ-given"}
+	base := map[string]any{"name": "店", "address": "東京都", "location": map[string]float64{"lat": 35, "lng": 139}, "youtubeId": "abcDEF_-123", "timestamp": 0}
 	with := func(key string, value any) string {
 		m := map[string]any{}
 		for k, v := range base {
@@ -375,7 +294,9 @@ func TestCreateSpotValidation(t *testing.T) {
 		"no video":           with("youtubeId", nil),
 		"video URL":          with("youtubeId", "https://youtu.be/abcDEF_-123"),
 		"negative timestamp": with("timestamp", -1),
-		"long place":         with("placeId", strings.Repeat("x", 201)),
+		"bad spot ID":        with("spotId", "1"),
+		"latitude too large": with("location", map[string]float64{"lat": 91, "lng": 139}),
+		"swapped":            with("location", map[string]float64{"lat": 139, "lng": 35}),
 	} {
 		if w, _ := e.create(body); w.Code != http.StatusUnprocessableEntity {
 			t.Errorf("%s: status = %d, body = %s; want 422", name, w.Code, w.Body)
@@ -383,13 +304,17 @@ func TestCreateSpotValidation(t *testing.T) {
 	}
 	for name, body := range map[string]string{
 		"string timestamp": with("timestamp", "60"),
-		"unknown field":    with("id", "00000000-0000-4000-8000-000000000000"),
+		"unknown field":    with("placeId", "ChIJ-x"),
 		"not json":         "name=x",
 	} {
 		if w, _ := e.create(body); w.Code != http.StatusBadRequest {
 			t.Errorf("%s: status = %d, body = %s; want 400", name, w.Code, w.Body)
 		}
 	}
+	if n := e.count(`SELECT count(*) FROM spots`); n != 0 {
+		t.Errorf("spots = %d", n)
+	}
+
 	req := httptest.NewRequest("POST", "/api/admin/spots", strings.NewReader(validBody))
 	req.Header.Set("Content-Type", "text/plain")
 	req.Header.Set("Authorization", "Bearer "+e.token())
@@ -398,48 +323,16 @@ func TestCreateSpotValidation(t *testing.T) {
 	wantError(t, rec, http.StatusUnsupportedMediaType, "unsupported_media_type")
 }
 
-func TestCreateSpotWhenPlacesFails(t *testing.T) {
-	e := newEnv(t)
-	search := `{"name": "店", "address": "東京都", "youtubeId": "video000001", "timestamp": 0}`
-
-	e.places.err = fmt.Errorf("%w: daily limit", places.ErrQuotaExceeded)
-	w, _ := e.create(search)
-	wantError(t, w, http.StatusServiceUnavailable, "places_unavailable")
-	if !strings.Contains(w.Body.String(), "quota") {
-		t.Errorf("body = %s, want it to mention the quota", w.Body)
-	}
-	w, _ = e.create(validBody)
-	wantError(t, w, http.StatusServiceUnavailable, "places_unavailable")
-
-	e.places.err = errors.New("secret upstream detail")
-	w, _ = e.create(search)
-	wantError(t, w, http.StatusServiceUnavailable, "places_unavailable")
-	if strings.Contains(w.Body.String(), "secret") {
-		t.Errorf("body = %s exposes the upstream error", w.Body)
-	}
-
-	t.Run("no API key", func(t *testing.T) {
-		r := e.newRouter(admin.Options{Pool: e.pool, Audience: audience, Issuer: e.provider.Issuer})
-		for _, body := range []string{search, validBody} {
-			wantError(t, e.do(r, "POST", "/api/admin/spots", body, "Bearer "+e.token()), http.StatusServiceUnavailable, "places_unavailable")
-		}
-	})
-	if n := e.count(`SELECT count(*) FROM spots`); n != 0 {
-		t.Errorf("spots = %d", n)
-	}
-}
-
 func TestUpdateSpot(t *testing.T) {
 	e := newEnv(t)
 	ctx := context.Background()
 	var id, otherID string
 	if err := e.pool.QueryRow(ctx, `
-		INSERT INTO spots (place_id, name, address, location, location_fetched_at, status_checked_at)
-		VALUES ('ChIJ-a', '店A', '住所A', 'POINT(2 1)', now(), now()) RETURNING id`).Scan(&id); err != nil {
+		INSERT INTO spots (name, address, location) VALUES ('店A', '住所A', 'POINT(2 1)') RETURNING id`).Scan(&id); err != nil {
 		t.Fatal(err)
 	}
 	if err := e.pool.QueryRow(ctx, `
-		INSERT INTO spots (place_id, name, address, location) VALUES ('ChIJ-b', '店B', '住所B', 'POINT(4 3)') RETURNING id`).Scan(&otherID); err != nil {
+		INSERT INTO spots (name, address, location) VALUES ('店B', '住所B', 'POINT(4 3)') RETURNING id`).Scan(&otherID); err != nil {
 		t.Fatal(err)
 	}
 	path := "/api/admin/spots/" + id
@@ -451,51 +344,46 @@ func TestUpdateSpot(t *testing.T) {
 		json.Unmarshal(w.Body.Bytes(), &s)
 		return w, s
 	}
-	fetched := func() bool {
-		return e.count(`SELECT count(*) FROM spots WHERE id = $1 AND location_fetched_at IS NOT NULL`, id) == 1
-	}
 
-	if w, s := patch(`{"isClosed": true}`); w.Code != 200 || !s.IsClosed || s.Name != "店A" || *s.PlaceID != "ChIJ-a" {
+	if w, s := patch(`{"isClosed": true}`); w.Code != 200 || !s.IsClosed || s.Name != "店A" || s.Location != (spots.LatLng{Lat: 1, Lng: 2}) {
 		t.Errorf("close: %d %s", w.Code, w.Body)
 	}
-	if w, s := patch(`{"name": " 新しい名前 ", "address": "新しい住所", "isClosed": false}`); w.Code != 200 || s.IsClosed || s.Name != "新しい名前" || s.Address != "新しい住所" {
+	if w, s := patch(`{"isClosed": false}`); w.Code != 200 || s.IsClosed {
+		t.Errorf("reopen: %d %s", w.Code, w.Body)
+	}
+	if w, s := patch(`{"location": {"lat": 35.5, "lng": 139.25}}`); w.Code != 200 || s.Location != (spots.LatLng{Lat: 35.5, Lng: 139.25}) || s.Name != "店A" {
+		t.Errorf("move: %d %s", w.Code, w.Body)
+	}
+	if w, s := patch(`{"name": " 新しい名前 ", "address": "新しい住所"}`); w.Code != 200 || s.Name != "新しい名前" || s.Address != "新しい住所" || s.Location.Lat != 35.5 {
 		t.Errorf("rename: %d %s", w.Code, w.Body)
 	}
 	if w, s := patch(`{}`); w.Code != 200 || s.Name != "新しい名前" {
 		t.Errorf("empty patch: %d %s", w.Code, w.Body)
 	}
-	if w, s := patch(`{"placeId": "ChIJ-a"}`); w.Code != 200 || *s.PlaceID != "ChIJ-a" || !fetched() {
-		t.Errorf("same place: %d %s; the location must stay fetched", w.Code, w.Body)
-	}
-
-	if w, s := patch(`{"placeId": "ChIJ-new"}`); w.Code != 200 || *s.PlaceID != "ChIJ-new" || fetched() {
-		t.Errorf("new place: %d %s; the location must be marked for refetching", w.Code, w.Body)
-	}
-	if w, s := patch(`{"placeId": null}`); w.Code != 200 || s.PlaceID != nil {
-		t.Errorf("unresolve: %d %s", w.Code, w.Body)
-	}
-
-	w, _ := patch(`{"placeId": "ChIJ-b"}`)
-	wantError(t, w, http.StatusConflict, "place_in_use")
 
 	for name, body := range map[string]string{
-		"blank name":   `{"name": " "}`,
-		"long address": `{"address": "` + strings.Repeat("あ", 201) + `"}`,
-		"empty place":  `{"placeId": ""}`,
-		"number place": `{"placeId": 1}`,
+		"blank name":       `{"name": " "}`,
+		"long address":     `{"address": "` + strings.Repeat("あ", 201) + `"}`,
+		"out of range":     `{"location": {"lat": -91, "lng": 0}}`,
+		"longitude beyond": `{"location": {"lat": 0, "lng": 181}}`,
 	} {
 		if w, _ := patch(body); w.Code != http.StatusUnprocessableEntity {
 			t.Errorf("%s: status = %d, body = %s; want 422", name, w.Code, w.Body)
 		}
 	}
-	if w, _ := patch(`{"location": {"lat": 0, "lng": 0}}`); w.Code != http.StatusBadRequest {
-		t.Errorf("unknown field: status = %d", w.Code)
+	for name, body := range map[string]string{
+		"place ID":      `{"placeId": "ChIJ-x"}`,
+		"string closed": `{"isClosed": "true"}`,
+	} {
+		if w, _ := patch(body); w.Code != http.StatusBadRequest {
+			t.Errorf("%s: status = %d", name, w.Code)
+		}
 	}
 
 	wantError(t, e.call("PATCH", "/api/admin/spots/00000000-0000-4000-8000-000000000000", `{"name": "x"}`), 404, "not_found")
 	wantError(t, e.call("PATCH", "/api/admin/spots/abc", `{"name": "x"}`), 404, "not_found")
 
-	if n := e.count(`SELECT count(*) FROM spots WHERE id = $1 AND name = '店B' AND place_id = 'ChIJ-b'`, otherID); n != 1 {
+	if n := e.count(`SELECT count(*) FROM spots WHERE id = $1 AND name = '店B' AND NOT is_closed AND ST_Y(location::geometry) = 3`, otherID); n != 1 {
 		t.Error("the other spot changed")
 	}
 }

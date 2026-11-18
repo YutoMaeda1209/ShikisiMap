@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/gin-gonic/gin"
@@ -55,10 +56,10 @@ func TestList(t *testing.T) {
 		spotC = "cccccccc-0000-4000-8000-000000000003"
 	)
 	exec(t, pool, `
-		INSERT INTO spots (id, place_id, name, address, location, is_closed, created_at) VALUES
-		($1, 'ChIJ-a', '店A', '東京都A', 'POINT(139.7671 35.6812)', false, now() - interval '3 hours'),
-		($2, NULL,     '店B', '東京都B', 'POINT(127.5 26.25)',     true,  now() - interval '2 hours'),
-		($3, 'ChIJ-c', '店C', '東京都C', 'POINT(0 0)',             false, now() - interval '1 hour')`,
+		INSERT INTO spots (id, name, address, location, is_closed, created_at) VALUES
+		($1, '店A', '東京都A', 'POINT(139.7671 35.6812)', false, now() - interval '3 hours'),
+		($2, '店B', '東京都B', 'POINT(127.5 26.25)',     true,  now() - interval '2 hours'),
+		($3, '店C', '東京都C', 'POINT(0 0)',             false, now() - interval '1 hour')`,
 		spotA, spotB, spotC)
 	exec(t, pool, `
 		INSERT INTO appearances (spot_id, youtube_id, "timestamp", created_at) VALUES
@@ -83,10 +84,9 @@ func TestList(t *testing.T) {
 	}
 	var got struct {
 		Spots []struct {
-			ID       string  `json:"id"`
-			PlaceID  *string `json:"placeId"`
-			Name     string  `json:"name"`
-			Address  string  `json:"address"`
+			ID       string `json:"id"`
+			Name     string `json:"name"`
+			Address  string `json:"address"`
 			Location struct {
 				Lat float64 `json:"lat"`
 				Lng float64 `json:"lng"`
@@ -111,7 +111,7 @@ func TestList(t *testing.T) {
 	if a.ID != spotA || b.ID != spotB || c.ID != spotC {
 		t.Errorf("order = %s, %s, %s; want registration order", a.ID, b.ID, c.ID)
 	}
-	if a.PlaceID == nil || *a.PlaceID != "ChIJ-a" || a.Name != "店A" || a.Address != "東京都A" || a.IsClosed {
+	if a.Name != "店A" || a.Address != "東京都A" || a.IsClosed {
 		t.Errorf("spot A = %+v", a)
 	}
 	if a.Location.Lat != 35.6812 || a.Location.Lng != 139.7671 {
@@ -126,7 +126,7 @@ func TestList(t *testing.T) {
 	if a.Appearances[1].Timestamp != 10 || !httpx.IsUUID(a.Appearances[0].ID) {
 		t.Errorf("spot A appearances = %+v", a.Appearances)
 	}
-	if b.PlaceID != nil || !b.IsClosed || len(b.Appearances) != 1 || b.Appearances[0].Timestamp != 89 {
+	if !b.IsClosed || len(b.Appearances) != 1 || b.Appearances[0].Timestamp != 89 {
 		t.Errorf("spot B = %+v", b)
 	}
 	if c.Appearances == nil || len(c.Appearances) != 0 {
@@ -146,5 +146,14 @@ func TestGet(t *testing.T) {
 	got, err = spots.Get(context.Background(), pool, "bbbbbbbb-0000-4000-8000-000000000002")
 	if err != nil || got != nil {
 		t.Errorf("Get(unknown) = %+v, %v; want nil", got, err)
+	}
+}
+
+func TestListHasNoGoogleFields(t *testing.T) {
+	pool := dbtest.New(t)
+	exec(t, pool, `INSERT INTO spots (name, address, location) VALUES ('店', '住所', 'POINT(1 2)')`)
+	_, body := getSpots(t, pool)
+	if strings.Contains(body, "placeId") {
+		t.Errorf("body = %s", body)
 	}
 }

@@ -19,17 +19,23 @@ import (
 const (
 	githubIssuer = "https://token.actions.githubusercontent.com"
 
-	// Only this workflow, running from the main branch of this repository,
+	// Only these workflows, running from the main branch of this repository,
 	// may call the admin API.
-	allowedRepository  = "YutoMaeda1209/ShikisiMap"
-	allowedRef         = "refs/heads/main"
-	allowedWorkflowRef = allowedRepository + "/.github/workflows/spot_request.yml@" + allowedRef
+	allowedRepository = "YutoMaeda1209/ShikisiMap"
+	allowedRef        = "refs/heads/main"
 
 	// Error codes of the admin API.
 	CodeAdminUnavailable = "admin_unavailable"
 	CodeUnauthorized     = "unauthorized"
 	CodeForbidden        = "forbidden"
 )
+
+// allowedWorkflowRefs are the workflow_ref claims of the workflows that may
+// call the admin API: the spot request flow and the manual spot update.
+var allowedWorkflowRefs = map[string]bool{
+	allowedRepository + "/.github/workflows/spot_request.yml@" + allowedRef: true,
+	allowedRepository + "/.github/workflows/spot_update.yml@" + allowedRef:  true,
+}
 
 // authenticator verifies GitHub Actions OIDC tokens.
 type authenticator struct {
@@ -109,7 +115,7 @@ func (a *authenticator) middleware() gin.HandlerFunc {
 			httpx.InternalError(c, err)
 			return
 		}
-		if claims.Repository != allowedRepository || claims.WorkflowRef != allowedWorkflowRef || claims.Ref != allowedRef {
+		if claims.Repository != allowedRepository || !allowedWorkflowRefs[claims.WorkflowRef] || claims.Ref != allowedRef {
 			_ = c.Error(fmt.Errorf("admin: rejected token of %s, workflow %s, ref %s",
 				claims.Repository, claims.WorkflowRef, claims.Ref))
 			httpx.Error(c, http.StatusForbidden, CodeForbidden, "this workflow may not call the admin API")

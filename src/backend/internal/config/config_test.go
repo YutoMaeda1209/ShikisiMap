@@ -12,8 +12,6 @@ var envKeys = []string{
 	"ADMIN_OIDC_AUDIENCE",
 	"GOOGLE_OAUTH_CLIENT_ID",
 	"GOOGLE_OAUTH_CLIENT_SECRET",
-	"GOOGLE_PLACES_API_KEY",
-	"SPOT_REFRESH_LIMIT",
 }
 
 func clearEnv(t *testing.T) {
@@ -47,8 +45,6 @@ func TestLoadReadsEveryVariable(t *testing.T) {
 	t.Setenv("ADMIN_OIDC_AUDIENCE", "https://map.mendako.dev/api/admin")
 	t.Setenv("GOOGLE_OAUTH_CLIENT_ID", "client-id")
 	t.Setenv("GOOGLE_OAUTH_CLIENT_SECRET", "client-secret")
-	t.Setenv("GOOGLE_PLACES_API_KEY", "places-key")
-	t.Setenv("SPOT_REFRESH_LIMIT", "5")
 
 	got, err := Load()
 	if err != nil {
@@ -61,8 +57,6 @@ func TestLoadReadsEveryVariable(t *testing.T) {
 		AdminOIDCAudience:       "https://map.mendako.dev/api/admin",
 		GoogleOAuthClientID:     "client-id",
 		GoogleOAuthClientSecret: "client-secret",
-		GooglePlacesAPIKey:      "places-key",
-		SpotRefreshLimit:        5,
 	}
 	if got != want {
 		t.Errorf("Load() = %+v, want %+v", got, want)
@@ -97,16 +91,5 @@ func TestLoadRejectsInvalidPublicOrigin(t *testing.T) {
 				t.Errorf("err = %v, want an error naming PUBLIC_ORIGIN", err)
 			}
 		})
-	}
-}
-
-func TestLoadRejectsInvalidSpotRefreshLimit(t *testing.T) {
-	for _, v := range []string{"0", "-1", "many", "1.5"} {
-		clearEnv(t)
-		t.Setenv("DATABASE_URL", "postgres://localhost/shikisimap")
-		t.Setenv("SPOT_REFRESH_LIMIT", v)
-		if _, err := Load(); err == nil || !strings.Contains(err.Error(), "SPOT_REFRESH_LIMIT") {
-			t.Errorf("%q: err = %v, want an error naming SPOT_REFRESH_LIMIT", v, err)
-		}
 	}
 }

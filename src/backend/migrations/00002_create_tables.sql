@@ -11,21 +11,14 @@ $$ LANGUAGE plpgsql;
 
 CREATE TABLE spots (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    -- NULL until the place is resolved with the Places API.
-    place_id text UNIQUE,
     name text NOT NULL,
     address text NOT NULL,
+    -- Maintained by hand, like is_closed.
     location geography(Point, 4326) NOT NULL,
-    -- NULL while the location is a provisional one that did not come from Google.
-    location_fetched_at timestamptz,
     is_closed boolean NOT NULL DEFAULT false,
-    status_checked_at timestamptz,
     created_at timestamptz NOT NULL DEFAULT now(),
     updated_at timestamptz NOT NULL DEFAULT now()
 );
-
--- The scheduled job picks the spots whose location is the oldest.
-CREATE INDEX spots_location_fetched_at_idx ON spots (location_fetched_at);
 
 CREATE TRIGGER spots_set_updated_at
     BEFORE UPDATE ON spots

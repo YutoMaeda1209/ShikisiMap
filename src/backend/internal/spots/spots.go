@@ -10,8 +10,18 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/httpx"
-	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/places"
 )
+
+// LatLng is a WGS 84 coordinate.
+type LatLng struct {
+	Lat float64 `json:"lat"`
+	Lng float64 `json:"lng"`
+}
+
+// Valid reports whether the coordinate is on the globe.
+func (l LatLng) Valid() bool {
+	return l.Lat >= -90 && l.Lat <= 90 && l.Lng >= -180 && l.Lng <= 180
+}
 
 // Appearance is a scene of a video in which a spot appears.
 type Appearance struct {
@@ -23,12 +33,12 @@ type Appearance struct {
 
 // Spot is a place together with its appearances.
 type Spot struct {
-	ID       string        `json:"id"`
-	PlaceID  *string       `json:"placeId"`
-	Name     string        `json:"name"`
-	Address  string        `json:"address"`
-	Location places.LatLng `json:"location"`
-	IsClosed bool          `json:"isClosed"`
+	ID       string `json:"id"`
+	Name     string `json:"name"`
+	Address  string `json:"address"`
+	Location LatLng `json:"location"`
+	// IsClosed is set by the maintainers when the place has closed.
+	IsClosed bool `json:"isClosed"`
 	// VisitorCount is the number of users who recorded a visit.
 	VisitorCount int `json:"visitorCount"`
 	// Appearances are ordered from the most recently registered one.
@@ -36,7 +46,7 @@ type Spot struct {
 }
 
 const selectSpots = `
-SELECT s.id, s.place_id, s.name, s.address,
+SELECT s.id, s.name, s.address,
        ST_Y(s.location::geometry), ST_X(s.location::geometry),
        s.is_closed,
        (SELECT count(DISTINCT v.user_id) FROM visits v WHERE v.spot_id = s.id),
@@ -55,7 +65,7 @@ type Querier interface {
 func scanSpots(rows pgx.Rows) ([]Spot, error) {
 	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (Spot, error) {
 		var s Spot
-		err := row.Scan(&s.ID, &s.PlaceID, &s.Name, &s.Address,
+		err := row.Scan(&s.ID, &s.Name, &s.Address,
 			&s.Location.Lat, &s.Location.Lng, &s.IsClosed, &s.VisitorCount, &s.Appearances)
 		return s, err
 	})

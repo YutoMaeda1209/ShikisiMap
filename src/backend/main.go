@@ -14,7 +14,6 @@ import (
 
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/config"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/db"
-	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/places"
 	"github.com/YutoMaeda1209/ShikisiMap/src/backend/internal/scheduler"
 )
 
@@ -62,15 +61,7 @@ func serve(parent context.Context) error {
 		return err
 	}
 
-	placesClient := places.NewClient(cfg.GooglePlacesAPIKey)
-	// Without a key the job still deletes the expired sessions.
-	var placesAPI places.API
-	if placesClient.Configured() {
-		placesAPI = placesClient
-	} else {
-		log.Print("GOOGLE_PLACES_API_KEY is not set; the spots will not be refreshed")
-	}
-	jobs := scheduler.New(pool, placesAPI, cfg.SpotRefreshLimit)
+	jobs := scheduler.New(pool)
 	jobsDone := make(chan struct{})
 	go func() {
 		defer close(jobsDone)
@@ -82,7 +73,7 @@ func serve(parent context.Context) error {
 		<-jobsDone
 	}()
 
-	router, err := newRouter(cfg, pool, placesAPI)
+	router, err := newRouter(cfg, pool)
 	if err != nil {
 		return err
 	}

@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"net/url"
 	"os"
-	"strconv"
 )
 
 const (
@@ -33,11 +32,6 @@ type Config struct {
 	// used for Google login.
 	GoogleOAuthClientID     string
 	GoogleOAuthClientSecret string
-	// GooglePlacesAPIKey is the key for Places API (New).
-	GooglePlacesAPIKey string
-	// SpotRefreshLimit is how many spots the daily job refreshes at most.
-	// Zero means the default of the scheduler.
-	SpotRefreshLimit int
 }
 
 // Load reads the settings from the environment.
@@ -52,7 +46,6 @@ func Load() (Config, error) {
 		AdminOIDCAudience:       os.Getenv("ADMIN_OIDC_AUDIENCE"),
 		GoogleOAuthClientID:     os.Getenv("GOOGLE_OAUTH_CLIENT_ID"),
 		GoogleOAuthClientSecret: os.Getenv("GOOGLE_OAUTH_CLIENT_SECRET"),
-		GooglePlacesAPIKey:      os.Getenv("GOOGLE_PLACES_API_KEY"),
 	}
 
 	if cfg.DatabaseURL == "" {
@@ -60,13 +53,6 @@ func Load() (Config, error) {
 	}
 	if err := validateOrigin(cfg.PublicOrigin); err != nil {
 		return Config{}, fmt.Errorf("PUBLIC_ORIGIN: %w", err)
-	}
-	if v := os.Getenv("SPOT_REFRESH_LIMIT"); v != "" {
-		n, err := strconv.Atoi(v)
-		if err != nil || n < 1 {
-			return Config{}, fmt.Errorf("SPOT_REFRESH_LIMIT: %q is not a positive integer", v)
-		}
-		cfg.SpotRefreshLimit = n
 	}
 	return cfg, nil
 }

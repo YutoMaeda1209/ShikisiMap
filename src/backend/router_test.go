@@ -18,7 +18,7 @@ func init() {
 
 func TestHealth(t *testing.T) {
 	pool := dbtest.New(t)
-	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool, nil)
+	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -54,7 +54,7 @@ func TestHealth(t *testing.T) {
 // telling a 404 or 405 of the router apart from the answer of a handler.
 func TestRoutes(t *testing.T) {
 	pool := dbtest.New(t)
-	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool, nil)
+	r, err := newRouter(config.Config{PublicOrigin: "https://map.example"}, pool)
 	if err != nil {
 		t.Fatal(err)
 	}
