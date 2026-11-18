@@ -1,5 +1,5 @@
-// DOM elements for the markers. AdvancedMarkerElement draws whatever element
-// it is given, so the look lives in Map.css.
+// DOM elements for the markers, drawn by Leaflet's divIcon. The look lives in
+// MapView.css.
 import type { Spot } from "../../lib/api";
 
 export type SpotState = "unvisited" | "visited" | "closed";
@@ -43,25 +43,24 @@ export function updatePinElement(root: HTMLElement, state: SpotState, selected: 
   root.className = `spotPin ${state}${selected ? " selected" : ""}`;
 }
 
+/** The diameter of a cluster, in pixels, by the number of spots in it. */
+export function clusterSize(count: number): number {
+  return count < 10 ? 36 : count < 50 ? 44 : 54;
+}
+
 /**
  * A white disc with the number of spots, ringed in green by the share of
  * them that are visited.
  */
 export function createClusterElement(count: number, visitedRatio: number): HTMLDivElement {
   const root = document.createElement("div");
-  const size = count < 10 ? "small" : count < 50 ? "medium" : "large";
-  root.className = `spotCluster ${size}`;
+  root.className = "spotCluster";
+  root.style.setProperty("--size", `${clusterSize(count)}px`);
   root.style.setProperty("--visited", `${Math.round(visitedRatio * 100)}%`);
 
   const label = document.createElement("span");
   label.className = "spotClusterCount";
   label.textContent = String(count);
   root.appendChild(label);
-  return root;
-}
-
-export function createCurrentLocationElement(): HTMLDivElement {
-  const root = document.createElement("div");
-  root.className = "currentLocation";
   return root;
 }

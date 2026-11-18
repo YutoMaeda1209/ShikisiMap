@@ -1,21 +1,9 @@
-.map,
-.mapFallback {
+.map {
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
     width: 100%;
-}
-
-.mapFallback {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 24px;
-    background: #e8eaed;
-    color: #3c4043;
-    text-align: center;
 }
 
 /* Spot pin. The marker is anchored at the bottom centre, the tip of the pin. */
@@ -110,7 +98,7 @@
     }
 }
 
-/* Cluster. Shifted down by half its height so that it is centred on its position. */
+/* Cluster. Its size comes from --size, set by createClusterElement. */
 .spotCluster {
     --visited: 0%;
     --size: 36px;
@@ -122,16 +110,7 @@
     border-radius: 50%;
     background: conic-gradient(#2e9e5b var(--visited), #c4c7c5 0);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-    transform: translateY(50%);
     cursor: pointer;
-}
-
-.spotCluster.medium {
-    --size: 44px;
-}
-
-.spotCluster.large {
-    --size: 54px;
 }
 
 .spotClusterCount {
@@ -149,13 +128,11 @@
 
 /* Current location: a plain dot, with no animation, to tell it from the selected pin. */
 .currentLocation {
-    width: 16px;
-    height: 16px;
+    box-sizing: border-box;
     border: 3px solid #fff;
     border-radius: 50%;
     background: #1a73e8;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-    transform: translateY(50%);
     pointer-events: none;
 }
 

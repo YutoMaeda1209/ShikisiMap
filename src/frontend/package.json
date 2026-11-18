@@ -20,18 +20,20 @@
   },
   "homepage": "https://github.com/YutoMaeda1209/ShikisiMap#readme",
   "dependencies": {
-    "@googlemaps/markerclusterer": "2.6.2",
-    "@vis.gl/react-google-maps": "1.10.2",
     "bootstrap-icons": "1.13.1",
+    "leaflet": "1.9.4",
+    "leaflet.markercluster": "1.5.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
+    "react-leaflet": "5.0.0",
     "react-lite-youtube-embed": "3.3.3",
     "react-window": "2.2.5"
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",
     "@types/geojson": "7946.0.16",
-    "@types/google.maps": "3.66.10",
+    "@types/leaflet": "1.9.21",
+    "@types/leaflet.markercluster": "1.5.6",
     "@types/node": "24.10.1",
     "@types/react": "19.2.5",
     "@types/react-dom": "19.2.3",

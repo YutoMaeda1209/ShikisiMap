@@ -31,10 +31,6 @@ jobs:
         run: npm ci
       - name: Build Project
         working-directory: src/frontend
-        env:
-          # Browser key, restricted to this site by HTTP referrer.
-          VITE_GOOGLE_MAPS_API_KEY: ${{ vars.VITE_GOOGLE_MAPS_API_KEY }}
-          VITE_GOOGLE_MAP_ID: ${{ vars.VITE_GOOGLE_MAP_ID }}
         run: npm run build
       - name: Connect to Tailscale
         uses: tailscale/github-action@v4.2.0

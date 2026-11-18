@@ -11,8 +11,7 @@
     "module": "esnext",
     "types": [
       "vite/client",
-      "node",
-      "google.maps"
+      "node"
     ],
     "skipLibCheck": true,
     /* Bundler mode */

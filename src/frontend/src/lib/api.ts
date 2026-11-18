@@ -9,10 +9,10 @@ export type Appearance = {
 
 export type Spot = {
   id: string;
-  placeId: string | null;
   name: string;
   address: string;
   location: { lat: number; lng: number };
+  /** Set by the maintainers when the place has closed. */
   isClosed: boolean;
   visitorCount: number;
   /** Ordered from the most recently registered one. */
@@ -100,11 +100,10 @@ export async function apiBlob(path: string, accept: string): Promise<Blob> {
 }
 
 /**
- * Link to the place on Google Maps. With a place ID, Google opens that exact
- * place; the query is the fallback and what is shown while loading.
+ * Link to a Google Maps search for the spot, for opening hours and the like.
+ * It is a plain link (Maps URLs), which needs no API key and costs nothing.
  */
-export function googleMapsUrl(spot: Pick<Spot, "name" | "address" | "placeId">): string {
+export function googleMapsUrl(spot: Pick<Spot, "name" | "address">): string {
   const query = encodeURIComponent(`${spot.name} ${spot.address}`);
-  const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
-  return spot.placeId ? `${url}&query_place_id=${encodeURIComponent(spot.placeId)}` : url;
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
