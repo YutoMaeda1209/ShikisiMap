@@ -3,30 +3,35 @@
 // through the admin API when a maintainer comments "/approve" on it, then reports the
 // result on the issue.
 //
-//   /approve                    resolve the place from the name and address
-//   /approve place_id=<id>      register with the given Google place ID
+//   /approve                          register; the coordinates come from the address
+//   /approve location=<lat>,<lng>     register at the given coordinates
+//   /approve spot_id=<id>             add the video to a spot that is already registered
+//
+// The coordinates are looked up with the address search of the Geospatial Information
+// Authority of Japan (国土地理院), which is free. A spot with the same name and address
+// as a registered one only gets the video added.
 //
 // The workflow (.github/workflows/spot_request.yml) decides who may approve.
 //
 // Run directly with Node's built-in TypeScript support: `node process-spot-request.ts`.
 import { execFileSync } from "node:child_process";
 
-interface Candidate {
-  placeId: string;
-  name: string;
-  address: string;
+interface LatLng {
+  lat: number;
+  lng: number;
 }
 
 interface ApiError {
   error?: { code?: string; message?: string };
-  candidates?: Candidate[];
 }
 
 interface ApiSuccess {
-  spot: { id: string; name: string; address: string; placeId: string | null };
+  spot: { id: string; name: string; address: string; location: LatLng; isClosed: boolean };
   created: boolean;
   appearanceAdded: boolean;
 }
+
+type Approval = { spotId?: string; location?: LatLng };
 
 function requireEnv(key: string): string {
   const value = process.env[key];
@@ -64,13 +69,16 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-// Returns the place ID given in the comment, null when there is none, or
-// undefined when the comment is not an approval at all (e.g. "/approved!").
-function parseApproval(body: string): string | null | undefined {
+// Reads the approval command on the first line of the comment, or returns null
+// when the comment is not one (e.g. "/approved!").
+function parseApproval(body: string): Approval | null {
   const firstLine = body.split(/\r?\n/, 1)[0].trim();
-  const match = firstLine.match(/^\/approve(?:\s+place_id=(\S+))?$/);
-  if (!match) return undefined;
-  return match[1] ?? null;
+  if (firstLine === "/approve") return {};
+  const spot = firstLine.match(/^\/approve\s+spot_id=([0-9a-fA-F-]{36})$/);
+  if (spot) return { spotId: spot[1] };
+  const location = firstLine.match(/^\/approve\s+location=(-?\d+(?:\.\d+)?),\s*(-?\d+(?:\.\d+)?)$/);
+  if (location) return { location: { lat: Number(location[1]), lng: Number(location[2]) } };
+  return null;
 }
 
 function parseSections(body: string): Record<string, string> {
@@ -96,9 +104,36 @@ function parseYoutube(url: string): { id: string | null; timestamp: number } {
   };
 }
 
-// Keeps text from a third party from breaking a Markdown table.
-function cell(text: string): string {
-  return text.replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
+interface GsiAddressResult {
+  geometry: { coordinates: [number, number] };
+}
+
+// Strips the postal code prefix so the 国土地理院 (GSI) address search API can match it.
+// The separator between the two digit groups varies by submitter: half-width
+// hyphen, full-width hyphen, or a full-width minus sign are all seen in practice.
+function simplifyAddress(address: string): string {
+  return address.replace(/^〒?\s*\d{3}[-‐‑‒–—−－]?\d{4}\s*/, "").trim();
+}
+
+// Looks the address up, first in full and then without the building name.
+async function geocode(address: string): Promise<LatLng | null> {
+  const simplified = simplifyAddress(address);
+  for (const query of [simplified, simplified.split(/\s+/)[0]]) {
+    if (!query) continue;
+    const url = `https://msearch.gsi.go.jp/address-search/AddressSearch?q=${encodeURIComponent(query)}`;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const results = (await res.json()) as GsiAddressResult[];
+      if (results.length > 0) {
+        const [lng, lat] = results[0].geometry.coordinates;
+        return { lat, lng };
+      }
+    } catch {
+      // Treated like no result: the maintainer can give the coordinates.
+    }
+  }
+  return null;
 }
 
 // Requests the OIDC token GitHub issues to this workflow run.
@@ -114,13 +149,17 @@ async function fetchIdToken(): Promise<string> {
   return value;
 }
 
+const usage = [
+  "- `/approve`: 住所から座標を求めて登録する",
+  "- `/approve location=<緯度>,<経度>`: 指定した座標で登録する (例: `/approve location=35.6812,139.7671`)",
+  "- `/approve spot_id=<スポット ID>`: 登録済みのスポットに動画だけを追加する",
+].join("\n");
+
 // 1. Read the approval comment.
-const placeId = parseApproval(commentBody);
-if (placeId === undefined) {
+const approval = parseApproval(commentBody);
+if (!approval) {
   console.log("The comment is not an approval command; nothing to do.");
-  comment(
-    "承認コマンドとして解釈できませんでした。`/approve` または `/approve place_id=<place_id>` の形式でコメントしてください。"
-  );
+  comment(`承認コマンドとして解釈できませんでした。次のいずれかの形式でコメントしてください。\n\n${usage}`);
   process.exit(0);
 }
 
@@ -141,9 +180,18 @@ if (!youtubeId) {
 }
 const isClosed = /閉業|閉店|閉鎖|営業終了/.test(supplementary);
 
-// 3. Register the spot through the admin API.
-const request: Record<string, unknown> = { name, address, youtubeId, timestamp, isClosed };
-if (placeId) request.placeId = placeId;
+// 3. Find the coordinates, unless the video goes to a registered spot. When the
+// address cannot be found, the API still adds the video to a registered spot with
+// the same name and address, and asks for coordinates otherwise.
+let location = approval.location;
+if (!approval.spotId && !location) {
+  location = (await geocode(address)) ?? undefined;
+}
+
+// 4. Register the spot through the admin API.
+const request: Record<string, unknown> = approval.spotId
+  ? { spotId: approval.spotId, youtubeId, timestamp }
+  : { name, address, youtubeId, timestamp, isClosed, ...(location ? { location } : {}) };
 
 let res: Response;
 try {
@@ -166,22 +214,26 @@ try {
   fail(`管理 API が JSON 以外を返しました (HTTP ${res.status})。`);
 }
 
-// 4. Report the result on the issue.
+// 5. Report the result on the issue.
 if (res.ok) {
   const { spot, created, appearanceAdded } = payload as ApiSuccess;
   const outcome = created
-    ? "スポットを登録しました。"
+    ? "スポットを登録しました。座標が正しいか地図で確認してください。"
     : appearanceAdded
-      ? "同じ場所のスポットが登録済みのため、動画の登場シーンだけを追加しました。"
+      ? "同じスポットが登録済みのため、動画の登場シーンだけを追加しました。"
       : "このスポットと登場シーンは登録済みです。変更はありません。";
+  const { lat, lng } = spot.location;
   comment(
     [
       outcome,
       "",
       `- スポット: ${spot.name}`,
       `- 住所: ${spot.address}`,
-      `- place_id: \`${spot.placeId ?? "未解決"}\``,
+      `- 座標: [${lat}, ${lng}](https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=18/${lat}/${lng})`,
+      `- 閉業: ${spot.isClosed ? "はい" : "いいえ"}`,
       `- スポット ID: \`${spot.id}\``,
+      "",
+      "座標や閉業状態の修正は、Actions の「Spot Update」ワークフローから行えます。",
     ].join("\n")
   );
   closeIssue();
@@ -189,25 +241,16 @@ if (res.ok) {
   process.exit(0);
 }
 
-const { error, candidates } = payload as ApiError;
-if (res.status === 409 && error?.code === "place_not_resolved") {
-  // Keep the issue open until a maintainer picks the place.
-  const lines =
-    candidates && candidates.length > 0
-      ? [
-          "名前と住所に一致する場所が複数見つかったため、登録を保留しました。",
-          "正しい場所の place_id を指定して `/approve place_id=<place_id>` とコメントしてください。",
-          "",
-          "| 名前 | 住所 | place_id |",
-          "| --- | --- | --- |",
-          ...candidates.map((c) => `| ${cell(c.name)} | ${cell(c.address)} | \`${c.placeId}\` |`),
-        ]
-      : [
-          "名前と住所に一致する場所が見つからなかったため、登録を保留しました。",
-          "Google マップで place_id を調べ、`/approve place_id=<place_id>` とコメントしてください。",
-        ];
-  comment(lines.join("\n"));
-  console.log("The place could not be resolved; waiting for a place ID.");
+const { error } = payload as ApiError;
+if (res.status === 422 && error?.code === "location_required") {
+  // Keep the issue open until a maintainer gives the coordinates.
+  comment(
+    [
+      "住所から座標を求められなかったため、登録を保留しました。",
+      "地図で座標を調べ、`/approve location=<緯度>,<経度>` とコメントしてください。",
+    ].join("\n")
+  );
+  console.log("The address could not be located; waiting for coordinates.");
   process.exit(0);
 }
 
