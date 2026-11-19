@@ -1,0 +1,116 @@
+#sidebarComponent {
+    --list-gap: 20px;
+    --background-color: #ffffff;
+    --content-max: clamp(260px, 80vw, 360px);
+
+    background-color: var(--background-color);
+    margin: var(--list-gap);
+    padding: var(--list-gap);
+    height: calc(100% - var(--list-gap) * 2);
+    width: calc(100% - var(--list-gap) * 2);
+    max-width: 400px;
+    border-radius: 25px;
+    box-shadow: 0 0 10px gray;
+    box-sizing: border-box;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+#sidebarComponent.collapsed {
+    height: auto;
+}
+
+#sidebarComponent.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto 6px;
+}
+
+#logo {
+    width: 100%;
+    height: auto;
+    max-height: clamp(48px, 10vh, 96px);
+    object-fit: contain;
+}
+
+#subtitle {
+    display: block;
+    font-size: var(--font-lg);
+    line-height: 1.2;
+    word-break: keep-all;
+    text-align: center;
+}
+
+@media (max-height: 480px) {
+    #sidebarComponent {
+        max-width: calc(150px * 16 / 9 + var(--list-gap) * 2);
+    }
+}
+
+@media (max-width: 800px) {
+    #sidebarComponent {
+        --list-gap: 8px;
+        width: calc(100% - var(--list-gap) * 2);
+        max-width: 100%;
+        height: calc(100% - var(--list-gap) * 2);
+        border-radius: 16px;
+    }
+}
+
+#sidebarStatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 32px;
+    font-size: var(--font-sm);
+}
+
+#sidebarStatus.profile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    text-align: center;
+}
+
+#visitProgress {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#accountButton {
+    flex: 0 1 auto;
+    max-width: 55%;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 999px;
+    background: #fff;
+    font-size: var(--font-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+#accountButton::before {
+    margin-right: 4px;
+    font-family: "bootstrap-icons";
+    content: "\f4d7"; /* bi-person-circle */
+    vertical-align: -1px;
+}
+
+#profileName {
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

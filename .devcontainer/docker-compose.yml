@@ -20,11 +20,12 @@ services:
       - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
       - PULSE_SERVER=$PULSE_SERVER
       - DATABASE_URL=postgres://shikisimap:shikisimap@db:5432/shikisimap?sslmode=disable
+      # The tests create and drop their own databases on this server.
+      - TEST_DATABASE_URL=postgres://shikisimap:shikisimap@db:5432/shikisimap?sslmode=disable
     depends_on:
       db:
         condition: service_healthy
     command: sleep infinity
-
   db:
     image: postgis/postgis:18-3.7
     environment:
@@ -39,6 +40,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=shikisimap
+      - PMA_PASSWORD=shikisimap
 
 volumes:
   db-data:

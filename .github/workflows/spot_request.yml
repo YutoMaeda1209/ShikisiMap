@@ -1,23 +1,29 @@
 name: Spot Request Automation
 
 on:
-  issues:
-    types: [opened]
+  issue_comment:
+    types: [created]
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: read
+  # OIDC token that authenticates the workflow to the admin API.
+  id-token: write
+  issues: write
 
 jobs:
   process-spot-request:
-    if: contains(github.event.issue.labels.*.name, 'new spot')
+    # Only a maintainer's "/approve" comment on a spot request issue registers the spot.
+    # The script checks the exact form of the comment.
+    if: >-
+      !github.event.issue.pull_request &&
+      contains(github.event.issue.labels.*.name, 'new spot') &&
+      startsWith(github.event.comment.body, '/approve') &&
+      contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)
     runs-on: ubuntu-26.04
+    concurrency:
+      group: spot-request-${{ github.event.issue.number }}
     steps:
+      # issue_comment runs on the default branch, which is the only ref the admin API accepts.
       - uses: actions/checkout@v5
-        with:
-          ref: dev
-          fetch-depth: 0
 
       - uses: actions/setup-node@v6
         with:
@@ -29,7 +35,8 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_BODY: ${{ github.event.issue.body }}
-          # Comma-separated GitHub usernames/teams to request review from.
-          # Configure via repo Settings > Secrets and variables > Actions > Variables.
-          REVIEWERS: ${{ vars.SPOT_REQUEST_REVIEWERS }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          SPOT_API_URL: ${{ vars.SPOT_API_URL || 'https://map.mendako.dev/api/admin/spots' }}
+          # Must match ADMIN_OIDC_AUDIENCE of the backend.
+          SPOT_API_AUDIENCE: ${{ vars.SPOT_API_AUDIENCE || 'https://map.mendako.dev/api/admin' }}
         run: node .github/scripts/process-spot-request.ts

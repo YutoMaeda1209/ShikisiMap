@@ -1,0 +1,142 @@
+.spotContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: clamp(260px, 80vw, 360px);
+    margin: 0 auto;
+    padding: 6px 0;
+}
+
+.spotTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-xl);
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.spotTitle > span,
+.address {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.address {
+    display: block;
+    width: 100%;
+}
+
+.closedBadge {
+    display: inline-block;
+    padding: 2px 6px;
+    background: #c0392b;
+    color: white;
+    border-radius: 4px;
+    font-size: var(--font-sm);
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 56px;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.yt-lite {
+    width: 100%;
+    max-width: clamp(260px, 80vw, 360px);
+    margin: 0 auto;
+}
+
+.ytLiteWrapper.disabled .yt-lite {
+    pointer-events: none;
+}
+
+.noVideo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    background: #e8eaed;
+    color: #5f6368;
+    font-size: var(--font-sm);
+}
+
+/* One line in every card, so that all rows of the list have the same height. */
+.spotMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-height: 30px;
+    font-size: var(--font-sm);
+    white-space: nowrap;
+}
+
+.visitorCount {
+    color: #5f6368;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.appearanceSwitcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.appearanceSwitcher button {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.visitButton {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    border: 1px solid #e5533d;
+    border-radius: 999px;
+    background: #fff;
+    color: #b93a26;
+    font-size: var(--font-sm);
+    cursor: pointer;
+}
+
+.visitButton.visited,
+.visitedLabel {
+    border-color: #2e9e5b;
+    color: #1d6e3e;
+}
+
+.visitButton.visited {
+    background: #e7f5ec;
+}
+
+.visitButton.visited::before,
+.visitedLabel::before {
+    margin-right: 4px;
+    font-family: "bootstrap-icons";
+    content: "\f633"; /* bi-check-lg */
+}
+
+@media (orientation: landscape) and (max-height: 520px),
+       (max-height: 520px) and (min-aspect-ratio: 3 / 2) {
+    .spotContent {
+        gap: 4px;
+        padding: 0;
+    }
+
+    .yt-lite,
+    .noVideo {
+        aspect-ratio: 21 / 9;
+    }
+}

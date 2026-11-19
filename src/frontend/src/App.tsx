@@ -1,24 +1,13 @@
+import { parseRoute } from "./lib/route";
+import MapPage from "./pages/MapPage";
+import ProfilePage from "./pages/ProfilePage";
 import "./App.css";
-import GitHubRibbon from "./GitHubRibbon";
-import LocationSelectionProvider from "./LocationSelectionProvider";
-import Map from "./Map";
-import MapDataProvider from "./MapDataProvider";
-import Sidebar from "./Sidebar";
-import UrlManager from "./UrlManager";
 
 function App() {
+  const route = parseRoute(window.location.pathname);
   return (
     <div id="app">
-      <LocationSelectionProvider>
-        <MapDataProvider>
-          <div id="sidebarContainer">
-            <Sidebar />
-          </div>
-          <Map />
-          <GitHubRibbon />
-          <UrlManager />
-        </MapDataProvider>
-      </LocationSelectionProvider>
+      {route.page === "profile" ? <ProfilePage userId={route.userId} /> : <MapPage />}
     </div>
   );
 }

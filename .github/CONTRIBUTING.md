@@ -99,26 +99,21 @@
 - 敷嶋てとらがスポットに初めて訪れた動画
 - 敷嶋てとらがスポットに最も詳しく言及している動画
 
-### フォーマット
+### 登録の流れ
 
-スポットは`src/frontend/src/data.json`に [GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946) 形式で追加します。下記のフィールド一覧に従って追記してください。
+スポットは Issue から登録します。`src/frontend/src/data.json` を編集するプルリクエストは不要です。
 
-- `type`: string - `Feature`固定
-- `properties`
-  - `name`: string - スポット名
-  - `address`: string - スポットの正確な住所
-  - `isClosed`: boolean - 現在閉業している場合は`true`
-  - `youtubeId`: string - スポットが登場する YouTube 動画の ID
-  - `timestamp`: string - スポットが登場する YouTube 動画内のタイムスタンプ (秒)
-- `geometry`
-  - `type`: string - `Point`固定
-  - `coordinates`: array[number] - `address`の座標 ([経度, 緯度] の順)
+1. [スポットリクエスト](https://github.com/YutoMaeda1209/ShikisiMap/issues/new?template=spot_request.yml)のテンプレートで Issue を作成する
+1. メンテナーが掲載の妥当性と記入内容を確認し、Issue に次のいずれかをコメントする
+   - `/approve`: 住所から座標を求めて登録する (国土地理院の住所検索を使う)
+   - `/approve location=<緯度>,<経度>`: 指定した座標で登録する
+   - `/approve spot_id=<スポット ID>`: 登録済みのスポットに動画だけを追加する
+1. GitHub Actions がスポットを登録し、結果 (座標の地図リンクを含む) を Issue にコメントして、Issue をクローズする
+   - 住所から座標を求められなかった場合は、その旨がコメントされ Issue は開いたままになる。メンテナーが座標を調べて `/approve location=<緯度>,<経度>` とコメントする
+1. 名前と住所が同じスポットが登録済みの場合は、新しいスポットは作られず、動画の登場シーンだけが追加される
 
-### レビュー手順
+`/approve` は、リポジトリの書き込み権限を持つメンテナーのコメントだけが有効です。
 
-1. どのようなスポットを追加するかを Issue で提案する
-1. `src/frontend/src/data.json`にスポットを追加する
-1. [コントリビュートの流れ](#コントリビュートの流れ)に従って、プルリクエストを作成する
-1. 1 名以上のレビュアーが掲載妥当性、フォーマット、情報を確認する
-1. レビュアーがスクリプトを実行して ID を付与する
-1. 承認後にマージする
+### 閉業・座標の修正
+
+閉業情報や座標は自動では更新されません。変更が必要な場合は、メンテナーが Actions の「Spot Update」ワークフローを `main` ブランチで実行し、スポット ID と変更内容 (閉業状態、座標、スポット名、住所) を入力します。

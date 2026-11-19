@@ -1,0 +1,95 @@
+name: Spot Update
+
+# Lets a maintainer change a registered spot by hand, e.g. mark it as closed or
+# correct its coordinates. Run it from the Actions tab on the main branch: the
+# admin API accepts it only from there. Running a workflow needs write access
+# to the repository.
+on:
+  workflow_dispatch:
+    inputs:
+      spot_id:
+        description: スポット ID (UUID)
+        required: true
+        type: string
+      closed:
+        description: 閉業状態
+        required: true
+        type: choice
+        default: 変更しない
+        options:
+          - 変更しない
+          - 閉業
+          - 営業中
+      location:
+        description: 座標 "緯度,経度" (空なら変更しない)
+        required: false
+        type: string
+      name:
+        description: スポット名 (空なら変更しない)
+        required: false
+        type: string
+      address:
+        description: 住所 (空なら変更しない)
+        required: false
+        type: string
+
+permissions:
+  # OIDC token that authenticates the workflow to the admin API.
+  id-token: write
+
+jobs:
+  update-spot:
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Update the spot
+        env:
+          SPOT_ID: ${{ inputs.spot_id }}
+          CLOSED: ${{ inputs.closed }}
+          LOCATION: ${{ inputs.location }}
+          NAME: ${{ inputs.name }}
+          ADDRESS: ${{ inputs.address }}
+          SPOT_API_URL: ${{ vars.SPOT_API_URL || 'https://map.mendako.dev/api/admin/spots' }}
+          # Must match ADMIN_OIDC_AUDIENCE of the backend.
+          SPOT_API_AUDIENCE: ${{ vars.SPOT_API_AUDIENCE || 'https://map.mendako.dev/api/admin' }}
+        run: |
+          set -euo pipefail
+
+          if ! [[ "$SPOT_ID" =~ ^[0-9a-fA-F-]{36}$ ]]; then
+            echo "::error::spot_id is not a UUID"
+            exit 1
+          fi
+
+          # Only the fields that were given go into the request.
+          body='{}'
+          case "$CLOSED" in
+            閉業) body=$(jq -c '.isClosed = true' <<<"$body") ;;
+            営業中) body=$(jq -c '.isClosed = false' <<<"$body") ;;
+          esac
+          if [ -n "$LOCATION" ]; then
+            if ! [[ "$LOCATION" =~ ^\ *(-?[0-9]+(\.[0-9]+)?)\ *,\ *(-?[0-9]+(\.[0-9]+)?)\ *$ ]]; then
+              echo "::error::location must be \"latitude,longitude\""
+              exit 1
+            fi
+            body=$(jq -c --argjson lat "${BASH_REMATCH[1]}" --argjson lng "${BASH_REMATCH[3]}" \
+              '.location = {lat: $lat, lng: $lng}' <<<"$body")
+          fi
+          if [ -n "$NAME" ]; then body=$(jq -c --arg v "$NAME" '.name = $v' <<<"$body"); fi
+          if [ -n "$ADDRESS" ]; then body=$(jq -c --arg v "$ADDRESS" '.address = $v' <<<"$body"); fi
+          if [ "$body" = '{}' ]; then
+            echo "::error::Nothing to change"
+            exit 1
+          fi
+
+          token=$(curl -sSf -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=$(jq -rn --arg a "$SPOT_API_AUDIENCE" '$a|@uri')" | jq -r .value)
+
+          echo "Request: $body"
+          status=$(curl -sS -o response.json -w '%{http_code}' -X PATCH \
+            -H "Authorization: Bearer $token" -H "Content-Type: application/json" \
+            --data "$body" "$SPOT_API_URL/$SPOT_ID")
+          jq . response.json || cat response.json
+          if [ "$status" != 200 ]; then
+            echo "::error::The admin API answered HTTP $status"
+            exit 1
+          fi
+          jq -r '"\(.name) (\(.address)): 座標 \(.location.lat),\(.location.lng) / 閉業 \(.isClosed)"' response.json >> "$GITHUB_STEP_SUMMARY"

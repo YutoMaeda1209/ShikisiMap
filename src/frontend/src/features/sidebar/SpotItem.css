@@ -1,0 +1,45 @@
+.spotItemRow {
+    box-sizing: border-box;
+    padding: 4px 0;
+}
+
+.spotItem {
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    height: 100%;
+}
+
+.spotItem:hover {
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+.spotItem.selected {
+    background-color: rgba(255, 107, 0, 0.15);
+    border-color: rgba(255, 107, 0, 0.9);
+}
+
+.spotItem.compact-title .spotTitle {
+    font-size: var(--font-lg);
+    margin: 0;
+}
+
+.spotItem.compact-title .address {
+    font-size: var(--font-sm);
+    line-height: 1.2;
+}
+
+.spotItem.closed {
+    background-color: #cccccc;
+}
+
+.spotItem.closed .spotTitle {
+    position: relative;
+    padding-right: 72px;
+}
