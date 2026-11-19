@@ -26,7 +26,6 @@ services:
       db:
         condition: service_healthy
     command: sleep infinity
-
   db:
     image: postgis/postgis:18-3.7
     environment:
@@ -41,6 +40,15 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=shikisimap
+      - PMA_PASSWORD=shikisimap
 
 volumes:
   db-data:
